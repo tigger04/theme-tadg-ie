@@ -2354,3 +2354,87 @@ main.list .masonry-grid {
   filter: none;
   box-shadow: none;
 }
+
+/* ================================================
+   Contact Form Styles
+   ================================================ */
+
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form input[type="email"],
+.contact-form input[type="text"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.checkbox-field input[type="checkbox"] {
+  margin-top: 0.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox-field label {
+  cursor: pointer;
+  line-height: 1.6;
+}
+
+.form-hint {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.form-actions {
+  text-align: right;
+}
+
+.contact-form button[type="submit"] {
+  padding: 0.75rem 2rem;
+  background: var(--color-secondary);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+  opacity: 0.9;
+}
