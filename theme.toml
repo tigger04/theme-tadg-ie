@@ -1,0 +1,24 @@
+# theme.toml for tadg_ie Hugo theme
+# Based on Archie theme with extensive customizations
+
+name = "tadg_ie"
+license = "MIT"
+licenselink = "https://github.com/tigger04/theme-tadg-ie/blob/main/LICENSE"
+description = "A Hugo theme for multi-content-type sites with masonry layouts, galleries, and responsive design. Based on Archie."
+homepage = "https://github.com/tigger04/theme-tadg-ie"
+tags = ["blog", "portfolio", "gallery", "poetry", "responsive", "masonry", "multi-section", "shortcodes"]
+features = [
+  "Masonry grid layout",
+  "Image galleries with lightbox",
+  "Multiple content types (blog, poetry, artwork, plays, stories)",
+  "Section-specific card styles",
+  "Responsive design with em-based breakpoints",
+  "Pagination with per-section override",
+  "7 custom shortcodes",
+  "Dark mode support"
+]
+min_version = "0.128.0"
+
+[author]
+  name = "Tadg Paul"
+  homepage = "https://github.com/tigger04"

@@ -1,0 +1,31 @@
+{{- /* ABOUTME: Simple vertical list partial for section pages */ -}}
+{{- /* ABOUTME: Alternative to masonry-grid when list_style: list is set */ -}}
+
+{{- $pages := .pages -}}
+{{- $showSection := .showSection | default false -}}
+
+{{- /* Issue #81: No manual filtering needed - Hugo's _build.list: false handles exclusion */ -}}
+
+<ul class="list-view">
+  {{- range $pages -}}
+  <li class="list-view-item">
+    <article>
+      <h3 class="list-view-title">
+        <a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a>
+      </h3>
+      <div class="list-view-meta">
+        {{- if $showSection -}}
+        <span class="list-view-section">{{ .Section | humanize }}</span>
+        {{- end -}}
+        {{- if .Date -}}
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
+        {{- end -}}
+      </div>
+      {{- $excerpt := .Description | default .Summary -}}
+      {{- if $excerpt -}}
+      <p class="list-view-summary">{{ $excerpt | plainify | truncate 150 }}</p>
+      {{- end -}}
+    </article>
+  </li>
+  {{- end -}}
+</ul>

@@ -1,0 +1,91 @@
+{{- /* ABOUTME: Gallery shortcode for displaying images from the current page's resources. */}}
+{{- /* ABOUTME: Renders a responsive image grid with lightbox support and EXIF metadata. */}}
+{{- /* Usage: {{< gallery >}} in any page with image resources */}}
+{{- /* Metadata priority: frontmatter params → EXIF → filename */}}
+
+{{- $page := .Page -}}
+{{- $images := $page.Resources.ByType "image" -}}
+
+{{- /* Allow sorting by weight if defined in frontmatter resources */ -}}
+{{- $sortedImages := $images -}}
+{{- if gt (len $images) 0 -}}
+  {{- $sortedImages = sort $images ".Params.weight" -}}
+{{- end -}}
+
+{{- if gt (len $sortedImages) 0 -}}
+<div class="gallery-grid">
+  {{- range $index, $image := $sortedImages -}}
+  {{- /* Initialize metadata variables */ -}}
+  {{- $title := "" -}}
+  {{- $caption := "" -}}
+
+  {{- /* Priority 1: Frontmatter resource params (highest priority) */ -}}
+  {{- with $image.Params.title -}}
+    {{- $title = . -}}
+  {{- end -}}
+  {{- with $image.Params.caption -}}
+    {{- $caption = . -}}
+  {{- end -}}
+
+  {{- /* Priority 2: EXIF data (if frontmatter not set) */ -}}
+  {{- with $image.Exif -}}
+    {{- if not $title -}}
+      {{- with .Tags.DocumentName -}}
+        {{- $title = . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if not $caption -}}
+      {{- with .Tags.ImageDescription -}}
+        {{- $caption = . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Priority 3: Filename fallback (lowest priority) */ -}}
+  {{- if not $title -}}
+    {{- $title = $image.Name -}}
+  {{- end -}}
+
+  {{- /* Build alt text: use explicit alt param, or title, or concatenation */ -}}
+  {{- $alt := $image.Params.alt | default $title -}}
+  {{- if and $title $caption -}}
+    {{- if not $image.Params.alt -}}
+      {{- $alt = printf "%s - %s" $title $caption -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Generate responsive thumbnails */ -}}
+  {{- $thumb := $image.Fit "400x400" -}}
+  {{- $medium := $image.Fit "800x800" -}}
+  {{- $large := $image.Fit "1600x1600" -}}
+
+  <div class="gallery-item">
+    <a href="{{ $image.RelPermalink }}"
+       class="gallery-image-link"
+       data-lightbox="gallery"
+       data-title="{{ $title }}"
+       data-caption="{{ $caption }}">
+      <picture>
+        {{- /* WebP source for modern browsers */ -}}
+        {{- $thumbWebP := $thumb.Process "webp" -}}
+        <source type="image/webp"
+                srcset="{{ $thumbWebP.RelPermalink }} 400w, {{ ($medium.Process "webp").RelPermalink }} 800w"
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw">
+        {{- /* Fallback for older browsers */ -}}
+        <img src="{{ $thumb.RelPermalink }}"
+             srcset="{{ $thumb.RelPermalink }} 400w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1600w"
+             sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+             alt="{{ $alt }}"
+             loading="lazy"
+             class="gallery-image">
+      </picture>
+      {{- if $caption -}}
+      <span class="gallery-item-caption">{{ $caption }}</span>
+      {{- end -}}
+    </a>
+  </div>
+  {{- end -}}
+</div>
+{{- else -}}
+<p class="gallery-empty">No images found in this gallery.</p>
+{{- end -}}

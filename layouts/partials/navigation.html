@@ -1,0 +1,38 @@
+{{/* ABOUTME: Main site navigation - simple links with active section indicator */}}
+{{/* Issue #62: No dropdowns - all top-level links are simple links */}}
+{{/* Active section gets nav-item-active class with thick red border */}}
+
+<!-- Burger menu button for mobile -->
+<button class="burger-menu" aria-label="Toggle menu" id="burger-toggle">
+  <span class="burger-line"></span>
+  <span class="burger-line"></span>
+  <span class="burger-line"></span>
+</button>
+
+<nav id="main-nav">
+  {{- /* Get the current section */ -}}
+  {{- $currentSection := "" -}}
+  {{- with $.Page.CurrentSection -}}
+    {{- $currentSection = .Section -}}
+  {{- end -}}
+  {{- if not $currentSection -}}
+    {{- $currentSection = $.Page.Section -}}
+  {{- end -}}
+
+  {{ range .Site.Menus.main }}
+    {{- /* Extract section name from URL using path.Base */ -}}
+    {{- /* This handles baseURL expansion: /www-omni/poetry/ -> poetry */ -}}
+    {{- $menuSection := path.Base (trim .URL "/") -}}
+
+    {{- /* Check if this menu item matches current section */ -}}
+    {{- $isActive := eq $currentSection $menuSection -}}
+
+    {{- /* Build class string based on active state */ -}}
+    {{- $classes := "nav-item" -}}
+    {{- if $isActive -}}
+      {{- $classes = printf "%s nav-item-active" $classes -}}
+    {{- end -}}
+
+    <a href="{{ .URL }}" class="{{ $classes }}">{{ .Name }}</a>
+  {{ end }}
+</nav>

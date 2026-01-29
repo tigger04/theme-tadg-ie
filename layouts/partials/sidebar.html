@@ -1,0 +1,83 @@
+{{/* ABOUTME: Reusable sidebar partial that handles both content-based and section-list sidebars */}}
+{{/* ABOUTME: Supports root parameter for showing sibling sections from a parent/ancestor */}}
+{{/* Usage: {{ partial "sidebar.html" (dict "sidebar" .Params.sidebar "context" . "Site" .Site) }} */}}
+{{/* Sidebar can be: true (boolean), or a map with title/content/sections/root fields */}}
+{{/* Issue #62: All sidebar links have chevrons, use .sidebar-nav class consistently */}}
+{{/* Issue #74: Added root parameter for sibling section navigation */}}
+
+{{- $sidebar := .sidebar -}}
+{{- $context := .context -}}
+{{- $site := .Site -}}
+
+{{- if $sidebar -}}
+<aside class="section-sidebar">
+  {{- /* Check if sidebar is a map (has fields) or just boolean true */ -}}
+  {{- $isMap := reflect.IsMap $sidebar -}}
+
+  {{- /* Render title if provided (only for map type) */ -}}
+  {{- if and $isMap $sidebar.title -}}
+  <h3 class="sidebar-title">{{ $sidebar.title }}</h3>
+  {{- end -}}
+
+  {{- /* Content field takes precedence - renders markdown with shortcodes */ -}}
+  {{- if and $isMap $sidebar.content -}}
+  <div class="sidebar-content">
+    {{- $sidebar.content | $context.RenderString -}}
+  </div>
+  {{- else if and $isMap $sidebar.sections -}}
+  {{- /* Explicit sections list from frontmatter */ -}}
+  <nav class="sidebar-nav">
+    <ul>
+      {{- range $sidebar.sections -}}
+        {{- $sectionName := . -}}
+        {{- $section := $site.GetPage (printf "/%s" $sectionName) -}}
+        {{- if $section -}}
+        <li>
+          <span class="sidebar-chevron-wrapper">
+            <img src="{{ relURL "icons/chevron-right-thick.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-light" aria-hidden="true">
+            <img src="{{ relURL "icons/chevron-right-thick-white.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-dark" aria-hidden="true">
+          </span>
+          <a href="{{ $section.RelPermalink }}" class="sidebar-link">{{ $section.Title }}</a>
+        </li>
+        {{- end -}}
+      {{- end -}}
+    </ul>
+  </nav>
+  {{- else if and $isMap $sidebar.root -}}
+  {{- /* Root parameter: show subsections of specified root section (for sibling navigation) */ -}}
+  {{- /* Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
+  {{- $rootSection := $site.GetPage $sidebar.root -}}
+  {{- if $rootSection -}}
+  <nav class="sidebar-nav">
+    <ul>
+      {{- range $rootSection.Sections -}}
+        <li>
+          <span class="sidebar-chevron-wrapper">
+            <img src="{{ relURL "icons/chevron-right-thick.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-light" aria-hidden="true">
+            <img src="{{ relURL "icons/chevron-right-thick-white.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-dark" aria-hidden="true">
+          </span>
+          <a href="{{ .RelPermalink }}" class="sidebar-link">{{ .Title }}</a>
+        </li>
+      {{- end -}}
+    </ul>
+  </nav>
+  {{- end -}}
+  {{- else -}}
+  {{- /* Default: show subsections of current section (for sidebar: true or empty map) */ -}}
+  {{- /* Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
+  <nav class="sidebar-nav">
+    <ul>
+      {{- range $context.Sections -}}
+        <li>
+          <span class="sidebar-chevron-wrapper">
+            <img src="{{ relURL "icons/chevron-right-thick.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-light" aria-hidden="true">
+            <img src="{{ relURL "icons/chevron-right-thick-white.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-dark" aria-hidden="true">
+          </span>
+          <a href="{{ .RelPermalink }}" class="sidebar-link">{{ .Title }}</a>
+        </li>
+      {{- end -}}
+    </ul>
+  </nav>
+  {{- end -}}
+</aside>
+{{- end -}}

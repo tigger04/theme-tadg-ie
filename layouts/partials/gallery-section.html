@@ -1,0 +1,44 @@
+{{- /* ABOUTME: Gallery section partial for displaying image galleries in a grid layout. */}}
+{{- /* ABOUTME: Extracted from layouts/artwork/list.html for reuse via list_style: gallery. */}}
+
+{{- $pages := .pages -}}
+{{- $context := .context -}}
+
+<div class="gallery-list">
+  {{- /* Filter to only show section pages (gallery folders) */ -}}
+  {{- /* Issue #81: No manual hidden check - Hugo's _build.list: false handles exclusion */ -}}
+  {{- $galleries := where $pages "Kind" "section" -}}
+  {{- range $galleries -}}
+  {{- /* Issue #70: Store page reference before with block changes context */ -}}
+  {{- $page := . -}}
+  <div class="gallery-card">
+    {{- $heroImage := "" -}}
+    {{- with $page.Params.featured_image -}}
+      {{- /* Use $page.Resources not $.Resources - $ refers to partial dict, not page */ -}}
+      {{- $heroImage = $page.Resources.GetMatch . -}}
+    {{- else -}}
+      {{- $images := $page.Resources.ByType "image" -}}
+      {{- with $images -}}
+        {{- $heroImage = index . 0 -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- if $heroImage -}}
+    <a href="{{ $page.Permalink }}" class="gallery-card-image">
+      {{- /* Issue #87: Use Resize to preserve natural aspect ratios, not Fit */ -}}
+      {{- $thumb := $heroImage.Resize "600x" -}}
+      <img src="{{ $thumb.RelPermalink }}" alt="{{ $page.Title }}" loading="lazy">
+    </a>
+    {{- end -}}
+
+    <div class="gallery-card-content">
+      <h2><a href="{{ $page.Permalink }}">{{ $page.Title }}</a></h2>
+      {{- if $page.Description }}
+      <p>{{ $page.Description }}</p>
+      {{- end -}}
+      {{- $imageCount := len ($page.Resources.ByType "image") -}}
+      <div class="gallery-meta">{{ $imageCount }} {{ if eq $imageCount 1 }}image{{ else }}images{{ end }}</div>
+    </div>
+  </div>
+  {{- end -}}
+</div>

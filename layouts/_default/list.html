@@ -1,0 +1,117 @@
+{{ define "main" }}
+<main class="list">
+	{{ if eq .Type "collections" }}
+	{{ if eq .RelPermalink "/collections/" }}
+	<!-- Collections main page - show content and poet collections -->
+	<header class="page-header">
+		<h1>{{ .Title }}</h1>
+		{{ if .Params.description }}
+		<p class="page-description">{{ .Params.description }}</p>
+		{{ end }}
+	</header>
+
+	{{ if .Content }}
+	<div class="page-content">
+		{{ .Content }}
+	</div>
+	{{ end }}
+
+	<div class="collections-list">
+		{{ $poets := slice }}
+
+		<!-- Get all pages in collections section recursively -->
+		<!-- Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion -->
+		{{ range .Site.RegularPages }}
+		{{ if .Params.collection }}
+		{{ $author := .Params.collection }}
+		{{ if not (in $poets $author) }}
+		{{ $poets = $poets | append $author }}
+		{{ end }}
+		{{ end }}
+		{{ end }}
+
+		<!-- Display poet collections -->
+		<ul class="poet-list">
+			{{ range sort $poets }}
+			<li><a href="/collections/{{ . | urlize }}/" class="header-interactive">{{ . | humanize | title }}</a></li>
+			{{ end }}
+		</ul>
+	</div>
+	{{ else }}
+	<!-- Individual poet collection page - show poems by this poet -->
+	<header class="page-header">
+		<h1>{{ .Title }}</h1>
+		{{ if .Params.description }}
+		<p class="page-description">{{ .Params.description }}</p>
+		{{ end }}
+	</header>
+
+	{{ if .Content }}
+	<div class="author-description">
+		{{ .Content }}
+	</div>
+	{{ end }}
+	<div class="poems-list">
+		<!-- Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion -->
+		{{ $currentPoet := strings.TrimPrefix "/collections/" .RelPermalink | strings.TrimSuffix "/" }}
+		{{ $poetPages := slice }}
+		{{ range .Site.RegularPages }}
+		{{ if eq .Params.collection $currentPoet }}
+		{{ $poetPages = $poetPages | append . }}
+		{{ end }}
+		{{ end }}
+		{{ partial "masonry-grid.html" (dict "pages" $poetPages "showSection" false "Site" .Site) }}
+	</div>
+	{{ end }}
+	{{ else }}
+	<!-- Default list template for other sections -->
+	{{- $listStyle := .Params.list_style | default "cards" -}}
+	{{- $showSidebar := .Params.sidebar | default false -}}
+	{{- $recursive := .Params.list_recursive | default false -}}
+	{{- /* For gallery mode, use .Pages (includes sections); for cards/list, filter to regular pages only */ -}}
+	{{- $allPages := cond (eq $listStyle "gallery") .Pages (cond $recursive .RegularPagesRecursive (where .Pages "Kind" "page")) -}}
+	{{- /* Issue #81: No parent hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
+	{{- /* Pages in sections with _build.list: false won't appear in .RegularPagesRecursive */ -}}
+	{{- /* Pagination: use frontmatter override if set, otherwise use site default (pagination.pagerSize) */ -}}
+	{{- $paginator := .Paginate $allPages (.Params.paginate | default 12) -}}
+
+	{{- /* Issue #91: Page header and content always above sidebar-layout so sidebar aligns with grid */ -}}
+	<header class="page-header">
+		<h1>{{ .Title }}</h1>
+		{{ if .Params.description }}
+		<p class="page-description">{{ .Params.description }}</p>
+		{{ end }}
+	</header>
+
+	{{- /* Section content from _index.md - always above sidebar-layout */ -}}
+	{{ if .Content }}
+	<div class="page-content">
+		{{ .Content }}
+	</div>
+	{{ end }}
+
+	{{- /* Start sidebar-layout if sidebar enabled */ -}}
+	{{- if $showSidebar -}}
+	<div class="sidebar-layout">
+		{{ partial "sidebar.html" (dict "sidebar" .Params.sidebar "context" . "Site" .Site) }}
+		<div class="section-content">
+	{{- end -}}
+
+	{{- if eq $listStyle "gallery" -}}
+		{{ partial "gallery-section.html" (dict "pages" $paginator.Pages "context" . "Site" .Site) }}
+	{{- else if eq $listStyle "list" -}}
+		{{ partial "list-view.html" (dict "pages" $paginator.Pages "showSection" false "Site" .Site) }}
+	{{- else -}}
+		{{ partial "masonry-grid.html" (dict "pages" $paginator.Pages "showSection" false "Site" .Site) }}
+	{{- end -}}
+
+	{{ partial "pagination.html" $paginator }}
+
+	{{- if $showSidebar -}}
+		</div>
+	</div>
+	{{- end -}}
+	{{ end }}
+</main>
+<script src="{{ "js/masonry-init.js" | relURL }}"></script>
+{{ end }}

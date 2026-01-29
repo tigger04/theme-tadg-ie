@@ -1,0 +1,20 @@
+<footer></footer>
+  <div style="display:flex; justify-content: center;">
+    {{- range $index, $key := .Site.Params.Social -}}
+    {{- if hasPrefix $key.icon "simple:" -}}
+    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"><i class="si si-{{ substr $key.icon 7 }}"></i></a>
+    {{- else -}}
+    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}">{{ template "feathericon" (dict "Icon" $key.icon "UseCDN" .Site.Params.useCDN) }}</a>
+    {{- end -}}
+    <a class="border"></a>
+    {{- end -}}
+  </div>
+  <div class="footer-info" style="text-align: center;">
+    {{ dateFormat "2006" now }} {{ with .Site.Copyright }} {{ . }} | {{ end }}
+  </div>
+</footer>
+
+<script>
+// Issue #66: Dark mode only - no toggle
+document.documentElement.setAttribute('data-theme', 'dark');
+</script>

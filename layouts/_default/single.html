@@ -1,0 +1,204 @@
+{{ define "main" }}
+<main>
+  <article>
+    <!-- Banner Layout -->
+    {{ if eq .Params.layout "banner" }}
+    <div class="post-container banner-layout">
+      {{ if .Params.image.src }}
+      <div class="post-banner soft-edge{{ if .Params.image.dark }} dark-banner{{ end }}">
+        <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge">
+        <div class="banner-overlay soft-edge"></div>
+        <div class="title">
+          <h1>{{ .Title }}</h1>
+          <div class="meta">
+            {{- /* Issue #92: Support hideDate frontmatter */ -}}
+            {{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+          </div>
+        </div>
+        {{ if .Params.image.caption }}
+        <div class="image-caption">{{ .Params.image.caption }}</div>
+        {{ end }}
+      </div>
+      {{ end }}
+      
+      <div class="post-content banner-content">
+        {{ if isset .Params "tldr" }}
+        <div class="tldr">
+          <strong>tl;dr:</strong>
+          {{ .Params.tldr }}
+        </div>{{ end }}
+        <section class="body">
+          {{ .Content }}
+        </section>
+        <div class="post-tags">
+          {{ if ne .Type "page" }}
+          {{ if gt .Params.tags 0 }}
+          <nav class="nav tags">
+            <ul class="tags">
+              {{ range .Params.tags }}
+              <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+              {{ end }}
+            </ul>
+          </nav>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Column Layouts -->
+    {{ else if or (eq .Params.layout "featured-columns-left") (eq .Params.layout "featured-columns-right") (eq .Params.layout "columns") }}
+    <div class="post-container soft-edge columns-layout">
+      <!-- Title - full width -->
+      <div class="title" style="padding: 2rem; margin-bottom: 0;">
+        <h1 class="title">{{ .Title }}</h1>
+        <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+      </div>
+
+      <!-- Two-column content area -->
+      <div class="post-featured-columns">
+        {{ if or (eq .Params.layout "featured-columns-left") (eq .Params.layout "columns") }}
+        <!-- Image on left, text on right -->
+        <div class="featured-image-col">
+          {{ if .Params.image.src }}
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          {{ if .Params.image.caption }}
+          <div class="image-caption">{{ .Params.image.caption }}</div>
+          {{ end }}
+          {{ end }}
+        </div>
+        <div class="featured-text-col">
+          {{ if isset .Params "tldr" }}
+          <div class="tldr">
+            <strong>tl;dr:</strong>
+            {{ .Params.tldr }}
+          </div>{{ end }}
+          <section class="body">
+            {{ .Content }}
+          </section>
+        </div>
+        {{ else }}
+        <!-- Text on left, image on right -->
+        <div class="featured-text-col">
+          {{ if isset .Params "tldr" }}
+          <div class="tldr">
+            <strong>tl;dr:</strong>
+            {{ .Params.tldr }}
+          </div>{{ end }}
+          <section class="body">
+            {{ .Content }}
+          </section>
+        </div>
+        <div class="featured-image-col">
+          {{ if .Params.image.src }}
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          {{ if .Params.image.caption }}
+          <div class="image-caption">{{ .Params.image.caption }}</div>
+          {{ end }}
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      
+      <!-- Footer with tags - full width -->
+      <div class="post-footer" style="padding: 0 2rem 2rem 2rem;">
+        <div class="post-tags">
+          {{ if ne .Type "page" }}
+          {{ if gt .Params.tags 0 }}
+          <nav class="nav tags">
+            <ul class="tags">
+              {{ range .Params.tags }}
+              <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+              {{ end }}
+            </ul>
+          </nav>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Default Layout (including hero, featured, background) -->
+    {{ else }}
+    <!-- If no layout is specified but there's an image, default to background layout -->
+    {{ $effectiveLayout := .Params.layout }}
+    {{ if and .Params.image.src (not .Params.layout) }}
+      {{ $effectiveLayout = "background" }}
+    {{ end }}
+    
+    <div class="post-container{{ if and .Params.image (eq $effectiveLayout "background") }}{{ if .Params.image.dark }} dark-bg{{ end }}{{ end }} soft-edge"{{ if and .Params.image (eq $effectiveLayout "background") }} style="--background-image: url('{{ .RelPermalink }}{{ .Params.image.src }}'); --image-opacity: {{ if .Params.image.opacity }}{{ .Params.image.opacity }}{{ else }}{{ .Site.Params.bgImage.opacity }}{{ end }}; --image-blur: {{ if .Params.image.blur }}{{ .Params.image.blur }}{{ else }}{{ .Site.Params.bgImage.blur }}{{ end }};"{{ end }}>
+      <div class="post-content">
+        <div class="title">
+          <h1 class="title">{{ .Title }}</h1>
+          <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+        </div>
+
+        <!-- Hero Image -->
+        {{ if and .Params.image (eq .Params.layout "hero") }}
+        {{ if .Params.image.src }}
+        <div class="post-hero">
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          {{ if .Params.image.caption }}
+          <div class="image-caption">{{ .Params.image.caption }}</div>
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ end }}
+
+        <!-- Featured Image -->
+        {{ if and .Params.image (eq .Params.layout "featured") }}
+        {{ if .Params.image.src }}
+        <div class="post-featured">
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          {{ if .Params.image.caption }}
+          <div class="image-caption">{{ .Params.image.caption }}</div>
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ end }}
+
+        {{ if isset .Params "tldr" }}
+        <div class="tldr">
+          <strong>tl;dr:</strong>
+          {{ .Params.tldr }}
+        </div>{{ end }}
+        <section class="body">
+          {{ .Content }}
+        </section>
+        <div class="post-tags">
+          {{ if ne .Type "page" }}
+          {{ if gt .Params.tags 0 }}
+          <nav class="nav tags">
+            <ul class="tags">
+              {{ range .Params.tags }}
+              <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+              {{ end }}
+            </ul>
+          </nav>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+
+    <!-- TOC -->
+    {{ if isset .Params "toc" }}
+    <div class="toc">
+      <strong>Table of contents:</strong>
+      {{ .TableOfContents }}
+    </div>
+    {{ end }}
+
+    <!-- Disqus -->
+    {{- $.Scratch.Set "isDisqus" true -}}
+    {{ if not .Site.Config.Services.Disqus.Shortname }}
+    {{- $.Scratch.Set "isDisqus" false -}}
+    {{ end }}
+
+    {{- if eq ($.Scratch.Get "isDisqus") true -}}
+    {{- partial "disqus.html" . -}}
+    {{- end -}}
+  </article>
+</main>
+{{ end }}

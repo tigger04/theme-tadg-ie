@@ -1,0 +1,34 @@
+{{/* ABOUTME: Shortcode to render a list of site sections with links */}}
+{{/* Usage: {{< section-list >}} or {{< section-list sections="poetry,artwork" limit="3" >}} */}}
+{{/* Issue #62: All sidebar links have chevrons, consistent styling */}}
+
+{{- $sectionsParam := .Get "sections" -}}
+{{- $limit := .Get "limit" | default 0 -}}
+
+{{- /* Determine which sections to display */ -}}
+{{- $sectionNames := slice -}}
+{{- if $sectionsParam -}}
+  {{- /* Use explicitly provided sections */ -}}
+  {{- $sectionNames = split $sectionsParam "," -}}
+{{- else -}}
+  {{- /* Default to site.Params.mainSections */ -}}
+  {{- $sectionNames = .Site.Params.mainSections | default (slice "blog") -}}
+{{- end -}}
+
+<nav class="sidebar-nav">
+  <ul>
+    {{- range $sectionNames -}}
+      {{- $sectionName := . | strings.TrimSpace -}}
+      {{- $section := $.Site.GetPage (printf "/%s" $sectionName) -}}
+      {{- if $section -}}
+        <li>
+          <span class="sidebar-chevron-wrapper">
+            <img src="{{ relURL "icons/chevron-right-thick.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-light" aria-hidden="true">
+            <img src="{{ relURL "icons/chevron-right-thick-white.svg" }}" alt="" class="sidebar-chevron sidebar-chevron-dark" aria-hidden="true">
+          </span>
+          <a href="{{ $section.RelPermalink }}" class="sidebar-link">{{ $section.Title }}</a>
+        </li>
+      {{- end -}}
+    {{- end -}}
+  </ul>
+</nav>

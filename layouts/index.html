@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+{{ partial "header.html" . }}
+
+<body>
+	<div class="content">
+		{{ partial "head.html" . }}
+		<main class="home{{ if .Params.sidebar }} home-with-sidebar{{ end }}">
+			<div class="site-description">
+				{{- if isset .Site.Params "subtitle" -}}
+				<p>{{ .Site.Params.Subtitle | .Page.RenderString }}</p>
+				{{- end -}}
+			</div>
+
+			{{ if .Content }}
+			<div class="homepage-content">
+				{{ .Content }}
+			</div>
+			{{ end }}
+
+			{{- /* Check for sidebar configuration */ -}}
+			{{- $showSidebar := .Params.sidebar | default false -}}
+
+			{{- /* Read list_style from frontmatter, default to cards (masonry) */ -}}
+			{{- $listStyle := .Params.list_style | default "cards" -}}
+
+			{{- /* Build page collections for all layout types */ -}}
+			{{- $sections := slice "poetry" "artwork" "blog" "snips" "plays" "stories" -}}
+			{{- $pinnedPages := slice -}}
+
+			{{- /* Collect pinned/featured page from each section */ -}}
+			{{- /* Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
+			{{- range $sections -}}
+				{{- $section := . -}}
+				{{- $sectionPages := slice -}}
+				{{- /* Issue #85: Artwork uses section pages (gallery folders), not regular pages */ -}}
+				{{- if eq $section "artwork" -}}
+					{{- $artworkSection := $.Site.GetPage "section" "artwork" -}}
+					{{- if $artworkSection -}}
+						{{- $sectionPages = $artworkSection.Sections -}}
+					{{- end -}}
+				{{- else -}}
+					{{- $sectionPages = where $.Site.RegularPages "Section" $section -}}
+				{{- end -}}
+				{{- $pinned := where $sectionPages ".Params.pin" "!=" nil -}}
+
+				{{- $selectedPage := "" -}}
+				{{- if gt (len $pinned) 0 -}}
+					{{- /* Use lowest pin number */ -}}
+					{{- $selectedPage = index (sort $pinned ".Params.pin" "asc") 0 -}}
+				{{- else if gt (len $sectionPages) 0 -}}
+					{{- /* Use most recent */ -}}
+					{{- $selectedPage = index (first 1 $sectionPages) 0 -}}
+				{{- end -}}
+
+				{{- if $selectedPage -}}
+					{{- $pinnedPages = $pinnedPages | append $selectedPage -}}
+				{{- end -}}
+			{{- end -}}
+
+			{{- /* Sort pinned pages by pin value (lowest first) across all sections */ -}}
+			{{- /* Separate pages with pin values from those without */ -}}
+			{{- $pagesWithPin := where $pinnedPages ".Params.pin" "!=" nil -}}
+			{{- $pagesWithoutPin := where $pinnedPages ".Params.pin" "==" nil -}}
+			{{- /* Sort pages with pins, then append unpinned pages */ -}}
+			{{- $pinnedPages = sort $pagesWithPin ".Params.pin" "asc" -}}
+			{{- range $pagesWithoutPin -}}
+				{{- $pinnedPages = $pinnedPages | append . -}}
+			{{- end -}}
+
+			{{- /* Get all pages excluding pinned ones */ -}}
+			{{- $pinnedPermalinks := slice -}}
+			{{- range $pinnedPages -}}
+				{{- $pinnedPermalinks = $pinnedPermalinks | append .RelPermalink -}}
+			{{- end -}}
+
+			{{- /* Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
+			{{- $remainingPages := slice -}}
+			{{- range $.Site.RegularPages -}}
+				{{- if not (in $pinnedPermalinks .RelPermalink) -}}
+					{{- $remainingPages = $remainingPages | append . -}}
+				{{- end -}}
+			{{- end -}}
+			{{- /* Issue #85: Include artwork gallery sections in the feed */ -}}
+			{{- $artworkSection := $.Site.GetPage "section" "artwork" -}}
+			{{- if $artworkSection -}}
+				{{- range $artworkSection.Sections -}}
+					{{- if not (in $pinnedPermalinks .RelPermalink) -}}
+						{{- $remainingPages = $remainingPages | append . -}}
+					{{- end -}}
+				{{- end -}}
+			{{- end -}}
+
+			{{- /* Combine: pinned first, then remaining by date */ -}}
+			{{- $allPages := $pinnedPages -}}
+			{{- range $remainingPages -}}
+				{{- $allPages = $allPages | append . -}}
+			{{- end -}}
+
+			{{- /* Pagination: use frontmatter override if set, otherwise use site default (pagination.pagerSize) */ -}}
+			{{- $paginator := .Paginate $allPages (.Params.paginate | default 12) -}}
+
+			{{- /* Wrap in sidebar layout if sidebar is enabled */ -}}
+			{{- if $showSidebar -}}
+			<div class="sidebar-layout home-sidebar-layout">
+				{{ partial "sidebar.html" (dict "sidebar" .Params.sidebar "context" . "Site" .Site) }}
+				<div class="section-content home-main-content">
+			{{- end -}}
+
+			{{- /* Render based on list_style */ -}}
+			{{- if eq $listStyle "gallery" -}}
+				{{- /* Gallery mode: show sections as gallery cards */ -}}
+				{{ partial "gallery-section.html" (dict "pages" .Site.Sections "context" . "Site" .Site) }}
+			{{- else if eq $listStyle "list" -}}
+				{{- /* List mode: simple vertical list */ -}}
+				{{ partial "list-view.html" (dict "pages" $paginator.Pages "showSection" true "Site" .Site) }}
+			{{- else -}}
+				{{- /* Default cards mode: masonry grid with pin logic */ -}}
+				{{ partial "masonry-grid.html" (dict "pages" $paginator.Pages "showSection" true "Site" .Site) }}
+			{{- end -}}
+
+			{{ partial "pagination.html" $paginator }}
+
+			{{- if $showSidebar -}}
+				</div>
+			</div>
+			{{- end -}}
+		</main>
+		{{ partial "footer.html" . }}
+	</div>
+
+	<script src="{{ "js/masonry-init.js" | relURL }}"></script>
+</body>
+
+</html>

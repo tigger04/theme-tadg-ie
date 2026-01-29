@@ -1,0 +1,47 @@
+{{- define "feathericon" -}}
+{{- $featherURL := "https://unpkg.com/feather-icons@4.29.2/dist/feather-sprite.svg" -}}
+{{ if not (.UseCDN | default false) -}}
+{{- $featherURL = (resources.Get "svg/feather-sprite.svg" | fingerprint).RelPermalink -}}
+{{- end -}}
+<svg class="feather">
+	<use href="{{ printf " %s#%s" $featherURL .Icon }}" />
+</svg>
+{{- end -}}
+
+<header>
+	<div class="main">
+		<a href="{{ site.Home.RelPermalink }}" class="header-interactive">
+			{{- if .Site.Params.mainImage -}}
+			<img src="{{ .Site.Params.mainImage | absURL }}" alt="{{ .Site.Title }}" class="site-logo site-logo-light">
+			{{- if .Site.Params.mainImageDark -}}
+			<img src="{{ .Site.Params.mainImageDark | absURL }}" alt="{{ .Site.Title }}" class="site-logo site-logo-dark">
+			{{- end -}}
+			{{- else -}}
+			<div class="site-logo-text">
+				{{ replace .Site.Title "." "<span class='orange-period'>.</span>" | safeHTML }}
+			</div>
+			{{- end -}}
+		</a>
+		{{ partial "navigation.html" . }}
+		{{- /* Issue #90: Dark mode toggle button */ -}}
+		{{- if eq .Site.Params.mode "toggle" -}}
+		<button id="dark-mode-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" style="background: none; border: none; cursor: pointer; padding: 0.5rem;">
+			<svg class="feather" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+				<circle cx="12" cy="12" r="5"></circle>
+				<line x1="12" y1="1" x2="12" y2="3"></line>
+				<line x1="12" y1="21" x2="12" y2="23"></line>
+				<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+				<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+				<line x1="1" y1="12" x2="3" y2="12"></line>
+				<line x1="21" y1="12" x2="23" y2="12"></line>
+				<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+				<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+			</svg>
+		</button>
+		<script src="{{ "js/themetoggle.js" | relURL }}"></script>
+		{{- end -}}
+	</div>
+</header>
+
+<!-- Authentication script for pre-launch access control -->
+<script src="{{ absURL "js/auth.js" }}"></script>
