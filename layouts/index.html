@@ -25,7 +25,8 @@
 			{{- $listStyle := .Params.list_style | default "cards" -}}
 
 			{{- /* Build page collections for all layout types */ -}}
-			{{- $sections := slice "poetry" "artwork" "blog" "snips" "plays" "stories" -}}
+			{{- /* Issue #1: Use mainSections from config instead of hardcoded names */ -}}
+			{{- $sections := $.Site.Params.mainSections | default (slice "blog") -}}
 			{{- $pinnedPages := slice -}}
 
 			{{- /* Collect pinned/featured page from each section */ -}}
@@ -33,14 +34,17 @@
 			{{- range $sections -}}
 				{{- $section := . -}}
 				{{- $sectionPages := slice -}}
-				{{- /* Issue #85: Artwork uses section pages (gallery folders), not regular pages */ -}}
-				{{- if eq $section "artwork" -}}
-					{{- $artworkSection := $.Site.GetPage "section" "artwork" -}}
-					{{- if $artworkSection -}}
-						{{- $sectionPages = $artworkSection.Sections -}}
+				{{- /* Issue #1: Check for gallery folders (sections) in any section, not just "artwork" */ -}}
+				{{- $sectionObj := $.Site.GetPage "section" $section -}}
+				{{- if $sectionObj -}}
+					{{- $gallerySections := where $sectionObj.Sections ".Params.gallery" true -}}
+					{{- if gt (len $gallerySections) 0 -}}
+						{{- /* This section has gallery folders - use them */ -}}
+						{{- $sectionPages = $sectionObj.Sections -}}
+					{{- else -}}
+						{{- /* Regular content pages */ -}}
+						{{- $sectionPages = where $.Site.RegularPages "Section" $section -}}
 					{{- end -}}
-				{{- else -}}
-					{{- $sectionPages = where $.Site.RegularPages "Section" $section -}}
 				{{- end -}}
 				{{- $pinned := where $sectionPages ".Params.pin" "!=" nil -}}
 
@@ -81,12 +85,14 @@
 					{{- $remainingPages = $remainingPages | append . -}}
 				{{- end -}}
 			{{- end -}}
-			{{- /* Issue #85: Include artwork gallery sections in the feed */ -}}
-			{{- $artworkSection := $.Site.GetPage "section" "artwork" -}}
-			{{- if $artworkSection -}}
-				{{- range $artworkSection.Sections -}}
-					{{- if not (in $pinnedPermalinks .RelPermalink) -}}
-						{{- $remainingPages = $remainingPages | append . -}}
+			{{- /* Issue #1: Include gallery sections from ANY section, not just "artwork" */ -}}
+			{{- range $sections -}}
+				{{- $sectionObj := $.Site.GetPage "section" . -}}
+				{{- if $sectionObj -}}
+					{{- range $sectionObj.Sections -}}
+						{{- if and (not (in $pinnedPermalinks .RelPermalink)) (.Params.gallery) -}}
+							{{- $remainingPages = $remainingPages | append . -}}
+						{{- end -}}
 					{{- end -}}
 				{{- end -}}
 			{{- end -}}

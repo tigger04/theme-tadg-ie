@@ -15,7 +15,8 @@
   {{- range $pages -}}
     {{- /* Determine content type for styling */ -}}
     {{- $section := .Section -}}
-    {{- $isGallery := and (eq $section "artwork") (or (eq .Kind "section") .Params.gallery) -}}
+    {{- /* Issue #1: Gallery detection via frontmatter, not section name */ -}}
+    {{- $isGallery := .Params.gallery | default false -}}
 
     {{- /* Determine background image URL */ -}}
     {{- $bgImageUrl := "" -}}
@@ -58,9 +59,10 @@
       <div class="masonry-bg" style="background-image: url('{{ $bgImageUrl }}'); opacity: {{ $.Site.Params.bgImage.opacity | default 0.15 }}; filter: blur({{ $.Site.Params.bgImage.blur | default "5px" }});"></div>
       {{- end -}}
 
-      {{- /* Artwork cards: image-dominant with text overlay */ -}}
+      {{- /* Gallery cards: image-dominant with text overlay */ -}}
+      {{- /* Issue #1: Gallery behavior based on frontmatter, not section name */ -}}
       {{- /* Issue #89: Frosted glass overlay for text */ -}}
-      {{- if eq $section "artwork" -}}
+      {{- if $isGallery -}}
         {{- if $bgImageUrl -}}
         <div class="masonry-image">
           <a href="{{ .RelPermalink }}">
@@ -91,115 +93,7 @@
           {{- end -}}
         </div>
 
-      {{- /* Poetry cards: text-focused with verse preview */ -}}
-      {{- /* Issue #84: Layout order - title, excerpt, then footer with meta+chevron */ -}}
-      {{- else if eq $section "poetry" -}}
-        <div class="masonry-content">
-          <h3><a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a></h3>
-          {{- $excerpt := .Description | default .Summary -}}
-          {{- if $excerpt -}}
-          <div class="masonry-excerpt verse-preview">{{ $excerpt | plainify | truncate 200 }}</div>
-          {{- end -}}
-          {{- $showDate := and .Date (not .Params.hideDate) -}}
-          <div class="masonry-footer">
-            {{- if or $showSection $showDate -}}
-            <p class="masonry-meta">
-              {{- if $showSection -}}
-              <span class="masonry-section">{{ $section | humanize }}</span>
-              {{- end -}}
-              {{- /* Issue #79: Support hideDate frontmatter */ -}}
-              {{- if $showDate -}}
-              <span class="masonry-date">{{ .Date.Format "2 Jan 2006" }}</span>
-              {{- end -}}
-            </p>
-            {{- else -}}
-            <span></span>{{- /* Empty spacer for flexbox alignment */ -}}
-            {{- end -}}
-            <div class="read-more-container">
-              <a href="{{ .RelPermalink }}" class="read-more-btn">
-                {{- if eq $readMoreType "icon" -}}
-                <img src="{{ $readMoreValue | relURL }}" alt="Read more" class="read-more-icon read-more-icon-light">{{- if $readMoreValueDark -}}<img src="{{ $readMoreValueDark | relURL }}" alt="Read more" class="read-more-icon read-more-icon-dark">{{- end -}}
-                {{- else -}}
-                {{ $readMoreValue }}
-                {{- end -}}
-              </a>
-            </div>
-          </div>
-        </div>
-
-      {{- /* Plays cards: synopsis-friendly */ -}}
-      {{- /* Issue #84: Layout order - title, excerpt, then footer with meta+chevron */ -}}
-      {{- else if eq $section "plays" -}}
-        <div class="masonry-content">
-          <h3><a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a></h3>
-          {{- $excerpt := .Description | default .Summary -}}
-          {{- if $excerpt -}}
-          <div class="masonry-excerpt masonry-synopsis">{{ $excerpt | plainify | truncate 250 }}</div>
-          {{- end -}}
-          {{- $showDate := and .Date (not .Params.hideDate) -}}
-          <div class="masonry-footer">
-            {{- if or $showSection $showDate -}}
-            <p class="masonry-meta">
-              {{- if $showSection -}}
-              <span class="masonry-section">{{ $section | humanize }}</span>
-              {{- end -}}
-              {{- /* Issue #79: Support hideDate frontmatter */ -}}
-              {{- if $showDate -}}
-              <span class="masonry-date">{{ .Date.Format "2 Jan 2006" }}</span>
-              {{- end -}}
-            </p>
-            {{- else -}}
-            <span></span>{{- /* Empty spacer for flexbox alignment */ -}}
-            {{- end -}}
-            <div class="read-more-container">
-              <a href="{{ .RelPermalink }}" class="read-more-btn">
-                {{- if eq $readMoreType "icon" -}}
-                <img src="{{ $readMoreValue | relURL }}" alt="Read more" class="read-more-icon read-more-icon-light">{{- if $readMoreValueDark -}}<img src="{{ $readMoreValueDark | relURL }}" alt="Read more" class="read-more-icon read-more-icon-dark">{{- end -}}
-                {{- else -}}
-                {{ $readMoreValue }}
-                {{- end -}}
-              </a>
-            </div>
-          </div>
-        </div>
-
-      {{- /* Snips cards: compact */ -}}
-      {{- /* Issue #84: Layout order - title, excerpt, then footer with meta+chevron */ -}}
-      {{- else if eq $section "snips" -}}
-        <div class="masonry-content">
-          <h3><a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a></h3>
-          {{- $excerpt := .Description | default .Summary -}}
-          {{- if $excerpt -}}
-          <div class="masonry-excerpt">{{ $excerpt | plainify | truncate 100 }}</div>
-          {{- end -}}
-          {{- $showDate := and .Date (not .Params.hideDate) -}}
-          <div class="masonry-footer">
-            {{- if or $showSection $showDate -}}
-            <p class="masonry-meta">
-              {{- if $showSection -}}
-              <span class="masonry-section">{{ $section | humanize }}</span>
-              {{- end -}}
-              {{- /* Issue #79: Support hideDate frontmatter */ -}}
-              {{- if $showDate -}}
-              <span class="masonry-date">{{ .Date.Format "2 Jan 2006" }}</span>
-              {{- end -}}
-            </p>
-            {{- else -}}
-            <span></span>{{- /* Empty spacer for flexbox alignment */ -}}
-            {{- end -}}
-            <div class="read-more-container">
-              <a href="{{ .RelPermalink }}" class="read-more-btn">
-                {{- if eq $readMoreType "icon" -}}
-                <img src="{{ $readMoreValue | relURL }}" alt="Read more" class="read-more-icon read-more-icon-light">{{- if $readMoreValueDark -}}<img src="{{ $readMoreValueDark | relURL }}" alt="Read more" class="read-more-icon read-more-icon-dark">{{- end -}}
-                {{- else -}}
-                {{ $readMoreValue }}
-                {{- end -}}
-              </a>
-            </div>
-          </div>
-        </div>
-
-      {{- /* Default cards: blog, stories, and others */ -}}
+      {{- /* Issue #1: All non-gallery content uses same default card layout */ -}}
       {{- /* Issue #84: Layout order - title, excerpt, then footer with meta+chevron */ -}}
       {{- else -}}
         <div class="masonry-content">

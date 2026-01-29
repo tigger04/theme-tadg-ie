@@ -12,9 +12,9 @@ Live demo: https://tadg.ie
 
 
 
-> Plase note in the below notes, the terms poetry, artwork, blog, snips, plays, stories are describing types of content from my original site, for which I wrote the theme. This does not mean your content needs to be poetry, plays, etc etc, but rather by example how you can use the frontmatter fields to drive the behaviours you desire for presentation of your site.
-
 A Hugo theme for multi-content-type sites with masonry layouts, galleries, and responsive design. Based on the Archie theme with extensive customizations.
+
+**Section-agnostic design:** This theme works with any section names (not just blog, poetry, artwork, etc.). Content behavior is controlled by frontmatter parameters, making it reusable across different site structures.
 
 ## Features
 
@@ -235,18 +235,16 @@ Breakpoints are defined in `em` units (relative to browser font size):
 
 **Constraint:** Min 2, max 4 columns total (including sidebar when present).
 
-### Card Styles by Section
+### Card Styles
 
-Each content type gets section-specific styling via the `.masonry-{section}` class:
+Masonry cards have two layouts:
 
-| Section  | Style         | Elements Shown                        |
-|----------|---------------|---------------------------------------|
-| artwork  | Image-dominant| Large thumbnail, title below          |
-| poetry   | Text-focused  | Title, verse excerpt                  |
-| blog     | Balanced      | Title, date, summary                  |
-| snips    | Compact       | Title, date, short excerpt            |
-| plays    | Synopsis      | Title, date, longer synopsis          |
-| stories  | Balanced      | Title, date, summary                  |
+| Type     | When Used                    | Elements Shown                        |
+|----------|------------------------------|---------------------------------------|
+| Gallery  | `gallery: true` in frontmatter | Image-dominant with frosted glass text overlay |
+| Default  | All other content             | Title, excerpt, date, section label, read-more link |
+
+**CSS customization:** All cards include a `.masonry-{section}` class (e.g., `.masonry-poetry`, `.masonry-blog`) for section-specific styling via custom CSS. The theme itself treats all non-gallery content identically, but site owners can add custom styles for their specific sections.
 
 ### Background Images on Cards
 
@@ -397,46 +395,35 @@ The pagination partial (`layouts/partials/pagination.html`) displays prev/next l
 
 ---
 
-## Section-Specific Behaviour
+## Section Examples
 
-### Poetry (`/poetry/`)
+These examples show how the theme is used on the demo site (tadg.ie). You can organize your content with any section names - the theme adapts to your structure.
 
-- Text-focused cards with verse excerpts
-- Author displayed prominently
-- Supports `collection` frontmatter for grouping by poet
-- Verse preview maintains line breaks (`pre-line`)
+### Gallery Content (e.g., `/artwork/`)
 
-### Artwork (`/artwork/`)
+Set `gallery: true` in frontmatter for image-dominant cards with overlay text. See [Gallery System](#gallery-system-artwork).
 
-Uses custom templates for gallery functionality. See [Gallery System](#gallery-system-artwork).
+### Text Content (e.g., `/poetry/`, `/blog/`, `/plays/`)
 
-### Blog (`/blog/`)
+All non-gallery content uses the same card layout:
+- Title
+- Excerpt/summary (150 characters)
+- Date and section label
+- Read-more link
 
-- Balanced cards with date and summary
-- Supports all article layouts
-- Image backgrounds from `image.src`
-
-### Snips (`/snips/`)
-
-- Compact cards for technical snippets
-- Short excerpts (100 characters)
-
-### Plays (`/plays/`)
-
-- Synopsis-friendly layout
-- Longer descriptions (250 characters)
-- Author and date displayed
-
-### Stories (`/stories/`)
-
-- Same layout as blog
-- Balanced text and image treatment
+Customize appearance using CSS:
+```css
+/* Custom styling for a "recipes" section */
+.masonry-recipes .masonry-excerpt {
+  font-style: italic;
+}
+```
 
 ### Collections (`/collections/`)
 
-Special handling for poet collections:
-- Main page lists all poets with content
-- Individual poet pages show their poems
+Example of grouping related content:
+- Main page lists all collections
+- Individual collection pages show their items
 - Uses `collection` frontmatter to group content
 
 ---
@@ -628,7 +615,7 @@ params:
   # Theme mode: light, dark, auto, toggle
   mode: light
 
-  # Main sections for homepage grid
+  # Main sections for homepage grid (use your own section names)
   mainSections:
     - poetry
     - artwork
@@ -805,11 +792,13 @@ paginate: 12              # Items per page
 ### Gallery-Specific
 
 ```yaml
-gallery: true             # Mark as gallery folder
+gallery: true             # Mark as gallery folder (enables image-dominant card layout)
 featured_image: "hero.jpg"
 sort_by: Date
 sort_order: desc
 ```
+
+**Gallery behavior:** Setting `gallery: true` in frontmatter enables special rendering for image galleries. This works in any section (not just "artwork"). Gallery cards display with an image-dominant layout and frosted glass text overlay on masonry grids and homepage.
 
 ---
 
