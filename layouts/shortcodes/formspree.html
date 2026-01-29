@@ -15,6 +15,19 @@
       --font-family-body: "Inter", sans-serif;
    }
 
+   /* Dark mode variables */
+   [data-theme="dark"] {
+      --color-background: #334155;
+      --color-background-alt: #1e40af;
+      --color-border-active: #60a5fa;
+      --color-border-default: #64748b;
+      --color-highlight: #3b82f6;
+      --color-primary: #3b82f6;
+      --color-primary-active: #60a5fa;
+      --color-text-default: #f1f5f9;
+      --color-text-muted: #cbd5e1;
+   }
+
    /** Base **/
 
    *,
@@ -72,6 +85,8 @@
    .fs-form {
       display: grid;
       row-gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
    }
 
    .fs-form:where(.fs-layout__2-column) {
@@ -159,6 +174,7 @@
    .fs-input,
    .fs-select {
       appearance: none;
+      background-color: var(--input-background, #fff);
       border-radius: 0.375rem;
       border-width: 0;
       box-shadow: var(--color-border-default) 0 0 0 1px inset;
@@ -169,6 +185,11 @@
       outline: none;
       padding-left: 0.75rem;
       padding-right: 0.75rem;
+   }
+
+   [data-theme="dark"] .fs-input,
+   [data-theme="dark"] .fs-select {
+      background-color: #1e293b;
    }
 
    .fs-input:focus-visible,
@@ -191,8 +212,9 @@
 
    .fs-checkbox-field,
    .fs-radio-field {
-      column-gap: 0.5rem;
+      column-gap: 0.75rem;
       display: flex;
+      align-items: flex-start;
    }
 
    :is(.fs-checkbox-field, .fs-radio-field) .fs-label+.fs-description {
@@ -204,14 +226,21 @@
       align-items: center;
       display: flex;
       height: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
    }
 
    .fs-checkbox,
    .fs-radio {
       background-color: #fff;
-      border: 1px solid var(--color-text-default);
+      border: 1px solid var(--color-border-default);
       height: 1rem;
       width: 1rem;
+   }
+
+   [data-theme="dark"] .fs-checkbox,
+   [data-theme="dark"] .fs-radio {
+      background-color: #1e293b;
    }
 
    .fs-checkbox {
@@ -246,12 +275,15 @@
    }
 
    .fs-select {
-      background-color: #fff;
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
       background-position: right 0.5rem center;
       background-repeat: no-repeat;
       background-size: 1.5em 1.5em;
       padding-right: 2.5rem;
+   }
+
+   [data-theme="dark"] .fs-select {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23cbd5e1' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
    }
 
    .fs-slider {
@@ -328,15 +360,20 @@
 
    .fs-textarea {
       appearance: none;
+      background-color: #fff;
       border-radius: 0.375rem;
       border-width: 0;
       box-shadow: var(--color-border-default) 0 0 0 1px inset;
-      color: var(--color-primary);
+      color: var(--color-text-default);
       font-size: 1rem;
       line-height: 1.5rem;
       outline: none;
       padding: 0.5rem 0.75rem;
       resize: vertical;
+   }
+
+   [data-theme="dark"] .fs-textarea {
+      background-color: #1e293b;
    }
 
    .fs-textarea:focus-visible {
