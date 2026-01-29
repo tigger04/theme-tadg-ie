@@ -1239,12 +1239,12 @@ code {
 .gallery-card-image {
   display: block;
   overflow: hidden;
-  /* Issue #87: Allow natural aspect ratios instead of forcing square */
+  aspect-ratio: 1 / 1;
 }
 
 .gallery-card-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }

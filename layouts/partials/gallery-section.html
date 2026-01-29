@@ -25,8 +25,8 @@
 
     {{- if $heroImage -}}
     <a href="{{ $page.Permalink }}" class="gallery-card-image">
-      {{- /* Issue #87: Use Resize to preserve natural aspect ratios, not Fit */ -}}
-      {{- $thumb := $heroImage.Resize "600x" -}}
+      {{- /* Use Fit for square crop of gallery thumbnails */ -}}
+      {{- $thumb := $heroImage.Fit "600x600" -}}
       <img src="{{ $thumb.RelPermalink }}" alt="{{ $page.Title }}" loading="lazy">
     </a>
     {{- end -}}
