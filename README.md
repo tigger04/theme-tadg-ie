@@ -1,5 +1,9 @@
 # tadg_ie Hugo Theme
 
+Live demo: https://tadg.ie
+
+> Plase note in the below notes, the terms poetry, artwork, blog, snips, plays, stories are describing types of content from my original site, for which I wrote the theme. This does not mean your content needs to be poetry, plays, etc etc, but rather by example how you can use the frontmatter fields to drive the behaviours you desire for presentation of your site.
+
 A Hugo theme for multi-content-type sites with masonry layouts, galleries, and responsive design. Based on the Archie theme with extensive customizations.
 
 ## Features
