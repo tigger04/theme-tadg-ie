@@ -140,6 +140,10 @@ async function sendEmail(env, body) {
     }),
   });
 
+  if (!resp.ok) {
+    const errorBody = await resp.text();
+    console.error("Resend error:", resp.status, errorBody);
+  }
   return resp.ok;
 }
 
