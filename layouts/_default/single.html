@@ -184,8 +184,10 @@
 
     <!-- TOC — rendered as right-hand sidebar via article.has-toc grid (Issue #12) -->
     {{ if .Params.toc }}
+    {{- $tocTitle := "Table of contents:" -}}
+    {{- if ne .Params.toc true -}}{{- $tocTitle = .Params.toc -}}{{- end -}}
     <div class="toc">
-      <strong>Table of contents:</strong>
+      <strong>{{ $tocTitle }}</strong>
       {{ .TableOfContents }}
     </div>
     {{ end }}
