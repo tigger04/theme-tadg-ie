@@ -1,6 +1,6 @@
 {{ define "main" }}
 <main>
-  <article>
+  <article{{ if .Params.toc }} class="has-toc"{{ end }}>
     <!-- Banner Layout -->
     {{ if eq .Params.layout "banner" }}
     <div class="post-container banner-layout">
@@ -182,8 +182,8 @@
     </div>
     {{ end }}
 
-    <!-- TOC -->
-    {{ if isset .Params "toc" }}
+    <!-- TOC — rendered as right-hand sidebar via article.has-toc grid (Issue #12) -->
+    {{ if .Params.toc }}
     <div class="toc">
       <strong>Table of contents:</strong>
       {{ .TableOfContents }}

@@ -756,9 +756,11 @@ image:
 
 ```yaml
 layout: hero              # banner, hero, columns, featured, background
-toc: true                 # Show table of contents
+toc: true                 # Show table of contents as right sidebar
 tldr: "Brief summary"     # TL;DR section at top
 ```
+
+**Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned with the article title. On narrow screens, the TOC stacks above the article content. Pages without `toc: true` use full-width layout with no extra column.
 
 ### Pin/Featured
 
