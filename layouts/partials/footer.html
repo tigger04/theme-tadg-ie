@@ -14,13 +14,39 @@
   </div>
 </footer>
 
+{{- if eq .Site.Params.mode "dark" }}
 <script>
-// Issue #66: Dark mode only - no toggle
+// Issue #3: Dark mode — always dark
 document.documentElement.setAttribute('data-theme', 'dark');
 </script>
-{{ if not hugo.IsServer }}
-{{ template "_internal/google_analytics.html" . }}
-{{ end }}
+{{- else if eq .Site.Params.mode "auto" }}
+<script>
+// Issue #3: Auto mode — follow system preference
+(function() {
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  function apply(dark) {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+  apply(mq.matches);
+  mq.addEventListener('change', function(e) { apply(e.matches); });
+})();
+</script>
+{{- else if eq .Site.Params.mode "toggle" }}
+<script>
+// Issue #3: Toggle mode — restore saved preference, fall back to system
+(function() {
+  var saved = localStorage.getItem('theme-storage');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+  // Ensure darkModeStyle stylesheet matches the resolved theme
+  var darkSheet = document.getElementById('darkModeStyle');
+  if (darkSheet) {
+    darkSheet.disabled = (theme !== 'dark');
+  }
+})();
+</script>
+{{- end }}
 {{ if not hugo.IsServer }}
 {{ template "_internal/google_analytics.html" . }}
 {{ end }}
