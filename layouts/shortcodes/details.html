@@ -1,4 +1,6 @@
-<details>
+<details class="styled-details">
   <summary><span>{{ (.Get 0) | markdownify }}</span></summary>
-  {{ .Inner | markdownify }}
+  <div class="details-content">
+    {{ .Inner | markdownify }}
+  </div>
 </details>

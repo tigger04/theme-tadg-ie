@@ -1,11 +1,8 @@
-<details>
-  <summary class="button-like">
-    <div class="popquote-summary">
-      {{ (.Get 0) | markdownify }}
-      <span class="arrow">▼</span>
-    </div>
+<details class="styled-details">
+  <summary>
+    <span>{{ (.Get 0) | markdownify }}</span>
   </summary>
-  <div class="popquote">
+  <div class="details-content">
     {{ .Inner | markdownify }}
   </div>
 </details>

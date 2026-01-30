@@ -1,0 +1,7 @@
+{{- /* ABOUTME: Render hook for fenced code blocks and org-mode src blocks. */ -}}
+{{- /* ABOUTME: Wraps highlighted code in a div carrying the original language name. */ -}}
+{{- $lang := .Type | default "text" -}}
+{{- $result := transform.HighlightCodeBlock . -}}
+<div class="code-block" data-lang="{{ $lang }}">
+  {{- $result.Wrapped -}}
+</div>

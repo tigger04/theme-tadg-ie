@@ -12,21 +12,21 @@
   --color-border: #663399;
   --color-callout: #1e90ff;
   --color-text: #232333;
-  --color-text-muted: #737373;
+  --color-text-muted: #65659a;
   --color-text-meta: #999999;
   --color-background: #ffffff;
   --color-background-code: #f1f1f1;
-  --color-background-pre: #ececec;
+  --color-background-pre: #505348;
   --color-background-toc: #ececec;
   --color-background-draft: #f9f2f4;
 
   /* Dark theme colors - non-accent colors remain here */
   --color-border-dark: #0066ff;
   --color-text-dark: #ffffff;
-  --color-text-muted-dark: #dddddd;
+  --color-text-muted-dark: #9999bb;
   --color-background-dark: #202124;
   --color-background-code-dark: #3a3a3a;
-  --color-background-pre-dark: #272822;
+  --color-background-pre-dark: #505348;
   --color-background-toc-dark: #272822;
   --color-background-draft-dark: #0066ff;
   
@@ -85,15 +85,15 @@ p {
   font-family: 'IosevkaQuasiProportional', sans-serif;
   line-height: var(--line-height-content, 1.5);
   /* Fallback for older browsers */
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-@supports (margin-block: 0.5em) {
+@supports (margin-block: 1em) {
   p {
     margin-top: unset;
     margin-bottom: unset;
-    margin-block: 0.5em;
+    margin-block: 1em;
   }
 }
 
@@ -139,11 +139,11 @@ a {
   /* Remove border-based underline */
   border-bottom: none;
   border-block-end: none;
-  /* Wavy underline with secondary accent (orange) */
+  /* Solid underline with secondary accent (orange) */
   text-decoration: underline;
-  text-decoration-style: wavy;
+  text-decoration-style: solid;
   text-decoration-color: var(--color-secondary);
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 0.2em;
   text-underline-offset: 3px;
   color: inherit;
   transition: color 0.2s ease;
@@ -356,12 +356,6 @@ h6::before { color: var(--color-primary); content: '###### '; font-weight: 700; 
     /* Flexbox fallback */
     flex-wrap: nowrap;
   }
-  
-  @supports (display: grid) {
-    .post-container {
-      grid-template-columns: 1fr auto;
-    }
-  }
 }
 
 .post-content {
@@ -405,6 +399,29 @@ h6::before { color: var(--color-primary); content: '###### '; font-weight: 700; 
     /* Modern logical properties */
     margin-block-end: 1.5rem;
     order: -1;
+  }
+}
+
+/* Two-column layout: content + TOC sidebar (Issue #12)
+   Only applies when toc: true — article gets .has-toc class */
+@media screen and (min-width: 60em) {
+  article.has-toc {
+    display: grid;
+    grid-template-columns: 1fr 18.75rem;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* Non-content, non-TOC children (e.g. Disqus) span both columns */
+  article.has-toc > :not(.post-container):not(.toc) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 59.99em) {
+  article.has-toc {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -614,20 +631,30 @@ svg {
   border-radius: var(--border-radius, 5px);
   overflow: hidden;
 }
-/* Code language badges */
-.highlight pre code[class*="language-"] {
-  -webkit-overflow-scrolling: touch;
+
+/* Remove default browser margin on pre inside .highlight to prevent
+   background colour bleeding beyond the code block border */
+.highlight pre {
+  margin: 0;
+}
+/* Code language badges — uses .code-block wrapper from render-codeblock hook */
+.code-block {
+  position: relative;
 }
 
-.highlight pre code[class*="language-"]::before {
+.code-block[data-lang]::before {
+  content: attr(data-lang);
+  font-family: 'IosevkaQuasiProportional', sans-serif;
   background: #000000;
   border-radius: 0 0 0.25rem 0.25rem;
   color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: bold;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: normal;
   letter-spacing: 0.025rem;
   padding: 0.1rem 0.5rem;
   position: absolute;
+  z-index: 1;
   /* Fallback for older browsers */
   right: 1rem;
   top: 0;
@@ -638,71 +665,153 @@ svg {
   text-transform: uppercase;
 }
 
-/* Language-specific badges */
-.highlight pre code[class*="language-js"]::before,
-.highlight pre code[class="language-javascript"]::before {
+/* Language-specific badge colours */
+.code-block[data-lang="js"]::before,
+.code-block[data-lang="javascript"]::before {
   content: "js";
   background: #f7df1e;
   color: #000000;
 }
 
-.highlight pre code[class*="language-ts"]::before {
+.code-block[data-lang="ts"]::before,
+.code-block[data-lang="typescript"]::before {
   content: "ts";
   background: #3178c6;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-py"]::before,
-.highlight pre code[class*="language-python"]::before {
+.code-block[data-lang="py"]::before,
+.code-block[data-lang="python"]::before {
   content: "python";
   background: #3776ab;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-go"]::before {
+.code-block[data-lang="go"]::before {
   content: "go";
   background: #00add8;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-css"]::before {
+.code-block[data-lang="css"]::before {
   content: "css";
   background: #1572b6;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-html"]::before {
+.code-block[data-lang="html"]::before {
   content: "html";
   background: #e34f26;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-json"]::before {
+.code-block[data-lang="json"]::before {
   content: "json";
   background: #000000;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-yml"]::before,
-.highlight pre code[class*="language-yaml"]::before {
+.code-block[data-lang="yml"]::before,
+.code-block[data-lang="yaml"]::before {
   content: "yaml";
   background: #cc1018;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-shell"]::before,
-.highlight pre code[class*="language-bash"]::before,
-.highlight pre code[class*="language-sh"]::before {
+.code-block[data-lang="shell"]::before,
+.code-block[data-lang="bash"]::before,
+.code-block[data-lang="sh"]::before {
   content: "shell";
   background: #4eaa25;
   color: #ffffff;
 }
 
-.highlight pre code[class*="language-md"]::before,
-.highlight pre code[class*="language-markdown"]::before {
+.code-block[data-lang="md"]::before,
+.code-block[data-lang="markdown"]::before {
   content: "markdown";
   background: #083fa1;
   color: #ffffff;
+}
+
+/* Styled details/summary — bordered box with inset label and ellipsis hint */
+details.styled-details {
+  position: relative;
+  border: 1px solid var(--color-border, #663399);
+  border-radius: var(--border-radius, 5px);
+  /* Fallback for older browsers */
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  /* Modern logical properties */
+  margin-block: 1.5em;
+}
+
+/* Summary: block-level, pulled up to sit on the top border (legend-style) */
+details.styled-details > summary {
+  position: relative;
+  display: block;
+  /* Fallback for older browsers */
+  margin-top: -0.7em;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding: 0;
+  cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hide default marker across browsers */
+details.styled-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Summary label text — inset into border with background to cut the line */
+details.styled-details > summary > span {
+  display: inline-block;
+  /* Fallback for older browsers */
+  margin-left: 1em;
+  /* Modern logical properties */
+  margin-inline-start: 1em;
+  padding: 0 0.5em;
+  background-color: var(--color-background, #ffffff);
+  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-weight: 600;
+}
+
+/* Arrow indicator after label text */
+details.styled-details > summary > span::after {
+  content: ' \25B6';
+  font-size: 0.7em;
+  display: inline-block;
+  /* Fallback for older browsers */
+  margin-left: 0.3em;
+  /* Modern logical properties */
+  margin-inline-start: 0.3em;
+}
+
+details.styled-details[open] > summary > span::after {
+  content: ' \25BC';
+}
+
+/* Large downward arrow when collapsed — disappears on open */
+details.styled-details:not([open]) > summary::after {
+  content: '\25BC';
+  display: block;
+  text-align: center;
+  padding: 1em;
+  font-size: 2em;
+  color: var(--color-text-muted, #65659a);
+}
+
+/* Content area when expanded */
+details.styled-details .details-content {
+  padding: 0.5em 1.5em 1.5em;
+}
+
+/* Hover: summary label changes colour */
+details.styled-details > summary:hover > span {
+  color: var(--color-secondary);
 }
 
 /* Tables */
