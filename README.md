@@ -20,7 +20,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 
 - **Masonry grid layout** with CSS Grid fallback and JavaScript positioning
 - **Image galleries** with lightbox and EXIF metadata support
-- **Multiple content types** (blog, poetry, artwork, plays, stories)
+- **Multiple content types** with section-agnostic design
 - **Section-specific card styles** for each content type
 - **Responsive design** with em-based breakpoints (WCAG 2.1 compliant)
 - **Pagination** with per-section override
@@ -45,7 +45,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
    theme: tadg_ie
    ```
 
-3. Create content in sections: `poetry/`, `artwork/`, `blog/`, `snips/`, `stories/`, `plays/`
+3. Create content in sections matching your site structure (e.g., `blog/`, `portfolio/`, `gallery/`)
 
 4. Run Hugo:
    ```bash
@@ -115,7 +115,7 @@ themes/tadg_ie/
 The homepage displays a masonry grid with pinned/featured content from each section.
 
 **Pin Logic:**
-1. For each section (poetry, artwork, blog, snips, plays, stories), find pages with `pin` frontmatter
+1. For each section defined in `mainSections`, find pages with `pin` frontmatter
 2. Select the page with the lowest `pin` value (e.g., `pin: 1` beats `pin: 10`)
 3. If no pinned page exists, use the most recent page from that section
 4. Pinned pages appear first in the grid, followed by remaining pages by date
@@ -231,9 +231,10 @@ Breakpoints are defined in `em` units (relative to browser font size):
 | ≤ 30em   | 2       | 2 (sidebar stacked) |
 | 30-48em  | 2       | 2 (sidebar stacked) |
 | 48-64em  | 3       | 2 + sidebar = 3 total |
-| ≥ 64em   | 4       | 3 + sidebar = 4 total |
+| 64-80em  | 4       | 3 + sidebar = 4 total |
+| ≥ 80em   | 5       | 4 + sidebar = 5 total |
 
-**Constraint:** Min 2, max 4 columns total (including sidebar when present).
+**Constraint:** Min 2, max 5 columns total (including sidebar when present).
 
 ### Card Styles
 
@@ -244,7 +245,7 @@ Masonry cards have two layouts:
 | Gallery  | `gallery: true` in frontmatter | Image-dominant with frosted glass text overlay |
 | Default  | All other content             | Title, excerpt, date, section label, read-more link |
 
-**CSS customization:** All cards include a `.masonry-{section}` class (e.g., `.masonry-poetry`, `.masonry-blog`) for section-specific styling via custom CSS. The theme itself treats all non-gallery content identically, but site owners can add custom styles for their specific sections.
+**CSS customization:** All cards include a `.masonry-{section}` class (e.g., `.masonry-blog`, `.masonry-gallery`) for section-specific styling via custom CSS. The theme itself treats all non-gallery content identically, but site owners can add custom styles for their specific sections.
 
 ### Background Images on Cards
 
@@ -297,11 +298,11 @@ The sidebar is entirely configured via frontmatter. Two main modes:
 Shows subsections of the current page automatically. Use this for section pages.
 
 ```yaml
-# content/poetry/_index.md
+# content/recipes/_index.md
 sidebar: true
 ```
 
-Result: Shows Riddles, Terminus, Secrets... (poetry's subsections)
+Result: Shows subsections of the current section (e.g., Starters, Mains, Desserts...)
 
 #### Mode 2: Content-based (`sidebar.content`)
 
@@ -310,9 +311,9 @@ Full control via markdown and shortcodes. Use this for custom content like bios,
 ```yaml
 # content/_index.md (homepage)
 sidebar:
-  title: "Taḋg Paul"
+  title: "About"
   content: |
-    Writer, artist, technologist.
+    Welcome to my site.
 
     {{< section-list >}}
 
@@ -320,8 +321,8 @@ sidebar:
 ```
 
 The `section-list` shortcode behaviour is consistent everywhere:
-- `{{< section-list >}}` → shows `mainSections` (Poetry, Artwork, Blog...)
-- `{{< section-list sections="poetry,artwork" >}}` → shows those specific sections
+- `{{< section-list >}}` → shows sections defined in `mainSections`
+- `{{< section-list sections="blog,portfolio" >}}` → shows those specific sections
 
 #### Mode 3: Explicit sections list
 
@@ -331,9 +332,9 @@ A simpler alternative to content-based when you just need section links:
 sidebar:
   title: "Browse"
   sections:
-    - poetry
-    - artwork
     - blog
+    - portfolio
+    - gallery
 ```
 
 #### Mode 4: Root-based sibling navigation (`sidebar.root`)
@@ -341,12 +342,12 @@ sidebar:
 Shows subsections of a specified root section. Use this for sibling navigation in deeply nested pages.
 
 ```yaml
-# content/artwork/humans/_index.org
+# content/gallery/landscapes/_index.org
 sidebar:
-  root: artwork
+  root: gallery
 ```
 
-Result: Shows all artwork galleries (Humans, Remy, Action, Bits...) regardless of which gallery you're viewing. This enables consistent navigation across sibling sections.
+Result: Shows all subsections of the root section (e.g., Landscapes, Portraits, Abstract...) regardless of which subsection you're viewing. This enables consistent navigation across sibling sections.
 
 ### Display Combinations
 
@@ -360,16 +361,17 @@ Result: Shows all artwork galleries (Humans, Remy, Action, Bits...) regardless o
 | gallery | false | false | Image gallery grid |
 | gallery | true | false | Sidebar + gallery grid |
 
-### Recommended Section Defaults
+### Example Section Defaults
+
+These are illustrative examples from the [demo site](https://tadg.ie). Adapt section names and settings to suit your site structure.
 
 | Section | list_style | sidebar | Notes |
 |---------|------------|---------|-------|
-| Poetry | cards | true | Sidebar for subsections |
 | Blog | cards | true | Sidebar for categories |
-| Snips | cards | true | Sidebar for topics |
+| Portfolio | cards | true | Sidebar for subsections |
+| Notes | cards | true | Sidebar for topics |
 | Stories | list | false | Simple list for narrative content |
-| Plays | list | false | Simple list for theatrical works |
-| Artwork | gallery | true | Gallery grid with folder navigation |
+| Gallery | gallery | true | Gallery grid with folder navigation |
 
 ---
 
@@ -583,8 +585,8 @@ Renders a navigation list of site sections. Behaviour is consistent on any page 
 
 | Usage | Shows |
 |-------|-------|
-| `{{< section-list >}}` | `mainSections` (Poetry, Artwork, Blog...) |
-| `{{< section-list sections="poetry,artwork" >}}` | Those specific sections |
+| `{{< section-list >}}` | All sections defined in `mainSections` |
+| `{{< section-list sections="blog,gallery" >}}` | Those specific sections |
 | `{{< section-list limit="3" >}}` | Sections with up to 3 recent items each |
 
 ---
@@ -617,12 +619,9 @@ params:
 
   # Main sections for homepage grid (use your own section names)
   mainSections:
-    - poetry
-    - artwork
     - blog
-    - snips
-    - stories
-    - plays
+    - portfolio
+    - gallery
 
   # CDN usage for fonts/libraries
   useCDN: false
@@ -662,11 +661,11 @@ imaging:
 ```yaml
 menu:
   main:
-    - name: Poetry
-      url: /poetry/
+    - name: Blog
+      url: /blog/
       weight: 10
-    - name: Artwork
-      url: /artwork/
+    - name: Gallery
+      url: /gallery/
       weight: 20
     # ...
 ```
@@ -757,10 +756,11 @@ image:
 ```yaml
 layout: hero              # banner, hero, columns, featured, background
 toc: true                 # Show table of contents as right sidebar
+toc: "In this document"   # Custom TOC heading (defaults to "Table of contents:")
 tldr: "Brief summary"     # TL;DR section at top
 ```
 
-**Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned with the article title. On narrow screens, the TOC stacks above the article content. Pages without `toc: true` use full-width layout with no extra column.
+**Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned with the article title. On narrow screens, the TOC stacks above the article content. Pages without `toc: true` use full-width layout with no extra column. Set `toc` to a string value to customise the heading text (e.g. `toc: "In this document"`); the default heading is "Table of contents:".
 
 ### Pin/Featured
 
