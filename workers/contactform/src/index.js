@@ -48,7 +48,6 @@ export default {
     }
 
     if (body.newsletter === "yes") {
-      console.log("Newsletter opt-in for:", body.email);
       ctx.waitUntil(
         env.SUBSCRIBERS.put(
           body.email,
@@ -56,14 +55,8 @@ export default {
             name: body.name || "",
             subscribed: new Date().toISOString(),
           })
-        ).then(() => {
-          console.log("KV write succeeded for:", body.email);
-        }).catch((err) => {
-          console.error("KV write failed:", err.message);
-        })
+        )
       );
-    } else {
-      console.log("Newsletter field value:", JSON.stringify(body.newsletter));
     }
 
     return jsonSuccess("Message sent", corsHeaders);

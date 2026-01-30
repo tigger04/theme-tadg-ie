@@ -140,13 +140,13 @@ When `newsletter="true"`, the form includes a required checkbox. Opted-in emails
 
 ```bash
 cd themes/tadg_ie/workers/contactform
-npx wrangler kv key list --binding SUBSCRIBERS
+npx wrangler kv key list --binding SUBSCRIBERS --remote
 ```
 
 ### Read a specific subscriber
 
 ```bash
-npx wrangler kv key get --binding SUBSCRIBERS "user@example.com"
+npx wrangler kv key get --binding SUBSCRIBERS --remote "user@example.com"
 ```
 
 Returns JSON: `{"name":"...","subscribed":"2026-01-30T..."}`
@@ -154,10 +154,10 @@ Returns JSON: `{"name":"...","subscribed":"2026-01-30T..."}`
 ### Export all subscribers
 
 ```bash
-npx wrangler kv key list --binding SUBSCRIBERS --prefix "" \
+npx wrangler kv key list --binding SUBSCRIBERS --remote --prefix "" \
   | jq -r '.[].name' \
   | while read -r key; do
-      value=$(npx wrangler kv key get --binding SUBSCRIBERS "$key" 2>/dev/null)
+      value=$(npx wrangler kv key get --binding SUBSCRIBERS --remote "$key" 2>/dev/null)
       printf '%s\t%s\n' "$key" "$value"
     done
 ```
@@ -165,7 +165,7 @@ npx wrangler kv key list --binding SUBSCRIBERS --prefix "" \
 ### Delete a subscriber
 
 ```bash
-npx wrangler kv key delete --binding SUBSCRIBERS "user@example.com"
+npx wrangler kv key delete --binding SUBSCRIBERS --remote "user@example.com"
 ```
 
 ## Hugo Configuration Reference
