@@ -1,0 +1,85 @@
+{{/* ABOUTME: Contact form shortcode with Cloudflare Turnstile CAPTCHA and Worker backend. */}}
+{{/* ABOUTME: Usage: {{< contactform >}} or {{< contactform newsletter="true" >}} */}}
+
+{{ $workerUrl := .Site.Params.contactform.worker_url }}
+{{ $siteKey := .Site.Params.contactform.turnstile_sitekey }}
+{{ $newsletter := eq (.Get "newsletter") "true" }}
+
+<form class="contact-form" id="contact-form" method="POST" action="{{ $workerUrl }}">
+   <div class="form-field">
+      <input type="email" id="email-address" name="email" placeholder="Your email" required />
+   </div>
+   <div class="form-field">
+      <input type="text" id="full-name" name="name" placeholder="Name (optional)" />
+   </div>
+   {{ if $newsletter }}
+   <div class="form-field checkbox-field">
+      <input type="checkbox" id="newsletter-consent" name="newsletter" required value="yes" />
+      <label for="newsletter-consent">
+         Receive email newsletter? <span class="form-hint">(Approximately one per month)</span>
+      </label>
+   </div>
+   {{ end }}
+   <div class="form-field">
+      <textarea id="message" name="message" placeholder="Message" required rows="4"></textarea>
+   </div>
+   <div class="cf-turnstile" data-sitekey="{{ $siteKey }}" data-theme="auto"></div>
+   <div class="form-actions">
+      <button type="submit" id="contact-submit">Send</button>
+   </div>
+   <div class="form-status" id="form-status" aria-live="polite"></div>
+</form>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+(function() {
+   var form = document.getElementById("contact-form");
+   var status = document.getElementById("form-status");
+   var submitBtn = document.getElementById("contact-submit");
+
+   form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending\u2026";
+      status.textContent = "";
+      status.className = "form-status";
+
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function(value, key) { payload[key] = value; });
+
+      var turnstileInput = form.querySelector("[name='cf-turnstile-response']");
+      if (turnstileInput) {
+         payload["cf-turnstile-response"] = turnstileInput.value;
+      }
+
+      fetch(form.action, {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(payload)
+      })
+      .then(function(resp) { return resp.json().then(function(data) { return { ok: resp.ok, data: data }; }); })
+      .then(function(result) {
+         if (result.ok) {
+            status.textContent = "Message sent. Thank you!";
+            status.className = "form-status form-status-success";
+            form.reset();
+            if (typeof turnstile !== "undefined") { turnstile.reset(); }
+         } else {
+            status.textContent = result.data.error || "Something went wrong. Please try again.";
+            status.className = "form-status form-status-error";
+            if (typeof turnstile !== "undefined") { turnstile.reset(); }
+         }
+      })
+      .catch(function() {
+         status.textContent = "Network error. Please check your connection and try again.";
+         status.className = "form-status form-status-error";
+         if (typeof turnstile !== "undefined") { turnstile.reset(); }
+      })
+      .finally(function() {
+         submitBtn.disabled = false;
+         submitBtn.textContent = "Send";
+      });
+   });
+})();
+</script>

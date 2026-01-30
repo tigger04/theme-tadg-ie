@@ -1,0 +1,17 @@
+{
+  "name": "contactform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cloudflare Worker for contact form handling with Turnstile CAPTCHA and Resend email",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run && vitest run --config vitest.config.reject.js"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.12.8",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.0.0"
+  }
+}

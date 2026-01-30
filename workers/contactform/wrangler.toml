@@ -1,0 +1,16 @@
+# ABOUTME: Wrangler configuration for the contactform Cloudflare Worker.
+# ABOUTME: Handles contact form submissions with Turnstile CAPTCHA and Resend email.
+
+name = "contactform"
+main = "src/index.js"
+compatibility_date = "2026-01-30"
+
+[[kv_namespaces]]
+binding = "SUBSCRIBERS"
+
+# Secrets (set via `wrangler secret put <NAME>`):
+#   TURNSTILE_SECRET_KEY  — Cloudflare Turnstile server-side validation
+#   RESEND_API_KEY        — Resend email API key
+#   EMAIL_TO              — Recipient email address
+#   EMAIL_FROM            — Sender address (must be verified in Resend)
+#   ALLOWED_ORIGIN        — CORS origin (e.g. https://tadg.ie)

@@ -24,7 +24,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 - **Section-specific card styles** for each content type
 - **Responsive design** with em-based breakpoints (WCAG 2.1 compliant)
 - **Pagination** with per-section override
-- **8 custom shortcodes** (callout, details, popquote, poem, video, formspree, rawhtml, section-list)
+- **9 custom shortcodes** (callout, contactform, details, popquote, poem, video, formspree, rawhtml, section-list)
 - **Flexible sidebar** with content, shortcodes, or section navigation
 - **Dark mode support** with system preference detection
 
@@ -549,9 +549,20 @@ Embed local video files.
 {{< video "/videos/my-video.mp4" >}}
 ```
 
+### `{{< contactform >}}`
+
+Self-hosted contact form with Cloudflare Turnstile CAPTCHA, Worker backend, and optional newsletter signup.
+
+```markdown
+{{< contactform >}}
+{{< contactform newsletter="true" >}}
+```
+
+Requires Cloudflare Worker deployment and Hugo configuration. See [docs/contactform.md](docs/contactform.md) for full setup guide.
+
 ### `{{< formspree >}}`
 
-Embed a Formspree contact form.
+Embed a Formspree contact form (simpler alternative to `contactform` — no CAPTCHA, no self-hosting).
 
 ```markdown
 {{< formspree id="your-formspree-id" >}}

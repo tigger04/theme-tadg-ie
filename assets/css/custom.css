@@ -2483,3 +2483,31 @@ main.list .masonry-grid {
 .contact-form button[type="submit"]:hover {
   opacity: 0.9;
 }
+
+.contact-form button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contact-form .cf-turnstile {
+  margin-bottom: 1.5rem;
+}
+
+.form-status {
+  margin-top: 1rem;
+  padding: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status-success {
+  color: var(--color-success, #2e7d32);
+}
+
+.form-status-error {
+  color: var(--color-error, #c62828);
+}
