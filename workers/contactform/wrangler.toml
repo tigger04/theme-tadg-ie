@@ -7,7 +7,6 @@ compatibility_date = "2026-01-30"
 
 [[kv_namespaces]]
 binding = "SUBSCRIBERS"
-id = "6c6a0ae59d2345a3baf16915ef3199fb"
 
 # Secrets (set via `wrangler secret put <NAME>`):
 #   TURNSTILE_SECRET_KEY  — Cloudflare Turnstile server-side validation

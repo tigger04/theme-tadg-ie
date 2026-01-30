@@ -139,6 +139,14 @@ When `newsletter="true"`, the form includes a required checkbox. Opted-in emails
 ### List all subscribers
 
 ```bash
+themes/tadg_ie/workers/contactform/bin/list-subscribers.sh
+```
+
+Outputs a tab-separated table of email, name, and subscription date. Requires `jq`.
+
+### List subscribers (manual)
+
+```bash
 cd themes/tadg_ie/workers/contactform
 npx wrangler kv key list --binding SUBSCRIBERS --remote
 ```
