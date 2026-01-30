@@ -545,9 +545,17 @@ body,
 /* Hero Image Styling */
 .post-hero {
   position: relative;
-  display: inline-block;
-  max-width: 100%;
   overflow: hidden;
+  /* Float right so body text wraps around the image */
+  float: right;
+  /* Fallback for older browsers */
+  max-width: 50%;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  /* Modern logical properties */
+  max-inline-size: 50%;
+  margin-inline-start: 1.5rem;
+  margin-block-end: 1rem;
 }
 
 .post-hero img {
@@ -557,6 +565,17 @@ body,
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+/* On narrow screens, hero goes full-width above content */
+@media screen and (max-width: 48em) {
+  .post-hero {
+    float: none;
+    max-width: 100%;
+    max-inline-size: 100%;
+    margin-left: 0;
+    margin-inline-start: 0;
+  }
 }
 
 /* Featured Image Styling */
@@ -1070,7 +1089,7 @@ header .main {
     display: flex;
   }
 
-  nav {
+  header nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -1091,14 +1110,14 @@ header .main {
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   }
 
-  nav.open {
+  header nav.open {
     transform: translateX(0);
     visibility: visible;
     opacity: 1;
   }
 
-  nav > a,
-  .nav-dropdown-btn {
+  header nav > a,
+  header .nav-dropdown-btn {
     padding: 1rem 2rem;
     margin: 0;
     text-align: center;
@@ -1566,7 +1585,7 @@ main.list .content {
 .masonry-grid {
   /* CSS Grid as fallback when JS doesn't load */
   display: grid;
-  /* Constraint: Min 2, max 4 columns - NEVER more than 4 */
+  /* Constraint: Min 2, max 5 columns (inc sidebar) */
   /* Using explicit repeat instead of auto-fill prevents unlimited columns */
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
@@ -1906,10 +1925,17 @@ main.list .content {
   }
 }
 
-/* Desktop and large screens: max 4 columns */
-@media (min-width: 64.0625em) { /* 1025px+ */
+/* Desktop: 4 columns */
+@media (min-width: 64.0625em) and (max-width: 80em) { /* 1025px - 1280px */
   .masonry-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Large desktop: max 5 columns */
+@media (min-width: 80.0625em) { /* 1281px+ */
+  .masonry-grid {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -1924,7 +1950,7 @@ main.list .masonry-grid {
 
 .sidebar-layout {
   display: grid;
-  grid-template-columns: minmax(12rem, 15rem) 1fr;
+  grid-template-columns: 15rem 1fr;
   gap: 2rem;
   /* Issue #91: Remove margin-top to align sidebar with content on section pages */
   margin-top: 0;
@@ -1941,6 +1967,7 @@ main.list .masonry-grid {
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   background: var(--bg-color);
+  overflow-wrap: break-word;
 }
 
 /* Issue #62: Unified sidebar navigation styles */
@@ -2122,8 +2149,8 @@ main.list .masonry-grid {
 }
 
 /* Sidebar layouts: sidebar ALWAYS visible as first column */
-/* Content columns: 1 (mobile) -> 2 (tablet) -> 3 (desktop) */
-/* Total with sidebar: 2 -> 3 -> 4 columns */
+/* Content columns: 1 (mobile) -> 2 (tablet) -> 3 (desktop) -> 4 (large desktop) */
+/* Total with sidebar: 2 -> 3 -> 4 -> 5 columns */
 
 /* Mobile (<48em): sidebar + 1 content column = 2 total */
 /* Using media query to ensure it overrides any other mobile rules */
@@ -2140,18 +2167,24 @@ main.list .masonry-grid {
   }
 }
 
-/* Desktop (64em+): sidebar + 3 content columns = 4 total max */
-@media (min-width: 64.0625em) {
+/* Desktop (64em-80em): sidebar + 3 content columns = 4 total */
+@media (min-width: 64.0625em) and (max-width: 80em) {
   .sidebar-layout .section-content .masonry-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Responsive: sidebar stays as column, just narrower on mobile */
-@media (max-width: 48em) { /* 768px */
-  /* Sidebar ALWAYS visible as first column - narrower on mobile */
+/* Large desktop (80em+): sidebar + 4 content columns = 5 total max */
+@media (min-width: 80.0625em) {
+  .sidebar-layout .section-content .masonry-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Responsive: sidebar narrower on tablet */
+@media (min-width: 30.0625em) and (max-width: 48em) {
   .sidebar-layout {
-    grid-template-columns: minmax(8rem, 10rem) 1fr;
+    grid-template-columns: 12rem 1fr;
     gap: 1rem;
   }
 
@@ -2166,6 +2199,18 @@ main.list .masonry-grid {
   .section-nav a {
     padding: 0.375rem 0.5rem;
     font-size: 0.8125rem;
+  }
+}
+
+/* Very narrow screens: stack sidebar above content */
+@media (max-width: 30em) {
+  .sidebar-layout {
+    display: block;
+  }
+
+  .section-sidebar {
+    position: static;
+    margin-bottom: 1.5rem;
   }
 }
 

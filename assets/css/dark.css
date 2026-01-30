@@ -204,7 +204,7 @@ details.styled-details > summary > span {
 }
 
 details.styled-details:not([open]) > summary::after {
-  color: var(--color-text-muted-dark, #9999bb);
+  color: var(--color-secondary);
 }
 
 /* Read more chevron icon - single icon for all modes, no toggling needed */

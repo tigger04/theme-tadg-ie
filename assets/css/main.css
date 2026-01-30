@@ -365,6 +365,8 @@ h6::before { color: var(--color-primary); content: '###### '; font-weight: 700; 
   /* Modern properties */
   min-inline-size: 0;
   overflow-wrap: break-word;
+  /* Clear floats (e.g. hero image) so tags/footer sit below */
+  overflow: auto;
 }
 
 .toc {
@@ -393,6 +395,13 @@ h6::before { color: var(--color-primary); content: '###### '; font-weight: 700; 
 .toc li:last-child {
   margin-bottom: 0;
   margin-block-end: 0;
+}
+
+.toc ul ul {
+  /* Fallback for older browsers */
+  margin-top: 0.75em;
+  /* Modern logical properties */
+  margin-block-start: 0.75em;
 }
 
 .toc a {
@@ -803,26 +812,28 @@ details.styled-details > summary > span {
 /* Arrow indicator after label text */
 details.styled-details > summary > span::after {
   content: ' \25B6';
-  font-size: 0.7em;
+  font-size: 1.2em;
   display: inline-block;
   /* Fallback for older browsers */
   margin-left: 0.3em;
   /* Modern logical properties */
   margin-inline-start: 0.3em;
+  color: var(--color-secondary);
 }
 
 details.styled-details[open] > summary > span::after {
   content: ' \25BC';
 }
 
-/* Large downward arrow when collapsed — disappears on open */
+/* Ellipsis hint when collapsed — compact box */
 details.styled-details:not([open]) > summary::after {
-  content: '\25BC';
+  content: '\2B24  \2B24  \2B24';
   display: block;
   text-align: center;
-  padding: 1em;
-  font-size: 2em;
-  color: var(--color-text-muted, #65659a);
+  padding: 0.3em;
+  font-size: 0.75em;
+  letter-spacing: 0.5em;
+  color: var(--color-secondary);
 }
 
 /* Content area when expanded */

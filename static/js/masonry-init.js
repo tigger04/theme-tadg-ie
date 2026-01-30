@@ -13,9 +13,9 @@
    * their browser font size preferences (WCAG 2.1 compliance).
    * Breakpoints match CSS media queries in custom.css.
    *
-   * Constraint: Min 2, max 4 columns total (including sidebar).
-   * - Without sidebar: 2-4 content columns
-   * - With sidebar: sidebar is ALWAYS visible, so 1-3 content columns
+   * Constraint: Min 2, max 5 columns total (including sidebar).
+   * - Without sidebar: 2-5 content columns
+   * - With sidebar: sidebar is ALWAYS visible, so 1-4 content columns
    */
   function getColumnCount() {
     // Get computed font size of root element (respects user preferences)
@@ -29,14 +29,16 @@
     var hasSidebar = document.querySelector('.sidebar-layout') !== null;
 
     // Base column count (without sidebar consideration)
-    // Min 2, max 4 columns total
+    // Min 2, max 5 columns total
     var columns;
     if (widthInEm < 48) {
       columns = 2; // Mobile/small tablet: 2 columns
     } else if (widthInEm < 64) {
       columns = 3; // Tablet: 3 columns
+    } else if (widthInEm < 80) {
+      columns = 4; // Desktop: 4 columns
     } else {
-      columns = 4; // Desktop: max 4 columns
+      columns = 5; // Large desktop: max 5 columns
     }
 
     // If sidebar exists, it ALWAYS takes one column, reduce content columns
