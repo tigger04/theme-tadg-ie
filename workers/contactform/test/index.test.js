@@ -101,15 +101,25 @@ describe("contactform worker", () => {
       expect(data.error).toMatch(/email/i);
     });
 
-    it("test_missing_message_returns_400", async () => {
+    it("test_empty_message_is_accepted", async () => {
       const req = makeRequest("POST", validPayload({ message: "" }), "https://example.com");
       const ctx = createExecutionContext();
       const resp = await worker.fetch(req, env, ctx);
       await waitOnExecutionContext(ctx);
 
-      expect(resp.status).toBe(400);
-      const data = await resp.json();
-      expect(data.error).toMatch(/message/i);
+      // Message is optional — should pass validation (may fail at email step in test env)
+      expect([200, 500]).toContain(resp.status);
+    });
+
+    it("test_absent_message_is_accepted", async () => {
+      const payload = validPayload();
+      delete payload.message;
+      const req = makeRequest("POST", payload, "https://example.com");
+      const ctx = createExecutionContext();
+      const resp = await worker.fetch(req, env, ctx);
+      await waitOnExecutionContext(ctx);
+
+      expect([200, 500]).toContain(resp.status);
     });
 
     it("test_missing_turnstile_token_returns_400", async () => {

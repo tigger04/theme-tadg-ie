@@ -48,6 +48,7 @@ export default {
     }
 
     if (body.newsletter === "yes") {
+      console.log("Newsletter opt-in for:", body.email);
       ctx.waitUntil(
         env.SUBSCRIBERS.put(
           body.email,
@@ -55,8 +56,14 @@ export default {
             name: body.name || "",
             subscribed: new Date().toISOString(),
           })
-        )
+        ).then(() => {
+          console.log("KV write succeeded for:", body.email);
+        }).catch((err) => {
+          console.error("KV write failed:", err.message);
+        })
       );
+    } else {
+      console.log("Newsletter field value:", JSON.stringify(body.newsletter));
     }
 
     return jsonSuccess("Message sent", corsHeaders);
@@ -70,10 +77,7 @@ function validateInput(body) {
   if (body.email.length > MAX_EMAIL_LENGTH) {
     return "Email exceeds maximum length";
   }
-  if (!body.message || typeof body.message !== "string" || body.message.trim() === "") {
-    return "Message is required";
-  }
-  if (body.message.length > MAX_MESSAGE_LENGTH) {
+  if (body.message && body.message.length > MAX_MESSAGE_LENGTH) {
     return "Message exceeds maximum length";
   }
   if (body.name && body.name.length > MAX_NAME_LENGTH) {
@@ -125,8 +129,7 @@ async function sendEmail(env, body) {
     <p><strong>From:</strong> ${escapeHtml(body.email)}</p>
     ${body.name ? `<p><strong>Name:</strong> ${escapeHtml(body.name)}</p>` : ""}
     ${body.newsletter === "yes" ? "<p><strong>Newsletter:</strong> Yes, opted in</p>" : ""}
-    <hr>
-    <p>${escapeHtml(body.message).replace(/\n/g, "<br>")}</p>
+    ${body.message ? `<hr><p>${escapeHtml(body.message).replace(/\n/g, "<br>")}</p>` : ""}
   `;
 
   const resp = await fetch(RESEND_API_URL, {

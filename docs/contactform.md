@@ -184,7 +184,7 @@ params:
 | Email | `email` | Yes | `email` |
 | Name | `text` | No | `name` |
 | Newsletter | `checkbox` | Yes (when shown) | `newsletter` |
-| Message | `textarea` | Yes | `message` |
+| Message | `textarea` | No | `message` |
 | Turnstile token | hidden | Auto | `cf-turnstile-response` |
 
 ## Input Limits
