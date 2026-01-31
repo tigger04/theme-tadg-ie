@@ -158,10 +158,6 @@ body {
 
 /* Two-column featured image layout */
 
-html {
-  font-family: "Special Elite", monospace;
-}
-
 /* Site logo styling */
 .site-logo,
 .site-logo-light,
@@ -1185,15 +1181,8 @@ header .main {
   }
 }
 
-/* Font Family Overrides */
-/* Override theme's monospace fonts with Special Elite */
-html {
-  font-family: 'Special Elite', monospace !important;
-}
-
-.callout p {
-  font-family: 'Special Elite', monospace !important;
-}
+/* Issue #20: Removed blanket Special Elite on html — now scoped to UI elements only.
+   Callouts use IosevkaCustom (inherited from main.css html base). */
 
 /* List items should use IosevkaQuasiProportional to match body text */
 ul li,

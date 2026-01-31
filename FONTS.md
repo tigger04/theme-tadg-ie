@@ -57,10 +57,10 @@ The font stack cascades through three CSS files:
    - `.callout p`: IosevkaCustom (code style in callouts)
 
 2. **custom.css** - Overrides and specialisations
-   - `html`: Special Elite (UI override)
-   - `p`: IosevkaCustom Extended (reinforced with !important)
-   - `.image-caption`: IosevkaCustom Extended
+   - Special Elite scoped to UI elements only: `nav`, `.read-more-btn`, `.site-logo-text`, `.list-author`, `.list-date`
+   - `.image-caption`: IosevkaQuasiProportional Condensed
    - `.verse`: EB Garamond
+   - `ul li, ol li`: IosevkaQuasiProportional (matches body text)
 
 3. **fonts.css** - @font-face definitions only
 
