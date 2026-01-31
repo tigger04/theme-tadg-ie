@@ -7,6 +7,46 @@ use warnings;
 use Cwd qw(getcwd);
 use File::Find;
 
+sub show_help {
+    print <<'HELP';
+pins.pl - List pinned Hugo content files
+
+USAGE:
+    perl pins.pl
+    perl pins.pl -h|--help
+
+DESCRIPTION:
+    Scans Hugo content files for 'pin:' values in frontmatter and displays
+    them in a sorted table. Useful for reviewing and managing pinned content
+    order on your site.
+
+    Must be run from either:
+    - The root of a Hugo project (where hugo.yaml/config.yaml exists)
+    - Inside the content/ directory
+
+OUTPUT:
+    Displays a table with pin values and file paths, sorted numerically by
+    pin value (lower numbers = higher priority).
+
+EXAMPLES:
+    cd /path/to/hugo/project
+    perl pins.pl
+
+    Pin  File
+    ---  ----
+    100  blog/important-post.md
+    200  pages/featured.md
+    500  plays/quadriplegia/index.org
+
+HELP
+    exit 0;
+}
+
+# Check for help flag
+if (@ARGV && $ARGV[0] =~ /^(-h|--help)$/) {
+    show_help();
+}
+
 my $content_dir = find_content_dir();
 
 my @pinned;
