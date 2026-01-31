@@ -2,7 +2,7 @@
 <html>
 {{ partial "header.html" . }}
 
-<body>
+<body data-grid-config='{{ .Scratch.Get "gridConfig" }}'>
 	<div class="content">
 		{{ partial "head.html" . }}
 		<main class="home{{ if .Params.sidebar }} home-with-sidebar{{ end }}">
@@ -48,17 +48,14 @@
 				{{- end -}}
 				{{- $pinned := where $sectionPages ".Params.pin" "!=" nil -}}
 
-				{{- $selectedPage := "" -}}
 				{{- if gt (len $pinned) 0 -}}
-					{{- /* Use lowest pin number */ -}}
-					{{- $selectedPage = index (sort $pinned ".Params.pin" "asc") 0 -}}
+					{{- /* Collect all pinned pages from this section */ -}}
+					{{- range $pinned -}}
+						{{- $pinnedPages = $pinnedPages | append . -}}
+					{{- end -}}
 				{{- else if gt (len $sectionPages) 0 -}}
-					{{- /* Use most recent */ -}}
-					{{- $selectedPage = index (first 1 $sectionPages) 0 -}}
-				{{- end -}}
-
-				{{- if $selectedPage -}}
-					{{- $pinnedPages = $pinnedPages | append $selectedPage -}}
+					{{- /* No pinned pages: use most recent as representative */ -}}
+					{{- $pinnedPages = $pinnedPages | append (index (first 1 $sectionPages) 0) -}}
 				{{- end -}}
 			{{- end -}}
 
