@@ -31,7 +31,7 @@
   --color-background-draft-dark: #0066ff;
   
   /* Spacing and sizing */
-  --content-max-width: 800px;
+  --content-max-width: 50rem;
   --content-padding: 1ch;
   --border-radius: 5px;
   --font-size-base: 15px;
@@ -277,13 +277,13 @@ pre code {
   margin-bottom: 4em;
   margin-left: auto;
   margin-right: auto;
-  max-width: var(--content-max-width, 800px);
+  max-width: var(--content-max-width, 50rem);
   padding-left: var(--content-padding, 1ch);
   padding-right: var(--content-padding, 1ch);
   /* Modern logical properties */
   margin-block-end: 4em;
   margin-inline: auto;
-  max-inline-size: var(--content-max-width, 800px);
+  max-inline-size: var(--content-max-width, 50rem);
   padding-inline: var(--content-padding, 1ch);
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -850,33 +850,28 @@ details.styled-details > summary:hover > span {
 table {
   border-spacing: 0;
   border-collapse: collapse;
-  /* Fallback for older browsers */
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  /* Modern logical properties */
   inline-size: 100%;
   margin-block: 1rem;
   border-radius: var(--border-radius, 5px);
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-secondary, #f9f9f9);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 table th {
   padding: 0.75rem;
-  border: 1px solid var(--color-border, #663399);
+  border: 1px solid var(--border-color, #ddd);
   font-weight: bold;
-  background-color: var(--color-background-pre, #ececec);
+  background-color: var(--bg-hover, #f0f0f0);
   text-align: start;
 }
 
 table td {
   padding: 0.75rem;
-  border: 1px solid var(--color-border, #663399);
-}
-
-table tr:nth-child(even) {
-  background-color: var(--color-background-code, #f1f1f1);
+  border: 1px solid var(--border-color, #ddd);
 }
 
 /* Navigation and theme toggle */

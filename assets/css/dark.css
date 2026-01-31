@@ -133,19 +133,17 @@ footer {
 }
 
 /* Tables in dark mode */
+table {
+  background-color: var(--bg-secondary, #252525);
+}
+
 table th {
-  background-color: var(--color-background-pre-dark, #272822);
-  color: var(--color-text-dark, #ffffff);
-  border-color: var(--color-border-dark, #0066ff);
+  background-color: var(--bg-hover, #333);
+  border-color: var(--border-color, #444);
 }
 
 table td {
-  border-color: var(--color-border-dark, #0066ff);
-  color: var(--color-text-dark, #ffffff);
-}
-
-table tr:nth-child(even) {
-  background-color: var(--color-background-code-dark, #3a3a3a);
+  border-color: var(--border-color, #444);
 }
 
 /* Navigation toggle in dark mode */
