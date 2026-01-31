@@ -191,6 +191,9 @@
     </div>
     {{ end }}
 
+    <!-- Related articles (Issue #103) -->
+    {{ partial "related.html" . }}
+
     <!-- Disqus -->
     {{- $.Scratch.Set "isDisqus" true -}}
     {{ if not .Site.Config.Services.Disqus.Shortname }}

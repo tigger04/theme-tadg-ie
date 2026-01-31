@@ -2546,3 +2546,37 @@ main.list .masonry-grid {
 .form-status-error {
   color: var(--color-error, #c62828);
 }
+
+/* Issue #103: Related articles */
+.related-articles {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color, #ddd);
+}
+
+.related-articles h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary, #333);
+}
+
+.related-articles ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.related-articles li {
+  padding: 0.375rem 0;
+}
+
+.related-articles a {
+  color: var(--link-color, #007acc);
+}
+
+.related-section {
+  font-size: 0.8125rem;
+  color: var(--text-muted, #666);
+  margin-left: 0.5rem;
+  text-transform: capitalize;
+}

@@ -212,4 +212,9 @@ details.styled-details:not([open]) > summary::after {
   color: var(--color-secondary);
 }
 
+/* Issue #103: Related articles dark mode */
+.related-articles {
+  border-top-color: var(--border-color);
+}
+
 /* Read more chevron icon - single icon for all modes, no toggling needed */

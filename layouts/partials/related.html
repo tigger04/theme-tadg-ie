@@ -1,0 +1,16 @@
+{{/* ABOUTME: Renders a list of related articles based on shared tags */}}
+{{/* ABOUTME: Shows up to 5 related pages, hidden when none exist */}}
+{{ $related := first 5 (.Site.RegularPages.Related .) }}
+{{ with $related }}
+<aside class="related-articles">
+  <h3>Related articles</h3>
+  <ul>
+    {{ range . }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="related-section">{{ .Section }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</aside>
+{{ end }}
