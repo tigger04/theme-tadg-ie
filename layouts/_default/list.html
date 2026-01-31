@@ -83,18 +83,26 @@
 		{{ end }}
 	</header>
 
-	{{- /* Section content from _index.md - always above sidebar-layout */ -}}
+	{{- /* Section content from _index.md - above sidebar-layout unless sidebar enabled */ -}}
+	{{- if not $showSidebar -}}
 	{{ if .Content }}
 	<div class="page-content">
 		{{ .Content }}
 	</div>
 	{{ end }}
+	{{- end -}}
 
 	{{- /* Start sidebar-layout if sidebar enabled */ -}}
 	{{- if $showSidebar -}}
 	<div class="sidebar-layout">
 		{{ partial "sidebar.html" (dict "sidebar" .Params.sidebar "context" . "Site" .Site) }}
 		<div class="section-content">
+		{{- /* Section content inside sidebar-layout so shortcodes sit beside sidebar */ -}}
+		{{ if .Content }}
+		<div class="page-content">
+			{{ .Content }}
+		</div>
+		{{ end }}
 	{{- end -}}
 
 	{{- if eq $listStyle "gallery" -}}
