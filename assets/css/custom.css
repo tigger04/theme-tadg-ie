@@ -1650,6 +1650,22 @@ main.list .content {
   color: var(--text-light);
 }
 
+/* Issue #22: Frosted glass for meta text on cards with background images */
+/* Excludes gallery/overlay cards which have their own frosted glass treatment */
+.masonry-item.has-image .masonry-content:not(.masonry-overlay) .masonry-meta {
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0.25rem;
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+[data-theme="dark"] .masonry-item.has-image .masonry-content:not(.masonry-overlay) .masonry-meta {
+  background: rgba(0, 0, 0, 0.4);
+}
+
 /* Masonry excerpt */
 .masonry-excerpt {
   color: var(--text-secondary);

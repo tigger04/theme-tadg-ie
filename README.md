@@ -261,6 +261,8 @@ Both masonry cards and list-view items display a background image when `image.sr
 
 This applies to all three display modes (`cards`, `list`, `gallery`) so that switching `list_style` preserves the visual treatment of article images.
 
+On cards with background images (`.has-image`), the category and date metadata gets a frosted glass pill (`backdrop-filter: blur(8px)` with a semi-transparent background) to ensure legibility over the image. Cards without images are unaffected.
+
 ### Usage in Templates
 
 ```go-html-template
