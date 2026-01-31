@@ -11,7 +11,7 @@
         <h1>{{ .Title }}</h1>
         <div class="meta">
           {{- /* Issue #92: Support hideDate frontmatter */ -}}
-          {{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
+          {{- with .Params.author }}{{ . }}{{ if not $.Params.hideDate }} · {{ end }}{{ end }}{{- if not .Params.hideDate -}}{{ dateFormat (site.Params.dateFormat | default ":date_long") .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
         </div>
       </div>
       {{ if .Params.image.caption }}
@@ -51,7 +51,7 @@
       <!-- Title - full width -->
       <div class="title" style="padding: 2rem; margin-bottom: 0;">
         <h1 class="title">{{ .Title }}</h1>
-        <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+        <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- with .Params.author }}{{ . }}{{ if not $.Params.hideDate }} · {{ end }}{{ end }}{{- if not .Params.hideDate -}}{{ dateFormat (site.Params.dateFormat | default ":date_long") .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
       </div>
 
       <!-- Two-column content area -->
@@ -129,7 +129,7 @@
       <div class="post-content">
         <div class="title">
           <h1 class="title">{{ .Title }}</h1>
-          <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+          <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- with .Params.author }}{{ . }}{{ if not $.Params.hideDate }} · {{ end }}{{ end }}{{- if not .Params.hideDate -}}{{ dateFormat (site.Params.dateFormat | default ":date_long") .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
         </div>
 
         <!-- Hero Image -->
@@ -183,6 +183,11 @@
 
     <!-- TOC — rendered as right-hand sidebar via article.has-toc grid (Issue #12) -->
     {{ if .Params.toc }}
+    <!-- Issue #23: Mobile-only title shown above TOC (hidden on desktop) -->
+    <div class="toc-mobile-title">
+      <h1>{{ .Title }}</h1>
+      <div class="meta">{{- with .Params.author }}{{ . }}{{ if not $.Params.hideDate }} · {{ end }}{{ end }}{{- if not .Params.hideDate -}}{{ dateFormat (site.Params.dateFormat | default ":date_long") .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+    </div>
     {{- $tocTitle := "Table of contents:" -}}
     {{- if ne .Params.toc true -}}{{- $tocTitle = .Params.toc -}}{{- end -}}
     <div class="toc">

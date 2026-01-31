@@ -4,6 +4,7 @@
 {{/* Sidebar can be: true (boolean), or a map with title/content/sections/root fields */}}
 {{/* Issue #62: All sidebar links have chevrons, use .sidebar-nav class consistently */}}
 {{/* Issue #74: Added root parameter for sibling section navigation */}}
+{{/* Issue #23: Sidebar wraps in <details> for collapsible mobile view */}}
 
 {{- $sidebar := .sidebar -}}
 {{- $context := .context -}}
@@ -14,10 +15,14 @@
   {{- /* Check if sidebar is a map (has fields) or just boolean true */ -}}
   {{- $isMap := reflect.IsMap $sidebar -}}
 
-  {{- /* Render title if provided (only for map type) */ -}}
+  {{- /* Determine sidebar title for the collapse summary */ -}}
+  {{- $sidebarTitle := "Navigation" -}}
   {{- if and $isMap $sidebar.title -}}
-  <h3 class="sidebar-title">{{ $sidebar.title }}</h3>
+    {{- $sidebarTitle = $sidebar.title -}}
   {{- end -}}
+
+  <details class="sidebar-collapse" open>
+    <summary class="sidebar-collapse-title">{{ $sidebarTitle }}</summary>
 
   {{- /* Content field takes precedence - renders markdown with shortcodes */ -}}
   {{- if and $isMap $sidebar.content -}}
@@ -79,5 +84,16 @@
     </ul>
   </nav>
   {{- end -}}
+  </details>
+  <script>
+    (function(){
+      var d=document.querySelector('.sidebar-collapse');
+      if(!d)return;
+      var mq=window.matchMedia('(max-width:48em)');
+      function update(){if(mq.matches)d.removeAttribute('open');else d.setAttribute('open','');}
+      update();
+      mq.addEventListener('change',update);
+    })();
+  </script>
 </aside>
 {{- end -}}

@@ -8,8 +8,33 @@
 
 <ul class="list-view">
   {{- range $pages -}}
-  <li class="list-view-item">
-    <article>
+
+  {{- /* Issue #21: Resolve background image — same pattern as masonry-grid.html */ -}}
+  {{- $bgImageUrl := "" -}}
+  {{- $isGallery := .Params.gallery | default false -}}
+  {{- if $isGallery -}}
+    {{- if .Params.featured_image -}}
+      {{- $featuredImg := .Resources.GetMatch .Params.featured_image -}}
+      {{- if $featuredImg -}}
+        {{- $bgImageUrl = $featuredImg.RelPermalink -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $images := .Resources.ByType "image" -}}
+      {{- if $images -}}
+        {{- $bgImageUrl = (index $images 0).RelPermalink -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else if .Params.image -}}
+    {{- if .Params.image.src -}}
+      {{- $bgImageUrl = printf "%s%s" .RelPermalink .Params.image.src -}}
+    {{- end -}}
+  {{- end -}}
+
+  <li class="list-view-item{{ if $bgImageUrl }} has-image{{ end }}">
+    {{- if $bgImageUrl -}}
+    <div class="list-view-bg" style="background-image: url('{{ $bgImageUrl }}'); opacity: {{ $.Site.Params.bgImage.opacity | default 0.15 }}; filter: blur({{ $.Site.Params.bgImage.blur | default "5px" }});"></div>
+    {{- end -}}
+    <article class="list-view-content">
       <h3 class="list-view-title">
         <a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a>
       </h3>

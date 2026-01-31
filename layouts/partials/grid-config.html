@@ -1,35 +1,31 @@
 {{/* ABOUTME: Generates configurable responsive grid CSS from hugo.yaml params */}}
 {{/* ABOUTME: Reads params.grid with fallback defaults matching original hardcoded values */}}
 
-{{/* Read grid config: page-level params.grid overrides site-level params.grid */}}
+{{/* Read grid config: page-level frontmatter overrides site-level params, then defaults */}}
 {{- $siteGrid := .Site.Params.grid | default dict -}}
 {{- $pageGrid := .Params.grid | default dict -}}
-{{/* Merge: page values override site values, site values override defaults */}}
-{{- $grid := merge $siteGrid $pageGrid -}}
 {{- $siteBp := $siteGrid.breakpoints | default dict -}}
 {{- $pageBp := $pageGrid.breakpoints | default dict -}}
-{{- $bp := merge $siteBp $pageBp -}}
 {{- $siteCols := $siteGrid.columns | default dict -}}
 {{- $pageCols := $pageGrid.columns | default dict -}}
-{{- $cols := merge $siteCols $pageCols -}}
 
-{{/* Breakpoint defaults (em units) — match original hardcoded values */}}
-{{- $bpSm := $bp.sm | default "30em" -}}
-{{- $bpMd := $bp.md | default "48em" -}}
-{{- $bpLg := $bp.lg | default "64em" -}}
-{{- $bpXl := $bp.xl | default "80em" -}}
+{{/* Breakpoints: page → site → default */}}
+{{- $bpSm := $pageBp.sm | default ($siteBp.sm | default "30em") -}}
+{{- $bpMd := $pageBp.md | default ($siteBp.md | default "48em") -}}
+{{- $bpLg := $pageBp.lg | default ($siteBp.lg | default "64em") -}}
+{{- $bpXl := $pageBp.xl | default ($siteBp.xl | default "80em") -}}
 
-{{/* Column count defaults — match original hardcoded values */}}
-{{- $colSm := $cols.sm | default 2 -}}
-{{- $colMd := $cols.md | default 3 -}}
-{{- $colLg := $cols.lg | default 4 -}}
-{{- $colXl := $cols.xl | default 5 -}}
+{{/* Column counts: page → site → default */}}
+{{- $colSm := $pageCols.sm | default ($siteCols.sm | default 2) -}}
+{{- $colMd := $pageCols.md | default ($siteCols.md | default 3) -}}
+{{- $colLg := $pageCols.lg | default ($siteCols.lg | default 4) -}}
+{{- $colXl := $pageCols.xl | default ($siteCols.xl | default 5) -}}
 
-{{/* Layout defaults */}}
-{{- $contentMaxWidth := $grid.contentMaxWidth | default "100rem" -}}
-{{- $sidebarWidth := $grid.sidebarWidth | default "15rem" -}}
-{{- $sidebarWidthNarrow := $grid.sidebarWidthNarrow | default "12rem" -}}
-{{- $gridGap := $grid.gap | default "1.5rem" -}}
+{{/* Layout: page → site → default */}}
+{{- $contentMaxWidth := $pageGrid.contentMaxWidth | default ($siteGrid.contentMaxWidth | default "100rem") -}}
+{{- $sidebarWidth := $pageGrid.sidebarWidth | default ($siteGrid.sidebarWidth | default "15rem") -}}
+{{- $sidebarWidthNarrow := $pageGrid.sidebarWidthNarrow | default ($siteGrid.sidebarWidthNarrow | default "12rem") -}}
+{{- $gridGap := $pageGrid.gap | default ($siteGrid.gap | default "1.5rem") -}}
 
 {{/* Calculate breakpoint + 0.0625em for min-width (avoids overlap) */}}
 {{- $bpSmVal := strings.TrimSuffix "em" $bpSm | float -}}
@@ -139,9 +135,10 @@
 }
 
 /* Sidebar width responsive */
-@media (min-width: {{ $bpSmPlus }}) and (max-width: {{ $bpMd }}) {
+/* Issue #23: Narrow sidebar between md and lg breakpoints */
+@media (min-width: {{ $bpMdPlus }}) and (max-width: {{ $bpLg }}) {
   .sidebar-layout {
-    grid-template-columns: var(--sidebar-width-narrow) 1fr;
+    grid-template-columns: min-content 1fr;
     gap: 1rem;
   }
   .section-sidebar {
@@ -155,13 +152,58 @@
     font-size: 0.8125rem;
   }
 }
-@media (max-width: {{ $bpSm }}) {
+/* Issue #23: Desktop — sidebar fits content, capped at 20% viewport */
+@media (min-width: {{ $bpMdPlus }}) {
+  .section-sidebar {
+    max-width: 20vw;
+    white-space: nowrap;
+  }
+  .sidebar-collapse-title {
+    list-style: none;
+    cursor: default;
+    pointer-events: none;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+  }
+  .sidebar-collapse-title::-webkit-details-marker {
+    display: none;
+  }
+  .sidebar-collapse-title::after {
+    display: none;
+  }
+}
+/* Issue #23: Collapse sidebar to block at md breakpoint (48em) instead of sm (30em) */
+@media (max-width: {{ $bpMd }}) {
   .sidebar-layout {
-    display: block;
+    display: block !important;
   }
   .section-sidebar {
     position: static;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  /* Issue #23: Show collapsible summary toggle on mobile */
+  .sidebar-collapse-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    list-style: none;
+  }
+  .sidebar-collapse-title::-webkit-details-marker {
+    display: none;
+  }
+  .sidebar-collapse-title::after {
+    content: '\25BC';
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+  .sidebar-collapse[open] > .sidebar-collapse-title::after {
+    transform: rotate(180deg);
   }
 }
 </style>

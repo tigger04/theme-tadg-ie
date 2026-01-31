@@ -233,9 +233,8 @@ Breakpoints and column counts are configurable via `params.grid` in `hugo.yaml` 
 
 | Viewport | Columns | With Sidebar |
 |----------|---------|--------------|
-| ≤ 30em   | 2       | 2 (sidebar stacked) |
-| 30-48em  | 2       | 2 (sidebar stacked) |
-| 48-64em  | 3       | 2 + sidebar = 3 total |
+| ≤ 48em   | 2       | Sidebar collapses to `<details>` toggle |
+| 48-64em  | 3       | 2 + narrow sidebar = 3 total |
 | 64-80em  | 4       | 3 + sidebar = 4 total |
 | ≥ 80em   | 5       | 4 + sidebar = 5 total |
 
@@ -299,6 +298,8 @@ paginate: 12            # items per page (default: 12)
 | `paginate` | `12` | Items per page before pagination links appear |
 
 ### Sidebar Configuration
+
+On viewports ≤ 48em (mobile/tablet), the sidebar collapses into a `<details>`/`<summary>` toggle with a ▼ chevron indicator. Users can tap to expand or collapse the navigation; expanded content pushes cards down in normal flow. On desktop, the sidebar title displays as a plain heading (no toggle affordance) and the sidebar fits its content width (capped at 20% viewport). A small inline script closes the sidebar on narrow viewports at page load and responds to orientation changes. The sidebar title defaults to "Navigation" but can be overridden with `sidebar.title`.
 
 The sidebar is entirely configured via frontmatter. Two main modes:
 
@@ -1004,7 +1005,7 @@ toc: "In this document"   # Custom TOC heading (defaults to "Table of contents:"
 tldr: "Brief summary"     # TL;DR section at top
 ```
 
-**Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned with the article title. On narrow screens, the TOC stacks above the article content. Pages without `toc: true` use full-width layout with no extra column. Set `toc` to a string value to customise the heading text (e.g. `toc: "In this document"`); the default heading is "Table of contents:".
+**Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned horizontally with the article title. On narrow screens (≤ 60em), the article title and metadata appear above the TOC, followed by the article content — the title inside the post container is hidden to avoid duplication. Pages without `toc: true` use full-width layout with no extra column. Set `toc` to a string value to customise the heading text (e.g. `toc: "In this document"`); the default heading is "Table of contents:".
 
 ### Pin/Featured
 
@@ -1087,6 +1088,9 @@ Supports both system preference (`prefers-color-scheme: dark`) and manual toggle
 | `.gallery-grid` | Gallery image container |
 | `.gallery-item` | Individual gallery image |
 | `.lightbox` | Lightbox overlay |
+| `.sidebar-collapse` | Collapsible `<details>` wrapper for mobile sidebar |
+| `.sidebar-collapse-title` | `<summary>` toggle — plain heading on desktop, tap target on mobile |
+| `.toc-mobile-title` | Mobile-only article title shown above TOC (hidden on desktop) |
 | `.pagination` | Pagination container |
 | `.pagination-link` | Pagination button |
 
