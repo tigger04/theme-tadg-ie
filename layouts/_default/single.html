@@ -3,24 +3,23 @@
   <article{{ if .Params.toc }} class="has-toc"{{ end }}>
     <!-- Banner Layout -->
     {{ if eq .Params.layout "banner" }}
-    <div class="post-container banner-layout">
-      {{ if .Params.image.src }}
-      <div class="post-banner soft-edge{{ if .Params.image.dark }} dark-banner{{ end }}">
-        <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge">
-        <div class="banner-overlay soft-edge"></div>
-        <div class="title">
-          <h1>{{ .Title }}</h1>
-          <div class="meta">
-            {{- /* Issue #92: Support hideDate frontmatter */ -}}
-            {{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
-          </div>
+    {{ if .Params.image.src }}
+    <div class="post-banner soft-edge{{ if .Params.image.dark }} dark-banner{{ end }}">
+      <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge">
+      <div class="banner-overlay soft-edge"></div>
+      <div class="title">
+        <h1>{{ .Title }}</h1>
+        <div class="meta">
+          {{- /* Issue #92: Support hideDate frontmatter */ -}}
+          {{- if not .Params.hideDate -}}{{ dateFormat ":date_long" .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}
         </div>
-        {{ if .Params.image.caption }}
-        <div class="image-caption">{{ .Params.image.caption }}</div>
-        {{ end }}
       </div>
+      {{ if .Params.image.caption }}
+      <div class="image-caption">{{ .Params.image.caption }}</div>
       {{ end }}
-      
+    </div>
+    {{ end }}
+    <div class="post-container banner-layout">
       <div class="post-content banner-content">
         {{ if isset .Params "tldr" }}
         <div class="tldr">
