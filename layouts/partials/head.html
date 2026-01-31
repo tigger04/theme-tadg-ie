@@ -4,7 +4,7 @@
 {{- $featherURL = (resources.Get "svg/feather-sprite.svg" | fingerprint).RelPermalink -}}
 {{- end -}}
 <svg class="feather">
-	<use href="{{ printf " %s#%s" $featherURL .Icon }}" />
+	<use href="{{ printf "%s#%s" $featherURL .Icon }}" />
 </svg>
 {{- end -}}
 

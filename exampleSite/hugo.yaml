@@ -46,8 +46,11 @@ params:
     - js/lightbox.js
 
   social:
+    - name: BlueSky
+      icon: "simple:bluesky"                        # Simple Icons (simple: prefix)
+      url: https://bsky.app/profile/example
     - name: GitHub
-      icon: github
+      icon: github                                   # Feather icon (default)
       url: https://github.com/tigger04/theme-tadg-ie
 
   subtitle: "A demo site for the tadg_ie Hugo theme"

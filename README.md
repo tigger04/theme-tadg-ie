@@ -67,9 +67,10 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 11. [Index Files and Page Bundles](#index-files-and-page-bundles)
 12. [Frontmatter Reference](#frontmatter-reference)
 13. [CSS Customization](#css-customization)
-14. [JavaScript Components](#javascript-components)
-15. [Scripts](#scripts)
-16. [Troubleshooting](#troubleshooting)
+14. [Social Icons (Footer)](#social-icons-footer)
+15. [JavaScript Components](#javascript-components)
+16. [Scripts](#scripts)
+17. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -253,11 +254,13 @@ Masonry cards have two layouts:
 
 **CSS customization:** All cards include a `.masonry-{section}` class (e.g., `.masonry-blog`, `.masonry-gallery`) for section-specific styling via custom CSS. The theme itself treats all non-gallery content identically, but site owners can add custom styles for their specific sections.
 
-### Background Images on Cards
+### Background Images on Cards and List Items
 
-Cards display a background image when `image.src` is set in frontmatter. The image is rendered with blur and opacity as configured in `params.bgImage`:
+Both masonry cards and list-view items display a background image when `image.src` is set in frontmatter (or `featured_image` / first image resource for gallery pages). The image is rendered with blur and opacity as configured in `params.bgImage`:
 - Default opacity: 0.2 (20%)
 - Default blur: 5px
+
+This applies to all three display modes (`cards`, `list`, `gallery`) so that switching `list_style` preserves the visual treatment of article images.
 
 ### Usage in Templates
 
@@ -290,7 +293,7 @@ paginate: 12            # items per page (default: 12)
 
 | Field | Default | Description |
 |-------|---------|-------------|
-| `list_style` | `cards` | Display mode: `cards` (masonry grid), `list` (vertical list), `gallery` (image grid) |
+| `list_style` | `cards` | Display mode: `cards` (masonry grid), `list` (vertical list with background images), `gallery` (image grid) |
 | `sidebar` | `false` | Show sidebar. Can be `true` (subsection nav), or a map with `title`, `content`, `sections`, `root` |
 | `list_recursive` | `false` | Include all nested content recursively (uses `.RegularPagesRecursive`) |
 | `paginate` | `12` | Items per page before pagination links appear |
@@ -872,11 +875,17 @@ params:
     - js/burger-menu.js
     - js/lightbox.js
 
-  # Social links
+  # Social links (displayed as icons in the footer)
   social:
     - name: GitHub
-      icon: github
+      icon: github                    # Feather icon (default)
       url: https://github.com/username/
+    - name: BlueSky
+      icon: "simple:bluesky"          # Simple Icons (use simple: prefix)
+      url: https://bsky.app/profile/username
+    - name: Email
+      icon: mail                      # Feather icon
+      url: mailto:you@example.com
 
   # Optional features
   mathjax: false    # Enable MathJax
@@ -1072,12 +1081,67 @@ Supports both system preference (`prefers-color-scheme: dark`) and manual toggle
 | `.masonry-grid` | Container for masonry layout |
 | `.masonry-item` | Individual grid item |
 | `.masonry-{section}` | Section-specific styling |
-| `.masonry-bg` | Background image layer |
+| `.masonry-bg` | Background image layer (masonry cards) |
+| `.list-view-bg` | Background image layer (list items) |
+| `.list-view-content` | Content wrapper above background (list items) |
 | `.gallery-grid` | Gallery image container |
 | `.gallery-item` | Individual gallery image |
 | `.lightbox` | Lightbox overlay |
 | `.pagination` | Pagination container |
 | `.pagination-link` | Pagination button |
+
+---
+
+## Social Icons (Footer)
+
+The footer displays social links as icons, configured via `params.social` in `hugo.yaml`.
+
+### Icon Systems
+
+Two icon sets are supported:
+
+| Format | Example | Icon Set | Rendering |
+|--------|---------|----------|-----------|
+| `icon: github` | Feather icon (default) | [Feather Icons](https://feathericons.com/) | SVG sprite (`<svg><use>`) |
+| `icon: "simple:bluesky"` | Simple Icons (`simple:` prefix) | [Simple Icons](https://simpleicons.org/) | Icon font (`<i class="si si-bluesky">`) |
+
+Use Feather for common icons (`github`, `twitter`, `mail`, `instagram`, `linkedin`, etc.). Use Simple Icons with the `simple:` prefix for platforms not in the Feather set (e.g., `bluesky`, `mastodon`).
+
+### Configuration Example
+
+```yaml
+params:
+  useCDN: false          # false = local assets (default), true = CDN
+  social:
+    - name: BlueSky
+      icon: "simple:bluesky"    # Simple Icons (not in Feather set)
+      url: https://bsky.app/profile/username
+    - name: Instagram
+      icon: instagram           # Feather icon
+      url: https://www.instagram.com/username/
+    - name: GitHub
+      icon: github              # Feather icon
+      url: https://github.com/username/
+    - name: Email
+      icon: mail                # Feather icon
+      url: mailto:you@example.com
+```
+
+### Assets
+
+- **Feather sprites:** `assets/svg/feather-sprite.svg` (local) or unpkg CDN
+- **Simple Icons font:** `static/fonts/SimpleIcons.woff2` + `assets/css/simple-icons.css`
+- The Simple Icons CSS is only loaded when at least one `simple:` icon is configured
+
+### Copyright
+
+The footer also displays a copyright line from the site-level `copyright` field:
+
+```yaml
+copyright: "Your Name. All rights reserved."
+```
+
+Rendered as: `{year} {copyright text} |`
 
 ---
 
