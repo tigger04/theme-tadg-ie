@@ -1141,7 +1141,7 @@ The footer also displays a copyright line from the site-level `copyright` field:
 copyright: "Your Name. All rights reserved."
 ```
 
-Rendered as: `{year} {copyright text} |`
+Rendered as: `{copyright text} |`
 
 ---
 

@@ -10,7 +10,7 @@
     {{- end -}}
   </div>
   <div class="footer-info" style="text-align: center;">
-    {{ dateFormat "2006" now }} {{ with .Site.Copyright }} {{ . }} | {{ end }}
+    {{ with .Site.Copyright }} {{ . }} {{ end }}
   </div>
 </footer>
 

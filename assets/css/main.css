@@ -459,6 +459,7 @@ h6::before { color: var(--color-primary); content: '###### '; font-weight: 700; 
 footer {
   display: flex;
   align-items: center;
+  justify-content: center;
   /* Fallback for older browsers */
   border-top: 0.4rem dotted var(--color-primary);
   padding-top: 2rem;
