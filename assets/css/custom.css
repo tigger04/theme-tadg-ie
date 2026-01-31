@@ -1839,8 +1839,8 @@ main.list .content {
   padding: 1.5rem;
 }
 
-/* Issue #79: Poetry excerpts use default font (uniform with other cards), preserve line breaks */
-.masonry-poetry .verse-preview {
+/* Issue #79, #106: Poetry excerpts preserve line breaks via white-space */
+.masonry-poetry .masonry-excerpt {
   white-space: pre-line;
   line-height: 1.6;
 }
