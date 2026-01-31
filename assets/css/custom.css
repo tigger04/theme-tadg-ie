@@ -1829,7 +1829,6 @@ main.list .content {
 /* Issue #16: Dialogue shortcode */
 .dialogue {
   margin: 0.75rem 0;
-  padding-left: 2rem;
 }
 
 .dialogue-name {
@@ -1838,7 +1837,7 @@ main.list .content {
   font-size: 1.05em;
   letter-spacing: 0.05em;
   margin: 0 0 0.1rem 0;
-  color: var(--color-primary);
+  color: var(--link-color);
 }
 
 .dialogue-parenthetical {
@@ -1847,7 +1846,6 @@ main.list .content {
   font-style: italic;
   font-size: 0.9em;
   letter-spacing: normal;
-  color: var(--color-secondary);
 }
 
 .dialogue-text {
@@ -1859,7 +1857,6 @@ main.list .content {
 .stage-direction {
   font-style: italic;
   margin: 0.75rem 0;
-  padding-left: 2.5rem;
   color: var(--color-secondary);
 }
 
