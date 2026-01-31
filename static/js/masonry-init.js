@@ -8,10 +8,35 @@
   var GAP = 24; // Gap between items in pixels
 
   /**
+   * Read grid configuration from data-grid-config attribute on <body>.
+   * Falls back to original hardcoded defaults if attribute is missing.
+   * Config is set by the grid-config.html Hugo partial (Issue #17).
+   */
+  var gridConfig = (function() {
+    var defaults = {
+      breakpoints: { sm: 30, md: 48, lg: 64, xl: 80 },
+      columns: { sm: 2, md: 3, lg: 4, xl: 5 }
+    };
+    try {
+      var raw = document.body.getAttribute('data-grid-config');
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        return {
+          breakpoints: parsed.breakpoints || defaults.breakpoints,
+          columns: parsed.columns || defaults.columns
+        };
+      }
+    } catch (e) {
+      // JSON parse failed — use defaults
+    }
+    return defaults;
+  })();
+
+  /**
    * Calculate number of columns based on viewport width in em units.
    * Uses the computed root font size to adapt layout when users change
    * their browser font size preferences (WCAG 2.1 compliance).
-   * Breakpoints match CSS media queries in custom.css.
+   * Breakpoints and column counts read from data-grid-config (Issue #17).
    *
    * Constraint: Min 2, max 5 columns total (including sidebar).
    * - Without sidebar: 2-5 content columns
@@ -28,17 +53,19 @@
     // Check if sidebar is present - sidebar is ALWAYS a column when present
     var hasSidebar = document.querySelector('.sidebar-layout') !== null;
 
+    var bp = gridConfig.breakpoints;
+    var cols = gridConfig.columns;
+
     // Base column count (without sidebar consideration)
-    // Min 2, max 5 columns total
     var columns;
-    if (widthInEm < 48) {
-      columns = 2; // Mobile/small tablet: 2 columns
-    } else if (widthInEm < 64) {
-      columns = 3; // Tablet: 3 columns
-    } else if (widthInEm < 80) {
-      columns = 4; // Desktop: 4 columns
+    if (widthInEm < bp.md) {
+      columns = cols.sm; // Mobile/small tablet
+    } else if (widthInEm < bp.lg) {
+      columns = cols.md; // Tablet
+    } else if (widthInEm < bp.xl) {
+      columns = cols.lg; // Desktop
     } else {
-      columns = 5; // Large desktop: max 5 columns
+      columns = cols.xl; // Large desktop
     }
 
     // If sidebar exists, it ALWAYS takes one column, reduce content columns

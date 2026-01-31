@@ -1,0 +1,167 @@
+{{/* ABOUTME: Generates configurable responsive grid CSS from hugo.yaml params */}}
+{{/* ABOUTME: Reads params.grid with fallback defaults matching original hardcoded values */}}
+
+{{/* Read grid config: page-level params.grid overrides site-level params.grid */}}
+{{- $siteGrid := .Site.Params.grid | default dict -}}
+{{- $pageGrid := .Params.grid | default dict -}}
+{{/* Merge: page values override site values, site values override defaults */}}
+{{- $grid := merge $siteGrid $pageGrid -}}
+{{- $siteBp := $siteGrid.breakpoints | default dict -}}
+{{- $pageBp := $pageGrid.breakpoints | default dict -}}
+{{- $bp := merge $siteBp $pageBp -}}
+{{- $siteCols := $siteGrid.columns | default dict -}}
+{{- $pageCols := $pageGrid.columns | default dict -}}
+{{- $cols := merge $siteCols $pageCols -}}
+
+{{/* Breakpoint defaults (em units) — match original hardcoded values */}}
+{{- $bpSm := $bp.sm | default "30em" -}}
+{{- $bpMd := $bp.md | default "48em" -}}
+{{- $bpLg := $bp.lg | default "64em" -}}
+{{- $bpXl := $bp.xl | default "80em" -}}
+
+{{/* Column count defaults — match original hardcoded values */}}
+{{- $colSm := $cols.sm | default 2 -}}
+{{- $colMd := $cols.md | default 3 -}}
+{{- $colLg := $cols.lg | default 4 -}}
+{{- $colXl := $cols.xl | default 5 -}}
+
+{{/* Layout defaults */}}
+{{- $contentMaxWidth := $grid.contentMaxWidth | default "100rem" -}}
+{{- $sidebarWidth := $grid.sidebarWidth | default "15rem" -}}
+{{- $sidebarWidthNarrow := $grid.sidebarWidthNarrow | default "12rem" -}}
+{{- $gridGap := $grid.gap | default "1.5rem" -}}
+
+{{/* Calculate breakpoint + 0.0625em for min-width (avoids overlap) */}}
+{{- $bpSmVal := strings.TrimSuffix "em" $bpSm | float -}}
+{{- $bpMdVal := strings.TrimSuffix "em" $bpMd | float -}}
+{{- $bpLgVal := strings.TrimSuffix "em" $bpLg | float -}}
+{{- $bpXlVal := strings.TrimSuffix "em" $bpXl | float -}}
+
+{{- $bpSmPlus := printf "%.4fem" (add $bpSmVal 0.0625) -}}
+{{- $bpMdPlus := printf "%.4fem" (add $bpMdVal 0.0625) -}}
+{{- $bpLgPlus := printf "%.4fem" (add $bpLgVal 0.0625) -}}
+{{- $bpXlPlus := printf "%.4fem" (add $bpXlVal 0.0625) -}}
+
+{{/* Build JSON config for JavaScript (masonry-init.js reads this from data-grid-config) */}}
+{{- $gridConfig := dict
+  "breakpoints" (dict "sm" $bpSmVal "md" $bpMdVal "lg" $bpLgVal "xl" $bpXlVal)
+  "columns" (dict "sm" $colSm "md" $colMd "lg" $colLg "xl" $colXl)
+-}}
+{{- .Scratch.Set "gridConfig" ($gridConfig | jsonify) -}}
+
+<style>
+/* Issue #17: Configurable responsive grid — generated from params.grid */
+:root {
+  --content-max-width: {{ $contentMaxWidth }};
+  --sidebar-width: {{ $sidebarWidth }};
+  --sidebar-width-narrow: {{ $sidebarWidthNarrow }};
+  --grid-gap: {{ $gridGap }};
+}
+
+/* Homepage grid responsive breakpoints */
+@media (max-width: {{ $bpSm }}) {
+  .homepage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: {{ $bpSmPlus }}) and (max-width: {{ $bpMd }}) {
+  .homepage-grid {
+    grid-template-columns: repeat({{ $colSm }}, 1fr);
+  }
+}
+@media (min-width: {{ $bpMdPlus }}) and (max-width: {{ $bpLg }}) {
+  .homepage-grid {
+    grid-template-columns: repeat({{ $colMd }}, 1fr);
+  }
+}
+@media (min-width: {{ $bpLgPlus }}) and (max-width: {{ $bpXl }}) {
+  .homepage-grid {
+    grid-template-columns: repeat({{ $colLg }}, 1fr);
+  }
+}
+
+/* Masonry grid CSS fallback responsive breakpoints */
+@media (max-width: {{ $bpSm }}) {
+  .masonry-grid {
+    grid-template-columns: repeat({{ $colSm }}, 1fr);
+    gap: 1rem;
+  }
+  .masonry-item {
+    transform: none !important;
+    margin-top: 0 !important;
+  }
+  .masonry-grid.masonry-active {
+    height: auto !important;
+  }
+}
+@media (min-width: {{ $bpSmPlus }}) and (max-width: {{ $bpMd }}) {
+  .masonry-grid {
+    grid-template-columns: repeat({{ $colSm }}, 1fr);
+    gap: 1.25rem;
+  }
+}
+@media (min-width: {{ $bpMdPlus }}) and (max-width: {{ $bpLg }}) {
+  .masonry-grid {
+    grid-template-columns: repeat({{ $colMd }}, 1fr);
+  }
+}
+@media (min-width: {{ $bpLgPlus }}) and (max-width: {{ $bpXl }}) {
+  .masonry-grid {
+    grid-template-columns: repeat({{ $colLg }}, 1fr);
+  }
+}
+@media (min-width: {{ $bpXlPlus }}) {
+  .masonry-grid {
+    grid-template-columns: repeat({{ $colXl }}, 1fr);
+  }
+}
+
+/* Sidebar layout masonry: sidebar takes one column, reduce content columns */
+@media (max-width: {{ $bpMd }}) {
+  .sidebar-layout .section-content .masonry-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+@media (min-width: {{ $bpMdPlus }}) and (max-width: {{ $bpLg }}) {
+  .sidebar-layout .section-content .masonry-grid {
+    grid-template-columns: repeat({{ sub $colMd 1 }}, 1fr);
+  }
+}
+@media (min-width: {{ $bpLgPlus }}) and (max-width: {{ $bpXl }}) {
+  .sidebar-layout .section-content .masonry-grid {
+    grid-template-columns: repeat({{ sub $colLg 1 }}, 1fr);
+  }
+}
+@media (min-width: {{ $bpXlPlus }}) {
+  .sidebar-layout .section-content .masonry-grid {
+    grid-template-columns: repeat({{ sub $colXl 1 }}, 1fr);
+  }
+}
+
+/* Sidebar width responsive */
+@media (min-width: {{ $bpSmPlus }}) and (max-width: {{ $bpMd }}) {
+  .sidebar-layout {
+    grid-template-columns: var(--sidebar-width-narrow) 1fr;
+    gap: 1rem;
+  }
+  .section-sidebar {
+    font-size: 0.875rem;
+  }
+  .sidebar-title {
+    font-size: 1rem;
+  }
+  .section-nav a {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+}
+@media (max-width: {{ $bpSm }}) {
+  .sidebar-layout {
+    display: block;
+  }
+  .section-sidebar {
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+}
+</style>

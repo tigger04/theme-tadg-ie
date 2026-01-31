@@ -88,6 +88,7 @@ themes/tadg_ie/
 │   ├── artwork/
 │   │   └── single.html        # Individual gallery page
 │   ├── partials/
+│   │   ├── grid-config.html   # Responsive grid CSS from params (Issue #17)
 │   │   ├── masonry-grid.html  # Shared masonry grid component
 │   │   ├── list-view.html     # Simple list layout
 │   │   ├── gallery-section.html # Gallery grid layout
@@ -227,7 +228,7 @@ The masonry grid (`layouts/partials/masonry-grid.html`) is the core component fo
 
 ### Responsive Breakpoints
 
-Breakpoints are defined in `em` units (relative to browser font size):
+Breakpoints and column counts are configurable via `params.grid` in `hugo.yaml` (see [Grid Configuration](#grid-configuration)). Defaults shown below:
 
 | Viewport | Columns | With Sidebar |
 |----------|---------|--------------|
@@ -238,6 +239,8 @@ Breakpoints are defined in `em` units (relative to browser font size):
 | ≥ 80em   | 5       | 4 + sidebar = 5 total |
 
 **Constraint:** Min 2, max 5 columns total (including sidebar when present).
+
+Per-section overrides are supported via `grid` frontmatter in `_index.md` files. Page-level values override site-level defaults.
 
 ### Card Styles
 
@@ -786,6 +789,45 @@ With `limit="3"`:
 
 ## Configuration Options
 
+### Grid Configuration
+
+The responsive grid is configurable via `params.grid` in `hugo.yaml`. All breakpoints use `em` units (WCAG 2.1 compliant — adapts to browser font size preferences). CSS media queries and JavaScript masonry both read from this single configuration source.
+
+```yaml
+params:
+  grid:
+    contentMaxWidth: 100rem       # max content area width
+    sidebarWidth: 15rem           # sidebar column width at desktop
+    sidebarWidthNarrow: 12rem     # sidebar column width at tablet
+    gap: 1.5rem                   # grid gap between items
+    breakpoints:
+      sm: 30em                    # small / mobile
+      md: 48em                    # medium / tablet
+      lg: 64em                    # large / desktop
+      xl: 80em                    # extra large / wide desktop
+    columns:
+      sm: 2                       # columns at small breakpoint
+      md: 3                       # columns at medium breakpoint
+      lg: 4                       # columns at large breakpoint
+      xl: 5                       # columns at extra large breakpoint
+```
+
+All values above are the defaults. Omitting `params.grid` entirely produces identical behaviour.
+
+**Per-section overrides:** Add a `grid` block to any section's `_index.md` frontmatter. Page-level values override site-level defaults:
+
+```yaml
+# content/photography/_index.md
+---
+title: Photography
+grid:
+  columns:
+    xl: 6   # more columns for small thumbnails
+---
+```
+
+**Implementation:** The `grid-config.html` partial generates a `<style>` block with CSS media queries and sets CSS custom properties (`--content-max-width`, `--sidebar-width`, `--grid-gap`). It also writes a `data-grid-config` JSON attribute on `<body>` that `masonry-init.js` reads for JavaScript layout calculations.
+
 ### `hugo.yaml` Settings
 
 ```yaml
@@ -1012,7 +1054,10 @@ sort_order: desc
   --border-color: #ddd;
   --accent-color: hsl(27, 100%, 35%);
   --link-color: #007acc;
-  --content-max-width: 1600px;
+  --content-max-width: 100rem;    /* configurable via params.grid */
+  --sidebar-width: 15rem;         /* configurable via params.grid */
+  --sidebar-width-narrow: 12rem;  /* configurable via params.grid */
+  --grid-gap: 1.5rem;             /* configurable via params.grid */
 }
 ```
 
@@ -1097,6 +1142,26 @@ Pin  File
 ```
 This must be run from the root of a Hugo project or its content directory.
 ```
+
+### `scripts/org-play-to-shortcodes.pl`
+
+Converts orgmode play scripts to use Hugo shortcodes for dialogue and stage directions. Modifies files in-place, so commit changes first.
+
+**Conversions:**
+- `*** Stage direction` → `{{< direction >}}Stage direction{{< /direction >}}`
+- `**** CHARACTER text` → `{{< dialogue "CHARACTER" >}}text{{< /dialogue >}}`
+- `**** CHARACTER direction` → `{{< dialogue "CHARACTER" "direction" >}}text{{< /dialogue >}}`
+
+All other content (frontmatter, `*` and `**` headers, bullet points, regular text) is preserved unchanged.
+
+```bash
+$ themes/tadg_ie/scripts/org-play-to-shortcodes.pl content/plays/myplay/index.org
+Converted to shortcodes: content/plays/myplay/index.org
+```
+
+**Requirements:** Perl 5 with standard modules (utf8, strict, warnings).
+
+**Usage:** Run from anywhere, passing the path to your orgmode play file. Use `--help` for full documentation.
 
 ---
 

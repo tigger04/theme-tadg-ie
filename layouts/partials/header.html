@@ -104,6 +104,9 @@
 		</script>
 	{{- end -}}
 
+	<!-- Issue #17: Configurable responsive grid CSS -->
+	{{- partial "grid-config.html" . -}}
+
 	<!-- Custom CSS style get applied last -->
 	{{- if isset .Site.Params "customcss" }}
 		{{ range .Site.Params.customCSS }}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     {{- partial "header.html" . -}}
-    <body{{ if eq .Params.layout "columns" }} class="columns-page"{{ end }}>
+    <body{{ if eq .Params.layout "columns" }} class="columns-page"{{ end }} data-grid-config='{{ .Scratch.Get "gridConfig" }}'>
         <div class="content">
         {{- partial "head.html" . -}}
         {{- block "main" . }}{{- end }}
