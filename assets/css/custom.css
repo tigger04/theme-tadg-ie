@@ -1851,6 +1851,41 @@ main.list .content {
   line-height: 1.6;
 }
 
+/* Issue #16: Dialogue shortcode */
+.dialogue {
+  margin: 0.75rem 0;
+  padding-left: 2rem;
+}
+
+.dialogue-name {
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 1.05em;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.1rem 0;
+}
+
+.dialogue-parenthetical {
+  font-variant: normal;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 0.9em;
+  letter-spacing: normal;
+}
+
+.dialogue-text {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Issue #16: Stage direction shortcode */
+.stage-direction {
+  font-style: italic;
+  margin: 0.75rem 0;
+  padding-left: 1rem;
+  color: var(--color-secondary);
+}
+
 /* Snips cards: compact */
 .masonry-snips .masonry-content {
   padding: 1rem;

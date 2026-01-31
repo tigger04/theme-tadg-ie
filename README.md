@@ -24,7 +24,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 - **Section-specific card styles** for each content type
 - **Responsive design** with em-based breakpoints (WCAG 2.1 compliant)
 - **Pagination** with per-section override
-- **9 custom shortcodes** (callout, contactform, details, popquote, poem, video, formspree, rawhtml, section-list)
+- **11 custom shortcodes** (callout, contactform, details, dialogue, direction, popquote, poem, video, formspree, rawhtml, section-list)
 - **Flexible sidebar** with content, shortcodes, or section navigation
 - **Dark mode support** with system preference detection
 
@@ -68,7 +68,8 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 12. [Frontmatter Reference](#frontmatter-reference)
 13. [CSS Customization](#css-customization)
 14. [JavaScript Components](#javascript-components)
-15. [Troubleshooting](#troubleshooting)
+15. [Scripts](#scripts)
+16. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -99,6 +100,8 @@ themes/tadg_ie/
 │       ├── custom.css         # Theme customizations
 │       ├── fonts.css          # Font definitions
 │       └── lightbox.css       # Lightbox styling
+├── scripts/
+│   └── pins.pl               # List pinned content
 └── static/
     └── js/
         ├── masonry-init.js    # Masonry layout
@@ -495,7 +498,7 @@ resources:
 
 ### `{{< callout >}}`
 
-Styled alert/callout boxes.
+Styled alert/callout boxes with colour-coded types.
 
 ```markdown
 {{< callout type="tip" text="This is a helpful tip!" >}}
@@ -506,9 +509,33 @@ Styled alert/callout boxes.
 
 **Types:** `tip`, `alert`, `warning`, `custom`
 
+**Rendered output:**
+
+```
+┌──────────────────────────────────────┐
+│ Tip                                  │
+│ This is a helpful tip!               │  (green background)
+└──────────────────────────────────────┘
+
+┌──────────────────────────────────────┐
+│ Alert                                │
+│ Important alert message              │  (red background)
+└──────────────────────────────────────┘
+
+┌──────────────────────────────────────┐
+│ Warning                              │
+│ Warning message                      │  (yellow background)
+└──────────────────────────────────────┘
+
+┌──────────────────────────────────────┐
+│ Custom Title                         │
+│ Custom message                       │  (custom style)
+└──────────────────────────────────────┘
+```
+
 ### `{{< details >}}`
 
-Collapsible content block.
+Collapsible content block with a styled summary line. Closed state shows an ellipsis hint; open state reveals the full content.
 
 ```markdown
 {{< details "Click to expand" >}}
@@ -517,9 +544,72 @@ Can include **markdown**.
 {{< /details >}}
 ```
 
+**Rendered output (closed):**
+
+```
+▸ Click to expand ···
+```
+
+**Rendered output (open):**
+
+```
+▾ Click to expand
+┃ Hidden content goes here.
+┃ Can include markdown.
+```
+
+### `{{< dialogue >}}`
+
+Character speech for plays and screenplays. Character name renders in small caps with optional parenthetical (delivery direction) in italics.
+
+Supports both positional and named parameters:
+
+```markdown
+{{< dialogue "TOM" "pleading" >}}Please don't shake off the water!{{< /dialogue >}}
+{{< dialogue "ALISON" >}}You've waited since yesterday, Tom.{{< /dialogue >}}
+{{< dialogue name="BAYANI" parenthetical="chuckling" >}}Oh is that all?{{< /dialogue >}}
+```
+
+**Parameters:**
+- First positional or `name` — character name (required)
+- Second positional or `parenthetical` — delivery direction (optional)
+
+**Rendered output:**
+
+```
+  ᴛᴏᴍ (pleading)
+  Please don't shake off the water!
+
+  ᴀʟɪꜱᴏɴ
+  You've waited since yesterday, Tom.
+
+  ʙᴀʏᴀɴɪ (chuckling)
+  Oh is that all?
+```
+
+### `{{< direction >}}`
+
+Stage directions for plays. Renders in italics with secondary accent colour.
+
+```markdown
+{{< direction >}}A bare stage. Single chair centre. TOM enters.{{< /direction >}}
+{{< direction >}}Pause.{{< /direction >}}
+{{< direction >}}Lights fade.{{< /direction >}}
+```
+
+**Rendered output:**
+
+```
+  A bare stage. Single chair centre. TOM enters.
+  Pause.
+  Lights fade.
+```
+
+(Italic text in the theme's secondary colour — orange in light mode, bright orange in dark mode.)
+
 ### `{{< popquote >}}`
 
-Expandable quote with styled summary.
+Expandable quote with styled summary. Uses the same collapsible styling as `details`.
 
 ```markdown
 {{< popquote "Opening line..." >}}
@@ -528,9 +618,23 @@ Multiple paragraphs supported.
 {{< /popquote >}}
 ```
 
+**Rendered output (closed):**
+
+```
+▸ Opening line... ···
+```
+
+**Rendered output (open):**
+
+```
+▾ Opening line...
+┃ Full quote content here.
+┃ Multiple paragraphs supported.
+```
+
 ### `{{< poem >}}`
 
-Poetry formatting with preserved line breaks.
+Poetry formatting with preserved line breaks. Newlines in the source are converted to `<br />` tags so verse structure is maintained.
 
 ```markdown
 {{< poem >}}
@@ -541,12 +645,34 @@ Line breaks for you.
 {{< /poem >}}
 ```
 
+**Rendered output:**
+
+```
+Roses are red,
+Violets are blue,
+This preserves
+Line breaks for you.
+```
+
+(Line breaks preserved exactly as written — no paragraph collapsing.)
+
 ### `{{< video >}}`
 
-Embed local video files.
+Embed local video files with native HTML5 player controls.
 
 ```markdown
 {{< video "/videos/my-video.mp4" >}}
+```
+
+**Rendered output:**
+
+```
+┌──────────────────────────────────────┐
+│                                      │
+│           ▶  Video Player            │
+│                                      │
+│  ▶ advancement ━━━━━━━━━━ 🔊 ⛶     │
+└──────────────────────────────────────┘
 ```
 
 ### `{{< contactform >}}`
@@ -558,6 +684,24 @@ Self-hosted contact form with Cloudflare Turnstile CAPTCHA, Worker backend, and 
 {{< contactform newsletter="true" >}}
 ```
 
+**Rendered output:**
+
+```
+┌──────────────────────────────────────┐
+│  Email:    [__________________________]│
+│  Name:     [__________________________]│
+│  Message:  [__________________________]│
+│            [__________________________]│
+│            [__________________________]│
+│  ☐ Subscribe to newsletter           │
+│                                      │
+│  [Turnstile CAPTCHA widget]          │
+│                          [ Send → ]  │
+└──────────────────────────────────────┘
+```
+
+(Newsletter checkbox only appears with `newsletter="true"`.)
+
 Requires Cloudflare Worker deployment and Hugo configuration. See [docs/contactform.md](docs/contactform.md) for full setup guide.
 
 ### `{{< formspree >}}`
@@ -568,9 +712,21 @@ Embed a Formspree contact form (simpler alternative to `contactform` — no CAPT
 {{< formspree id="your-formspree-id" >}}
 ```
 
+**Rendered output:**
+
+```
+┌──────────────────────────────────────┐
+│  Email:    [__________________________]│
+│  Name:     [__________________________]│
+│  ☐ Newsletter                        │
+│  Message:  [__________________________]│
+│                          [ Send → ]  │
+└──────────────────────────────────────┘
+```
+
 ### `{{< rawhtml >}}`
 
-Pass through raw HTML without processing.
+Pass through raw HTML without markdown processing. Use for embedding widgets, iframes, or any HTML that Hugo's markdown renderer would alter.
 
 ```markdown
 {{< rawhtml >}}
@@ -580,19 +736,43 @@ Pass through raw HTML without processing.
 {{< /rawhtml >}}
 ```
 
+**Rendered output:** The HTML is passed through verbatim — whatever you write is what appears in the page source.
+
 ### `{{< section-list >}}`
 
-Renders a navigation list of site sections. Behaviour is consistent on any page (homepage, section pages, single pages).
+Renders a navigation list of site sections with chevron icons. Behaviour is consistent on any page (homepage, section pages, single pages).
 
 ```markdown
 {{< section-list >}}
+{{< section-list sections="blog,gallery" >}}
+{{< section-list limit="3" >}}
 ```
 
 **Parameters:**
-- `sections` - Comma-separated list of sections (defaults to `site.Params.mainSections`)
-- `limit` - Show this many items per section (optional, shows section links only if omitted)
+- `sections` — comma-separated list of sections (defaults to `site.Params.mainSections`)
+- `limit` — show this many items per section (optional; omit for section links only)
 
-**Examples:**
+**Rendered output:**
+
+```
+  › Poetry
+  › Artwork
+  › Blog
+  › Stories
+```
+
+With `limit="3"`:
+
+```
+  › Poetry
+      Recent poem title one
+      Recent poem title two
+      Recent poem title three
+  › Blog
+      Recent blog post one
+      Recent blog post two
+      Recent blog post three
+```
 
 | Usage | Shows |
 |-------|-------|
@@ -885,6 +1065,36 @@ window.masonryInit();    // Full re-initialization
 ### Burger Menu (`static/js/burger-menu.js`)
 
 Mobile navigation toggle.
+
+---
+
+## Scripts
+
+Utility scripts live in `scripts/`. Run them from the root of your Hugo project.
+
+### `scripts/pins.pl`
+
+Lists all content files with a `pin:` value in their frontmatter, sorted numerically. Useful for reviewing pin assignments before reordering or adding new ones.
+
+```bash
+$ themes/tadg_ie/scripts/pins.pl
+Pin  File
+---  ------------------------------------------------
+100  blog/2026-01-29-dark-optimism-ai/index.org
+200  artwork/remy/_index.org
+300  poetry/secrets/quadriplegia/index.md
+400  poetry/secrets/what-the-tide-brought-in/index.md
+
+4 pinned item(s)
+```
+
+**Requirements:** Perl 5 (standard on macOS and Linux).
+
+**Detection:** The script checks for a Hugo config file (`hugo.yaml`, `hugo.toml`, `config.yaml`, etc.) in the current directory. It also works from within the `content/` tree. Running it elsewhere produces an error:
+
+```
+This must be run from the root of a Hugo project or its content directory.
+```
 
 ---
 

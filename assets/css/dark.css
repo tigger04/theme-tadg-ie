@@ -207,4 +207,9 @@ details.styled-details:not([open]) > summary::after {
   color: var(--color-secondary);
 }
 
+/* Issue #16: Stage direction in dark mode - use brighter secondary for visibility */
+.stage-direction {
+  color: var(--color-secondary);
+}
+
 /* Read more chevron icon - single icon for all modes, no toggling needed */
