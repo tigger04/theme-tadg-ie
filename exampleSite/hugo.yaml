@@ -1,0 +1,83 @@
+# ABOUTME: Hugo configuration for the tadg_ie theme example site
+# ABOUTME: Demonstrates all major theme features with fictional content
+
+baseURL: https://example.com/
+languageCode: en
+title: "The Wanderer's Notebook"
+theme: tadg_ie
+copyright: "Example Site — MIT License"
+
+pagination:
+  pagerSize: 12
+
+imaging:
+  quality: 85
+  resampleFilter: "CatmullRom"
+  exif:
+    disableDate: false
+    disableLatLong: true
+
+params:
+  bgImage:
+    opacity: 0.2
+    blur: 5px
+
+  readMore:
+    type: icon
+    value: icons/chevron-right-duo-thick.svg
+
+  mode: auto
+
+  mainSections:
+    - recipes
+    - journal
+    - photography
+    - stories
+
+  useCDN: false
+
+  customcss:
+    - css/custom.css
+    - css/fonts.css
+    - css/lightbox.css
+
+  customJS:
+    - js/burger-menu.js
+    - js/lightbox.js
+
+  social:
+    - name: GitHub
+      icon: github
+      url: https://github.com/tigger04/theme-tadg-ie
+
+  subtitle: "A demo site for the tadg_ie Hugo theme"
+
+menu:
+  main:
+    - name: Recipes
+      url: /recipes/
+      weight: 10
+    - name: Journal
+      url: /journal/
+      weight: 20
+    - name: Photography
+      url: /photography/
+      weight: 30
+    - name: Stories
+      url: /stories/
+      weight: 40
+    - name: Tags
+      url: /tags/
+      weight: 50
+
+taxonomies:
+  tag: tags
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    style: monokai
