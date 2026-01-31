@@ -496,6 +496,8 @@ resources:
 
 ## Shortcodes
 
+> **Detailed reference with visual examples:** See [docs/shortcodes.md](docs/shortcodes.md) for the full shortcode reference including parameter tables and screenshot placeholders.
+
 ### `{{< callout >}}`
 
 Styled alert/callout boxes with colour-coded types.
