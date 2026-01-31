@@ -1,20 +1,37 @@
+{{/* ABOUTME: Renders a tag cloud with frequency-based font sizing */}}
+{{/* ABOUTME: Font size scales from 1rem to 3rem based on tag count */}}
 {{ define "main" }}
 <h1 class="page-title">All tags</h1>
 
+{{ $max := 3.0 }}
+{{ $min := 1.0 }}
+
+{{/* Compute actual biggest and smallest counts from tag data */}}
 {{ $biggest := 1 }}
 {{ $smallest := 1 }}
-{{ $max := 3 }}
-{{ $min := 1 }}
-{{ $size := $min }}
+{{ range $i, $term := .Data.Terms.ByCount }}
+  {{ if eq $i 0 }}
+    {{ $biggest = $term.Count }}
+    {{ $smallest = $term.Count }}
+  {{ end }}
+  {{ if gt $term.Count $biggest }}
+    {{ $biggest = $term.Count }}
+  {{ end }}
+  {{ if lt $term.Count $smallest }}
+    {{ $smallest = $term.Count }}
+  {{ end }}
+{{ end }}
 
 {{ $data := .Data }}
 <div class="tag-cloud">
-	<ul class="tags">
-		{{ range $key, $value := .Data.Terms.ByCount }}
-		{{ $size := (add (mul (div $value.Count $biggest) (sub $max $min)) $min) }}
-		{{ $size := (cond (eq $biggest $smallest) $min $size) }}
-		<li><a style="font-size: {{ $size }}rem;" href="{{ $.Site.LanguagePrefix | absURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}/">{{ $value.Name }} ({{ $value.Count }})</a></li>
-		{{ end }}
-	</ul>
+  <ul class="tags">
+    {{ range $key, $value := .Data.Terms.ByCount }}
+    {{ $size := $min }}
+    {{ if ne $biggest $smallest }}
+      {{ $size = (add (mul (div (sub (float $value.Count) (float $smallest)) (sub (float $biggest) (float $smallest))) (sub $max $min)) $min) }}
+    {{ end }}
+    <li><a style="font-size: {{ $size }}rem;" href="{{ $.Site.LanguagePrefix | absURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}/">{{ $value.Name }} ({{ $value.Count }})</a></li>
+    {{ end }}
+  </ul>
 </div>
 {{ end }}
