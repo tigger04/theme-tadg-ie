@@ -1971,7 +1971,8 @@ main.list .masonry-grid {
 
 /* Issue #62: Unified sidebar navigation styles */
 .sidebar-nav {
-  font-size: 1.2em;
+  font-size: 0.9375rem;
+  font-family: 'IosevkaQuasiProportional', sans-serif;
 }
 
 .sidebar-nav ul {
