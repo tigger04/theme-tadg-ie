@@ -2041,6 +2041,7 @@ main.list .masonry-grid {
 
 .sidebar-title {
   margin: 0 0 1rem 0;
+  font-family: "Special Elite", monospace;
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-color);
