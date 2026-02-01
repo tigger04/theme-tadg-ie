@@ -1,7 +1,7 @@
-{{ $content := .Inner }}
-{{ $content = trim $content "\n" }}
-{{ $content = strings.TrimSpace $content }}
-{{ $content = strings.TrimPrefix "<br />" $content }}
-{{ $content = strings.TrimSuffix "<br />" $content }}
-{{ $content = replace $content "\n" "<br />" }}
+{{- $content := .Inner -}}
+{{- $content = trim $content "\n" -}}
+{{- $content = replace $content " " "&nbsp;" -}}
+{{- $content = replace $content "\n" "<br />" -}}
+<div class="poem">
 {{ $content | safeHTML }}
+</div>
