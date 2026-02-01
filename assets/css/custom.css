@@ -275,6 +275,22 @@ header .main a:hover {
   flex: 1 1 50%;
 }
 
+/* Issue #111: Stack columns layout on mobile — image above text */
+@media screen and (max-width: 48em) {
+  .post-featured-columns {
+    flex-direction: column;
+  }
+
+  .featured-image-col,
+  .featured-text-col {
+    flex: 1 1 100%;
+  }
+
+  .featured-image-col {
+    order: -1;
+  }
+}
+
 /* Ensure post footer is outside columns and full width */
 .columns-layout .post-footer {
   width: 100%;
