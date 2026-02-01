@@ -8,7 +8,7 @@ This document describes the font stack used in the tadg_ie theme.
 |------|---------|-----------|
 | **IosevkaCustom Extended** | Body text, paragraphs, image captions | `p`, `.image-caption` |
 | **IosevkaCustom** | Base UI, code blocks, callouts | `html`, `.callout p`, code elements |
-| **Special Elite** | Navigation, buttons, logos, UI elements | `nav`, `.read-more-btn`, `.site-logo-text` |
+| **Special Elite** | Headings, navigation, buttons, logos, UI elements | `h1`-`h6`, `nav`, `.read-more-btn`, `.site-logo-text` |
 | **EB Garamond** | Poetry/verse content | `.verse`, `.masonry-poetry` |
 
 ## Font Files
@@ -33,9 +33,9 @@ Standard width for code and monospace contexts.
 - `IosevkaCustom-Bold.woff2` (700 normal)
 - `IosevkaCustom-BoldItalic.woff2` (700 italic)
 
-### Special Elite (UI Elements)
+### Special Elite (Headings & UI Elements)
 
-Single-weight typewriter-style font for UI elements.
+Single-weight typewriter-style font for all headings (h1-h6) and UI elements.
 
 - `SpecialElite-Regular.woff2`
 - Note: "Fake" bold/italic variants map to the same file
@@ -53,6 +53,7 @@ The font stack cascades through three CSS files:
 
 1. **main.css** - Base font definitions
    - `html`: IosevkaCustom (base UI font)
+   - `h1`-`h6`: Special Elite (all headings)
    - `p`: IosevkaCustom Extended (body text)
    - `.callout p`: IosevkaCustom (code style in callouts)
 
