@@ -5,7 +5,7 @@
     {{ if eq .Params.layout "banner" }}
     {{ if .Params.image.src }}
     <div class="post-banner soft-edge{{ if .Params.image.dark }} dark-banner{{ end }}">
-      <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge">
+      <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
       <div class="banner-overlay soft-edge"></div>
       <div class="title">
         <h1>{{ .Title }}</h1>
