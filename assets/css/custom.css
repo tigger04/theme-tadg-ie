@@ -2545,6 +2545,111 @@ main.list .masonry-grid {
   text-transform: capitalize;
 }
 
+/* ================================================
+   Inline Image Shortcode (Issue #114)
+   ================================================ */
+
+/* Base: reset figure defaults from main.css */
+figure.inline-image {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  max-inline-size: 100%;
+}
+
+figure.inline-image img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  max-block-size: none;
+  display: block;
+}
+
+/* Float right (default) */
+.inline-image-right {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  margin-inline-start: 1.5rem;
+  margin-block-end: 1rem;
+}
+
+/* Float left */
+.inline-image-left {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+  margin-inline-end: 1.5rem;
+  margin-block-end: 1rem;
+}
+
+/* Center (no float) */
+.inline-image-center {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  margin-inline: auto;
+  margin-block-end: 1rem;
+  max-width: 80%;
+  max-inline-size: 80%;
+}
+
+/* Default caption: clean text below image */
+.inline-image-caption {
+  font-family: 'IosevkaQuasiProportional Condensed', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0.5rem 0;
+  margin: 0;
+}
+
+/* Optional blur effect caption — overlaid on image bottom */
+.inline-image-caption-blur {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0;
+  right: 0;
+  color: var(--caption-text);
+  text-shadow: 1px 1px 2px var(--caption-shadow);
+  background: rgba(0, 0, 0, var(--inline-caption-opacity, 0.45));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/* Blur caption needs relative positioning on figure */
+figure.inline-image:has(.inline-image-caption-blur) {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Responsive: full-width on mobile, no float */
+@media screen and (max-width: 48em) {
+  .inline-image-left,
+  .inline-image-right {
+    float: none;
+    width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+    margin-inline: 0;
+    margin-bottom: 1rem;
+    margin-block-end: 1rem;
+  }
+}
+
+/* Override main.css figure padding for inline images */
+@media screen and (min-width: 37.5em) {
+  figure.inline-image {
+    padding-left: 0;
+    padding-right: 0;
+    padding-inline: 0;
+  }
+}
+
 /* Issue #102: Tag cloud layout */
 .tag-cloud {
   max-width: 50rem;

@@ -1,0 +1,30 @@
+{{- /* ABOUTME: Inline image shortcode for embedding images within article text. */}}
+{{- /* ABOUTME: Supports float left/right/center with caption, alt text, and optional blur/opacity effects. */}}
+{{- /* Usage: {{< img src="photo.jpg" alt="Description" caption="Caption text" position="right" >}} */}}
+{{- /* Optional: width="40%" blur="true" opacity="0.6" */}}
+
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $position := .Get "position" | default "right" -}}
+{{- $width := .Get "width" | default "40%" -}}
+{{- $blur := .Get "blur" | default "false" -}}
+{{- $opacity := .Get "opacity" | default "" -}}
+
+{{- /* Resolve the image from page resources */ -}}
+{{- $image := .Page.Resources.GetMatch $src -}}
+
+{{- if $image -}}
+<figure class="inline-image inline-image-{{ $position }}"{{ if ne $position "center" }} style="width: {{ $width }};"{{ end }}>
+  <img src="{{ $image.RelPermalink }}"
+       alt="{{ $alt }}"
+       loading="lazy">
+  {{- if $caption -}}
+  <figcaption class="inline-image-caption{{ if eq $blur "true" }} inline-image-caption-blur{{ end }}"{{ if $opacity }} style="--inline-caption-opacity: {{ $opacity }};"{{ end }}>
+    {{- $caption -}}
+  </figcaption>
+  {{- end -}}
+</figure>
+{{- else -}}
+<!-- img shortcode: image "{{ $src }}" not found in page resources -->
+{{- end -}}
