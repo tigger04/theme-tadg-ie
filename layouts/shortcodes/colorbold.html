@@ -1,0 +1,5 @@
+{{/* ABOUTME: Inline shortcode that renders text in the secondary accent color, bold, and underlined by default. */}}
+{{/* Usage: {{< colorbold "words" >}} or {{< colorbold text="words" underlined=false >}} */}}
+{{- $underlined := true -}}
+{{- if eq (.Get "underlined") "false" -}}{{- $underlined = false -}}{{- end -}}
+<span class="colorbold{{ if $underlined }} colorbold-underlined{{ end }}">{{ with .Get "text" }}{{ . }}{{ else }}{{ .Get 0 }}{{ end }}</span>

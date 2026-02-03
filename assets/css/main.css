@@ -139,10 +139,10 @@ a {
   /* Remove border-based underline */
   border-bottom: none;
   border-block-end: none;
-  /* Solid underline with secondary accent (orange) */
+  /* Issue #116: purple underline to avoid resemblance to spellcheck squiggles */
   text-decoration: underline;
   text-decoration-style: solid;
-  text-decoration-color: var(--color-secondary);
+  text-decoration-color: #be8acf;
   text-decoration-thickness: 0.2em;
   text-underline-offset: 3px;
   color: inherit;

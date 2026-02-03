@@ -24,7 +24,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 - **Section-specific card styles** for each content type
 - **Responsive design** with em-based breakpoints (WCAG 2.1 compliant)
 - **Pagination** with per-section override
-- **11 custom shortcodes** (callout, contactform, details, dialogue, direction, popquote, poem, video, formspree, rawhtml, section-list)
+- **13 custom shortcodes** (callout, colorbold, contactform, details, dialogue, direction, formspree, gallery, poem, popquote, rawhtml, section-list, video)
 - **Flexible sidebar** with content, shortcodes, or section navigation
 - **Dark mode support** with system preference detection
 

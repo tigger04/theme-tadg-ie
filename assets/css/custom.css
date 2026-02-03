@@ -35,7 +35,7 @@
   --overlay-light: rgba(255, 255, 255, 0.2);
   --overlay-dark: rgba(0, 0, 0, 0.2);
   --overlay-strong: rgba(0, 0, 0, 0.4);
-  --caption-bg: rgba(0, 0, 0, 0.45);
+  --caption-bg: rgba(0, 0, 0, 0.3);
   --caption-text: rgba(255, 255, 255, 1);
   --content-max-width: 100rem;
   --caption-shadow: rgba(0, 0, 0, 0.6);
@@ -621,6 +621,7 @@ body,
   margin-top: 8px;
   font-style: normal;
   font-family: 'IosevkaQuasiProportional Condensed', sans-serif;
+  font-stretch: 150%;
 }
 
 /* Banner image caption - positioned in bottom-right corner */
@@ -775,11 +776,12 @@ body,
   display: block;
 }
 
-/* Preserve line breaks in verse blocks - more specific targeting */
+/* Issue #117: Preserve line breaks in verse blocks - more specific targeting */
 .verse,
 div.verse,
 .org-verse,
-pre.verse {
+pre.verse,
+.verse-block {
   white-space: pre-line !important;
   font-family: "EB Garamond", serif;
   background: none;
@@ -790,13 +792,41 @@ pre.verse {
   display: block;
 }
 
-/* Also target any div that contains verse content */
-.post-content .verse {
-  white-space: pre-line !important;
+/* Issue #117: Hugo's org-mode processor wraps stanzas in <p> tags inside
+   .verse-block. Set pre-line on <p> only (not the container) to avoid
+   rendering inter-element whitespace as extra blank lines between stanzas.
+   The leading newline inside each <p> provides exactly one blank line. */
+.verse-block {
+  white-space: normal !important;
 }
 
-/* Fallback for all divs with verse class */
-div[class*="verse"] {
+.verse-block p {
+  white-space: pre-line;
+  margin: 0;
+  margin-block: 0;
+}
+
+/* Colorbold shortcode: inline text in secondary accent color, bold */
+.colorbold {
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+.colorbold-underlined {
+  text-decoration: underline;
+  text-decoration-color: var(--color-secondary);
+  text-decoration-thickness: 0.25em;
+  text-underline-offset: 0.15em;
+}
+
+/* Issue #117: Thicker underline for org-mode emphasis (_text_) in content */
+.post-content span[style*="underline"] {
+  text-decoration-thickness: 0.25em;
+  text-underline-offset: 0.15em;
+}
+
+/* Also target any div that contains verse content */
+.post-content .verse {
   white-space: pre-line !important;
 }
 

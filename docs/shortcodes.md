@@ -1,21 +1,22 @@
 # Shortcodes Reference
 
-The tadg_ie theme provides 11 custom shortcodes for varied content types.
+The tadg_ie theme provides 13 custom shortcodes for varied content types.
 
 ## Table of Contents
 
 1. [callout](#callout) — Styled alert/notice boxes
-2. [details](#details) — Collapsible content
-3. [dialogue](#dialogue) — Character speech for plays
-4. [direction](#direction) — Stage directions
-5. [popquote](#popquote) — Expandable quotes
-6. [poem](#poem) — Poetry with preserved line breaks
-7. [video](#video) — HTML5 video player
-8. [contactform](#contactform) — Self-hosted contact form with CAPTCHA
-9. [formspree](#formspree) — Formspree-backed contact form
-10. [rawhtml](#rawhtml) — Raw HTML pass-through
-11. [section-list](#section-list) — Section navigation list
-12. [gallery](#gallery) — Image gallery with lightbox
+2. [colorbold](#colorbold) — Inline accent-coloured bold text
+3. [details](#details) — Collapsible content
+4. [dialogue](#dialogue) — Character speech for plays
+5. [direction](#direction) — Stage directions
+6. [popquote](#popquote) — Expandable quotes
+7. [poem](#poem) — Poetry with preserved line breaks
+8. [video](#video) — HTML5 video player
+9. [contactform](#contactform) — Self-hosted contact form with CAPTCHA
+10. [formspree](#formspree) — Formspree-backed contact form
+11. [rawhtml](#rawhtml) — Raw HTML pass-through
+12. [section-list](#section-list) — Section navigation list
+13. [gallery](#gallery) — Image gallery with lightbox
 
 ---
 
@@ -47,6 +48,31 @@ Styled alert/callout boxes with colour-coded types.
 <!-- screenshot: callout-alert — alert callout in light mode -->
 <!-- screenshot: callout-warning — warning callout in light mode -->
 <!-- screenshot: callout-custom — custom callout with title and style -->
+
+---
+
+## colorbold
+
+Inline text rendered in the secondary accent colour (`--color-secondary`) and bold. Underlined by default. Designed for emphasis within a sentence.
+
+### Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| First positional or `text` | Yes | Text to display |
+| `underlined` | No | Set to `"false"` to remove underline (default: `true`) |
+
+### Usage
+
+```markdown
+Are these only {{< colorbold "words" >}} I'm meant to frame?
+This has {{< colorbold text="no underline" underlined=false >}} here.
+```
+
+### Visual Examples
+
+<!-- screenshot: colorbold — inline colorbold with underline -->
+<!-- screenshot: colorbold-no-underline — inline colorbold without underline -->
 
 ---
 
