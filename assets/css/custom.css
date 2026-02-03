@@ -2553,6 +2553,7 @@ main.list .masonry-grid {
 figure.inline-image {
   display: block;
   margin: 0;
+  margin-block: 1rem;
   padding: 0;
   max-width: 100%;
   max-inline-size: 100%;
