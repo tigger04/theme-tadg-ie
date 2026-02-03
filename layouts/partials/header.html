@@ -10,12 +10,19 @@
 	{{- end -}}
 
 	{{- if isset .Site.Params "favicon" -}}
-	<link rel="icon" type="image/png" href={{ .Site.Params.favicon }} />
+	{{- $favicon := .Site.Params.favicon -}}
+	{{- $iconType := "image/png" -}}
+	{{- if hasSuffix $favicon ".svg" -}}{{- $iconType = "image/svg+xml" -}}
+	{{- else if hasSuffix $favicon ".ico" -}}{{- $iconType = "image/x-icon" -}}
+	{{- end -}}
+	<link rel="icon" type="{{ $iconType }}" href="{{ $favicon }}" />
 	{{- end -}}
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
-	<meta property="og:image" content="{{ .Site.Params.og_image }}"/>
+	{{- $ogImage := .Site.Params.og_image -}}
+	{{- with .Params.image -}}{{- with .src -}}{{- $ogImage = . -}}{{- end -}}{{- end -}}
+	<meta property="og:image" content="{{ $ogImage | absURL }}"/>
 	{{ with .OutputFormats.Get "rss" -}}
 	{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
