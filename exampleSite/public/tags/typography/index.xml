@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Typography on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/typography/</link>
+    <description>Recent content in Typography on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Tue, 01 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/typography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typography in the tadg_ie Theme</title>
+      <link>https://example.com/journal/typography-guide/</link>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/typography-guide/</guid>
+      <description>&lt;p&gt;This post demonstrates how standard Markdown typography renders in the tadg_ie theme. Use it as a reference when writing content.&lt;/p&gt;&#xA;&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;&#xA;&lt;p&gt;Headings from H2 to H6 are available. H1 is reserved for the page title.&lt;/p&gt;&#xA;&lt;h3 id=&#34;third-level&#34;&gt;Third Level&lt;/h3&gt;&#xA;&lt;h4 id=&#34;fourth-level&#34;&gt;Fourth Level&lt;/h4&gt;&#xA;&lt;h5 id=&#34;fifth-level&#34;&gt;Fifth Level&lt;/h5&gt;&#xA;&lt;h6 id=&#34;sixth-level&#34;&gt;Sixth Level&lt;/h6&gt;&#xA;&lt;h2 id=&#34;text-formatting&#34;&gt;Text Formatting&lt;/h2&gt;&#xA;&lt;p&gt;Regular paragraph text. &lt;strong&gt;Bold text&lt;/strong&gt; for emphasis. &lt;em&gt;Italic text&lt;/em&gt; for subtlety. &lt;del&gt;Strikethrough&lt;/del&gt; for corrections. &lt;code&gt;Inline code&lt;/code&gt; for technical terms.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Blockquotes are useful for highlighting important passages or attributing quotes to their sources.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

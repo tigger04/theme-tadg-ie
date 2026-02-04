@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recipes on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/recipes/</link>
+    <description>Recent content in Recipes on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/recipes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shakshuka</title>
+      <link>https://example.com/recipes/shakshuka/</link>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/shakshuka/</guid>
+      <description>&lt;p&gt;One pan, twenty minutes, and the satisfaction of cracking eggs into a bubbling sauce.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 tbsp olive oil&lt;/li&gt;&#xA;&lt;li&gt;1 onion, diced&lt;/li&gt;&#xA;&lt;li&gt;2 cloves garlic, sliced&lt;/li&gt;&#xA;&lt;li&gt;1 red pepper, diced&lt;/li&gt;&#xA;&lt;li&gt;1 tsp cumin&lt;/li&gt;&#xA;&lt;li&gt;1 tsp smoked paprika&lt;/li&gt;&#xA;&lt;li&gt;400g tin chopped tomatoes&lt;/li&gt;&#xA;&lt;li&gt;4 eggs&lt;/li&gt;&#xA;&lt;li&gt;Fresh coriander and crusty bread to serve&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Heat olive oil in a wide, deep frying pan over medium heat.&lt;/li&gt;&#xA;&lt;li&gt;Cook onion and pepper for 5 minutes until softened.&lt;/li&gt;&#xA;&lt;li&gt;Add garlic, cumin, and paprika. Cook for 1 minute.&lt;/li&gt;&#xA;&lt;li&gt;Pour in tomatoes. Simmer for 10 minutes until thickened slightly.&lt;/li&gt;&#xA;&lt;li&gt;Make 4 wells in the sauce and crack an egg into each.&lt;/li&gt;&#xA;&lt;li&gt;Cover and cook for 5–7 minutes until whites are set but yolks are still runny.&lt;/li&gt;&#xA;&lt;li&gt;Scatter with coriander and serve with bread for dipping.&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>Miso-Glazed Aubergine</title>
+      <link>https://example.com/recipes/miso-aubergine/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/miso-aubergine/</guid>
+      <description>&lt;p&gt;This is the dish that makes people reconsider aubergine. The miso glaze caramelises into something deeply savoury and slightly sweet.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2 large aubergines&lt;/li&gt;&#xA;&lt;li&gt;3 tbsp white miso paste&lt;/li&gt;&#xA;&lt;li&gt;2 tbsp mirin&lt;/li&gt;&#xA;&lt;li&gt;1 tbsp rice vinegar&lt;/li&gt;&#xA;&lt;li&gt;1 tbsp sesame oil&lt;/li&gt;&#xA;&lt;li&gt;1 tsp sugar&lt;/li&gt;&#xA;&lt;li&gt;Sesame seeds and spring onions to serve&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Halve the aubergines lengthwise. Score the flesh in a crosshatch pattern.&lt;/li&gt;&#xA;&lt;li&gt;Mix miso, mirin, rice vinegar, sesame oil, and sugar.&lt;/li&gt;&#xA;&lt;li&gt;Brush the flesh side with half the glaze.&lt;/li&gt;&#xA;&lt;li&gt;Place cut-side down on a baking tray. Roast at 200°C for 20 minutes.&lt;/li&gt;&#xA;&lt;li&gt;Flip, brush with remaining glaze, and roast for another 15 minutes.&lt;/li&gt;&#xA;&lt;li&gt;Scatter with sesame seeds and sliced spring onions.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&lt;div class=&#39;callout callout-warning&#39; style=&#39;&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Warning&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    Watch the glaze carefully in the last 5 minutes — miso burns quickly once it caramelises.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Soda Bread</title>
+      <link>https://example.com/recipes/soda-bread/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/soda-bread/</guid>
+      <description>&lt;p&gt;Soda bread is the simplest bread you can make. Four ingredients, no yeast, no kneading, no proving. From bowl to table in under an hour.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;450g plain flour&lt;/li&gt;&#xA;&lt;li&gt;1 tsp salt&lt;/li&gt;&#xA;&lt;li&gt;1 tsp bicarbonate of soda&lt;/li&gt;&#xA;&lt;li&gt;400ml buttermilk&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Preheat oven to 200°C.&lt;/li&gt;&#xA;&lt;li&gt;Mix flour, salt, and bicarbonate of soda in a large bowl.&lt;/li&gt;&#xA;&lt;li&gt;Make a well in the centre and pour in the buttermilk.&lt;/li&gt;&#xA;&lt;li&gt;Mix quickly with a wooden spoon — do not overwork the dough.&lt;/li&gt;&#xA;&lt;li&gt;Turn onto a floured surface and shape into a round.&lt;/li&gt;&#xA;&lt;li&gt;Cut a deep cross on top.&lt;/li&gt;&#xA;&lt;li&gt;Bake for 35–40 minutes until the bottom sounds hollow when tapped.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&lt;div class=&#39;callout callout-tip&#39; style=&#39;&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Tip&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    The cross on top isn&amp;#39;t just decorative — it helps the heat penetrate the thick dough evenly.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Colcannon</title>
+      <link>https://example.com/recipes/colcannon/</link>
+      <pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/colcannon/</guid>
+      <description>&lt;p&gt;Colcannon is the sort of food that doesn&amp;rsquo;t photograph well but tastes like home. It&amp;rsquo;s mashed potatoes with greens, and that&amp;rsquo;s &#xA;&lt;span class=&#34;colorbold colorbold-underlined&#34;&gt;all it needs to be&lt;/span&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1kg floury potatoes (Roosters or Kerr&amp;rsquo;s Pinks)&lt;/li&gt;&#xA;&lt;li&gt;200g curly kale, stripped from stems and chopped&lt;/li&gt;&#xA;&lt;li&gt;4 spring onions, finely sliced&lt;/li&gt;&#xA;&lt;li&gt;100ml milk, warmed&lt;/li&gt;&#xA;&lt;li&gt;50g butter, plus extra for serving&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Boil potatoes in salted water until tender, about 20 minutes.&lt;/li&gt;&#xA;&lt;li&gt;Meanwhile, blanch the kale in boiling water for 3 minutes. Drain well.&lt;/li&gt;&#xA;&lt;li&gt;Drain the potatoes and return to the pot. Mash until smooth.&lt;/li&gt;&#xA;&lt;li&gt;Stir in warm milk, butter, kale, and spring onions.&lt;/li&gt;&#xA;&lt;li&gt;Season generously. Serve with a well of melted butter in the centre.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Variations&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;ul&gt;&#xA;&lt;li&gt;Replace kale with savoy cabbage for a milder flavour&lt;/li&gt;&#xA;&lt;li&gt;Add crispy bacon lardons for a non-vegetarian version&lt;/li&gt;&#xA;&lt;li&gt;Stir through a handful of grated mature cheddar&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shortcodes on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/shortcodes/</link>
+    <description>Recent content in Shortcodes on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/shortcodes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shortcode Showcase</title>
+      <link>https://example.com/journal/shortcode-showcase/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/shortcode-showcase/</guid>
+      <description>&lt;p&gt;This page demonstrates every shortcode available in the tadg_ie theme. Use it as a visual reference.&lt;/p&gt;&#xA;&lt;h2 id=&#34;colorbold&#34;&gt;Colorbold&lt;/h2&gt;&#xA;&lt;p&gt;Inline highlighted text in the theme&amp;rsquo;s secondary accent colour:&lt;/p&gt;&#xA;&lt;p&gt;This recipe calls for &#xA;&lt;span class=&#34;colorbold colorbold-underlined&#34;&gt;really good butter&lt;/span&gt; — the kind from a farmers&amp;rsquo; market.&lt;/p&gt;&#xA;&lt;p&gt;Without the underline: &#xA;&lt;span class=&#34;colorbold&#34;&gt;no underline here&lt;/span&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;img&#34;&gt;Img&lt;/h2&gt;&#xA;&lt;p&gt;The &lt;code&gt;img&lt;/code&gt; shortcode embeds a page resource image with positioning, caption, and optional blur:&lt;/p&gt;&#xA;&lt;div class=&#34;code-block&#34; data-lang=&#34;text&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{&amp;lt; img src=&amp;#34;image.jpg&amp;#34; alt=&amp;#34;Description&amp;#34; caption=&amp;#34;Caption&amp;#34; position=&amp;#34;right&amp;#34; width=&amp;#34;40%&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;p&gt;(This shortcode requires a page bundle with an image resource. See any article with a &lt;code&gt;layout&lt;/code&gt; for a working example.)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Waiting Room</title>
+      <link>https://example.com/stories/the-waiting-room/</link>
+      <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/the-waiting-room/</guid>
+      <description>&lt;p&gt;A short scene demonstrating the theme&amp;rsquo;s theatrical shortcodes.&lt;/p&gt;&#xA;&lt;p class=&#34;stage-direction&#34;&gt;A waiting room. Two plastic chairs. A water cooler that gurgles intermittently. FIONA sits reading a magazine. DECLAN enters, looks around, sits.&lt;/p&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Is this the right place?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;FIONA&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Depends what you&amp;rsquo;re waiting for.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN &lt;span class=&#34;dialogue-parenthetical&#34;&gt;(hesitantly)&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;The&amp;hellip; results?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;FIONA&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Everyone&amp;rsquo;s waiting for results. Sit down.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p class=&#34;stage-direction&#34;&gt;DECLAN sits. The water cooler gurgles. A long silence.&lt;/p&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;How long have you been here?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;FIONA &lt;span class=&#34;dialogue-parenthetical&#34;&gt;(not looking up)&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Hard to say. The clock stopped working on Tuesday.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;What day is it now?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Morning Song</title>
+      <link>https://example.com/stories/morning-song/</link>
+      <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/morning-song/</guid>
+      <description>&lt;p&gt;A demonstration of the poem shortcode, which preserves line breaks exactly as written.&lt;/p&gt;&#xA;&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;kettle&amp;nbsp;clicks.&lt;br /&gt;Outside,&amp;nbsp;a&amp;nbsp;blackbird&lt;br /&gt;tests&amp;nbsp;the&amp;nbsp;morning&lt;br /&gt;with&amp;nbsp;three&amp;nbsp;cautious&amp;nbsp;notes.&lt;br /&gt;&lt;br /&gt;Light&amp;nbsp;finds&amp;nbsp;the&amp;nbsp;table,&lt;br /&gt;the&amp;nbsp;crumbs&amp;nbsp;from&amp;nbsp;last&amp;nbsp;night,&lt;br /&gt;the&amp;nbsp;book&amp;nbsp;left&amp;nbsp;open&lt;br /&gt;at&amp;nbsp;the&amp;nbsp;page&amp;nbsp;where&amp;nbsp;sleep&amp;nbsp;arrived.&lt;br /&gt;&lt;br /&gt;There&amp;nbsp;is&amp;nbsp;no&amp;nbsp;hurry.&lt;br /&gt;The&amp;nbsp;day&amp;nbsp;will&amp;nbsp;assemble&amp;nbsp;itself&lt;br /&gt;from&amp;nbsp;these&amp;nbsp;small,&lt;br /&gt;unhurried&amp;nbsp;pieces.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Three Things I Learned from a Broken Compass</title>
+      <link>https://example.com/stories/three-things/</link>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/three-things/</guid>
+      <description>&lt;p&gt;I bought a compass at a market in Galway. It was brass, heavy, and completely unreliable. It pointed south-southwest regardless of where you stood. I kept it anyway.&lt;/p&gt;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing one: certainty is overrated&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    The compass was wrong, but it was consistently wrong. After a while, I learned to compensate. I knew that wherever it pointed, north was roughly 200 degrees the other way. A broken instrument you understand is more useful than a working one you don&amp;rsquo;t.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing two: all tools are extensions of intention&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    The compass didn&amp;rsquo;t find north. &lt;em&gt;I&lt;/em&gt; found north, using the compass as a reference point. The tool didn&amp;rsquo;t do the work — it gave me something to push against. Most tools work this way, if you&amp;rsquo;re honest about it.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing three: keep the broken things&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    I still have the compass. It sits on a shelf next to a clock that runs fast and a pen that skips. These objects remind me that imperfection is not the same as uselessness.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&#xA;&lt;div class=&#39;callout callout-custom&#39; style=&#39;background: var(--bg-secondary);&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Note&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    This piece exists to demonstrate the details and callout shortcodes. The compass is fictional. The sentiment is not.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

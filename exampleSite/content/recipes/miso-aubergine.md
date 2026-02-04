@@ -6,6 +6,7 @@ tags:
   - vegetarian
   - japanese
   - quick
+hideDate: true
 ---
 
 This is the dish that makes people reconsider aubergine. The miso glaze caramelises into something deeply savoury and slightly sweet.

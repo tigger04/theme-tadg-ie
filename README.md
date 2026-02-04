@@ -14,8 +14,6 @@ Live demo: https://tadg.ie
 
 A Hugo theme for multi-content-type sites with masonry layouts, galleries, and responsive design. Based on the Archie theme with extensive customizations.
 
-**Section-agnostic design:** This theme works with any section names (not just blog, poetry, artwork, etc.). Content behavior is controlled by frontmatter parameters, making it reusable across different site structures.
-
 ## Features
 
 - **Masonry grid layout** with CSS Grid fallback and JavaScript positioning

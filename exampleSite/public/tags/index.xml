@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/</link>
+    <description>Recent content in Tags on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reference</title>
+      <link>https://example.com/tags/reference/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/reference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shortcodes</title>
+      <link>https://example.com/tags/shortcodes/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/shortcodes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Theme</title>
+      <link>https://example.com/tags/theme/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/theme/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Maps</title>
+      <link>https://example.com/tags/maps/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/maps/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Poetry</title>
+      <link>https://example.com/tags/poetry/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/poetry/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Drama</title>
+      <link>https://example.com/tags/drama/</link>
+      <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/drama/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reflection</title>
+      <link>https://example.com/tags/reflection/</link>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/reflection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eggs</title>
+      <link>https://example.com/tags/eggs/</link>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/eggs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Middle-Eastern</title>
+      <link>https://example.com/tags/middle-eastern/</link>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/middle-eastern/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Quick</title>
+      <link>https://example.com/tags/quick/</link>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/quick/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Landscape</title>
+      <link>https://example.com/tags/landscape/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/landscape/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Walking</title>
+      <link>https://example.com/tags/walking/</link>
+      <pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/walking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Memory</title>
+      <link>https://example.com/tags/memory/</link>
+      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/memory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Family</title>
+      <link>https://example.com/tags/family/</link>
+      <pubDate>Tue, 05 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/family/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Night</title>
+      <link>https://example.com/tags/night/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/night/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Typography</title>
+      <link>https://example.com/tags/typography/</link>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/typography/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Japanese</title>
+      <link>https://example.com/tags/japanese/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/japanese/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vegetarian</title>
+      <link>https://example.com/tags/vegetarian/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/vegetarian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Layouts</title>
+      <link>https://example.com/tags/layouts/</link>
+      <pubDate>Sun, 01 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/layouts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dark-Mode</title>
+      <link>https://example.com/tags/dark-mode/</link>
+      <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/dark-mode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Masonry</title>
+      <link>https://example.com/tags/masonry/</link>
+      <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/masonry/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Baking</title>
+      <link>https://example.com/tags/baking/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/baking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bread</title>
+      <link>https://example.com/tags/bread/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/bread/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Comfort-Food</title>
+      <link>https://example.com/tags/comfort-food/</link>
+      <pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/comfort-food/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Irish</title>
+      <link>https://example.com/tags/irish/</link>
+      <pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/tags/irish/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

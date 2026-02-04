@@ -11,6 +11,24 @@ toc: "Shortcodes"
 
 This page demonstrates every shortcode available in the tadg_ie theme. Use it as a visual reference.
 
+## Colorbold
+
+Inline highlighted text in the theme's secondary accent colour:
+
+This recipe calls for {{< colorbold "really good butter" >}} — the kind from a farmers' market.
+
+Without the underline: {{< colorbold text="no underline here" underlined="false" >}}.
+
+## Img
+
+The `img` shortcode embeds a page resource image with positioning, caption, and optional blur:
+
+```text
+{{</* img src="image.jpg" alt="Description" caption="Caption" position="right" width="40%" */>}}
+```
+
+(This shortcode requires a page bundle with an image resource. See any article with a `layout` for a working example.)
+
 ## Callout
 
 Four built-in types plus custom styling:
@@ -106,6 +124,16 @@ Passes HTML through without Markdown processing:
   <p style="margin: 0;">This is raw HTML passed through the <code>rawhtml</code> shortcode.</p>
 </div>
 {{< /rawhtml >}}
+
+## Gallery
+
+The `gallery` shortcode renders all images in a page bundle as a responsive grid with lightbox. It reads EXIF data for titles and captions automatically.
+
+```text
+{{</* gallery */>}}
+```
+
+See the [Photography](/photography/) section for working examples with actual images.
 
 ## Section List
 

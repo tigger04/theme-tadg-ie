@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Family on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/family/</link>
+    <description>Recent content in Family on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Tue, 05 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/family/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thread</title>
+      <link>https://example.com/poetry/half-remembered/thread/</link>
+      <pubDate>Tue, 05 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/half-remembered/thread/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;In&amp;nbsp;the&amp;nbsp;sewing&amp;nbsp;box:&amp;nbsp;a&amp;nbsp;thimble,&lt;br /&gt;three&amp;nbsp;buttons&amp;nbsp;from&amp;nbsp;a&amp;nbsp;coat&lt;br /&gt;nobody&amp;nbsp;remembers&amp;nbsp;wearing,&lt;br /&gt;and&amp;nbsp;a&amp;nbsp;length&amp;nbsp;of&amp;nbsp;thread&lt;br /&gt;still&amp;nbsp;knotted&amp;nbsp;at&amp;nbsp;one&amp;nbsp;end.&lt;br /&gt;&lt;br /&gt;She&amp;nbsp;could&amp;nbsp;fix&amp;nbsp;anything.&lt;br /&gt;The&amp;nbsp;thread&amp;nbsp;is&amp;nbsp;evidence.&lt;br /&gt;The&amp;nbsp;knot&amp;nbsp;is&amp;nbsp;proof&amp;nbsp;of&amp;nbsp;intention.&lt;br /&gt;The&amp;nbsp;coat&amp;nbsp;is&amp;nbsp;gone&lt;br /&gt;but&amp;nbsp;the&amp;nbsp;buttons&amp;nbsp;remain,&lt;br /&gt;patient&amp;nbsp;as&amp;nbsp;stones.&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

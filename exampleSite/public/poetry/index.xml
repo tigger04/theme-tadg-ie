@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Poetry on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/poetry/</link>
+    <description>Recent content in Poetry on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/poetry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Cartographer</title>
+      <link>https://example.com/poetry/the-cartographer/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/the-cartographer/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;She&amp;nbsp;drew&amp;nbsp;the&amp;nbsp;roads&amp;nbsp;from&amp;nbsp;memory,&lt;br /&gt;the&amp;nbsp;river&amp;nbsp;where&amp;nbsp;it&amp;nbsp;used&amp;nbsp;to&amp;nbsp;run,&lt;br /&gt;the&amp;nbsp;bridge&amp;nbsp;they&amp;nbsp;took&amp;nbsp;down&amp;nbsp;in&amp;nbsp;the&amp;nbsp;nineties.&lt;br /&gt;&lt;br /&gt;She&amp;nbsp;marked&amp;nbsp;the&amp;nbsp;shop&amp;nbsp;that&amp;nbsp;sold&amp;nbsp;paraffin,&lt;br /&gt;the&amp;nbsp;tree&amp;nbsp;where&amp;nbsp;the&amp;nbsp;owl&amp;nbsp;sat&amp;nbsp;every&amp;nbsp;January,&lt;br /&gt;the&amp;nbsp;gap&amp;nbsp;in&amp;nbsp;the&amp;nbsp;wall&amp;nbsp;you&amp;nbsp;could&amp;nbsp;squeeze&amp;nbsp;through&lt;br /&gt;if&amp;nbsp;you&amp;nbsp;were&amp;nbsp;ten&amp;nbsp;and&amp;nbsp;determined.&lt;br /&gt;&lt;br /&gt;None&amp;nbsp;of&amp;nbsp;this&amp;nbsp;was&amp;nbsp;on&amp;nbsp;any&amp;nbsp;official&amp;nbsp;map.&lt;br /&gt;All&amp;nbsp;of&amp;nbsp;it&amp;nbsp;was&amp;nbsp;true.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Four Fields</title>
+      <link>https://example.com/poetry/four-fields/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/four-fields/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;first&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;crossed&amp;nbsp;at&amp;nbsp;seven,&lt;br /&gt;grass&amp;nbsp;to&amp;nbsp;the&amp;nbsp;waist,&amp;nbsp;the&amp;nbsp;dog&amp;nbsp;ahead.&lt;br /&gt;The&amp;nbsp;second&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;saw&amp;nbsp;from&amp;nbsp;the&amp;nbsp;train,&lt;br /&gt;gold&amp;nbsp;in&amp;nbsp;September,&amp;nbsp;already&amp;nbsp;someone&amp;nbsp;else&#39;s.&lt;br /&gt;&lt;br /&gt;The&amp;nbsp;third&amp;nbsp;field&amp;nbsp;you&amp;nbsp;walked&amp;nbsp;through&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;rain&amp;nbsp;came.&amp;nbsp;You&amp;nbsp;kept&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;fourth&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;dream&amp;nbsp;about:&lt;br /&gt;flat,&amp;nbsp;enormous,&amp;nbsp;and&amp;nbsp;always&amp;nbsp;just&amp;nbsp;behind&amp;nbsp;you.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Small Hours</title>
+      <link>https://example.com/poetry/small-hours/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/small-hours/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;fridge&amp;nbsp;hums&amp;nbsp;its&amp;nbsp;one&amp;nbsp;note.&lt;br /&gt;A&amp;nbsp;tap&amp;nbsp;drips&amp;nbsp;in&amp;nbsp;the&amp;nbsp;dark&lt;br /&gt;like&amp;nbsp;a&amp;nbsp;clock&amp;nbsp;that&amp;nbsp;forgot&lt;br /&gt;what&amp;nbsp;it&amp;nbsp;was&amp;nbsp;counting.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;stand&amp;nbsp;at&amp;nbsp;the&amp;nbsp;window.&lt;br /&gt;The&amp;nbsp;street&amp;nbsp;is&amp;nbsp;all&amp;nbsp;amber&lt;br /&gt;and&amp;nbsp;nothing.&amp;nbsp;A&amp;nbsp;cat&lt;br /&gt;crosses&amp;nbsp;the&amp;nbsp;road&lt;br /&gt;with&amp;nbsp;tremendous&amp;nbsp;purpose.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;pour&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;drink&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;go&amp;nbsp;back&amp;nbsp;to&amp;nbsp;bed&lt;br /&gt;knowing&amp;nbsp;nothing&amp;nbsp;has&amp;nbsp;changed&lt;br /&gt;but&amp;nbsp;something&amp;nbsp;has&amp;nbsp;shifted.&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

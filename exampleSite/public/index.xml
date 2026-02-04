@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/</link>
+    <description>Recent content on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shortcode Showcase</title>
+      <link>https://example.com/journal/shortcode-showcase/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/shortcode-showcase/</guid>
+      <description>&lt;p&gt;This page demonstrates every shortcode available in the tadg_ie theme. Use it as a visual reference.&lt;/p&gt;&#xA;&lt;h2 id=&#34;colorbold&#34;&gt;Colorbold&lt;/h2&gt;&#xA;&lt;p&gt;Inline highlighted text in the theme&amp;rsquo;s secondary accent colour:&lt;/p&gt;&#xA;&lt;p&gt;This recipe calls for &#xA;&lt;span class=&#34;colorbold colorbold-underlined&#34;&gt;really good butter&lt;/span&gt; — the kind from a farmers&amp;rsquo; market.&lt;/p&gt;&#xA;&lt;p&gt;Without the underline: &#xA;&lt;span class=&#34;colorbold&#34;&gt;no underline here&lt;/span&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;img&#34;&gt;Img&lt;/h2&gt;&#xA;&lt;p&gt;The &lt;code&gt;img&lt;/code&gt; shortcode embeds a page resource image with positioning, caption, and optional blur:&lt;/p&gt;&#xA;&lt;div class=&#34;code-block&#34; data-lang=&#34;text&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{{&amp;lt; img src=&amp;#34;image.jpg&amp;#34; alt=&amp;#34;Description&amp;#34; caption=&amp;#34;Caption&amp;#34; position=&amp;#34;right&amp;#34; width=&amp;#34;40%&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;p&gt;(This shortcode requires a page bundle with an image resource. See any article with a &lt;code&gt;layout&lt;/code&gt; for a working example.)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Cartographer</title>
+      <link>https://example.com/poetry/the-cartographer/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/the-cartographer/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;She&amp;nbsp;drew&amp;nbsp;the&amp;nbsp;roads&amp;nbsp;from&amp;nbsp;memory,&lt;br /&gt;the&amp;nbsp;river&amp;nbsp;where&amp;nbsp;it&amp;nbsp;used&amp;nbsp;to&amp;nbsp;run,&lt;br /&gt;the&amp;nbsp;bridge&amp;nbsp;they&amp;nbsp;took&amp;nbsp;down&amp;nbsp;in&amp;nbsp;the&amp;nbsp;nineties.&lt;br /&gt;&lt;br /&gt;She&amp;nbsp;marked&amp;nbsp;the&amp;nbsp;shop&amp;nbsp;that&amp;nbsp;sold&amp;nbsp;paraffin,&lt;br /&gt;the&amp;nbsp;tree&amp;nbsp;where&amp;nbsp;the&amp;nbsp;owl&amp;nbsp;sat&amp;nbsp;every&amp;nbsp;January,&lt;br /&gt;the&amp;nbsp;gap&amp;nbsp;in&amp;nbsp;the&amp;nbsp;wall&amp;nbsp;you&amp;nbsp;could&amp;nbsp;squeeze&amp;nbsp;through&lt;br /&gt;if&amp;nbsp;you&amp;nbsp;were&amp;nbsp;ten&amp;nbsp;and&amp;nbsp;determined.&lt;br /&gt;&lt;br /&gt;None&amp;nbsp;of&amp;nbsp;this&amp;nbsp;was&amp;nbsp;on&amp;nbsp;any&amp;nbsp;official&amp;nbsp;map.&lt;br /&gt;All&amp;nbsp;of&amp;nbsp;it&amp;nbsp;was&amp;nbsp;true.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>The Waiting Room</title>
+      <link>https://example.com/stories/the-waiting-room/</link>
+      <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/the-waiting-room/</guid>
+      <description>&lt;p&gt;A short scene demonstrating the theme&amp;rsquo;s theatrical shortcodes.&lt;/p&gt;&#xA;&lt;p class=&#34;stage-direction&#34;&gt;A waiting room. Two plastic chairs. A water cooler that gurgles intermittently. FIONA sits reading a magazine. DECLAN enters, looks around, sits.&lt;/p&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Is this the right place?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;FIONA&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Depends what you&amp;rsquo;re waiting for.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN &lt;span class=&#34;dialogue-parenthetical&#34;&gt;(hesitantly)&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;The&amp;hellip; results?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;FIONA&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Everyone&amp;rsquo;s waiting for results. Sit down.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;p class=&#34;stage-direction&#34;&gt;DECLAN sits. The water cooler gurgles. A long silence.&lt;/p&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;How long have you been here?&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;FIONA &lt;span class=&#34;dialogue-parenthetical&#34;&gt;(not looking up)&lt;/span&gt;&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;Hard to say. The clock stopped working on Tuesday.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;div class=&#34;dialogue&#34;&gt;&#xA;  &lt;p class=&#34;dialogue-name&#34;&gt;DECLAN&lt;/p&gt;&#xA;  &lt;p class=&#34;dialogue-text&#34;&gt;What day is it now?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Morning Song</title>
+      <link>https://example.com/stories/morning-song/</link>
+      <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/morning-song/</guid>
+      <description>&lt;p&gt;A demonstration of the poem shortcode, which preserves line breaks exactly as written.&lt;/p&gt;&#xA;&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;kettle&amp;nbsp;clicks.&lt;br /&gt;Outside,&amp;nbsp;a&amp;nbsp;blackbird&lt;br /&gt;tests&amp;nbsp;the&amp;nbsp;morning&lt;br /&gt;with&amp;nbsp;three&amp;nbsp;cautious&amp;nbsp;notes.&lt;br /&gt;&lt;br /&gt;Light&amp;nbsp;finds&amp;nbsp;the&amp;nbsp;table,&lt;br /&gt;the&amp;nbsp;crumbs&amp;nbsp;from&amp;nbsp;last&amp;nbsp;night,&lt;br /&gt;the&amp;nbsp;book&amp;nbsp;left&amp;nbsp;open&lt;br /&gt;at&amp;nbsp;the&amp;nbsp;page&amp;nbsp;where&amp;nbsp;sleep&amp;nbsp;arrived.&lt;br /&gt;&lt;br /&gt;There&amp;nbsp;is&amp;nbsp;no&amp;nbsp;hurry.&lt;br /&gt;The&amp;nbsp;day&amp;nbsp;will&amp;nbsp;assemble&amp;nbsp;itself&lt;br /&gt;from&amp;nbsp;these&amp;nbsp;small,&lt;br /&gt;unhurried&amp;nbsp;pieces.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Three Things I Learned from a Broken Compass</title>
+      <link>https://example.com/stories/three-things/</link>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/three-things/</guid>
+      <description>&lt;p&gt;I bought a compass at a market in Galway. It was brass, heavy, and completely unreliable. It pointed south-southwest regardless of where you stood. I kept it anyway.&lt;/p&gt;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing one: certainty is overrated&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    The compass was wrong, but it was consistently wrong. After a while, I learned to compensate. I knew that wherever it pointed, north was roughly 200 degrees the other way. A broken instrument you understand is more useful than a working one you don&amp;rsquo;t.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing two: all tools are extensions of intention&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    The compass didn&amp;rsquo;t find north. &lt;em&gt;I&lt;/em&gt; found north, using the compass as a reference point. The tool didn&amp;rsquo;t do the work — it gave me something to push against. Most tools work this way, if you&amp;rsquo;re honest about it.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing three: keep the broken things&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    I still have the compass. It sits on a shelf next to a clock that runs fast and a pen that skips. These objects remind me that imperfection is not the same as uselessness.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&#xA;&lt;div class=&#39;callout callout-custom&#39; style=&#39;background: var(--bg-secondary);&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Note&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    This piece exists to demonstrate the details and callout shortcodes. The compass is fictional. The sentiment is not.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Shakshuka</title>
+      <link>https://example.com/recipes/shakshuka/</link>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/shakshuka/</guid>
+      <description>&lt;p&gt;One pan, twenty minutes, and the satisfaction of cracking eggs into a bubbling sauce.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 tbsp olive oil&lt;/li&gt;&#xA;&lt;li&gt;1 onion, diced&lt;/li&gt;&#xA;&lt;li&gt;2 cloves garlic, sliced&lt;/li&gt;&#xA;&lt;li&gt;1 red pepper, diced&lt;/li&gt;&#xA;&lt;li&gt;1 tsp cumin&lt;/li&gt;&#xA;&lt;li&gt;1 tsp smoked paprika&lt;/li&gt;&#xA;&lt;li&gt;400g tin chopped tomatoes&lt;/li&gt;&#xA;&lt;li&gt;4 eggs&lt;/li&gt;&#xA;&lt;li&gt;Fresh coriander and crusty bread to serve&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Heat olive oil in a wide, deep frying pan over medium heat.&lt;/li&gt;&#xA;&lt;li&gt;Cook onion and pepper for 5 minutes until softened.&lt;/li&gt;&#xA;&lt;li&gt;Add garlic, cumin, and paprika. Cook for 1 minute.&lt;/li&gt;&#xA;&lt;li&gt;Pour in tomatoes. Simmer for 10 minutes until thickened slightly.&lt;/li&gt;&#xA;&lt;li&gt;Make 4 wells in the sauce and crack an egg into each.&lt;/li&gt;&#xA;&lt;li&gt;Cover and cook for 5–7 minutes until whites are set but yolks are still runny.&lt;/li&gt;&#xA;&lt;li&gt;Scatter with coriander and serve with bread for dipping.&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>Four Fields</title>
+      <link>https://example.com/poetry/four-fields/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/four-fields/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;first&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;crossed&amp;nbsp;at&amp;nbsp;seven,&lt;br /&gt;grass&amp;nbsp;to&amp;nbsp;the&amp;nbsp;waist,&amp;nbsp;the&amp;nbsp;dog&amp;nbsp;ahead.&lt;br /&gt;The&amp;nbsp;second&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;saw&amp;nbsp;from&amp;nbsp;the&amp;nbsp;train,&lt;br /&gt;gold&amp;nbsp;in&amp;nbsp;September,&amp;nbsp;already&amp;nbsp;someone&amp;nbsp;else&#39;s.&lt;br /&gt;&lt;br /&gt;The&amp;nbsp;third&amp;nbsp;field&amp;nbsp;you&amp;nbsp;walked&amp;nbsp;through&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;rain&amp;nbsp;came.&amp;nbsp;You&amp;nbsp;kept&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;fourth&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;dream&amp;nbsp;about:&lt;br /&gt;flat,&amp;nbsp;enormous,&amp;nbsp;and&amp;nbsp;always&amp;nbsp;just&amp;nbsp;behind&amp;nbsp;you.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>On Walking</title>
+      <link>https://example.com/journal/on-walking/</link>
+      <pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/on-walking/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s a particular quality to ideas that arrive while walking. They come unbidden, fully formed, as though they&amp;rsquo;d been waiting for you to stop sitting still.&lt;/p&gt;&#xA;&lt;p&gt;Nietzsche said it: &amp;ldquo;All truly great thoughts are conceived while walking.&amp;rdquo; Kierkegaard walked the streets of Copenhagen for hours. Wordsworth logged an estimated 180,000 miles on foot. These are not coincidences.&lt;/p&gt;&#xA;&lt;p&gt;The rhythm of walking does something that sitting cannot. It loosens the grip of the analytical mind and lets the associative mind wander. Step, step, step — and suddenly the solution to a problem you hadn&amp;rsquo;t been thinking about appears.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Harbour</title>
+      <link>https://example.com/poetry/half-remembered/harbour/</link>
+      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/half-remembered/harbour/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;At&amp;nbsp;low&amp;nbsp;tide&amp;nbsp;the&amp;nbsp;harbour&amp;nbsp;empties&lt;br /&gt;to&amp;nbsp;mud&amp;nbsp;and&amp;nbsp;the&amp;nbsp;ribs&amp;nbsp;of&amp;nbsp;old&amp;nbsp;boats.&lt;br /&gt;The&amp;nbsp;water&amp;nbsp;goes&amp;nbsp;out&amp;nbsp;like&amp;nbsp;a&amp;nbsp;secret&lt;br /&gt;someone&amp;nbsp;decided&amp;nbsp;to&amp;nbsp;keep.&lt;br /&gt;&lt;br /&gt;We&amp;nbsp;sat&amp;nbsp;on&amp;nbsp;the&amp;nbsp;wall&amp;nbsp;and&amp;nbsp;ate&amp;nbsp;chips.&lt;br /&gt;The&amp;nbsp;vinegar&amp;nbsp;stung&amp;nbsp;a&amp;nbsp;cut&amp;nbsp;on&amp;nbsp;my&amp;nbsp;thumb.&lt;br /&gt;You&amp;nbsp;said&amp;nbsp;something&amp;nbsp;about&amp;nbsp;the&amp;nbsp;future.&lt;br /&gt;The&amp;nbsp;gulls&amp;nbsp;were&amp;nbsp;not&amp;nbsp;interested.&lt;br /&gt;&lt;br /&gt;The&amp;nbsp;tide&amp;nbsp;came&amp;nbsp;back,&amp;nbsp;as&amp;nbsp;tides&amp;nbsp;do,&lt;br /&gt;and&amp;nbsp;covered&amp;nbsp;everything&lt;br /&gt;we&amp;nbsp;had&amp;nbsp;been&amp;nbsp;looking&amp;nbsp;at.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Thread</title>
+      <link>https://example.com/poetry/half-remembered/thread/</link>
+      <pubDate>Tue, 05 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/half-remembered/thread/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;In&amp;nbsp;the&amp;nbsp;sewing&amp;nbsp;box:&amp;nbsp;a&amp;nbsp;thimble,&lt;br /&gt;three&amp;nbsp;buttons&amp;nbsp;from&amp;nbsp;a&amp;nbsp;coat&lt;br /&gt;nobody&amp;nbsp;remembers&amp;nbsp;wearing,&lt;br /&gt;and&amp;nbsp;a&amp;nbsp;length&amp;nbsp;of&amp;nbsp;thread&lt;br /&gt;still&amp;nbsp;knotted&amp;nbsp;at&amp;nbsp;one&amp;nbsp;end.&lt;br /&gt;&lt;br /&gt;She&amp;nbsp;could&amp;nbsp;fix&amp;nbsp;anything.&lt;br /&gt;The&amp;nbsp;thread&amp;nbsp;is&amp;nbsp;evidence.&lt;br /&gt;The&amp;nbsp;knot&amp;nbsp;is&amp;nbsp;proof&amp;nbsp;of&amp;nbsp;intention.&lt;br /&gt;The&amp;nbsp;coat&amp;nbsp;is&amp;nbsp;gone&lt;br /&gt;but&amp;nbsp;the&amp;nbsp;buttons&amp;nbsp;remain,&lt;br /&gt;patient&amp;nbsp;as&amp;nbsp;stones.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Glass</title>
+      <link>https://example.com/poetry/half-remembered/glass/</link>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/half-remembered/glass/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;There&amp;nbsp;was&amp;nbsp;a&amp;nbsp;pane&amp;nbsp;of&amp;nbsp;glass&lt;br /&gt;in&amp;nbsp;the&amp;nbsp;back&amp;nbsp;door&lt;br /&gt;that&amp;nbsp;had&amp;nbsp;a&amp;nbsp;bubble&amp;nbsp;in&amp;nbsp;it.&lt;br /&gt;&lt;br /&gt;When&amp;nbsp;you&amp;nbsp;looked&amp;nbsp;through&amp;nbsp;the&amp;nbsp;bubble,&lt;br /&gt;the&amp;nbsp;garden&amp;nbsp;bent.&lt;br /&gt;The&amp;nbsp;apple&amp;nbsp;tree&amp;nbsp;swam.&lt;br /&gt;&lt;br /&gt;They&amp;nbsp;replaced&amp;nbsp;the&amp;nbsp;door&amp;nbsp;eventually.&lt;br /&gt;The&amp;nbsp;new&amp;nbsp;glass&amp;nbsp;was&amp;nbsp;perfect.&lt;br /&gt;I&amp;nbsp;never&amp;nbsp;looked&amp;nbsp;through&amp;nbsp;it.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Small Hours</title>
+      <link>https://example.com/poetry/small-hours/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/small-hours/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;fridge&amp;nbsp;hums&amp;nbsp;its&amp;nbsp;one&amp;nbsp;note.&lt;br /&gt;A&amp;nbsp;tap&amp;nbsp;drips&amp;nbsp;in&amp;nbsp;the&amp;nbsp;dark&lt;br /&gt;like&amp;nbsp;a&amp;nbsp;clock&amp;nbsp;that&amp;nbsp;forgot&lt;br /&gt;what&amp;nbsp;it&amp;nbsp;was&amp;nbsp;counting.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;stand&amp;nbsp;at&amp;nbsp;the&amp;nbsp;window.&lt;br /&gt;The&amp;nbsp;street&amp;nbsp;is&amp;nbsp;all&amp;nbsp;amber&lt;br /&gt;and&amp;nbsp;nothing.&amp;nbsp;A&amp;nbsp;cat&lt;br /&gt;crosses&amp;nbsp;the&amp;nbsp;road&lt;br /&gt;with&amp;nbsp;tremendous&amp;nbsp;purpose.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;pour&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;drink&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;go&amp;nbsp;back&amp;nbsp;to&amp;nbsp;bed&lt;br /&gt;knowing&amp;nbsp;nothing&amp;nbsp;has&amp;nbsp;changed&lt;br /&gt;but&amp;nbsp;something&amp;nbsp;has&amp;nbsp;shifted.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Typography in the tadg_ie Theme</title>
+      <link>https://example.com/journal/typography-guide/</link>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/typography-guide/</guid>
+      <description>&lt;p&gt;This post demonstrates how standard Markdown typography renders in the tadg_ie theme. Use it as a reference when writing content.&lt;/p&gt;&#xA;&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;&#xA;&lt;p&gt;Headings from H2 to H6 are available. H1 is reserved for the page title.&lt;/p&gt;&#xA;&lt;h3 id=&#34;third-level&#34;&gt;Third Level&lt;/h3&gt;&#xA;&lt;h4 id=&#34;fourth-level&#34;&gt;Fourth Level&lt;/h4&gt;&#xA;&lt;h5 id=&#34;fifth-level&#34;&gt;Fifth Level&lt;/h5&gt;&#xA;&lt;h6 id=&#34;sixth-level&#34;&gt;Sixth Level&lt;/h6&gt;&#xA;&lt;h2 id=&#34;text-formatting&#34;&gt;Text Formatting&lt;/h2&gt;&#xA;&lt;p&gt;Regular paragraph text. &lt;strong&gt;Bold text&lt;/strong&gt; for emphasis. &lt;em&gt;Italic text&lt;/em&gt; for subtlety. &lt;del&gt;Strikethrough&lt;/del&gt; for corrections. &lt;code&gt;Inline code&lt;/code&gt; for technical terms.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Blockquotes are useful for highlighting important passages or attributing quotes to their sources.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Miso-Glazed Aubergine</title>
+      <link>https://example.com/recipes/miso-aubergine/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/miso-aubergine/</guid>
+      <description>&lt;p&gt;This is the dish that makes people reconsider aubergine. The miso glaze caramelises into something deeply savoury and slightly sweet.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2 large aubergines&lt;/li&gt;&#xA;&lt;li&gt;3 tbsp white miso paste&lt;/li&gt;&#xA;&lt;li&gt;2 tbsp mirin&lt;/li&gt;&#xA;&lt;li&gt;1 tbsp rice vinegar&lt;/li&gt;&#xA;&lt;li&gt;1 tbsp sesame oil&lt;/li&gt;&#xA;&lt;li&gt;1 tsp sugar&lt;/li&gt;&#xA;&lt;li&gt;Sesame seeds and spring onions to serve&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Halve the aubergines lengthwise. Score the flesh in a crosshatch pattern.&lt;/li&gt;&#xA;&lt;li&gt;Mix miso, mirin, rice vinegar, sesame oil, and sugar.&lt;/li&gt;&#xA;&lt;li&gt;Brush the flesh side with half the glaze.&lt;/li&gt;&#xA;&lt;li&gt;Place cut-side down on a baking tray. Roast at 200°C for 20 minutes.&lt;/li&gt;&#xA;&lt;li&gt;Flip, brush with remaining glaze, and roast for another 15 minutes.&lt;/li&gt;&#xA;&lt;li&gt;Scatter with sesame seeds and sliced spring onions.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&lt;div class=&#39;callout callout-warning&#39; style=&#39;&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Warning&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    Watch the glaze carefully in the last 5 minutes — miso burns quickly once it caramelises.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>The Featured Image Layout</title>
+      <link>https://example.com/journal/featured-image/</link>
+      <pubDate>Sun, 01 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/featured-image/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;featured&lt;/code&gt; layout places the article&amp;rsquo;s image prominently within the content flow. Unlike the &lt;code&gt;banner&lt;/code&gt; or &lt;code&gt;hero&lt;/code&gt; layouts, the image does not span the full viewport width — it sits within the content column, scaled to fit.&lt;/p&gt;&#xA;&lt;h2 id=&#34;when-to-use-featured&#34;&gt;When to Use Featured&lt;/h2&gt;&#xA;&lt;p&gt;This layout suits articles where the image is important but not the primary focus. The image appears after the title and metadata, before the body text — a natural reading order.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Configuring Dark Mode</title>
+      <link>https://example.com/journal/dark-mode-setup/</link>
+      <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/dark-mode-setup/</guid>
+      <description>&lt;p&gt;The theme supports four dark mode strategies, configured via &lt;code&gt;params.mode&lt;/code&gt; in your &lt;code&gt;hugo.yaml&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;mode-options&#34;&gt;Mode Options&lt;/h2&gt;&#xA;&lt;h3 id=&#34;auto-recommended&#34;&gt;&lt;code&gt;auto&lt;/code&gt; (recommended)&lt;/h3&gt;&#xA;&lt;p&gt;Follows the operating system preference using &lt;code&gt;prefers-color-scheme: dark&lt;/code&gt;. When the user switches their OS to dark mode, the site follows automatically.&lt;/p&gt;&#xA;&lt;div class=&#34;code-block&#34; data-lang=&#34;yaml&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;params&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;auto&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;h3 id=&#34;toggle&#34;&gt;&lt;code&gt;toggle&lt;/code&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Adds a toggle button in the header. Users can switch between light and dark mode regardless of their OS setting. Their preference is stored in &lt;code&gt;localStorage&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;div class=&#34;code-block&#34; data-lang=&#34;yaml&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;params&lt;/span&gt;:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;toggle&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;h3 id=&#34;dark&#34;&gt;&lt;code&gt;dark&lt;/code&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Forces dark mode for all visitors.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How the Masonry Grid Works</title>
+      <link>https://example.com/journal/masonry-explained/</link>
+      <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/masonry-explained/</guid>
+      <description>&lt;p&gt;The homepage and section list pages use a masonry grid — a layout where items of varying heights pack together without gaps, like a stone wall.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-hybrid-approach&#34;&gt;The Hybrid Approach&lt;/h2&gt;&#xA;&lt;p&gt;Pure CSS Grid gives us responsive columns but leaves vertical gaps. Pure JavaScript positioning is fragile on resize. The tadg_ie theme uses both:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;CSS Grid&lt;/strong&gt; handles the horizontal layout — responsive columns that reflow based on viewport width.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;JavaScript&lt;/strong&gt; runs after images load and adjusts vertical positioning to fill gaps.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This means the layout works (albeit with gaps) even when JavaScript is disabled.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Background Image Layout</title>
+      <link>https://example.com/journal/background-images/</link>
+      <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/background-images/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;background&lt;/code&gt; layout places the article&amp;rsquo;s image behind the content, with configurable opacity and blur. The text remains fully readable while the image provides atmosphere.&lt;/p&gt;&#xA;&lt;h2 id=&#34;controlling-the-effect&#34;&gt;Controlling the Effect&lt;/h2&gt;&#xA;&lt;p&gt;Two parameters fine-tune the background:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;opacity&lt;/code&gt;&lt;/strong&gt; — how visible the image is (0.0 to 1.0). Lower values are more subtle.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;blur&lt;/code&gt;&lt;/strong&gt; — how much the image is blurred. Higher values create a softer, less distracting backdrop.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This page uses &lt;code&gt;opacity: 0.15&lt;/code&gt; and &lt;code&gt;blur: 8px&lt;/code&gt; for a gentle wash of colour behind the text.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Soda Bread</title>
+      <link>https://example.com/recipes/soda-bread/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/soda-bread/</guid>
+      <description>&lt;p&gt;Soda bread is the simplest bread you can make. Four ingredients, no yeast, no kneading, no proving. From bowl to table in under an hour.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;450g plain flour&lt;/li&gt;&#xA;&lt;li&gt;1 tsp salt&lt;/li&gt;&#xA;&lt;li&gt;1 tsp bicarbonate of soda&lt;/li&gt;&#xA;&lt;li&gt;400ml buttermilk&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Preheat oven to 200°C.&lt;/li&gt;&#xA;&lt;li&gt;Mix flour, salt, and bicarbonate of soda in a large bowl.&lt;/li&gt;&#xA;&lt;li&gt;Make a well in the centre and pour in the buttermilk.&lt;/li&gt;&#xA;&lt;li&gt;Mix quickly with a wooden spoon — do not overwork the dough.&lt;/li&gt;&#xA;&lt;li&gt;Turn onto a floured surface and shape into a round.&lt;/li&gt;&#xA;&lt;li&gt;Cut a deep cross on top.&lt;/li&gt;&#xA;&lt;li&gt;Bake for 35–40 minutes until the bottom sounds hollow when tapped.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&lt;div class=&#39;callout callout-tip&#39; style=&#39;&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Tip&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    The cross on top isn&amp;#39;t just decorative — it helps the heat penetrate the thick dough evenly.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Colcannon</title>
+      <link>https://example.com/recipes/colcannon/</link>
+      <pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/recipes/colcannon/</guid>
+      <description>&lt;p&gt;Colcannon is the sort of food that doesn&amp;rsquo;t photograph well but tastes like home. It&amp;rsquo;s mashed potatoes with greens, and that&amp;rsquo;s &#xA;&lt;span class=&#34;colorbold colorbold-underlined&#34;&gt;all it needs to be&lt;/span&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1kg floury potatoes (Roosters or Kerr&amp;rsquo;s Pinks)&lt;/li&gt;&#xA;&lt;li&gt;200g curly kale, stripped from stems and chopped&lt;/li&gt;&#xA;&lt;li&gt;4 spring onions, finely sliced&lt;/li&gt;&#xA;&lt;li&gt;100ml milk, warmed&lt;/li&gt;&#xA;&lt;li&gt;50g butter, plus extra for serving&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Boil potatoes in salted water until tender, about 20 minutes.&lt;/li&gt;&#xA;&lt;li&gt;Meanwhile, blanch the kale in boiling water for 3 minutes. Drain well.&lt;/li&gt;&#xA;&lt;li&gt;Drain the potatoes and return to the pot. Mash until smooth.&lt;/li&gt;&#xA;&lt;li&gt;Stir in warm milk, butter, kale, and spring onions.&lt;/li&gt;&#xA;&lt;li&gt;Season generously. Serve with a well of melted butter in the centre.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Variations&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;ul&gt;&#xA;&lt;li&gt;Replace kale with savoy cabbage for a milder flavour&lt;/li&gt;&#xA;&lt;li&gt;Add crispy bacon lardons for a non-vegetarian version&lt;/li&gt;&#xA;&lt;li&gt;Stir through a handful of grated mature cheddar&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Layouts on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/layouts/</link>
+    <description>Recent content in Layouts on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Sun, 01 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/layouts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Featured Image Layout</title>
+      <link>https://example.com/journal/featured-image/</link>
+      <pubDate>Sun, 01 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/featured-image/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;featured&lt;/code&gt; layout places the article&amp;rsquo;s image prominently within the content flow. Unlike the &lt;code&gt;banner&lt;/code&gt; or &lt;code&gt;hero&lt;/code&gt; layouts, the image does not span the full viewport width — it sits within the content column, scaled to fit.&lt;/p&gt;&#xA;&lt;h2 id=&#34;when-to-use-featured&#34;&gt;When to Use Featured&lt;/h2&gt;&#xA;&lt;p&gt;This layout suits articles where the image is important but not the primary focus. The image appears after the title and metadata, before the body text — a natural reading order.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Background Image Layout</title>
+      <link>https://example.com/journal/background-images/</link>
+      <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/background-images/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;background&lt;/code&gt; layout places the article&amp;rsquo;s image behind the content, with configurable opacity and blur. The text remains fully readable while the image provides atmosphere.&lt;/p&gt;&#xA;&lt;h2 id=&#34;controlling-the-effect&#34;&gt;Controlling the Effect&lt;/h2&gt;&#xA;&lt;p&gt;Two parameters fine-tune the background:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;opacity&lt;/code&gt;&lt;/strong&gt; — how visible the image is (0.0 to 1.0). Lower values are more subtle.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;&lt;code&gt;blur&lt;/code&gt;&lt;/strong&gt; — how much the image is blurred. Higher values create a softer, less distracting backdrop.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This page uses &lt;code&gt;opacity: 0.15&lt;/code&gt; and &lt;code&gt;blur: 8px&lt;/code&gt; for a gentle wash of colour behind the text.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

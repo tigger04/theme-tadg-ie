@@ -26,13 +26,14 @@ params:
     type: icon
     value: icons/chevron-right-duo-thick.svg
 
-  mode: auto
+  mode: toggle
 
   mainSections:
     - recipes
     - journal
     - photography
     - stories
+    - poetry
 
   useCDN: false
 
@@ -45,6 +46,22 @@ params:
     - js/burger-menu.js
     - js/lightbox.js
 
+  grid:
+    contentMaxWidth: 100rem
+    sidebarWidth: 15rem
+    sidebarWidthNarrow: 12rem
+    gap: 1.5rem
+    breakpoints:
+      sm: 30em
+      md: 48em
+      lg: 64em
+      xl: 80em
+    columns:
+      sm: 2
+      md: 3
+      lg: 4
+      xl: 5
+
   social:
     - name: BlueSky
       icon: "simple:bluesky"                        # Simple Icons (simple: prefix)
@@ -52,6 +69,12 @@ params:
     - name: GitHub
       icon: github                                   # Feather icon (default)
       url: https://github.com/tigger04/theme-tadg-ie
+    - name: Mastodon
+      icon: "simple:mastodon"                        # Simple Icons
+      url: https://mastodon.social/@example
+    - name: RSS
+      icon: rss                                      # Feather icon
+      url: /index.xml
 
   subtitle: "A demo site for the tadg_ie Hugo theme"
 
@@ -69,6 +92,9 @@ menu:
     - name: Stories
       url: /stories/
       weight: 40
+    - name: Poetry
+      url: /poetry/
+      weight: 45
     - name: Tags
       url: /tags/
       weight: 50

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maps on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/maps/</link>
+    <description>Recent content in Maps on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/maps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Cartographer</title>
+      <link>https://example.com/poetry/the-cartographer/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/the-cartographer/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;She&amp;nbsp;drew&amp;nbsp;the&amp;nbsp;roads&amp;nbsp;from&amp;nbsp;memory,&lt;br /&gt;the&amp;nbsp;river&amp;nbsp;where&amp;nbsp;it&amp;nbsp;used&amp;nbsp;to&amp;nbsp;run,&lt;br /&gt;the&amp;nbsp;bridge&amp;nbsp;they&amp;nbsp;took&amp;nbsp;down&amp;nbsp;in&amp;nbsp;the&amp;nbsp;nineties.&lt;br /&gt;&lt;br /&gt;She&amp;nbsp;marked&amp;nbsp;the&amp;nbsp;shop&amp;nbsp;that&amp;nbsp;sold&amp;nbsp;paraffin,&lt;br /&gt;the&amp;nbsp;tree&amp;nbsp;where&amp;nbsp;the&amp;nbsp;owl&amp;nbsp;sat&amp;nbsp;every&amp;nbsp;January,&lt;br /&gt;the&amp;nbsp;gap&amp;nbsp;in&amp;nbsp;the&amp;nbsp;wall&amp;nbsp;you&amp;nbsp;could&amp;nbsp;squeeze&amp;nbsp;through&lt;br /&gt;if&amp;nbsp;you&amp;nbsp;were&amp;nbsp;ten&amp;nbsp;and&amp;nbsp;determined.&lt;br /&gt;&lt;br /&gt;None&amp;nbsp;of&amp;nbsp;this&amp;nbsp;was&amp;nbsp;on&amp;nbsp;any&amp;nbsp;official&amp;nbsp;map.&lt;br /&gt;All&amp;nbsp;of&amp;nbsp;it&amp;nbsp;was&amp;nbsp;true.&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

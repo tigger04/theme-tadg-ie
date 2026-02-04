@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reflection on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/reflection/</link>
+    <description>Recent content in Reflection on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Sat, 20 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/reflection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Three Things I Learned from a Broken Compass</title>
+      <link>https://example.com/stories/three-things/</link>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/three-things/</guid>
+      <description>&lt;p&gt;I bought a compass at a market in Galway. It was brass, heavy, and completely unreliable. It pointed south-southwest regardless of where you stood. I kept it anyway.&lt;/p&gt;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing one: certainty is overrated&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    The compass was wrong, but it was consistently wrong. After a while, I learned to compensate. I knew that wherever it pointed, north was roughly 200 degrees the other way. A broken instrument you understand is more useful than a working one you don&amp;rsquo;t.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing two: all tools are extensions of intention&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    The compass didn&amp;rsquo;t find north. &lt;em&gt;I&lt;/em&gt; found north, using the compass as a reference point. The tool didn&amp;rsquo;t do the work — it gave me something to push against. Most tools work this way, if you&amp;rsquo;re honest about it.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Thing three: keep the broken things&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    I still have the compass. It sits on a shelf next to a clock that runs fast and a pen that skips. These objects remind me that imperfection is not the same as uselessness.&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;&#xA;&#xA;&#xA;&lt;div class=&#39;callout callout-custom&#39; style=&#39;background: var(--bg-secondary);&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Note&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    This piece exists to demonstrate the details and callout shortcodes. The compass is fictional. The sentiment is not.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>On Walking</title>
+      <link>https://example.com/journal/on-walking/</link>
+      <pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/on-walking/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s a particular quality to ideas that arrive while walking. They come unbidden, fully formed, as though they&amp;rsquo;d been waiting for you to stop sitting still.&lt;/p&gt;&#xA;&lt;p&gt;Nietzsche said it: &amp;ldquo;All truly great thoughts are conceived while walking.&amp;rdquo; Kierkegaard walked the streets of Copenhagen for hours. Wordsworth logged an estimated 180,000 miles on foot. These are not coincidences.&lt;/p&gt;&#xA;&lt;p&gt;The rhythm of walking does something that sitting cannot. It loosens the grip of the analytical mind and lets the associative mind wander. Step, step, step — and suddenly the solution to a problem you hadn&amp;rsquo;t been thinking about appears.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

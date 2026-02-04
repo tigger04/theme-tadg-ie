@@ -1,0 +1,218 @@
+/* Dark theme overrides */
+
+/* Issue #80: Primary and secondary accent colors for dark mode */
+/* Same primary (red) but brighter secondary (orange) for dark backgrounds */
+/* Issue #90: Custom bright orange for optimal visibility in dark mode */
+:root {
+  --color-primary: #dc143c;
+  --color-secondary: #e08e56;
+
+  /* Dark mode hover derivatives - mix with WHITE for lighter variants */
+  --color-primary-hover: color-mix(in srgb, var(--color-primary) 80%, white);
+  --color-secondary-hover: color-mix(in srgb, var(--color-secondary) 80%, white);
+}
+
+body {
+  color: var(--color-text-dark, #ffffff);
+  background-color: var(--color-background-dark, #202124);
+}
+
+::-moz-selection {
+  background: var(--color-primary);
+  color: #000000;
+  text-shadow: none;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #000000;
+  text-shadow: none;
+}
+
+hr {
+  border-block-start: 3px dotted var(--color-border-dark, #0066ff);
+}
+
+code {
+  background-color: var(--color-background-code-dark, #3a3a3a);
+  color: var(--color-text-dark, #ffffff);
+}
+
+pre {
+  background-color: var(--color-background-pre-dark, #272822);
+  border-color: var(--color-border-dark, #0066ff);
+}
+
+blockquote {
+  border-color: var(--color-border-dark, #0066ff);
+  color: var(--color-text-muted-dark, #dddddd);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-muted-dark, #dddddd);
+}
+
+/* Issue #66: Use accent color (orange) for heading hash marks */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+  color: var(--color-secondary);
+}
+
+.toc {
+  background-color: var(--color-background-toc-dark, #272822);
+  color: var(--color-text-dark, #ffffff);
+  border-color: var(--color-border-dark, #0066ff);
+}
+
+/* Links - Issue #75: dark mode overrides */
+a {
+  /* Issue #116: purple underline for dark mode */
+  text-decoration-color: #be8acf;
+  border-block-end: none;
+  color: inherit;
+}
+
+a:hover,
+a:focus {
+  /* Issue #75: NO fill on links in dark mode */
+  background-color: transparent;
+  color: inherit;
+}
+
+.site-description a {
+  color: var(--color-text-muted-dark, #dddddd);
+}
+
+.site-description a:hover,
+.site-description a:focus {
+  color: inherit;
+}
+
+/* Tags */
+.tags a {
+  border-block-end: 3px solid var(--color-primary);
+}
+
+.tags a:hover,
+.tags a:focus {
+  /* Issue #75: NO fill on tag links */
+  background-color: transparent;
+  color: inherit;
+}
+
+.site-title a {
+  color: var(--color-text-dark, #ffffff);
+  text-decoration: none !important;
+}
+
+.header nav {
+  border-color: var(--color-border-dark, #0066ff);
+}
+
+footer {
+  border-color: var(--color-primary);
+}
+
+.highlight {
+  background-color: var(--color-background-pre-dark, #272822);
+}
+
+.soc:hover,
+.soc:focus {
+  color: var(--color-primary);
+}
+
+.draft-label {
+  color: var(--color-text-dark, #ffffff);
+  background-color: var(--color-background-draft-dark, #0066ff);
+}
+
+/* Tables in dark mode */
+table {
+  background-color: var(--bg-secondary, #252525);
+}
+
+table th {
+  background-color: var(--bg-hover, #333);
+  border-color: var(--border-color, #444);
+}
+
+table td {
+  border-color: var(--border-color, #444);
+}
+
+/* Navigation toggle in dark mode */
+.nav-toggle {
+  color: var(--color-text-dark, #ffffff);
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus {
+  background-color: var(--color-primary);
+  color: #000000;
+  outline-color: var(--color-primary);
+}
+/* Language badges inherit from main.css - no duplicates needed */
+
+/* Callouts in dark mode */
+.callout {
+  background-color: var(--color-background-pre-dark, #272822);
+  color: var(--color-text-dark, #ffffff);
+}
+
+.callout-alert {
+  color: #f8d7da;
+  background-color: #2d1b1d;
+  border-color: #842029;
+}
+
+.callout-tip {
+  color: #d1ecf1;
+  background-color: #0c2428;
+  border-color: #0f5132;
+}
+
+.callout-warning {
+  color: #fff3cd;
+  background-color: #332701;
+  border-color: #997404;
+}
+
+.callout-custom {
+  color: var(--color-text-dark, #ffffff);
+}
+
+/* Sidebar shadow in dark mode - use lighter shadow for visibility */
+.section-sidebar {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Styled details/summary — dark mode overrides */
+details.styled-details {
+  border-color: var(--color-border-dark, #0066ff);
+}
+
+details.styled-details > summary > span {
+  background-color: var(--color-background-dark, #202124);
+}
+
+details.styled-details:not([open]) > summary::after {
+  color: var(--color-secondary);
+}
+
+/* Issue #16: Stage direction in dark mode - use brighter secondary for visibility */
+.stage-direction {
+  color: var(--color-secondary);
+}
+
+/* Issue #103: Related articles dark mode */
+.related-articles {
+  border-top-color: var(--border-color);
+}
+
+/* Read more chevron icon - single icon for all modes, no toggling needed */

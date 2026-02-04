@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Poetry on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/poetry/</link>
+    <description>Recent content in Poetry on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/poetry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Cartographer</title>
+      <link>https://example.com/poetry/the-cartographer/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/the-cartographer/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;She&amp;nbsp;drew&amp;nbsp;the&amp;nbsp;roads&amp;nbsp;from&amp;nbsp;memory,&lt;br /&gt;the&amp;nbsp;river&amp;nbsp;where&amp;nbsp;it&amp;nbsp;used&amp;nbsp;to&amp;nbsp;run,&lt;br /&gt;the&amp;nbsp;bridge&amp;nbsp;they&amp;nbsp;took&amp;nbsp;down&amp;nbsp;in&amp;nbsp;the&amp;nbsp;nineties.&lt;br /&gt;&lt;br /&gt;She&amp;nbsp;marked&amp;nbsp;the&amp;nbsp;shop&amp;nbsp;that&amp;nbsp;sold&amp;nbsp;paraffin,&lt;br /&gt;the&amp;nbsp;tree&amp;nbsp;where&amp;nbsp;the&amp;nbsp;owl&amp;nbsp;sat&amp;nbsp;every&amp;nbsp;January,&lt;br /&gt;the&amp;nbsp;gap&amp;nbsp;in&amp;nbsp;the&amp;nbsp;wall&amp;nbsp;you&amp;nbsp;could&amp;nbsp;squeeze&amp;nbsp;through&lt;br /&gt;if&amp;nbsp;you&amp;nbsp;were&amp;nbsp;ten&amp;nbsp;and&amp;nbsp;determined.&lt;br /&gt;&lt;br /&gt;None&amp;nbsp;of&amp;nbsp;this&amp;nbsp;was&amp;nbsp;on&amp;nbsp;any&amp;nbsp;official&amp;nbsp;map.&lt;br /&gt;All&amp;nbsp;of&amp;nbsp;it&amp;nbsp;was&amp;nbsp;true.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Morning Song</title>
+      <link>https://example.com/stories/morning-song/</link>
+      <pubDate>Sun, 05 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/stories/morning-song/</guid>
+      <description>&lt;p&gt;A demonstration of the poem shortcode, which preserves line breaks exactly as written.&lt;/p&gt;&#xA;&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;kettle&amp;nbsp;clicks.&lt;br /&gt;Outside,&amp;nbsp;a&amp;nbsp;blackbird&lt;br /&gt;tests&amp;nbsp;the&amp;nbsp;morning&lt;br /&gt;with&amp;nbsp;three&amp;nbsp;cautious&amp;nbsp;notes.&lt;br /&gt;&lt;br /&gt;Light&amp;nbsp;finds&amp;nbsp;the&amp;nbsp;table,&lt;br /&gt;the&amp;nbsp;crumbs&amp;nbsp;from&amp;nbsp;last&amp;nbsp;night,&lt;br /&gt;the&amp;nbsp;book&amp;nbsp;left&amp;nbsp;open&lt;br /&gt;at&amp;nbsp;the&amp;nbsp;page&amp;nbsp;where&amp;nbsp;sleep&amp;nbsp;arrived.&lt;br /&gt;&lt;br /&gt;There&amp;nbsp;is&amp;nbsp;no&amp;nbsp;hurry.&lt;br /&gt;The&amp;nbsp;day&amp;nbsp;will&amp;nbsp;assemble&amp;nbsp;itself&lt;br /&gt;from&amp;nbsp;these&amp;nbsp;small,&lt;br /&gt;unhurried&amp;nbsp;pieces.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Four Fields</title>
+      <link>https://example.com/poetry/four-fields/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/four-fields/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;first&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;crossed&amp;nbsp;at&amp;nbsp;seven,&lt;br /&gt;grass&amp;nbsp;to&amp;nbsp;the&amp;nbsp;waist,&amp;nbsp;the&amp;nbsp;dog&amp;nbsp;ahead.&lt;br /&gt;The&amp;nbsp;second&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;saw&amp;nbsp;from&amp;nbsp;the&amp;nbsp;train,&lt;br /&gt;gold&amp;nbsp;in&amp;nbsp;September,&amp;nbsp;already&amp;nbsp;someone&amp;nbsp;else&#39;s.&lt;br /&gt;&lt;br /&gt;The&amp;nbsp;third&amp;nbsp;field&amp;nbsp;you&amp;nbsp;walked&amp;nbsp;through&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;rain&amp;nbsp;came.&amp;nbsp;You&amp;nbsp;kept&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;fourth&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;dream&amp;nbsp;about:&lt;br /&gt;flat,&amp;nbsp;enormous,&amp;nbsp;and&amp;nbsp;always&amp;nbsp;just&amp;nbsp;behind&amp;nbsp;you.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Harbour</title>
+      <link>https://example.com/poetry/half-remembered/harbour/</link>
+      <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/half-remembered/harbour/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;At&amp;nbsp;low&amp;nbsp;tide&amp;nbsp;the&amp;nbsp;harbour&amp;nbsp;empties&lt;br /&gt;to&amp;nbsp;mud&amp;nbsp;and&amp;nbsp;the&amp;nbsp;ribs&amp;nbsp;of&amp;nbsp;old&amp;nbsp;boats.&lt;br /&gt;The&amp;nbsp;water&amp;nbsp;goes&amp;nbsp;out&amp;nbsp;like&amp;nbsp;a&amp;nbsp;secret&lt;br /&gt;someone&amp;nbsp;decided&amp;nbsp;to&amp;nbsp;keep.&lt;br /&gt;&lt;br /&gt;We&amp;nbsp;sat&amp;nbsp;on&amp;nbsp;the&amp;nbsp;wall&amp;nbsp;and&amp;nbsp;ate&amp;nbsp;chips.&lt;br /&gt;The&amp;nbsp;vinegar&amp;nbsp;stung&amp;nbsp;a&amp;nbsp;cut&amp;nbsp;on&amp;nbsp;my&amp;nbsp;thumb.&lt;br /&gt;You&amp;nbsp;said&amp;nbsp;something&amp;nbsp;about&amp;nbsp;the&amp;nbsp;future.&lt;br /&gt;The&amp;nbsp;gulls&amp;nbsp;were&amp;nbsp;not&amp;nbsp;interested.&lt;br /&gt;&lt;br /&gt;The&amp;nbsp;tide&amp;nbsp;came&amp;nbsp;back,&amp;nbsp;as&amp;nbsp;tides&amp;nbsp;do,&lt;br /&gt;and&amp;nbsp;covered&amp;nbsp;everything&lt;br /&gt;we&amp;nbsp;had&amp;nbsp;been&amp;nbsp;looking&amp;nbsp;at.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Thread</title>
+      <link>https://example.com/poetry/half-remembered/thread/</link>
+      <pubDate>Tue, 05 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/half-remembered/thread/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;In&amp;nbsp;the&amp;nbsp;sewing&amp;nbsp;box:&amp;nbsp;a&amp;nbsp;thimble,&lt;br /&gt;three&amp;nbsp;buttons&amp;nbsp;from&amp;nbsp;a&amp;nbsp;coat&lt;br /&gt;nobody&amp;nbsp;remembers&amp;nbsp;wearing,&lt;br /&gt;and&amp;nbsp;a&amp;nbsp;length&amp;nbsp;of&amp;nbsp;thread&lt;br /&gt;still&amp;nbsp;knotted&amp;nbsp;at&amp;nbsp;one&amp;nbsp;end.&lt;br /&gt;&lt;br /&gt;She&amp;nbsp;could&amp;nbsp;fix&amp;nbsp;anything.&lt;br /&gt;The&amp;nbsp;thread&amp;nbsp;is&amp;nbsp;evidence.&lt;br /&gt;The&amp;nbsp;knot&amp;nbsp;is&amp;nbsp;proof&amp;nbsp;of&amp;nbsp;intention.&lt;br /&gt;The&amp;nbsp;coat&amp;nbsp;is&amp;nbsp;gone&lt;br /&gt;but&amp;nbsp;the&amp;nbsp;buttons&amp;nbsp;remain,&lt;br /&gt;patient&amp;nbsp;as&amp;nbsp;stones.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Glass</title>
+      <link>https://example.com/poetry/half-remembered/glass/</link>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/half-remembered/glass/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;There&amp;nbsp;was&amp;nbsp;a&amp;nbsp;pane&amp;nbsp;of&amp;nbsp;glass&lt;br /&gt;in&amp;nbsp;the&amp;nbsp;back&amp;nbsp;door&lt;br /&gt;that&amp;nbsp;had&amp;nbsp;a&amp;nbsp;bubble&amp;nbsp;in&amp;nbsp;it.&lt;br /&gt;&lt;br /&gt;When&amp;nbsp;you&amp;nbsp;looked&amp;nbsp;through&amp;nbsp;the&amp;nbsp;bubble,&lt;br /&gt;the&amp;nbsp;garden&amp;nbsp;bent.&lt;br /&gt;The&amp;nbsp;apple&amp;nbsp;tree&amp;nbsp;swam.&lt;br /&gt;&lt;br /&gt;They&amp;nbsp;replaced&amp;nbsp;the&amp;nbsp;door&amp;nbsp;eventually.&lt;br /&gt;The&amp;nbsp;new&amp;nbsp;glass&amp;nbsp;was&amp;nbsp;perfect.&lt;br /&gt;I&amp;nbsp;never&amp;nbsp;looked&amp;nbsp;through&amp;nbsp;it.&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Small Hours</title>
+      <link>https://example.com/poetry/small-hours/</link>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/poetry/small-hours/</guid>
+      <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;fridge&amp;nbsp;hums&amp;nbsp;its&amp;nbsp;one&amp;nbsp;note.&lt;br /&gt;A&amp;nbsp;tap&amp;nbsp;drips&amp;nbsp;in&amp;nbsp;the&amp;nbsp;dark&lt;br /&gt;like&amp;nbsp;a&amp;nbsp;clock&amp;nbsp;that&amp;nbsp;forgot&lt;br /&gt;what&amp;nbsp;it&amp;nbsp;was&amp;nbsp;counting.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;stand&amp;nbsp;at&amp;nbsp;the&amp;nbsp;window.&lt;br /&gt;The&amp;nbsp;street&amp;nbsp;is&amp;nbsp;all&amp;nbsp;amber&lt;br /&gt;and&amp;nbsp;nothing.&amp;nbsp;A&amp;nbsp;cat&lt;br /&gt;crosses&amp;nbsp;the&amp;nbsp;road&lt;br /&gt;with&amp;nbsp;tremendous&amp;nbsp;purpose.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;pour&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;drink&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;go&amp;nbsp;back&amp;nbsp;to&amp;nbsp;bed&lt;br /&gt;knowing&amp;nbsp;nothing&amp;nbsp;has&amp;nbsp;changed&lt;br /&gt;but&amp;nbsp;something&amp;nbsp;has&amp;nbsp;shifted.&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

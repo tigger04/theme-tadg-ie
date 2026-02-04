@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Masonry on The Wanderer&#39;s Notebook</title>
+    <link>https://example.com/tags/masonry/</link>
+    <description>Recent content in Masonry on The Wanderer&#39;s Notebook</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Example Site — MIT License</copyright>
+    <lastBuildDate>Thu, 10 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://example.com/tags/masonry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How the Masonry Grid Works</title>
+      <link>https://example.com/journal/masonry-explained/</link>
+      <pubDate>Thu, 10 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://example.com/journal/masonry-explained/</guid>
+      <description>&lt;p&gt;The homepage and section list pages use a masonry grid — a layout where items of varying heights pack together without gaps, like a stone wall.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-hybrid-approach&#34;&gt;The Hybrid Approach&lt;/h2&gt;&#xA;&lt;p&gt;Pure CSS Grid gives us responsive columns but leaves vertical gaps. Pure JavaScript positioning is fragile on resize. The tadg_ie theme uses both:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;CSS Grid&lt;/strong&gt; handles the horizontal layout — responsive columns that reflow based on viewport width.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;JavaScript&lt;/strong&gt; runs after images load and adjusts vertical positioning to fill gaps.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This means the layout works (albeit with gaps) even when JavaScript is disabled.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
