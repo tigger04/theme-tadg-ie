@@ -1,5 +1,5 @@
 {{- /* ABOUTME: Inline image shortcode for embedding images within article text. */}}
-{{- /* ABOUTME: Supports float left/right/center with caption, alt text, and optional blur/opacity effects. */}}
+{{- /* ABOUTME: Generates responsive thumbnails with WebP support, matching gallery behaviour. */}}
 {{- /* Usage: {{< img src="photo.jpg" alt="Description" caption="Caption text" position="right" >}} */}}
 {{- /* Optional: width="40%" blur="true" opacity="0.6" */}}
 
@@ -15,10 +15,28 @@
 {{- $image := .Page.Resources.GetMatch $src -}}
 
 {{- if $image -}}
+{{- /* Generate responsive thumbnails matching gallery pattern */ -}}
+{{- $thumb := $image.Fit "400x400" -}}
+{{- $medium := $image.Fit "800x800" -}}
+{{- $large := $image.Fit "1600x1600" -}}
+
 <figure class="inline-image inline-image-{{ $position }}"{{ if ne $position "center" }} style="width: {{ $width }};"{{ end }}>
-  <img src="{{ $image.RelPermalink }}"
-       alt="{{ $alt }}"
-       loading="lazy">
+  <picture>
+    {{- /* WebP source for modern browsers */ -}}
+    {{- $thumbWebP := $thumb.Process "webp" -}}
+    {{- $mediumWebP := $medium.Process "webp" -}}
+    {{- $largeWebP := $large.Process "webp" -}}
+    <source type="image/webp"
+            srcset="{{ $thumbWebP.RelPermalink }} 400w, {{ $mediumWebP.RelPermalink }} 800w, {{ $largeWebP.RelPermalink }} 1600w"
+            sizes="(max-width: 600px) 100vw, {{ $width }}">
+    {{- /* Fallback for older browsers */ -}}
+    <img src="{{ $medium.RelPermalink }}"
+         srcset="{{ $thumb.RelPermalink }} 400w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1600w"
+         sizes="(max-width: 600px) 100vw, {{ $width }}"
+         alt="{{ $alt }}"
+         loading="lazy"
+         class="inline-image-img">
+  </picture>
   {{- if $caption -}}
   <figcaption class="inline-image-caption{{ if eq $blur "true" }} inline-image-caption-blur{{ end }}"{{ if $opacity }} style="--inline-caption-opacity: {{ $opacity }};"{{ end }}>
     {{- $caption -}}

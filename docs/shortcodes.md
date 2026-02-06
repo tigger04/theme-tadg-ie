@@ -1,6 +1,6 @@
 # Shortcodes Reference
 
-The tadg_ie theme provides 13 custom shortcodes for varied content types.
+The tadg_ie theme provides 14 custom shortcodes for varied content types.
 
 ## Table of Contents
 
@@ -16,7 +16,8 @@ The tadg_ie theme provides 13 custom shortcodes for varied content types.
 10. [formspree](#formspree) — Formspree-backed contact form
 11. [rawhtml](#rawhtml) — Raw HTML pass-through
 12. [section-list](#section-list) — Section navigation list
-13. [gallery](#gallery) — Image gallery with lightbox
+13. [img](#img) — Inline image with responsive thumbnails
+14. [gallery](#gallery) — Image gallery with lightbox
 
 ---
 
@@ -341,13 +342,49 @@ Renders a navigation list of site sections with chevron icons. Behaviour is cons
 
 ---
 
+## img
+
+Inline image for embedding within article text. Generates responsive thumbnails with WebP support, matching gallery behaviour.
+
+### Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `src` | Yes | Image filename (from page resources) |
+| `alt` | Yes | Alt text for accessibility |
+| `caption` | No | Caption text below image |
+| `position` | No | Placement: `left`, `right` (default), or `center` |
+| `width` | No | Width when floated (default: `40%`) |
+| `blur` | No | Set to `"true"` for blurred caption background |
+| `opacity` | No | Caption background opacity override |
+
+### Usage
+
+```markdown
+{{< img src="photo.jpg" alt="A scenic view" >}}
+{{< img src="portrait.jpg" alt="Author" caption="Photo by Jane" position="left" >}}
+{{< img src="hero.jpg" alt="Banner" position="center" width="80%" >}}
+{{< img src="mood.jpg" alt="Atmosphere" caption="Dreamy" blur="true" opacity="0.7" >}}
+```
+
+### Visual Examples
+
+<!-- screenshot: img-right — inline image floated right -->
+<!-- screenshot: img-left — inline image floated left -->
+<!-- screenshot: img-center — centered inline image -->
+<!-- screenshot: img-caption-blur — image with blurred caption -->
+
+---
+
 ## gallery
 
 Displays page image resources as a responsive gallery with lightbox support.
 
 ### Parameters
 
-None — uses page resources directly.
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `exclude` | No | Comma-separated filenames to exclude from gallery |
 
 ### Metadata Priority
 
@@ -372,7 +409,11 @@ resources:
 
 ```markdown
 {{< gallery >}}
+{{< gallery exclude="hero.jpg" >}}
+{{< gallery exclude="inline1.jpg,inline2.jpg" >}}
 ```
+
+Use `exclude` when you have images displayed inline (via `img` shortcode) that you don't want duplicated in the gallery grid.
 
 ### Visual Examples
 

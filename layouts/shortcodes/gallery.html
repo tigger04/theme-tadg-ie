@@ -1,15 +1,38 @@
 {{- /* ABOUTME: Gallery shortcode for displaying images from the current page's resources. */}}
 {{- /* ABOUTME: Renders a responsive image grid with lightbox support and EXIF metadata. */}}
 {{- /* Usage: {{< gallery >}} in any page with image resources */}}
+{{- /* Usage: {{< gallery exclude="hero.jpg,inline.jpg" >}} to exclude specific images */}}
 {{- /* Metadata priority: frontmatter params → EXIF → filename */}}
 
 {{- $page := .Page -}}
 {{- $images := $page.Resources.ByType "image" -}}
 
+{{- /* Parse exclude parameter (comma-separated filenames) */ -}}
+{{- $excludeParam := .Get "exclude" | default "" -}}
+{{- $excludeList := slice -}}
+{{- if $excludeParam -}}
+  {{- $excludeList = split $excludeParam "," -}}
+{{- end -}}
+
+{{- /* Filter out excluded images */ -}}
+{{- $filteredImages := slice -}}
+{{- range $images -}}
+  {{- $filename := .Name -}}
+  {{- $excluded := false -}}
+  {{- range $excludeList -}}
+    {{- if eq (strings.TrimSpace .) $filename -}}
+      {{- $excluded = true -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $excluded -}}
+    {{- $filteredImages = $filteredImages | append . -}}
+  {{- end -}}
+{{- end -}}
+
 {{- /* Allow sorting by weight if defined in frontmatter resources */ -}}
-{{- $sortedImages := $images -}}
-{{- if gt (len $images) 0 -}}
-  {{- $sortedImages = sort $images ".Params.weight" -}}
+{{- $sortedImages := $filteredImages -}}
+{{- if gt (len $filteredImages) 0 -}}
+  {{- $sortedImages = sort $filteredImages ".Params.weight" -}}
 {{- end -}}
 
 {{- if gt (len $sortedImages) 0 -}}
