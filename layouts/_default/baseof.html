@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.Language.Lang }}">
     {{- partial "header.html" . -}}
     <body{{ if eq .Params.layout "columns" }} class="columns-page"{{ end }} data-grid-config='{{ .Scratch.Get "gridConfig" }}'>
         <div class="content">

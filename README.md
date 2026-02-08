@@ -1007,6 +1007,20 @@ tldr: "Brief summary"     # TL;DR section at top
 
 **Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned horizontally with the article title. On narrow screens (≤ 60em), the article title and metadata appear above the TOC, followed by the article content — the title inside the post container is hidden to avoid duplication. Pages without `toc: true` use full-width layout with no extra column. Set `toc` to a string value to customise the heading text (e.g. `toc: "In this document"`); the default heading is "Table of contents:".
 
+### Content Language
+
+```yaml
+contentLang: ga           # BCP 47 language tag (e.g. ga = Irish)
+```
+
+Sets the `lang` attribute on the `<article>` element (and masonry cards). The CSS `:lang(ga)` pseudo-class applies the Iosevka Gaeilge font to all descendants. Screen readers also use this for correct pronunciation. Note: Hugo's built-in `lang` front matter field is deprecated since v0.144.0, so this theme uses `contentLang` instead.
+
+For inline language switching within any article, use a `<span>` tag directly in markdown:
+
+```markdown
+He greeted her with <span lang="ga">Dia duit, a chara</span> as she entered.
+```
+
 ### Pin/Featured
 
 ```yaml

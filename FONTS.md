@@ -8,6 +8,7 @@ This document describes the font stack used in the tadg_ie theme.
 |------|---------|-----------|
 | **IosevkaCustom Extended** | Body text, paragraphs, image captions | `p`, `.image-caption` |
 | **IosevkaCustom** | Base UI, code blocks, callouts | `html`, `.callout p`, code elements |
+| **Iosevka Gaeilge** | Irish language content | `:lang(ga)` (via `contentLang` front matter or `<span lang="ga">`) |
 | **Special Elite** | Headings, navigation, buttons, logos, UI elements | `h1`-`h6`, `nav`, `.read-more-btn`, `.site-logo-text` |
 | **EB Garamond** | Poetry/verse content | `.verse`, `.masonry-poetry` |
 
@@ -33,6 +34,18 @@ Standard width for code and monospace contexts.
 - `IosevkaCustom-Bold.woff2` (700 normal)
 - `IosevkaCustom-BoldItalic.woff2` (700 italic)
 
+### Iosevka Gaeilge (Irish Language Content)
+
+Custom Iosevka build with wedge serifs, activated via `:lang(ga)` pseudo-class.
+
+- `IosevkaGaeilge-Regular.woff2` (400 normal)
+- `IosevkaGaeilge-Italic.woff2` (400 italic)
+- `IosevkaGaeilge-SemiBold.woff2` (600 normal)
+- `IosevkaGaeilge-SemiBoldItalic.woff2` (600 italic)
+- `IosevkaGaeilge-Heavy.woff2` (900 normal)
+- `IosevkaGaeilge-HeavyItalic.woff2` (900 italic)
+- Condensed variants also available for each weight/style
+
 ### Special Elite (Headings & UI Elements)
 
 Single-weight typewriter-style font for all headings (h1-h6) and UI elements.
@@ -54,7 +67,8 @@ The font stack cascades through three CSS files:
 1. **main.css** - Base font definitions
    - `html`: IosevkaCustom (base UI font)
    - `h1`-`h6`: Special Elite (all headings)
-   - `p`: IosevkaCustom Extended (body text)
+   - `p`: Helvetica, sans-serif (body text)
+   - `:lang(ga)`: Iosevka Gaeilge (Irish language content — activated by `contentLang: ga` front matter or `<span lang="ga">`)
    - `.callout p`: IosevkaCustom (code style in callouts)
 
 2. **custom.css** - Overrides and specialisations

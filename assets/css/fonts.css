@@ -255,6 +255,106 @@
   src: url('../fonts/IosevkaQuasiProportional-HeavyItalic.woff2') format('woff2');
 }
 
+/* ——— Iosevka Gaeilge - Irish Gaelic-influenced body text ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-Regular.woff2') format('woff2');
+}
+
+/* Regular 400, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-Italic.woff2') format('woff2');
+}
+
+/* SemiBold 600, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-SemiBold.woff2') format('woff2');
+}
+
+/* SemiBold 600, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-SemiBoldItalic.woff2') format('woff2');
+}
+
+/* Heavy 900, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-Heavy.woff2') format('woff2');
+}
+
+/* Heavy 900, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 900;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-HeavyItalic.woff2') format('woff2');
+}
+
+/* ——— Iosevka Gaeilge Condensed - Condensed variant ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-Condensed.woff2') format('woff2');
+}
+
+/* Regular 400, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-CondensedItalic.woff2') format('woff2');
+}
+
+/* SemiBold 600, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-CondensedSemiBold.woff2') format('woff2');
+}
+
+/* SemiBold 600, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-CondensedSemiBoldItalic.woff2') format('woff2');
+}
+
+/* Heavy 900, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-CondensedHeavy.woff2') format('woff2');
+}
+
+/* Heavy 900, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 900;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-CondensedHeavyItalic.woff2') format('woff2');
+}
+
 /* ——— IosevkaQuasiProportional Condensed - Thinner variant for secondary text (Issue #86) ——— */
 
 /* Regular 400, normal */

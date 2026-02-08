@@ -1,6 +1,6 @@
 {{ define "main" }}
 <main>
-  <article{{ if .Params.toc }} class="has-toc"{{ end }}>
+  <article{{ if .Params.contentLang }} lang="{{ .Params.contentLang }}"{{ end }}{{ if .Params.toc }} class="has-toc"{{ end }}>
     <!-- Banner Layout -->
     {{ if eq .Params.layout "banner" }}
     {{ if .Params.image.src }}
