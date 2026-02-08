@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Irish on The Wanderer&#39;s Notebook</title>
-    <link>https://example.com/tags/irish/</link>
+    <link>http://localhost:1314/tags/irish/</link>
     <description>Recent content in Irish on The Wanderer&#39;s Notebook</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Example Site — MIT License</copyright>
     <lastBuildDate>Tue, 28 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/irish/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/irish/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Colcannon</title>
-      <link>https://example.com/recipes/colcannon/</link>
+      <link>http://localhost:1314/recipes/colcannon/</link>
       <pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/recipes/colcannon/</guid>
+      <guid>http://localhost:1314/recipes/colcannon/</guid>
       <description>&lt;p&gt;Colcannon is the sort of food that doesn&amp;rsquo;t photograph well but tastes like home. It&amp;rsquo;s mashed potatoes with greens, and that&amp;rsquo;s &#xA;&lt;span class=&#34;colorbold colorbold-underlined&#34;&gt;all it needs to be&lt;/span&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1kg floury potatoes (Roosters or Kerr&amp;rsquo;s Pinks)&lt;/li&gt;&#xA;&lt;li&gt;200g curly kale, stripped from stems and chopped&lt;/li&gt;&#xA;&lt;li&gt;4 spring onions, finely sliced&lt;/li&gt;&#xA;&lt;li&gt;100ml milk, warmed&lt;/li&gt;&#xA;&lt;li&gt;50g butter, plus extra for serving&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Boil potatoes in salted water until tender, about 20 minutes.&lt;/li&gt;&#xA;&lt;li&gt;Meanwhile, blanch the kale in boiling water for 3 minutes. Drain well.&lt;/li&gt;&#xA;&lt;li&gt;Drain the potatoes and return to the pot. Mash until smooth.&lt;/li&gt;&#xA;&lt;li&gt;Stir in warm milk, butter, kale, and spring onions.&lt;/li&gt;&#xA;&lt;li&gt;Season generously. Serve with a well of melted butter in the centre.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;details class=&#34;styled-details&#34;&gt;&#xA;  &lt;summary&gt;&lt;span&gt;Variations&lt;/span&gt;&lt;/summary&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;ul&gt;&#xA;&lt;li&gt;Replace kale with savoy cabbage for a milder flavour&lt;/li&gt;&#xA;&lt;li&gt;Add crispy bacon lardons for a non-vegetarian version&lt;/li&gt;&#xA;&lt;li&gt;Stir through a handful of grated mature cheddar&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&#xA;  &lt;/div&gt;&#xA;&lt;/details&gt;</description>
     </item>
   </channel>

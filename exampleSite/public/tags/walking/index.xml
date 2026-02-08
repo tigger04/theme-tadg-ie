@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Walking on The Wanderer&#39;s Notebook</title>
-    <link>https://example.com/tags/walking/</link>
+    <link>http://localhost:1314/tags/walking/</link>
     <description>Recent content in Walking on The Wanderer&#39;s Notebook</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Example Site — MIT License</copyright>
     <lastBuildDate>Fri, 15 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/walking/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/walking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>On Walking</title>
-      <link>https://example.com/journal/on-walking/</link>
+      <link>http://localhost:1314/journal/on-walking/</link>
       <pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/journal/on-walking/</guid>
+      <guid>http://localhost:1314/journal/on-walking/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s a particular quality to ideas that arrive while walking. They come unbidden, fully formed, as though they&amp;rsquo;d been waiting for you to stop sitting still.&lt;/p&gt;&#xA;&lt;p&gt;Nietzsche said it: &amp;ldquo;All truly great thoughts are conceived while walking.&amp;rdquo; Kierkegaard walked the streets of Copenhagen for hours. Wordsworth logged an estimated 180,000 miles on foot. These are not coincidences.&lt;/p&gt;&#xA;&lt;p&gt;The rhythm of walking does something that sitting cannot. It loosens the grip of the analytical mind and lets the associative mind wander. Step, step, step — and suddenly the solution to a problem you hadn&amp;rsquo;t been thinking about appears.&lt;/p&gt;</description>
     </item>
   </channel>

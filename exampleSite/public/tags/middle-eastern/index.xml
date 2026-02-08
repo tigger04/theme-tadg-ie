@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Middle-Eastern on The Wanderer&#39;s Notebook</title>
-    <link>https://example.com/tags/middle-eastern/</link>
+    <link>http://localhost:1314/tags/middle-eastern/</link>
     <description>Recent content in Middle-Eastern on The Wanderer&#39;s Notebook</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Example Site — MIT License</copyright>
     <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/middle-eastern/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/middle-eastern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shakshuka</title>
-      <link>https://example.com/recipes/shakshuka/</link>
+      <link>http://localhost:1314/recipes/shakshuka/</link>
       <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/recipes/shakshuka/</guid>
+      <guid>http://localhost:1314/recipes/shakshuka/</guid>
       <description>&lt;p&gt;One pan, twenty minutes, and the satisfaction of cracking eggs into a bubbling sauce.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 tbsp olive oil&lt;/li&gt;&#xA;&lt;li&gt;1 onion, diced&lt;/li&gt;&#xA;&lt;li&gt;2 cloves garlic, sliced&lt;/li&gt;&#xA;&lt;li&gt;1 red pepper, diced&lt;/li&gt;&#xA;&lt;li&gt;1 tsp cumin&lt;/li&gt;&#xA;&lt;li&gt;1 tsp smoked paprika&lt;/li&gt;&#xA;&lt;li&gt;400g tin chopped tomatoes&lt;/li&gt;&#xA;&lt;li&gt;4 eggs&lt;/li&gt;&#xA;&lt;li&gt;Fresh coriander and crusty bread to serve&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Heat olive oil in a wide, deep frying pan over medium heat.&lt;/li&gt;&#xA;&lt;li&gt;Cook onion and pepper for 5 minutes until softened.&lt;/li&gt;&#xA;&lt;li&gt;Add garlic, cumin, and paprika. Cook for 1 minute.&lt;/li&gt;&#xA;&lt;li&gt;Pour in tomatoes. Simmer for 10 minutes until thickened slightly.&lt;/li&gt;&#xA;&lt;li&gt;Make 4 wells in the sauce and crack an egg into each.&lt;/li&gt;&#xA;&lt;li&gt;Cover and cook for 5–7 minutes until whites are set but yolks are still runny.&lt;/li&gt;&#xA;&lt;li&gt;Scatter with coriander and serve with bread for dipping.&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>

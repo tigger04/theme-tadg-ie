@@ -46,10 +46,25 @@ Styled alert/callout boxes with colour-coded types.
 
 ### Visual Examples
 
-<!-- screenshot: callout-tip — tip callout in light mode -->
-<!-- screenshot: callout-alert — alert callout in light mode -->
-<!-- screenshot: callout-warning — warning callout in light mode -->
-<!-- screenshot: callout-custom — custom callout with title and style -->
+#### Light mode
+
+| Tip | Alert |
+|-----|-------|
+| ![Tip callout](screenshots/shortcodes/callout-tip.png) | ![Alert callout](screenshots/shortcodes/callout-alert.png) |
+
+| Warning | Custom |
+|---------|--------|
+| ![Warning callout](screenshots/shortcodes/callout-warning.png) | ![Custom callout](screenshots/shortcodes/callout-custom.png) |
+
+#### Dark mode
+
+| Tip | Alert |
+|-----|-------|
+| ![Tip callout dark](screenshots/shortcodes/callout-tip-dark.png) | ![Alert callout dark](screenshots/shortcodes/callout-alert-dark.png) |
+
+| Warning | Custom |
+|---------|--------|
+| ![Warning callout dark](screenshots/shortcodes/callout-warning-dark.png) | ![Custom callout dark](screenshots/shortcodes/callout-custom-dark.png) |
 
 ---
 
@@ -73,8 +88,7 @@ This has {{< colorbold text="no underline" underlined=false >}} here.
 
 ### Visual Examples
 
-<!-- screenshot: colorbold — inline colorbold with underline -->
-<!-- screenshot: colorbold-no-underline — inline colorbold without underline -->
+![Colorbold — underlined (default) and without underline](screenshots/shortcodes/colorbold.png)
 
 ---
 
@@ -100,8 +114,9 @@ Can include **markdown**.
 
 ### Visual Examples
 
-<!-- screenshot: details-closed — collapsed details element -->
-<!-- screenshot: details-open — expanded details element -->
+| Collapsed | Expanded |
+|-----------|----------|
+| ![Details closed](screenshots/shortcodes/details-closed.png) | ![Details open](screenshots/shortcodes/details-open.png) |
 
 ---
 
@@ -129,8 +144,7 @@ Supports both positional and named parameters.
 
 ### Visual Examples
 
-<!-- screenshot: dialogue-with-parenthetical — dialogue with character name and delivery direction -->
-<!-- screenshot: dialogue-without-parenthetical — dialogue with character name only -->
+![Dialogue — character names with and without parenthetical](screenshots/shortcodes/dialogue.png)
 
 ---
 
@@ -153,8 +167,9 @@ Stage directions for plays. Renders in italics with secondary accent colour.
 
 ### Visual Examples
 
-<!-- screenshot: direction — stage direction in light mode -->
-<!-- screenshot: direction-dark — stage direction in dark mode -->
+| Light mode | Dark mode |
+|------------|-----------|
+| ![Direction light](screenshots/shortcodes/direction.png) | ![Direction dark](screenshots/shortcodes/direction-dark.png) |
 
 ---
 
@@ -177,7 +192,7 @@ The word {{</* ga */>}}craic{{</* /ga */>}} has no direct English equivalent.
 
 ### Visual Examples
 
-<!-- screenshot: ga — inline Irish text in Iosevka Gaeilge within English paragraph -->
+*Screenshot requires example content using the `ga` shortcode. Add `{{</* ga */>}}Dia duit{{</* /ga */>}}` to a page to see Iosevka Gaeilge rendering.*
 
 ---
 
@@ -203,8 +218,9 @@ Multiple paragraphs supported.
 
 ### Visual Examples
 
-<!-- screenshot: popquote-closed — collapsed popquote -->
-<!-- screenshot: popquote-open — expanded popquote -->
+| Collapsed | Expanded |
+|-----------|----------|
+| ![Popquote closed](screenshots/shortcodes/popquote-closed.png) | ![Popquote open](screenshots/shortcodes/popquote-open.png) |
 
 ---
 
@@ -231,7 +247,7 @@ Line breaks for you.
 
 ### Visual Examples
 
-<!-- screenshot: poem — rendered poem with preserved line breaks -->
+![Poem with preserved line breaks](screenshots/shortcodes/poem.png)
 
 ---
 
@@ -253,7 +269,7 @@ Embed local video files with native HTML5 player controls.
 
 ### Visual Examples
 
-<!-- screenshot: video — HTML5 video player -->
+![HTML5 video player](screenshots/shortcodes/video.png)
 
 ---
 
@@ -287,8 +303,9 @@ params:
 
 ### Visual Examples
 
-<!-- screenshot: contactform — contact form without newsletter -->
-<!-- screenshot: contactform-newsletter — contact form with newsletter checkbox -->
+![Contact form with newsletter checkbox](screenshots/shortcodes/contactform.png)
+
+*The screenshot above shows `newsletter="true"`. Without the newsletter parameter, the checkbox row is hidden.*
 
 ---
 
@@ -310,7 +327,7 @@ Contact form using Formspree as the backend. Simpler alternative to `contactform
 
 ### Visual Examples
 
-<!-- screenshot: formspree — Formspree contact form -->
+![Formspree contact form](screenshots/shortcodes/formspree.png)
 
 ---
 
@@ -336,7 +353,7 @@ Pass through raw HTML without markdown processing. Use for embedding widgets, if
 
 ### Visual Examples
 
-<!-- screenshot: rawhtml — example of embedded raw HTML -->
+![Raw HTML pass-through](screenshots/shortcodes/rawhtml.png)
 
 ---
 
@@ -361,8 +378,7 @@ Renders a navigation list of site sections with chevron icons. Behaviour is cons
 
 ### Visual Examples
 
-<!-- screenshot: section-list — section navigation list -->
-<!-- screenshot: section-list-limit — section list with recent items -->
+![Section navigation list](screenshots/shortcodes/section-list.png)
 
 ---
 
@@ -393,10 +409,7 @@ Inline image for embedding within article text. Generates responsive thumbnails 
 
 ### Visual Examples
 
-<!-- screenshot: img-right — inline image floated right -->
-<!-- screenshot: img-left — inline image floated left -->
-<!-- screenshot: img-center — centered inline image -->
-<!-- screenshot: img-caption-blur — image with blurred caption -->
+*Screenshots require a page bundle with image resources. See the example site's articles for working demonstrations.*
 
 ---
 
@@ -441,14 +454,16 @@ Use `exclude` when you have images displayed inline (via `img` shortcode) that y
 
 ### Visual Examples
 
-<!-- screenshot: gallery — gallery grid in light mode -->
-<!-- screenshot: gallery-lightbox — lightbox view with caption -->
-<!-- screenshot: gallery-dark — gallery grid in dark mode -->
+*Gallery screenshots require image files in a page bundle directory. Add `.jpg` or `.png` files to a page bundle alongside `_index.md` to see the gallery in action.*
 
 ---
 
 ## Screenshot Key
 
-Screenshots are captured from the [live demo site](https://tadg.ie) and placed in `screenshots/shortcodes/`. Each screenshot placeholder above follows the naming convention `screenshots/shortcodes/{name}.png`.
+Screenshots are captured from the example site at 1200px viewport width (2x device scale) using Puppeteer, and placed in `screenshots/shortcodes/`. Dark mode variants are provided where the shortcode appearance changes between modes.
 
-To contribute screenshots, capture them at 1200px viewport width in both light and dark mode where applicable.
+Shortcodes not yet screenshotted (require page bundle assets in the example site):
+
+- `ga` — needs example content with `{{</* ga */>}}` shortcode usage
+- `img` — needs image files in a page bundle
+- `gallery` — needs image files in a page bundle

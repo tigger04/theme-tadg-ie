@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Landscape on The Wanderer&#39;s Notebook</title>
-    <link>https://example.com/tags/landscape/</link>
+    <link>http://localhost:1314/tags/landscape/</link>
     <description>Recent content in Landscape on The Wanderer&#39;s Notebook</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Example Site — MIT License</copyright>
     <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/landscape/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/landscape/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Four Fields</title>
-      <link>https://example.com/poetry/four-fields/</link>
+      <link>http://localhost:1314/poetry/four-fields/</link>
       <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/poetry/four-fields/</guid>
+      <guid>http://localhost:1314/poetry/four-fields/</guid>
       <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;first&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;crossed&amp;nbsp;at&amp;nbsp;seven,&lt;br /&gt;grass&amp;nbsp;to&amp;nbsp;the&amp;nbsp;waist,&amp;nbsp;the&amp;nbsp;dog&amp;nbsp;ahead.&lt;br /&gt;The&amp;nbsp;second&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;saw&amp;nbsp;from&amp;nbsp;the&amp;nbsp;train,&lt;br /&gt;gold&amp;nbsp;in&amp;nbsp;September,&amp;nbsp;already&amp;nbsp;someone&amp;nbsp;else&#39;s.&lt;br /&gt;&lt;br /&gt;The&amp;nbsp;third&amp;nbsp;field&amp;nbsp;you&amp;nbsp;walked&amp;nbsp;through&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;rain&amp;nbsp;came.&amp;nbsp;You&amp;nbsp;kept&amp;nbsp;arguing.&lt;br /&gt;The&amp;nbsp;fourth&amp;nbsp;field&amp;nbsp;is&amp;nbsp;the&amp;nbsp;one&amp;nbsp;you&amp;nbsp;dream&amp;nbsp;about:&lt;br /&gt;flat,&amp;nbsp;enormous,&amp;nbsp;and&amp;nbsp;always&amp;nbsp;just&amp;nbsp;behind&amp;nbsp;you.&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Harbour</title>
-      <link>https://example.com/poetry/half-remembered/harbour/</link>
+      <link>http://localhost:1314/poetry/half-remembered/harbour/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/poetry/half-remembered/harbour/</guid>
+      <guid>http://localhost:1314/poetry/half-remembered/harbour/</guid>
       <description>&lt;div class=&#34;poem&#34;&gt;&#xA;At&amp;nbsp;low&amp;nbsp;tide&amp;nbsp;the&amp;nbsp;harbour&amp;nbsp;empties&lt;br /&gt;to&amp;nbsp;mud&amp;nbsp;and&amp;nbsp;the&amp;nbsp;ribs&amp;nbsp;of&amp;nbsp;old&amp;nbsp;boats.&lt;br /&gt;The&amp;nbsp;water&amp;nbsp;goes&amp;nbsp;out&amp;nbsp;like&amp;nbsp;a&amp;nbsp;secret&lt;br /&gt;someone&amp;nbsp;decided&amp;nbsp;to&amp;nbsp;keep.&lt;br /&gt;&lt;br /&gt;We&amp;nbsp;sat&amp;nbsp;on&amp;nbsp;the&amp;nbsp;wall&amp;nbsp;and&amp;nbsp;ate&amp;nbsp;chips.&lt;br /&gt;The&amp;nbsp;vinegar&amp;nbsp;stung&amp;nbsp;a&amp;nbsp;cut&amp;nbsp;on&amp;nbsp;my&amp;nbsp;thumb.&lt;br /&gt;You&amp;nbsp;said&amp;nbsp;something&amp;nbsp;about&amp;nbsp;the&amp;nbsp;future.&lt;br /&gt;The&amp;nbsp;gulls&amp;nbsp;were&amp;nbsp;not&amp;nbsp;interested.&lt;br /&gt;&lt;br /&gt;The&amp;nbsp;tide&amp;nbsp;came&amp;nbsp;back,&amp;nbsp;as&amp;nbsp;tides&amp;nbsp;do,&lt;br /&gt;and&amp;nbsp;covered&amp;nbsp;everything&lt;br /&gt;we&amp;nbsp;had&amp;nbsp;been&amp;nbsp;looking&amp;nbsp;at.&#xA;&lt;/div&gt;</description>
     </item>
   </channel>

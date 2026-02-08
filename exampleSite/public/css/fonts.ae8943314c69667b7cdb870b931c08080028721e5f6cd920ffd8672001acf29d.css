@@ -1,0 +1,478 @@
+/* ABOUTME: Font face definitions for the tadg_ie theme
+   ABOUTME: Issue #68 - Refactored font architecture */
+
+/* ============================================
+   ACTIVE FONTS - Used in production
+   ============================================ */
+
+/* ——— Special Elite - UI, nav, headings, buttons ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'Special Elite';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/SpecialElite-Regular.woff2') format('woff2');
+}
+
+/* Fake bold 700, normal (same file, browser synthesizes) */
+@font-face {
+  font-family: 'Special Elite';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/SpecialElite-Regular.woff2') format('woff2');
+}
+
+/* Fake italic 400, italic (same file, browser synthesizes) */
+@font-face {
+  font-family: 'Special Elite';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/SpecialElite-Regular.woff2') format('woff2');
+}
+
+/* Fake bold italic 700, italic (same file, browser synthesizes) */
+@font-face {
+  font-family: 'Special Elite';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/SpecialElite-Regular.woff2') format('woff2');
+}
+
+/* ——— EB Garamond - Poetry, verse content ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/EBGaramond-Regular.woff2') format('woff2');
+}
+
+/* Italic 400, italic */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/EBGaramond-Italic.woff2') format('woff2');
+}
+
+/* Medium 500, normal */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fonts/EBGaramond-Medium.woff2') format('woff2');
+}
+
+/* Medium 500, italic */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 500;
+  font-style: italic;
+  src: url('../fonts/EBGaramond-MediumItalic.woff2') format('woff2');
+}
+
+/* SemiBold 600, normal */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/EBGaramond-SemiBold.woff2') format('woff2');
+}
+
+/* SemiBold 600, italic */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fonts/EBGaramond-SemiBoldItalic.woff2') format('woff2');
+}
+
+/* Bold 700, normal */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/EBGaramond-Bold.woff2') format('woff2');
+}
+
+/* Bold 700, italic */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/EBGaramond-BoldItalic.woff2') format('woff2');
+}
+
+/* ExtraBold 800, normal */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 800;
+  font-style: normal;
+  src: url('../fonts/EBGaramond-ExtraBold.woff2') format('woff2');
+}
+
+/* ExtraBold 800, italic */
+@font-face {
+  font-family: 'EB Garamond';
+  font-weight: 800;
+  font-style: italic;
+  src: url('../fonts/EBGaramond-ExtraBoldItalic.woff2') format('woff2');
+}
+
+/* ——— IosevkaCustom Extended - Body text, paragraphs ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'IosevkaCustom Extended';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaCustom-Extended.woff2') format('woff2');
+}
+
+/* Italic 400, italic */
+@font-face {
+  font-family: 'IosevkaCustom Extended';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaCustom-ExtendedItalic.woff2') format('woff2');
+}
+
+/* Bold 700, normal */
+@font-face {
+  font-family: 'IosevkaCustom Extended';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/IosevkaCustom-ExtendedBold.woff2') format('woff2');
+}
+
+/* Bold 700, italic */
+@font-face {
+  font-family: 'IosevkaCustom Extended';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/IosevkaCustom-ExtendedBoldItalic.woff2') format('woff2');
+}
+
+/* Heavy 900, normal */
+@font-face {
+  font-family: 'IosevkaCustom Extended';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/IosevkaCustom-ExtendedHeavy.woff2') format('woff2');
+}
+
+/* Heavy 900, italic */
+@font-face {
+  font-family: 'IosevkaCustom Extended';
+  font-weight: 900;
+  font-style: italic;
+  src: url('../fonts/IosevkaCustom-ExtendedHeavyItalic.woff2') format('woff2');
+}
+
+/* ——— IosevkaCustom - Code blocks, inline code ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'IosevkaCustom';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaCustom-Regular.woff2') format('woff2');
+}
+
+/* Italic 400, italic */
+@font-face {
+  font-family: 'IosevkaCustom';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaCustom-Italic.woff2') format('woff2');
+}
+
+/* Bold 700, normal */
+@font-face {
+  font-family: 'IosevkaCustom';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/IosevkaCustom-Bold.woff2') format('woff2');
+}
+
+/* Bold 700, italic */
+@font-face {
+  font-family: 'IosevkaCustom';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/IosevkaCustom-BoldItalic.woff2') format('woff2');
+}
+
+/* ——— IosevkaQuasiProportional - Article content, card snippets (Issue #86) ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'IosevkaQuasiProportional';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaQuasiProportional-Regular.woff2') format('woff2');
+}
+
+/* Regular 400, italic */
+@font-face {
+  font-family: 'IosevkaQuasiProportional';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaQuasiProportional-Italic.woff2') format('woff2');
+}
+
+/* SemiBold 600, normal */
+@font-face {
+  font-family: 'IosevkaQuasiProportional';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/IosevkaQuasiProportional-SemiBold.woff2') format('woff2');
+}
+
+/* SemiBold 600, italic */
+@font-face {
+  font-family: 'IosevkaQuasiProportional';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fonts/IosevkaQuasiProportional-SemiBoldItalic.woff2') format('woff2');
+}
+
+/* Heavy 900, normal */
+@font-face {
+  font-family: 'IosevkaQuasiProportional';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/IosevkaQuasiProportional-Heavy.woff2') format('woff2');
+}
+
+/* Heavy 900, italic */
+@font-face {
+  font-family: 'IosevkaQuasiProportional';
+  font-weight: 900;
+  font-style: italic;
+  src: url('../fonts/IosevkaQuasiProportional-HeavyItalic.woff2') format('woff2');
+}
+
+/* ——— Iosevka Gaeilge - Irish Gaelic-influenced body text ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-Regular.woff2') format('woff2');
+}
+
+/* Regular 400, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-Italic.woff2') format('woff2');
+}
+
+/* SemiBold 600, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-SemiBold.woff2') format('woff2');
+}
+
+/* SemiBold 600, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-SemiBoldItalic.woff2') format('woff2');
+}
+
+/* Heavy 900, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-Heavy.woff2') format('woff2');
+}
+
+/* Heavy 900, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge';
+  font-weight: 900;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-HeavyItalic.woff2') format('woff2');
+}
+
+/* ——— Iosevka Gaeilge Condensed - Condensed variant ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-Condensed.woff2') format('woff2');
+}
+
+/* Regular 400, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-CondensedItalic.woff2') format('woff2');
+}
+
+/* SemiBold 600, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-CondensedSemiBold.woff2') format('woff2');
+}
+
+/* SemiBold 600, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-CondensedSemiBoldItalic.woff2') format('woff2');
+}
+
+/* Heavy 900, normal */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/IosevkaGaeilge-CondensedHeavy.woff2') format('woff2');
+}
+
+/* Heavy 900, italic */
+@font-face {
+  font-family: 'Iosevka Gaeilge Condensed';
+  font-weight: 900;
+  font-style: italic;
+  src: url('../fonts/IosevkaGaeilge-CondensedHeavyItalic.woff2') format('woff2');
+}
+
+/* ——— IosevkaQuasiProportional Condensed - Thinner variant for secondary text (Issue #86) ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'IosevkaQuasiProportional Condensed';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IosevkaQuasiProportional-Condensed.woff2') format('woff2');
+}
+
+/* Regular 400, italic */
+@font-face {
+  font-family: 'IosevkaQuasiProportional Condensed';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IosevkaQuasiProportional-CondensedItalic.woff2') format('woff2');
+}
+
+/* SemiBold 600, normal */
+@font-face {
+  font-family: 'IosevkaQuasiProportional Condensed';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/IosevkaQuasiProportional-CondensedSemiBold.woff2') format('woff2');
+}
+
+/* SemiBold 600, italic */
+@font-face {
+  font-family: 'IosevkaQuasiProportional Condensed';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fonts/IosevkaQuasiProportional-CondensedSemiBoldItalic.woff2') format('woff2');
+}
+
+/* ============================================
+   RESERVED FONTS - Available for future use
+   ============================================ */
+
+/* ——— tigger - Custom display font ——— */
+@font-face {
+  font-family: 'tigger';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/tigger.woff2') format('woff2');
+}
+
+/* ——— Tequila - Alternative display font ——— */
+
+/* Regular */
+@font-face {
+  font-family: 'Tequila';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Tequila-Regular.woff2') format('woff2');
+}
+
+/* Regular Italic */
+@font-face {
+  font-family: 'Tequila';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/Tequila-Regular-italic.woff2') format('woff2');
+}
+
+/* Italic (alternate) */
+@font-face {
+  font-family: 'Tequila';
+  font-weight: 400;
+  font-style: oblique;
+  src: url('../fonts/Tequila-Italic.woff2') format('woff2');
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Tequila';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/Tequila-Bold.woff2') format('woff2');
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'Tequila';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/Tequila-BoldItalic.woff2') format('woff2');
+}
+
+/* ——— IM FELL Extended - Decorative serif ——— */
+
+/* Regular */
+@font-face {
+  font-family: 'IM FELL Extended';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IM_FELL_Extended.woff2') format('woff2');
+}
+
+/* Italic */
+@font-face {
+  font-family: 'IM FELL Extended';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IM_FELL_Extended_Italic.woff2') format('woff2');
+}
+
+/* IM FELL English Italic (related font) */
+@font-face {
+  font-family: 'IM FELL English';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IM_FELL_English_Italic.woff2') format('woff2');
+}
+
+/* ——— Terminoedipus - Experimental display ——— */
+@font-face {
+  font-family: 'Terminoedipus';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Terminoedipus.woff2') format('woff2');
+}

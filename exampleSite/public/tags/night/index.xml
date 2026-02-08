@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Night on The Wanderer&#39;s Notebook</title>
-    <link>https://example.com/tags/night/</link>
+    <link>http://localhost:1314/tags/night/</link>
     <description>Recent content in Night on The Wanderer&#39;s Notebook</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Example Site — MIT License</copyright>
     <lastBuildDate>Fri, 18 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/night/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/night/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Small Hours</title>
-      <link>https://example.com/poetry/small-hours/</link>
+      <link>http://localhost:1314/poetry/small-hours/</link>
       <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/poetry/small-hours/</guid>
+      <guid>http://localhost:1314/poetry/small-hours/</guid>
       <description>&lt;div class=&#34;poem&#34;&gt;&#xA;The&amp;nbsp;fridge&amp;nbsp;hums&amp;nbsp;its&amp;nbsp;one&amp;nbsp;note.&lt;br /&gt;A&amp;nbsp;tap&amp;nbsp;drips&amp;nbsp;in&amp;nbsp;the&amp;nbsp;dark&lt;br /&gt;like&amp;nbsp;a&amp;nbsp;clock&amp;nbsp;that&amp;nbsp;forgot&lt;br /&gt;what&amp;nbsp;it&amp;nbsp;was&amp;nbsp;counting.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;stand&amp;nbsp;at&amp;nbsp;the&amp;nbsp;window.&lt;br /&gt;The&amp;nbsp;street&amp;nbsp;is&amp;nbsp;all&amp;nbsp;amber&lt;br /&gt;and&amp;nbsp;nothing.&amp;nbsp;A&amp;nbsp;cat&lt;br /&gt;crosses&amp;nbsp;the&amp;nbsp;road&lt;br /&gt;with&amp;nbsp;tremendous&amp;nbsp;purpose.&lt;br /&gt;&lt;br /&gt;You&amp;nbsp;pour&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;drink&amp;nbsp;the&amp;nbsp;milk.&lt;br /&gt;You&amp;nbsp;go&amp;nbsp;back&amp;nbsp;to&amp;nbsp;bed&lt;br /&gt;knowing&amp;nbsp;nothing&amp;nbsp;has&amp;nbsp;changed&lt;br /&gt;but&amp;nbsp;something&amp;nbsp;has&amp;nbsp;shifted.&#xA;&lt;/div&gt;</description>
     </item>
   </channel>

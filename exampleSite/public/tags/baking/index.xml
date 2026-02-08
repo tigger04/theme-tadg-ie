@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Baking on The Wanderer&#39;s Notebook</title>
-    <link>https://example.com/tags/baking/</link>
+    <link>http://localhost:1314/tags/baking/</link>
     <description>Recent content in Baking on The Wanderer&#39;s Notebook</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Example Site — MIT License</copyright>
     <lastBuildDate>Sat, 15 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.com/tags/baking/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/baking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Soda Bread</title>
-      <link>https://example.com/recipes/soda-bread/</link>
+      <link>http://localhost:1314/recipes/soda-bread/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://example.com/recipes/soda-bread/</guid>
+      <guid>http://localhost:1314/recipes/soda-bread/</guid>
       <description>&lt;p&gt;Soda bread is the simplest bread you can make. Four ingredients, no yeast, no kneading, no proving. From bowl to table in under an hour.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;450g plain flour&lt;/li&gt;&#xA;&lt;li&gt;1 tsp salt&lt;/li&gt;&#xA;&lt;li&gt;1 tsp bicarbonate of soda&lt;/li&gt;&#xA;&lt;li&gt;400ml buttermilk&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Preheat oven to 200°C.&lt;/li&gt;&#xA;&lt;li&gt;Mix flour, salt, and bicarbonate of soda in a large bowl.&lt;/li&gt;&#xA;&lt;li&gt;Make a well in the centre and pour in the buttermilk.&lt;/li&gt;&#xA;&lt;li&gt;Mix quickly with a wooden spoon — do not overwork the dough.&lt;/li&gt;&#xA;&lt;li&gt;Turn onto a floured surface and shape into a round.&lt;/li&gt;&#xA;&lt;li&gt;Cut a deep cross on top.&lt;/li&gt;&#xA;&lt;li&gt;Bake for 35–40 minutes until the bottom sounds hollow when tapped.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&lt;div class=&#39;callout callout-tip&#39; style=&#39;&#39;&gt;&#xA;  &lt;div class=&#34;callout-inner&#34;&gt;&#xA;    &#xA;    &lt;u&gt;Tip&lt;/u&gt;&#xA;    &lt;br /&gt;&#xA;    The cross on top isn&amp;#39;t just decorative — it helps the heat penetrate the thick dough evenly.&#xA;    &#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
