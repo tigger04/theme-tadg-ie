@@ -1,6 +1,6 @@
 # Shortcodes Reference
 
-The tadg_ie theme provides 14 custom shortcodes for varied content types.
+The tadg_ie theme provides 15 custom shortcodes for varied content types.
 
 ## Table of Contents
 
@@ -9,15 +9,16 @@ The tadg_ie theme provides 14 custom shortcodes for varied content types.
 3. [details](#details) — Collapsible content
 4. [dialogue](#dialogue) — Character speech for plays
 5. [direction](#direction) — Stage directions
-6. [popquote](#popquote) — Expandable quotes
-7. [poem](#poem) — Poetry with preserved line breaks
-8. [video](#video) — HTML5 video player
-9. [contactform](#contactform) — Self-hosted contact form with CAPTCHA
-10. [formspree](#formspree) — Formspree-backed contact form
-11. [rawhtml](#rawhtml) — Raw HTML pass-through
-12. [section-list](#section-list) — Section navigation list
-13. [img](#img) — Inline image with responsive thumbnails
-14. [gallery](#gallery) — Image gallery with lightbox
+6. [ga](#ga) — Inline Irish language text
+7. [popquote](#popquote) — Expandable quotes
+8. [poem](#poem) — Poetry with preserved line breaks
+9. [video](#video) — HTML5 video player
+10. [contactform](#contactform) — Self-hosted contact form with CAPTCHA
+11. [formspree](#formspree) — Formspree-backed contact form
+12. [rawhtml](#rawhtml) — Raw HTML pass-through
+13. [section-list](#section-list) — Section navigation list
+14. [img](#img) — Inline image with responsive thumbnails
+15. [gallery](#gallery) — Image gallery with lightbox
 
 ---
 
@@ -154,6 +155,29 @@ Stage directions for plays. Renders in italics with secondary accent colour.
 
 <!-- screenshot: direction — stage direction in light mode -->
 <!-- screenshot: direction-dark — stage direction in dark mode -->
+
+---
+
+## ga
+
+Inline Irish language text. Wraps content in `<span lang="ga">`, triggering the `:lang(ga)` CSS rule which applies Iosevka Gaeilge (wedge serif variant). Use this for Irish words or phrases within English text. For whole articles in Irish, use `contentLang: ga` in front matter instead.
+
+### Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| Inner content | Yes | Irish language text |
+
+### Usage
+
+```markdown
+He greeted her with {{</* ga */>}}Dia duit, a chara{{</* /ga */>}} as she entered.
+The word {{</* ga */>}}craic{{</* /ga */>}} has no direct English equivalent.
+```
+
+### Visual Examples
+
+<!-- screenshot: ga — inline Irish text in Iosevka Gaeilge within English paragraph -->
 
 ---
 

@@ -8,7 +8,7 @@ This document describes the font stack used in the tadg_ie theme.
 |------|---------|-----------|
 | **IosevkaCustom Extended** | Body text, paragraphs, image captions | `p`, `.image-caption` |
 | **IosevkaCustom** | Base UI, code blocks, callouts | `html`, `.callout p`, code elements |
-| **Iosevka Gaeilge** | Irish language content | `:lang(ga)` (via `contentLang` front matter or `<span lang="ga">`) |
+| **Iosevka Gaeilge** | Irish language content | `:lang(ga)` (via `contentLang` front matter or `{{</* ga */>}}` shortcode) |
 | **Special Elite** | Headings, navigation, buttons, logos, UI elements | `h1`-`h6`, `nav`, `.read-more-btn`, `.site-logo-text` |
 | **EB Garamond** | Poetry/verse content | `.verse`, `.masonry-poetry` |
 
@@ -68,7 +68,7 @@ The font stack cascades through three CSS files:
    - `html`: IosevkaCustom (base UI font)
    - `h1`-`h6`: Special Elite (all headings)
    - `p`: Helvetica, sans-serif (body text)
-   - `:lang(ga)`: Iosevka Gaeilge (Irish language content — activated by `contentLang: ga` front matter or `<span lang="ga">`)
+   - `:lang(ga)`: Iosevka Gaeilge (Irish language content — activated by `contentLang: ga` front matter or `{{</* ga */>}}` shortcode)
    - `.callout p`: IosevkaCustom (code style in callouts)
 
 2. **custom.css** - Overrides and specialisations

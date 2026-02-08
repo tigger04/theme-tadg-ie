@@ -82,14 +82,14 @@ body {
 
 /* Typography */
 p {
-  font-family: Helvetica, sans-serif;
+  font-family: 'IosevkaQuasiProportional', Helvetica, sans-serif;
   line-height: var(--line-height-content, 1.5);
   /* Fallback for older browsers */
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-/* Irish language content uses Iosevka Gaeilge */
+/* Irish language content uses Iosevka Gaeilge (wedge serifs) */
 :lang(ga) {
   font-family: 'Iosevka Gaeilge', Helvetica, sans-serif;
 }

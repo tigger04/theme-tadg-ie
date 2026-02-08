@@ -1015,10 +1015,10 @@ contentLang: ga           # BCP 47 language tag (e.g. ga = Irish)
 
 Sets the `lang` attribute on the `<article>` element (and masonry cards). The CSS `:lang(ga)` pseudo-class applies the Iosevka Gaeilge font to all descendants. Screen readers also use this for correct pronunciation. Note: Hugo's built-in `lang` front matter field is deprecated since v0.144.0, so this theme uses `contentLang` instead.
 
-For inline language switching within any article, use a `<span>` tag directly in markdown:
+For inline Irish text within any article, use the `ga` shortcode:
 
 ```markdown
-He greeted her with <span lang="ga">Dia duit, a chara</span> as she entered.
+He greeted her with {{</* ga */>}}Dia duit, a chara{{</* /ga */>}} as she entered.
 ```
 
 ### Pin/Featured
