@@ -340,9 +340,9 @@ body,
   right: 0;
   bottom: 0;
   background-image: var(--background-image, none);
-  background-size: cover;
+  background-size: auto;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   opacity: var(--image-opacity, 1);
   filter: blur(var(--image-blur, 2px));
   z-index: -1;
@@ -476,6 +476,40 @@ body,
 .post-banner:not(.dark-banner) hr {
   border-top: 3px dotted #1a1a1a !important;
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+/* Issue #122: Background layout text adaptation for dark images in light mode */
+/* Dark background image needs light text with dark shadow for readability */
+.post-container.dark-bg,
+.post-container.dark-bg .post-content,
+.post-container.dark-bg .post-content h1,
+.post-container.dark-bg .post-content h2,
+.post-container.dark-bg .post-content h3,
+.post-container.dark-bg .post-content h4,
+.post-container.dark-bg .post-content h5,
+.post-container.dark-bg .post-content h6 {
+  color: #ffffff;
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.9),
+    1px -1px 0 rgba(0, 0, 0, 0.9),
+    -1px 1px 0 rgba(0, 0, 0, 0.9),
+    1px 1px 0 rgba(0, 0, 0, 0.9),
+    0 0 4px rgba(0, 0, 0, 0.9);
+}
+
+.post-container.dark-bg .post-content .meta,
+.post-container.dark-bg .post-content a {
+  color: #ffffff;
+}
+
+.post-container.dark-bg .post-content h1::before,
+.post-container.dark-bg .post-content h2::before,
+.post-container.dark-bg .post-content h3::before {
+  text-shadow:
+    -1px -1px 0 rgba(0, 0, 0, 0.9),
+    1px -1px 0 rgba(0, 0, 0, 0.9),
+    -1px 1px 0 rgba(0, 0, 0, 0.9),
+    1px 1px 0 rgba(0, 0, 0, 0.9);
 }
 
 /* Background Image Styling */

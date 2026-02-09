@@ -215,4 +215,38 @@ details.styled-details:not([open]) > summary::after {
   border-top-color: var(--border-color);
 }
 
+/* Issue #122: Background layout text adaptation for light images in dark mode */
+/* Light background image needs dark text with light shadow for readability */
+.post-container.light-bg,
+.post-container.light-bg .post-content,
+.post-container.light-bg .post-content h1,
+.post-container.light-bg .post-content h2,
+.post-container.light-bg .post-content h3,
+.post-container.light-bg .post-content h4,
+.post-container.light-bg .post-content h5,
+.post-container.light-bg .post-content h6 {
+  color: #1a1a1a;
+  text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.9),
+    1px -1px 0 rgba(255, 255, 255, 0.9),
+    -1px 1px 0 rgba(255, 255, 255, 0.9),
+    1px 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 4px rgba(255, 255, 255, 0.9);
+}
+
+.post-container.light-bg .post-content .meta,
+.post-container.light-bg .post-content a {
+  color: #1a1a1a;
+}
+
+.post-container.light-bg .post-content h1::before,
+.post-container.light-bg .post-content h2::before,
+.post-container.light-bg .post-content h3::before {
+  text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.9),
+    1px -1px 0 rgba(255, 255, 255, 0.9),
+    -1px 1px 0 rgba(255, 255, 255, 0.9),
+    1px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
 /* Read more chevron icon - single icon for all modes, no toggling needed */

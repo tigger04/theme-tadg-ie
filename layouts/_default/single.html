@@ -125,7 +125,7 @@
       {{ $effectiveLayout = "background" }}
     {{ end }}
     
-    <div class="post-container{{ if and .Params.image (eq $effectiveLayout "background") }}{{ if .Params.image.dark }} dark-bg{{ end }}{{ end }} soft-edge"{{ if and .Params.image (eq $effectiveLayout "background") }} style="--background-image: url('{{ .RelPermalink }}{{ .Params.image.src }}'); --image-opacity: {{ if .Params.image.opacity }}{{ .Params.image.opacity }}{{ else }}{{ .Site.Params.bgImage.opacity }}{{ end }}; --image-blur: {{ if .Params.image.blur }}{{ .Params.image.blur }}{{ else }}{{ .Site.Params.bgImage.blur }}{{ end }};"{{ end }}>
+    <div class="post-container{{ if and .Params.image (eq $effectiveLayout "background") }}{{ if .Params.image.dark }} dark-bg{{ else if isset .Params.image "dark" }} light-bg{{ end }}{{ end }} soft-edge"{{ if and .Params.image (eq $effectiveLayout "background") }} style="--background-image: url('{{ .RelPermalink }}{{ .Params.image.src }}'); --image-opacity: {{ if .Params.image.opacity }}{{ .Params.image.opacity }}{{ else }}{{ .Site.Params.bgImage.opacity }}{{ end }}; --image-blur: {{ if .Params.image.blur }}{{ .Params.image.blur }}{{ else }}{{ .Site.Params.bgImage.blur }}{{ end }};"{{ end }}>
       <div class="post-content">
         <div class="title">
           <h1 class="title">{{ .Title }}</h1>
