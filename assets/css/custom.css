@@ -340,7 +340,7 @@ body,
   right: 0;
   bottom: 0;
   background-image: var(--background-image, none);
-  background-size: auto;
+  background-size: var(--background-size, 100% auto);
   background-position: center;
   background-repeat: repeat;
   opacity: var(--image-opacity, 1);
