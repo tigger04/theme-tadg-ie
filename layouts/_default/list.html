@@ -72,8 +72,15 @@
 	{{- $allPages := cond (eq $listStyle "gallery") .Pages (cond $recursive .RegularPagesRecursive (where .Pages "Kind" "page")) -}}
 	{{- /* Issue #81: No parent hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
 	{{- /* Pages in sections with _build.list: false won't appear in .RegularPagesRecursive */ -}}
+	{{- /* Issue #35: Sort pinned pages first (ascending by pin), then unpinned in default order */ -}}
+	{{- $pagesWithPin := where $allPages ".Params.pin" "!=" nil -}}
+	{{- $pagesWithoutPin := where $allPages ".Params.pin" "==" nil -}}
+	{{- $sortedPages := sort $pagesWithPin ".Params.pin" "asc" -}}
+	{{- range $pagesWithoutPin -}}
+		{{- $sortedPages = $sortedPages | append . -}}
+	{{- end -}}
 	{{- /* Pagination: use frontmatter override if set, otherwise use site default (pagination.pagerSize) */ -}}
-	{{- $paginator := .Paginate $allPages (.Params.paginate | default 12) -}}
+	{{- $paginator := .Paginate $sortedPages (.Params.paginate | default 12) -}}
 
 	{{- /* Issue #91: Page header and content always above sidebar-layout so sidebar aligns with grid */ -}}
 	<header class="page-header">
