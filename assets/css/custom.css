@@ -460,6 +460,15 @@ body,
     0 0 8px rgba(255, 255, 255, 0.6) !important;
 }
 
+/* Issue #34: Light banner meta — match <p> font at normal weight, italic */
+.post-banner:not(.dark-banner) .title .meta,
+.post-banner:not(.dark-banner) .title .author,
+.post-banner:not(.dark-banner) .author,
+.post-banner:not(.dark-banner) .meta .author {
+  font-weight: normal;
+  font-style: italic;
+}
+
 .post-banner:not(.dark-banner) h1::before,
 .post-banner:not(.dark-banner) h2::before,
 .post-banner:not(.dark-banner) h3::before {
