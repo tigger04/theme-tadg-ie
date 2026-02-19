@@ -363,15 +363,12 @@ body,
 /* Universal Image Overlay Text Styling - ONLY for banner/hero layouts */
 /* Where text is actually displayed over background images */
 
-/* Banner titles over images */
+/* Issue #34: Banner titles over images — soft shadow, no hard outline */
 .post-banner .title h1,
 .post-hero .title h1 {
   color: var(--overlay-text) !important;
-  text-shadow: 
-    -2px -2px 0 var(--overlay-text-shadow),
-    2px -2px 0 var(--overlay-text-shadow),
-    -2px 2px 0 var(--overlay-text-shadow),
-    2px 2px 0 var(--overlay-text-shadow),
+  text-shadow:
+    0 1px 2px var(--overlay-text-shadow),
     0 0 8px var(--overlay-text-shadow) !important;
 }
 
@@ -388,11 +385,8 @@ body,
   font-family: 'IosevkaQuasiProportional', sans-serif;
   font-weight: 800;
   text-shadow:
-    -1px -1px 0 var(--overlay-text-shadow),
-    1px -1px 0 var(--overlay-text-shadow),
-    -1px 1px 0 var(--overlay-text-shadow),
-    1px 1px 0 var(--overlay-text-shadow),
-    0 0 4px var(--overlay-text-shadow) !important;
+    0 1px 2px var(--overlay-text-shadow),
+    0 0 6px var(--overlay-text-shadow) !important;
 }
 
 /* Header prefixes ONLY for banner/hero layouts */
@@ -403,11 +397,9 @@ body,
 .post-hero h2::before,
 .post-hero h3::before {
   color: var(--color-secondary) !important;
-  text-shadow: 
-    -1px -1px 0 var(--overlay-text-shadow),
-    1px -1px 0 var(--overlay-text-shadow),
-    -1px 1px 0 var(--overlay-text-shadow),
-    1px 1px 0 var(--overlay-text-shadow) !important;
+  text-shadow:
+    0 1px 2px var(--overlay-text-shadow),
+    0 0 6px var(--overlay-text-shadow) !important;
 }
 
 /* Horizontal rules ONLY for banner/hero layouts */
@@ -418,7 +410,7 @@ body,
 }
 
 /* Override overlay text colors based on image lightness (from frontmatter), not theme mode */
-/* Dark images (image.dark: true) - use light text with dark shadow */
+/* Issue #34: Dark images (image.dark: true) - light text with soft dark shadow */
 .post-banner.dark-banner .title h1,
 .post-banner.dark-banner .title .meta,
 .post-banner.dark-banner .title .author,
@@ -426,26 +418,21 @@ body,
 .post-banner.dark-banner .meta .author {
   color: #ffffff !important;
   text-shadow:
-    -2px -2px 0 rgba(0, 0, 0, 0.9),
-    2px -2px 0 rgba(0, 0, 0, 0.9),
-    -2px 2px 0 rgba(0, 0, 0, 0.9),
-    2px 2px 0 rgba(0, 0, 0, 0.9),
-    0 0 8px rgba(0, 0, 0, 0.9) !important;
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 .post-banner.dark-banner h1::before,
 .post-banner.dark-banner h2::before,
 .post-banner.dark-banner h3::before {
   text-shadow:
-    -1px -1px 0 rgba(0, 0, 0, 0.9),
-    1px -1px 0 rgba(0, 0, 0, 0.9),
-    -1px 1px 0 rgba(0, 0, 0, 0.9),
-    1px 1px 0 rgba(0, 0, 0, 0.9) !important;
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 .post-banner.dark-banner hr {
   border-top: 3px dotted #ffffff !important;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
 }
 
 /* Issue #34: Light images (default, no dark-banner class) - dark text with dark micro-shadow */
@@ -458,15 +445,6 @@ body,
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.25),
     0 0 8px rgba(255, 255, 255, 0.6) !important;
-}
-
-/* Issue #34: Light banner meta — match <p> font at normal weight, italic */
-.post-banner:not(.dark-banner) .title .meta,
-.post-banner:not(.dark-banner) .title .author,
-.post-banner:not(.dark-banner) .author,
-.post-banner:not(.dark-banner) .meta .author {
-  font-weight: normal;
-  font-style: italic;
 }
 
 .post-banner:not(.dark-banner) h1::before,
@@ -501,13 +479,6 @@ body,
 .post-container.dark-bg .post-content .meta,
 .post-container.dark-bg .post-content a {
   color: #ffffff !important;
-}
-
-/* Issue #34: Dark-bg meta — match <p> font, italic */
-.post-container.dark-bg .post-content .meta {
-  font-family: 'IosevkaQuasiProportional', sans-serif;
-  font-weight: normal;
-  font-style: italic;
 }
 
 .post-container.dark-bg .post-content h1::before,

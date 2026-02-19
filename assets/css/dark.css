@@ -236,13 +236,6 @@ details.styled-details:not([open]) > summary::after {
   color: #1a1a1a !important;
 }
 
-/* Issue #34: Light-bg meta — match <p> font at normal weight, italic */
-.post-container.light-bg .post-content .meta {
-  font-family: 'IosevkaQuasiProportional', sans-serif;
-  font-weight: normal;
-  font-style: italic;
-}
-
 .post-container.light-bg .post-content h1::before,
 .post-container.light-bg .post-content h2::before,
 .post-container.light-bg .post-content h3::before {
