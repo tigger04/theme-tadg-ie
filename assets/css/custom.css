@@ -448,7 +448,7 @@ body,
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.9));
 }
 
-/* Issue #34: Light images (default, no dark-banner class) - dark text with soft white shadow */
+/* Issue #34: Light images (default, no dark-banner class) - dark text with dark micro-shadow */
 .post-banner:not(.dark-banner) .title h1,
 .post-banner:not(.dark-banner) .title .meta,
 .post-banner:not(.dark-banner) .title .author,
@@ -456,16 +456,16 @@ body,
 .post-banner:not(.dark-banner) .meta .author {
   color: #1a1a1a !important;
   text-shadow:
-    0 1px 3px rgba(255, 255, 255, 0.9),
-    0 0 10px rgba(255, 255, 255, 0.7) !important;
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 0 8px rgba(255, 255, 255, 0.6) !important;
 }
 
 .post-banner:not(.dark-banner) h1::before,
 .post-banner:not(.dark-banner) h2::before,
 .post-banner:not(.dark-banner) h3::before {
   text-shadow:
-    0 1px 2px rgba(255, 255, 255, 0.9),
-    0 0 8px rgba(255, 255, 255, 0.7) !important;
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 0 8px rgba(255, 255, 255, 0.6) !important;
 }
 
 .post-banner:not(.dark-banner) hr {
