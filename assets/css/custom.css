@@ -482,8 +482,8 @@ body,
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
 }
 
-/* Issue #122: Background layout text adaptation for dark images in light mode */
-/* Dark background image needs light text with dark shadow for readability */
+/* Issue #122, #34: Background layout text adaptation for dark images */
+/* Dark background image needs light text with soft dark shadow for readability */
 .post-container.dark-bg,
 .post-container.dark-bg .post-content,
 .post-container.dark-bg .post-content h1,
@@ -492,28 +492,30 @@ body,
 .post-container.dark-bg .post-content h4,
 .post-container.dark-bg .post-content h5,
 .post-container.dark-bg .post-content h6 {
-  color: #ffffff;
+  color: #ffffff !important;
   text-shadow:
-    -1px -1px 0 rgba(0, 0, 0, 0.9),
-    1px -1px 0 rgba(0, 0, 0, 0.9),
-    -1px 1px 0 rgba(0, 0, 0, 0.9),
-    1px 1px 0 rgba(0, 0, 0, 0.9),
-    0 0 4px rgba(0, 0, 0, 0.9);
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 .post-container.dark-bg .post-content .meta,
 .post-container.dark-bg .post-content a {
-  color: #ffffff;
+  color: #ffffff !important;
+}
+
+/* Issue #34: Dark-bg meta — match <p> font, italic */
+.post-container.dark-bg .post-content .meta {
+  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-weight: normal;
+  font-style: italic;
 }
 
 .post-container.dark-bg .post-content h1::before,
 .post-container.dark-bg .post-content h2::before,
 .post-container.dark-bg .post-content h3::before {
   text-shadow:
-    -1px -1px 0 rgba(0, 0, 0, 0.9),
-    1px -1px 0 rgba(0, 0, 0, 0.9),
-    -1px 1px 0 rgba(0, 0, 0, 0.9),
-    1px 1px 0 rgba(0, 0, 0, 0.9);
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* Background Image Styling */
