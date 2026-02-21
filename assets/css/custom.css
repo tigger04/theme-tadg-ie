@@ -777,7 +777,7 @@ body,
   line-height: 1.4;
 }
 
-/* Issue #111: Poem shortcode — preserve all whitespace (leading spaces, multiple spaces) */
+/* Issue #37: Poem shortcode — preserve all whitespace, never wrap lines */
 .poem {
   background: none;
   border: none;
@@ -785,6 +785,8 @@ body,
   margin: 1.5rem 0;
   line-height: 1.6;
   display: block;
+  white-space: pre;
+  overflow-x: auto;
 }
 
 /* Issue #117: Preserve line breaks in verse blocks - more specific targeting */

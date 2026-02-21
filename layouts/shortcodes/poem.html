@@ -1,7 +1,5 @@
 {{- $content := .Inner -}}
 {{- $content = trim $content "\n" -}}
-{{- $content = replace $content " " "&nbsp;" -}}
-{{- $content = replace $content "\n" "<br />" -}}
 <div class="poem">
 {{ $content | safeHTML }}
 </div>
