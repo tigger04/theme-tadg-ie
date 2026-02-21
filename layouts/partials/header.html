@@ -2,11 +2,11 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	{{- $title := ( .Title ) -}}
-	{{- $siteTitle := ( .Site.Title ) -}}
+	{{- $siteTitle := ( .Site.Params.browserTitle | default .Site.Title ) -}}
 	{{- if .IsHome -}}
-	<title>{{ $siteTitle }} | Home </title>
+	<title>{{ $siteTitle }}</title>
 	{{- else -}}
-	<title>{{ $title }} - {{ $siteTitle }}</title>
+	<title>{{ $title }} — {{ $siteTitle }}</title>
 	{{- end -}}
 
 	{{- if isset .Site.Params "favicon" -}}

@@ -843,6 +843,10 @@ pagination:
   pagerSize: 12   # Items per page
 
 params:
+  # Browser tab title (overrides site title in <title> tag only)
+  # Visual header always uses the top-level 'title' field
+  browserTitle: "Author Name — Site Title"
+
   # Background image defaults for masonry cards
   bgImage:
     opacity: 0.2    # 0-1, transparency of background images
