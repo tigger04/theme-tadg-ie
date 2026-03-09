@@ -49,7 +49,7 @@
     {{ else if or (eq .Params.layout "featured-columns-left") (eq .Params.layout "featured-columns-right") (eq .Params.layout "columns") }}
     <div class="post-container soft-edge columns-layout">
       <!-- Title - full width -->
-      <div class="title" style="padding: 2rem; margin-bottom: 0;">
+      <div class="title" style="padding: 2rem 2rem 0; margin-bottom: 0; margin-block-end: 0;">
         <h1 class="title">{{ .Title }}</h1>
         <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- if not .Params.hideAuthor }}{{- with .Params.author }}{{ . }}{{ if not $.Params.hideDate }} · {{ end }}{{ end }}{{ end }}{{- if not .Params.hideDate -}}{{ dateFormat (site.Params.dateFormat | default ":date_long") .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
       </div>

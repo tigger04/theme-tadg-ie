@@ -265,7 +265,7 @@ header .main a:hover {
   display: flex;
   gap: 2rem;
   align-items: flex-start;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 .featured-image-col {
   flex: 1 1 50%;
