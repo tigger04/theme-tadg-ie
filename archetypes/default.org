@@ -9,9 +9,6 @@ pin:
 # Optional: Hide publication date on cards and article pages
 # hideDate: true
 
-# Optional: Content language (applies language-specific font, e.g. Iosevka Gaeilge for Irish)
-# contentLang: ga
-
 # Optional: Exclude from listings but keep page accessible
 # _build:
 #   list: false
