@@ -832,14 +832,13 @@ details.styled-details[open] > summary > span::after {
   content: ' \25BC';
 }
 
-/* Ellipsis hint when collapsed — compact box */
+/* Ellipsis hint when collapsed — left-aligned, normal text size */
 details.styled-details:not([open]) > summary::after {
-  content: '\2B24  \2B24  \2B24';
+  content: '\2026';
   display: block;
-  text-align: center;
-  padding: 0.3em;
-  font-size: 0.75em;
-  letter-spacing: 0.5em;
+  text-align: left;
+  padding: 0.3em 0 0.3em 1.5em;
+  font-size: 1.4em;
   color: var(--color-secondary);
 }
 
