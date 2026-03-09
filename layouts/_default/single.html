@@ -60,7 +60,7 @@
         <!-- Image on left, text on right -->
         <div class="featured-image-col">
           {{ if .Params.image.src }}
-          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
           <div class="image-caption">{{ .Params.image.caption }}</div>
           {{ end }}
@@ -90,7 +90,7 @@
         </div>
         <div class="featured-image-col">
           {{ if .Params.image.src }}
-          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
           <div class="image-caption">{{ .Params.image.caption }}</div>
           {{ end }}
@@ -136,7 +136,7 @@
         {{ if and .Params.image (eq .Params.layout "hero") }}
         {{ if .Params.image.src }}
         <div class="post-hero">
-          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
           <div class="image-caption">{{ .Params.image.caption }}</div>
           {{ end }}
@@ -148,7 +148,7 @@
         {{ if and .Params.image (eq .Params.layout "featured") }}
         {{ if .Params.image.src }}
         <div class="post-featured">
-          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}">
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
           <div class="image-caption">{{ .Params.image.caption }}</div>
           {{ end }}
