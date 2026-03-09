@@ -39,10 +39,13 @@
         <a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a>
       </h3>
       <div class="list-view-meta">
+        {{- if not .Params.hideAuthor }}{{- with .Params.author }}
+        <span class="list-view-author">{{ . }}</span>
+        {{- end }}{{ end -}}
         {{- if $showSection -}}
         <span class="list-view-section">{{ .Section | humanize }}</span>
         {{- end -}}
-        {{- if .Date -}}
+        {{- if and .Date (not .Params.hideDate) -}}
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan 2006" }}</time>
         {{- end -}}
       </div>

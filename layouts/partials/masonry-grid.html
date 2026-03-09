@@ -103,9 +103,13 @@
           <div class="masonry-excerpt">{{ $excerpt | plainify | truncate 150 }}</div>
           {{- end -}}
           {{- $showDate := and .Date (not .Params.hideDate) -}}
+          {{- $showAuthor := and .Params.author (not .Params.hideAuthor) -}}
           <div class="masonry-footer">
-            {{- if or $showSection $showDate -}}
+            {{- if or $showSection $showDate $showAuthor -}}
             <p class="masonry-meta">
+              {{- if $showAuthor -}}
+              <span class="masonry-author">{{ .Params.author }}</span>
+              {{- end -}}
               {{- if $showSection -}}
               <span class="masonry-section">{{ $section | humanize }}</span>
               {{- end -}}
