@@ -10,7 +10,8 @@
     {{- end -}}
   </div>
   <div class="footer-info" style="text-align: center;">
-    {{ with .Site.Copyright }} {{ . }} {{ end }}
+    {{ with .Site.Copyright }} {{ . }} {{ end -}}
+    {{- range .Site.Params.footerLinks }} · <a href="{{ .url }}">{{ .name }}</a>{{ end }}
   </div>
 </footer>
 
