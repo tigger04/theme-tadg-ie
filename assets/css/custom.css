@@ -26,7 +26,7 @@
   --bg-secondary: #f5f5f5;
   --bg-tertiary: #f0f0f0;
   --bg-hover: #f1f1f1;
-  --border-color: #ddd;
+  --border-color: #333;
   --border-light: #eee;
   /* Issue #77: --color-secondary (was --accent-color) now injected by Hugo via colors.html */
   --link-color: #007acc;
@@ -1282,12 +1282,13 @@ ol li {
   color: var(--color-secondary) !important;
 }
 
-/* Ensure hero images have proper borders on all sides */
+/* Accent border on article layout and inline content images */
 .post-hero img,
 .post-banner img,
 .post-featured img,
-.featured-image-col img {
-  border: 3px solid var(--border-color) !important;
+.featured-image-col img,
+article .body img {
+  border: 0.5rem solid var(--color-secondary) !important;
   box-sizing: border-box !important;
   display: block !important;
 }
