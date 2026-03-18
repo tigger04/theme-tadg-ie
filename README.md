@@ -22,7 +22,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 - **Section-specific card styles** for each content type
 - **Responsive design** with em-based breakpoints (WCAG 2.1 compliant)
 - **Pagination** with per-section override
-- **13 custom shortcodes** (callout, colorbold, contactform, details, dialogue, direction, formspree, gallery, poem, popquote, rawhtml, section-list, video)
+- **13 custom shortcodes** (callout, colorbold, contactform, details, dialogue, direction, formspree, gallery, poem, popquote, rawhtml, section-list, video) with Cloudflare Stream video support
 - **Flexible sidebar** with content, shortcodes, or section navigation
 - **Dark mode support** with system preference detection
 
@@ -667,13 +667,19 @@ Line breaks for you.
 
 ### `{{< video >}}`
 
-Embed local video files with native HTML5 player controls.
+Embed video — local files via HTML5 `<video>` or [Cloudflare Stream](https://developers.cloudflare.com/stream/) via iframe. Auto-detects source type: 32-character hex string → Cloudflare Stream, anything else → local file.
+
+See [docs/shortcodes.md](docs/shortcodes.md#video) for the full parameter reference.
 
 ```markdown
 {{< video "/videos/my-video.mp4" >}}
+{{< video "ea95132c15732412d22c1476fa83f27a" >}}
+{{< video id="ea95132c15732412d22c1476fa83f27a" autoplay="true" muted="true" >}}
 ```
 
-**Rendered output:**
+Cloudflare Stream requires `params.cloudflareStream.customerCode` in `hugo.yaml`.
+
+**Rendered output (local):**
 
 ```
 ┌──────────────────────────────────────┐

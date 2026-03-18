@@ -253,18 +253,75 @@ Line breaks for you.
 
 ## video
 
-Embed local video files with native HTML5 player controls.
+Embed video — either local files via HTML5 `<video>` or Cloudflare Stream videos via iframe. The shortcode auto-detects the source type from the argument.
+
+### Detection Logic
+
+- **32-character hex string** (positional or `id` named param) → Cloudflare Stream iframe embed
+- **Anything else** (file path or URL) → local HTML5 `<video>` player
 
 ### Parameters
 
+**Local video (positional):**
+
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| First positional | Yes | Video source URL |
+| First positional | Yes | Video file path or URL |
+
+**Cloudflare Stream (positional — no player options):**
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| First positional | Yes | 32-character Cloudflare Stream video UID |
+
+**Cloudflare Stream (named — with player options):**
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `id` | Yes | 32-character Cloudflare Stream video UID |
+| `autoplay` | No | Auto-start playback (`true`/`false`) |
+| `muted` | No | Start muted (`true`/`false`) |
+| `loop` | No | Repeat on end (`true`/`false`) |
+| `controls` | No | Show player controls (default: `true`) |
+| `preload` | No | Browser preload hint (`none`, `metadata`, `auto`) |
+| `poster` | No | Custom thumbnail URL |
+| `startTime` | No | Start at specific time (e.g. `1m30s`) |
+| `primaryColor` | No | Player UI accent colour (URI-encoded CSS) |
+| `letterboxColor` | No | Player background colour (URI-encoded CSS) |
+
+**Note:** Hugo shortcodes do not allow mixing positional and named parameters. Use all-named syntax (`id="..."`) when you need player options.
+
+### Site Configuration (Cloudflare Stream)
+
+Cloudflare Stream requires a customer code in `hugo.yaml`:
+
+```yaml
+params:
+  cloudflareStream:
+    customerCode: "YOUR_CUSTOMER_CODE"
+```
+
+The customer code is the public subdomain identifier visible in all embed URLs — it is not a secret.
 
 ### Usage
 
+**Local video:**
+
 ```markdown
 {{< video "/videos/my-video.mp4" >}}
+```
+
+**Cloudflare Stream (simple):**
+
+```markdown
+{{< video "ea95132c15732412d22c1476fa83f27a" >}}
+```
+
+**Cloudflare Stream (with options):**
+
+```markdown
+{{< video id="ea95132c15732412d22c1476fa83f27a" autoplay="true" muted="true" loop="true" >}}
+{{< video id="ea95132c15732412d22c1476fa83f27a" poster="https://example.com/thumb.jpg" >}}
 ```
 
 ### Visual Examples

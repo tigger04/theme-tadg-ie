@@ -1,0 +1,10 @@
+# ABOUTME: Minimal Hugo config for regression testing the tadg_ie theme
+# ABOUTME: Exercises video shortcode with Cloudflare Stream config
+
+baseURL: https://test.example.com/
+title: Test Site
+theme: tadg_ie
+
+params:
+  cloudflareStream:
+    customerCode: "TESTCODE"

@@ -1,4 +1,56 @@
-<video class="video-shortcode" preload="true" controls>
-   <source src="{{ .Get 0 }}" type="video/mp4">
-   There should have been a video here but your browser does not seem to support it.
-</video>
+{{- /* ABOUTME: Video shortcode supporting local files and Cloudflare Stream embeds */ -}}
+{{- /* ABOUTME: Auto-detects source type from argument: file path → HTML5 video, 32-char hex → CF Stream iframe */ -}}
+
+{{- $id := "" -}}
+{{- $isCFStream := false -}}
+
+{{- /* Detection: named "id" param takes priority, then positional arg with hex check */ -}}
+{{- if .Get "id" -}}
+  {{- $id = .Get "id" -}}
+  {{- $isCFStream = true -}}
+{{- else if .Get 0 -}}
+  {{- if findRE "^[0-9a-f]{32}$" (.Get 0) -}}
+    {{- $id = .Get 0 -}}
+    {{- $isCFStream = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $isCFStream -}}
+  {{- /* Cloudflare Stream embed */ -}}
+  {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
+  {{- if not $customerCode -}}
+    {{- warnf "video shortcode: cloudflareStream.customerCode is not set in site config (page: %s)" .Page.File.Path -}}
+    <div class="cfstream-container cfstream-error">
+      <p><strong>Video configuration error:</strong> <code>cloudflareStream.customerCode</code> is missing from site config.</p>
+    </div>
+  {{- else -}}
+    {{- /* Build iframe src with optional querystring params */ -}}
+    {{- $baseSrc := printf "https://customer-%s.cloudflarestream.com/%s/iframe" $customerCode $id -}}
+    {{- $params := slice -}}
+    {{- $optionalParams := slice "autoplay" "muted" "loop" "controls" "preload" "poster" "startTime" "primaryColor" "letterboxColor" -}}
+    {{- range $optionalParams -}}
+      {{- $val := $.Get . -}}
+      {{- if $val -}}
+        {{- $params = $params | append (printf "%s=%s" . $val) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $src := $baseSrc -}}
+    {{- if gt (len $params) 0 -}}
+      {{- $src = printf "%s?%s" $baseSrc (delimit $params "&") -}}
+    {{- end -}}
+    <div class="cfstream-container">
+      <iframe
+        src="{{ $src }}"
+        loading="lazy"
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+        allowfullscreen="true"
+      ></iframe>
+    </div>
+  {{- end -}}
+{{- else -}}
+  {{- /* Local HTML5 video (original behaviour) */ -}}
+  <video class="video-shortcode" preload="true" controls>
+    <source src="{{ .Get 0 }}" type="video/mp4">
+    There should have been a video here but your browser does not seem to support it.
+  </video>
+{{- end -}}

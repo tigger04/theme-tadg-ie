@@ -2,166 +2,166 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1314/journal/</loc>
+    <loc>https://example.com/journal/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/reference/</loc>
+    <loc>https://example.com/tags/reference/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/journal/shortcode-showcase/</loc>
+    <loc>https://example.com/journal/shortcode-showcase/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/shortcodes/</loc>
+    <loc>https://example.com/tags/shortcodes/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/</loc>
+    <loc>https://example.com/tags/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/</loc>
+    <loc>https://example.com/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/theme/</loc>
+    <loc>https://example.com/tags/theme/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/maps/</loc>
+    <loc>https://example.com/tags/maps/</loc>
     <lastmod>2025-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/</loc>
+    <loc>https://example.com/poetry/</loc>
     <lastmod>2025-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/poetry/</loc>
+    <loc>https://example.com/tags/poetry/</loc>
     <lastmod>2025-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/the-cartographer/</loc>
+    <loc>https://example.com/poetry/the-cartographer/</loc>
     <lastmod>2025-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/drama/</loc>
+    <loc>https://example.com/tags/drama/</loc>
     <lastmod>2025-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/stories/</loc>
+    <loc>https://example.com/stories/</loc>
     <lastmod>2025-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/stories/the-waiting-room/</loc>
+    <loc>https://example.com/stories/the-waiting-room/</loc>
     <lastmod>2025-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/stories/morning-song/</loc>
+    <loc>https://example.com/stories/morning-song/</loc>
     <lastmod>2025-10-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/reflection/</loc>
+    <loc>https://example.com/tags/reflection/</loc>
     <lastmod>2025-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/stories/three-things/</loc>
+    <loc>https://example.com/stories/three-things/</loc>
     <lastmod>2025-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/eggs/</loc>
+    <loc>https://example.com/tags/eggs/</loc>
     <lastmod>2025-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/middle-eastern/</loc>
+    <loc>https://example.com/tags/middle-eastern/</loc>
     <lastmod>2025-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/quick/</loc>
+    <loc>https://example.com/tags/quick/</loc>
     <lastmod>2025-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/recipes/</loc>
+    <loc>https://example.com/recipes/</loc>
     <lastmod>2025-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/recipes/shakshuka/</loc>
+    <loc>https://example.com/recipes/shakshuka/</loc>
     <lastmod>2025-09-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/four-fields/</loc>
+    <loc>https://example.com/poetry/four-fields/</loc>
     <lastmod>2025-09-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/landscape/</loc>
+    <loc>https://example.com/tags/landscape/</loc>
     <lastmod>2025-09-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/journal/on-walking/</loc>
+    <loc>https://example.com/journal/on-walking/</loc>
     <lastmod>2025-08-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/walking/</loc>
+    <loc>https://example.com/tags/walking/</loc>
     <lastmod>2025-08-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/half-remembered/</loc>
+    <loc>https://example.com/poetry/half-remembered/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/half-remembered/harbour/</loc>
+    <loc>https://example.com/poetry/half-remembered/harbour/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/memory/</loc>
+    <loc>https://example.com/tags/memory/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/family/</loc>
+    <loc>https://example.com/tags/family/</loc>
     <lastmod>2025-08-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/half-remembered/thread/</loc>
+    <loc>https://example.com/poetry/half-remembered/thread/</loc>
     <lastmod>2025-08-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/half-remembered/glass/</loc>
+    <loc>https://example.com/poetry/half-remembered/glass/</loc>
     <lastmod>2025-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/night/</loc>
+    <loc>https://example.com/tags/night/</loc>
     <lastmod>2025-07-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/poetry/small-hours/</loc>
+    <loc>https://example.com/poetry/small-hours/</loc>
     <lastmod>2025-07-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/typography/</loc>
+    <loc>https://example.com/tags/typography/</loc>
     <lastmod>2025-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/journal/typography-guide/</loc>
+    <loc>https://example.com/journal/typography-guide/</loc>
     <lastmod>2025-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/japanese/</loc>
+    <loc>https://example.com/tags/japanese/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/recipes/miso-aubergine/</loc>
+    <loc>https://example.com/recipes/miso-aubergine/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/vegetarian/</loc>
+    <loc>https://example.com/tags/vegetarian/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/layouts/</loc>
+    <loc>https://example.com/tags/layouts/</loc>
     <lastmod>2025-06-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/journal/featured-image/</loc>
+    <loc>https://example.com/journal/featured-image/</loc>
     <lastmod>2025-06-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/journal/dark-mode-setup/</loc>
+    <loc>https://example.com/journal/dark-mode-setup/</loc>
     <lastmod>2025-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/dark-mode/</loc>
+    <loc>https://example.com/tags/dark-mode/</loc>
     <lastmod>2025-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/journal/masonry-explained/</loc>
+    <loc>https://example.com/journal/masonry-explained/</loc>
     <lastmod>2025-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/masonry/</loc>
+    <loc>https://example.com/tags/masonry/</loc>
     <lastmod>2025-04-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/journal/background-images/</loc>
+    <loc>https://example.com/journal/background-images/</loc>
     <lastmod>2025-03-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/baking/</loc>
+    <loc>https://example.com/tags/baking/</loc>
     <lastmod>2025-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/bread/</loc>
+    <loc>https://example.com/tags/bread/</loc>
     <lastmod>2025-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/recipes/soda-bread/</loc>
+    <loc>https://example.com/recipes/soda-bread/</loc>
     <lastmod>2025-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/recipes/colcannon/</loc>
+    <loc>https://example.com/recipes/colcannon/</loc>
     <lastmod>2025-01-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/comfort-food/</loc>
+    <loc>https://example.com/tags/comfort-food/</loc>
     <lastmod>2025-01-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/tags/irish/</loc>
+    <loc>https://example.com/tags/irish/</loc>
     <lastmod>2025-01-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1314/photography/coastal-walks/</loc>
+    <loc>https://example.com/photography/coastal-walks/</loc>
   </url><url>
-    <loc>http://localhost:1314/photography/market-mornings/</loc>
+    <loc>https://example.com/photography/market-mornings/</loc>
   </url><url>
-    <loc>http://localhost:1314/photography/</loc>
+    <loc>https://example.com/photography/</loc>
   </url>
 </urlset>
