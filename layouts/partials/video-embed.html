@@ -18,7 +18,10 @@
   {{- range $lowerKey, $cfKey := $cfParamNames -}}
     {{- if isset $video $lowerKey -}}
       {{- $val := index $video $lowerKey -}}
-      {{- $params = $params | append (printf "%s=%v" $cfKey $val) -}}
+      {{- /* Only forward truthy values — false/empty means "use CF default (off)" */ -}}
+      {{- if $val -}}
+        {{- $params = $params | append (printf "%s=%v" $cfKey $val) -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
   {{- $src := $baseSrc -}}
