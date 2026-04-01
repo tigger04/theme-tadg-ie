@@ -63,8 +63,7 @@
         <!-- Image/video on left, text on right -->
         <div class="featured-image-col">
           {{ if .Params.video.id }}
-            {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
-            {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
+                        {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
             {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
             {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
           {{ else if .Params.image.src }}
@@ -98,8 +97,7 @@
         </div>
         <div class="featured-image-col">
           {{ if .Params.video.id }}
-            {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
-            {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
+                        {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
             {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
             {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
           {{ else if .Params.image.src }}
@@ -151,8 +149,7 @@
         <!-- Hero Image/Video -->
         {{ if eq .Params.layout "hero" }}
         {{ if .Params.video.id }}
-        {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
-        <div class="post-hero">
+                <div class="post-hero">
           {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
           {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
           {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
@@ -170,8 +167,7 @@
         <!-- Featured Image/Video -->
         {{ if eq .Params.layout "featured" }}
         {{ if .Params.video.id }}
-        {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
-        <div class="post-featured">
+                <div class="post-featured">
           {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
           {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
           {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
