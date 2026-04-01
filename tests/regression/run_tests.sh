@@ -478,6 +478,108 @@ else
     fail "${test_id}" "Test page not found: ${test_file}"
 fi
 
+# =============================================================================
+# Issue #45: poster_image parameter for CF Stream embeds
+# =============================================================================
+
+# --- RT-45.1: Relative poster_image resolved to page-bundle absolute URL ---
+test_id="RT-45.1"
+test_file="${BUILD_OUTPUT}/test-pages/video-poster-relative/index.html"
+expected_poster="poster=https://test.example.com/test-pages/video-poster-relative/toast.jpg"
+if [[ -f "${test_file}" ]]; then
+    if grep -q "${expected_poster}" "${test_file}"; then
+        pass "${test_id}" "Relative poster_image resolved to page-bundle absolute URL"
+    else
+        fail "${test_id}" "Expected '${expected_poster}' not found in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-45.2: Site-root-relative poster_image resolved to absolute URL ---
+test_id="RT-45.2"
+test_file="${BUILD_OUTPUT}/test-pages/video-poster-root/index.html"
+expected_poster="poster=https://test.example.com/images/thumb.jpg"
+if [[ -f "${test_file}" ]]; then
+    if grep -q "${expected_poster}" "${test_file}"; then
+        pass "${test_id}" "Root-relative poster_image resolved to absolute URL"
+    else
+        fail "${test_id}" "Expected '${expected_poster}' not found in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-45.3: Absolute poster_image URL used verbatim ---
+test_id="RT-45.3"
+test_file="${BUILD_OUTPUT}/test-pages/video-poster-absolute/index.html"
+expected_poster="poster=https://cdn.example.com/thumb.jpg"
+if [[ -f "${test_file}" ]]; then
+    if grep -q "${expected_poster}" "${test_file}"; then
+        pass "${test_id}" "Absolute poster_image URL used verbatim"
+    else
+        fail "${test_id}" "Expected '${expected_poster}' not found in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-45.4: No poster_image → no poster= param in iframe src ---
+test_id="RT-45.4"
+test_file="${BUILD_OUTPUT}/test-pages/video-poster-none/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'cfstream-container' "${test_file}" && ! grep -q 'poster=' "${test_file}"; then
+        pass "${test_id}" "No poster_image → no poster= param in iframe src"
+    else
+        fail "${test_id}" "Unexpected poster= param found or player missing"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-45.5: Shortcode poster_image resolved to page-bundle absolute URL ---
+test_id="RT-45.5"
+test_file="${BUILD_OUTPUT}/test-pages/video-poster-shortcode/index.html"
+expected_poster="poster=https://test.example.com/test-pages/video-poster-shortcode/toast.jpg"
+if [[ -f "${test_file}" ]]; then
+    if grep -q "${expected_poster}" "${test_file}"; then
+        pass "${test_id}" "Shortcode poster_image resolved to page-bundle absolute URL"
+    else
+        fail "${test_id}" "Expected '${expected_poster}' not found in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-45.6: No frontmatter poster_image → inventory poster_image used ---
+test_id="RT-45.6"
+test_file="${BUILD_OUTPUT}/test-pages/video-poster-inv-lookup/index.html"
+expected_poster="poster=https://test.example.com/inventory/poster.jpg"
+if [[ -f "${test_file}" ]]; then
+    if grep -q "${expected_poster}" "${test_file}"; then
+        pass "${test_id}" "Inventory poster_image used when no frontmatter poster_image"
+    else
+        fail "${test_id}" "Expected '${expected_poster}' not found in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-45.7: Frontmatter poster_image overrides inventory poster_image ---
+test_id="RT-45.7"
+test_file="${BUILD_OUTPUT}/test-pages/video-poster-inv-override/index.html"
+expected_poster="poster=https://test.example.com/test-pages/video-poster-inv-override/toast.jpg"
+unexpected_poster="poster=https://test.example.com/inventory/poster-override.jpg"
+if [[ -f "${test_file}" ]]; then
+    if grep -q "${expected_poster}" "${test_file}" && ! grep -q "${unexpected_poster}" "${test_file}"; then
+        pass "${test_id}" "Frontmatter poster_image takes precedence over inventory poster_image"
+    else
+        fail "${test_id}" "Frontmatter poster_image did not override inventory poster_image"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
 # --- Summary ---
 echo ""
 total=$((pass_count + fail_count + skip_count))

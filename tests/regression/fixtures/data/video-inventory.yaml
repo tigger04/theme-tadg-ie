@@ -1,10 +1,12 @@
-# ABOUTME: Test fixture video inventory for regression tests (RT-43.18–43.21)
+# ABOUTME: Test fixture video inventory for regression tests (RT-43.18–43.21, RT-45.6–45.7)
 # ABOUTME: UIDs here are synthetic — not real Cloudflare Stream videos
 
 videos:
   - uid: "inv-lookup-test-uid"
     width: 1080
     height: 1920
+    poster_image: "https://test.example.com/inventory/poster.jpg"
   - uid: "inv-override-test-uid"
     width: 1920
     height: 1080
+    poster_image: "https://test.example.com/inventory/poster-override.jpg"

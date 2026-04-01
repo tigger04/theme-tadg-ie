@@ -65,7 +65,7 @@
           {{ if .Params.video.id }}
             {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
             {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
-            {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+            {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
             {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
           {{ else if .Params.image.src }}
           <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
@@ -100,7 +100,7 @@
           {{ if .Params.video.id }}
             {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
             {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
-            {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+            {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
             {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
           {{ else if .Params.image.src }}
           <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
@@ -154,7 +154,7 @@
         {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
         <div class="post-hero">
           {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
-          {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+          {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
           {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
         </div>
         {{ else if .Params.image.src }}
@@ -173,7 +173,7 @@
         {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
         <div class="post-featured">
           {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
-          {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+          {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode "permalink" .Permalink) }}
           {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
         </div>
         {{ else if .Params.image.src }}

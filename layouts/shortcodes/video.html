@@ -20,14 +20,14 @@
   {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
   {{- $videoMap := dict "id" $id -}}
   {{- /* Shortcode params preserve case; lowercase keys to match the partial's lookup */ -}}
-  {{- $optionalParams := slice "autoplay" "muted" "loop" "controls" "preload" "poster" "startTime" "primaryColor" "letterboxColor" -}}
+  {{- $optionalParams := slice "autoplay" "muted" "loop" "controls" "preload" "poster_image" "startTime" "primaryColor" "letterboxColor" -}}
   {{- range $optionalParams -}}
     {{- $val := $.Get . -}}
     {{- if $val -}}
       {{- $videoMap = merge $videoMap (dict (lower .) $val) -}}
     {{- end -}}
   {{- end -}}
-  {{- partial "video-embed.html" (dict "video" $videoMap "customerCode" $customerCode) -}}
+  {{- partial "video-embed.html" (dict "video" $videoMap "customerCode" $customerCode "permalink" $.Page.Permalink) -}}
 {{- else -}}
   {{- /* Local HTML5 video (original behaviour) */ -}}
   <video class="video-shortcode" preload="true" controls>

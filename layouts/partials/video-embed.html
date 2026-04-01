@@ -3,6 +3,7 @@
 
 {{- $video := .video -}}
 {{- $customerCode := .customerCode -}}
+{{- $permalink := .permalink | default "" -}}
 {{- $id := $video.id -}}
 
 {{- if not $customerCode -}}
@@ -13,8 +14,9 @@
 {{- else -}}
   {{- $baseSrc := printf "https://customer-%s.cloudflarestream.com/%s/iframe" $customerCode $id -}}
   {{- $params := slice -}}
-  {{- /* Map lowercase keys (Hugo normalises frontmatter) to CF embed querystring names */ -}}
-  {{- $cfParamNames := dict "autoplay" "autoplay" "muted" "muted" "loop" "loop" "controls" "controls" "preload" "preload" "poster" "poster" "starttime" "startTime" "primarycolor" "primaryColor" "letterboxcolor" "letterboxColor" -}}
+  {{- /* Map lowercase keys (Hugo normalises frontmatter) to CF embed querystring names.
+       poster is handled separately via poster_image with URL construction (issue #45). */ -}}
+  {{- $cfParamNames := dict "autoplay" "autoplay" "muted" "muted" "loop" "loop" "controls" "controls" "preload" "preload" "starttime" "startTime" "primarycolor" "primaryColor" "letterboxcolor" "letterboxColor" -}}
   {{- range $lowerKey, $cfKey := $cfParamNames -}}
     {{- if isset $video $lowerKey -}}
       {{- $val := index $video $lowerKey -}}
@@ -24,9 +26,15 @@
       {{- end -}}
     {{- end -}}
   {{- end -}}
-  {{- $src := $baseSrc -}}
-  {{- if gt (len $params) 0 -}}
-    {{- $src = printf "%s?%s" $baseSrc (delimit $params "&") -}}
+
+  {{- /* Inventory lookup — done once; used for both dimension resolution and poster_image fallback */ -}}
+  {{- $invEntry := dict -}}
+  {{- $inventory := index site.Data "video-inventory" -}}
+  {{- if $inventory -}}
+    {{- $matches := where $inventory.videos "uid" $id -}}
+    {{- if gt (len $matches) 0 -}}
+      {{- $invEntry = index $matches 0 -}}
+    {{- end -}}
   {{- end -}}
 
   {{- /* Resolve aspect-ratio in priority order:
@@ -37,17 +45,10 @@
   {{- $width := $video.width -}}
   {{- $height := $video.height -}}
 
-  {{- /* 2) Video inventory lookup */ -}}
+  {{- /* 2) Video inventory */ -}}
   {{- if and (not $width) (not $height) -}}
-    {{- $inventory := index site.Data "video-inventory" -}}
-    {{- if $inventory -}}
-      {{- $matches := where $inventory.videos "uid" $id -}}
-      {{- if gt (len $matches) 0 -}}
-        {{- $entry := index $matches 0 -}}
-        {{- $width = $entry.width -}}
-        {{- $height = $entry.height -}}
-      {{- end -}}
-    {{- end -}}
+    {{- $width = $invEntry.width -}}
+    {{- $height = $invEntry.height -}}
   {{- end -}}
 
   {{- /* 3) Cloudflare Stream API fallback
@@ -67,6 +68,35 @@
         {{- end -}}
       {{- end -}}
     {{- end -}}
+  {{- end -}}
+
+  {{- /* Resolve poster_image in priority order:
+       1) frontmatter/shortcode poster_image
+       2) inventory poster_image (absolute URL stored at inventory level)
+       3) no poster — CF Stream default (first frame of video)
+       URL construction rules:
+         absolute URL (http/https prefix) → used verbatim
+         site-root-relative (leading /) → prepend site baseURL
+         relative filename (no leading /) → prepend page permalink */ -}}
+  {{- $posterImage := $video.poster_image -}}
+  {{- if not $posterImage -}}
+    {{- $posterImage = $invEntry.poster_image -}}
+  {{- end -}}
+  {{- if $posterImage -}}
+    {{- $posterURL := "" -}}
+    {{- if or (hasPrefix $posterImage "http://") (hasPrefix $posterImage "https://") -}}
+      {{- $posterURL = $posterImage -}}
+    {{- else if hasPrefix $posterImage "/" -}}
+      {{- $posterURL = printf "%s%s" (strings.TrimSuffix "/" site.BaseURL) $posterImage -}}
+    {{- else -}}
+      {{- $posterURL = printf "%s%s" $permalink $posterImage -}}
+    {{- end -}}
+    {{- $params = $params | append (printf "poster=%s" $posterURL) -}}
+  {{- end -}}
+
+  {{- $src := $baseSrc -}}
+  {{- if gt (len $params) 0 -}}
+    {{- $src = printf "%s?%s" $baseSrc (delimit $params "&") -}}
   {{- end -}}
 
   {{- $aspectStyle := "" -}}
