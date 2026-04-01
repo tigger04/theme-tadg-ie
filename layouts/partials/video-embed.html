@@ -28,7 +28,14 @@
   {{- if gt (len $params) 0 -}}
     {{- $src = printf "%s?%s" $baseSrc (delimit $params "&") -}}
   {{- end -}}
-  <div class="cfstream-container">
+  {{- /* Derive aspect ratio from width/height if provided; default 16:9 */ -}}
+  {{- $aspectStyle := "" -}}
+  {{- with $video.width -}}
+    {{- with $video.height -}}
+      {{- $aspectStyle = printf "aspect-ratio: %v / %v;" $video.width $video.height -}}
+    {{- end -}}
+  {{- end -}}
+  <div class="cfstream-container"{{ with $aspectStyle }} style="{{ . }}"{{ end }}>
     <iframe
       src="{{ $src }}"
       loading="lazy"

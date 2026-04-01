@@ -2728,10 +2728,10 @@ figure.inline-image:has(.inline-image-caption-blur) {
   color: var(--accent-color, hsl(27, 100%, 35%));
 }
 
-/* --- Cloudflare Stream video container (Issue #42) --- */
+/* --- Cloudflare Stream video container (Issue #42, #43) --- */
 .cfstream-container {
   position: relative;
-  padding-top: 56.25%; /* 16:9 default; CF player handles native ratio */
+  aspect-ratio: 16 / 9; /* default; overridden inline when video dimensions are known */
   margin-bottom: 1.5rem;
   background: var(--bg-secondary, #f5f5f5);
 }
