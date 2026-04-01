@@ -566,19 +566,11 @@ body,
   font-size: 1.3em;
 }
 
-/* Hero Image Styling */
+/* Hero Image/Video Styling (Issue #135: block above text, no float) */
 .post-hero {
   position: relative;
   overflow: hidden;
-  /* Float right so body text wraps around the image */
-  float: right;
-  /* Fallback for older browsers */
-  max-width: 50%;
-  margin-left: 1.5rem;
   margin-bottom: 1rem;
-  /* Modern logical properties */
-  max-inline-size: 50%;
-  margin-inline-start: 1.5rem;
   margin-block-end: 1rem;
 }
 
@@ -589,17 +581,6 @@ body,
   object-fit: cover;
   object-position: center;
   display: block;
-}
-
-/* On narrow screens, hero goes full-width above content */
-@media screen and (max-width: 48em) {
-  .post-hero {
-    float: none;
-    max-width: 100%;
-    max-inline-size: 100%;
-    margin-left: 0;
-    margin-inline-start: 0;
-  }
 }
 
 /* Featured Image Styling */
@@ -2757,10 +2738,13 @@ figure.inline-image:has(.inline-image-caption-blur) {
 }
 
 /* Issue #133: cap portrait video height in hero/featured so tall videos don't
-   dominate the page. Width auto-shrinks to preserve aspect-ratio. */
+   dominate the page. Width auto-shrinks to preserve aspect-ratio.
+   margin: auto centres a portrait video that is narrower than the content area. */
 .post-hero .cfstream-container,
 .post-featured .cfstream-container {
   max-height: 30rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .post-featured .cfstream-container {
@@ -2769,12 +2753,10 @@ figure.inline-image:has(.inline-image-caption-blur) {
   margin-right: auto;
 }
 
-/* Issue #46: hero float and featured inline-block collapse to zero width when
-   containing a cfstream-container (abs-positioned iframe has no intrinsic size).
-   :has() targets only video containers, leaving image behaviour unchanged. */
-.post-hero:has(.cfstream-container) {
-  width: 45%;
-}
+/* Issue #46: featured inline-block collapses to zero width when containing a
+   cfstream-container (abs-positioned iframe has no intrinsic size).
+   :has() targets only video containers, leaving image behaviour unchanged.
+   Note: .post-hero no longer needs this fix — block display gives natural width. */
 
 .post-featured:has(.cfstream-container) {
   display: block;
