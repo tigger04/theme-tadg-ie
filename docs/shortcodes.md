@@ -365,7 +365,7 @@ The video container's `aspect-ratio` is resolved in this order:
 
 1. **Frontmatter** — `video.width` and `video.height` if both are present
 2. **Video inventory** — `data/video-inventory.yaml` in the site root, keyed by UID (`where .videos "uid" $id`)
-3. **Cloudflare Stream API** — fetched at build time, opt-in only. Set `params.cloudflareStream.apiLookup: true` in `hugo.yaml`, list both `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` under `security.funcs.getenv`, and ensure both env vars are set at build time
+3. **Cloudflare Stream API** — fetched at build time when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set. Both vars must be listed under `security.funcs.getenv` in `hugo.yaml`. When the vars are absent, this step is silently skipped
 4. **CSS default** — 16:9 (`aspect-ratio: 16 / 9` in the stylesheet); no inline style is added
 
 For the inventory lookup to work, add a `data/video-inventory.yaml` to the site root with this format:
