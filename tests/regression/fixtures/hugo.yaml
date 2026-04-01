@@ -9,10 +9,6 @@ params:
   cloudflareStream:
     customerCode: "TESTCODE"
 
-security:
-  funcs:
-    getenv:
-      - ^HUGO_
-      - ^CI$
-      - ^CLOUDFLARE_API_TOKEN$
-      - ^CLOUDFLARE_ACCOUNT_ID$
+# No security.funcs.getenv override needed — the partial's CF API branch requires
+# params.cloudflareStream.apiLookup: true, which is not set here, so os.Getenv
+# is never called and real API calls cannot happen regardless of the shell environment.

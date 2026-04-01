@@ -51,9 +51,11 @@
   {{- end -}}
 
   {{- /* 3) Cloudflare Stream API fallback
-       Requires CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in env, plus both vars
-       listed under security.funcs.getenv in hugo.yaml to be readable at build time. */ -}}
-  {{- if and (not $width) (not $height) -}}
+       Opt-in only: set params.cloudflareStream.apiLookup: true in hugo.yaml to enable.
+       Also requires CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in env, with both
+       vars listed under security.funcs.getenv. Disabled by default so regression tests
+       never reach this branch regardless of what env vars are set. */ -}}
+  {{- if and (not $width) (not $height) (site.Params.cloudflareStream.apiLookup) -}}
     {{- $apiToken := os.Getenv "CLOUDFLARE_API_TOKEN" -}}
     {{- $accountId := os.Getenv "CLOUDFLARE_ACCOUNT_ID" -}}
     {{- if and $apiToken $accountId -}}
