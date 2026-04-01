@@ -28,14 +28,51 @@
   {{- if gt (len $params) 0 -}}
     {{- $src = printf "%s?%s" $baseSrc (delimit $params "&") -}}
   {{- end -}}
-  {{- /* Derive aspect ratio from width/height if provided; default 16:9 */ -}}
-  {{- $aspectStyle := "" -}}
-  {{- with $video.width -}}
-    {{- with $video.height -}}
-      {{- $aspectStyle = printf "aspect-ratio: %v / %v;" $video.width $video.height -}}
+
+  {{- /* Resolve aspect-ratio in priority order:
+       1) frontmatter width/height
+       2) data/video-inventory.yaml keyed by UID
+       3) Cloudflare Stream API (requires CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID env vars)
+       4) 16:9 CSS default (no inline style) */ -}}
+  {{- $width := $video.width -}}
+  {{- $height := $video.height -}}
+
+  {{- /* 2) Video inventory lookup */ -}}
+  {{- if and (not $width) (not $height) -}}
+    {{- $inventory := index site.Data "video-inventory" -}}
+    {{- if $inventory -}}
+      {{- $matches := where $inventory.videos "uid" $id -}}
+      {{- if gt (len $matches) 0 -}}
+        {{- $entry := index $matches 0 -}}
+        {{- $width = $entry.width -}}
+        {{- $height = $entry.height -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
-  <div class="cfstream-container"{{ with $aspectStyle }} style="{{ . }}"{{ end }}>
+
+  {{- /* 3) Cloudflare Stream API fallback
+       Requires CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in env, plus both vars
+       listed under security.funcs.getenv in hugo.yaml to be readable at build time. */ -}}
+  {{- if and (not $width) (not $height) -}}
+    {{- $apiToken := os.Getenv "CLOUDFLARE_API_TOKEN" -}}
+    {{- $accountId := os.Getenv "CLOUDFLARE_ACCOUNT_ID" -}}
+    {{- if and $apiToken $accountId -}}
+      {{- $apiUrl := printf "https://api.cloudflare.com/client/v4/accounts/%s/stream/%s" $accountId $id -}}
+      {{- with resources.GetRemote $apiUrl (dict "headers" (dict "Authorization" (printf "Bearer %s" $apiToken))) -}}
+        {{- $data := . | transform.Unmarshal -}}
+        {{- if and $data $data.success -}}
+          {{- $width = $data.result.input.width -}}
+          {{- $height = $data.result.input.height -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $aspectStyle := "" -}}
+  {{- if and $width $height -}}
+    {{- $aspectStyle = printf "aspect-ratio: %v / %v;" $width $height -}}
+  {{- end -}}
+  <div class="cfstream-container"{{ with $aspectStyle }} style="{{ . | safeCSS }}"{{ end }}>
     <iframe
       src="{{ $src }}"
       loading="lazy"

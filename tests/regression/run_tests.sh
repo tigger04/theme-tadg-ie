@@ -345,6 +345,61 @@ else
     fail "${test_id}" "Test page not found: ${test_file}"
 fi
 
+# --- RT-43.18: Frontmatter width/height produce correct aspect-ratio style ---
+test_id="RT-43.18"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-inv-frontmatter/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'style="aspect-ratio: 640 / 480;"' "${test_file}"; then
+        pass "${test_id}" "Frontmatter width/height produce aspect-ratio: 640 / 480"
+    else
+        fail "${test_id}" "Expected aspect-ratio: 640 / 480 not found in cfstream-container"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.19: Inventory lookup produces correct aspect-ratio when no frontmatter dims ---
+test_id="RT-43.19"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-inv-lookup/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'style="aspect-ratio: 1080 / 1920;"' "${test_file}"; then
+        pass "${test_id}" "Inventory lookup produces aspect-ratio: 1080 / 1920"
+    else
+        fail "${test_id}" "Expected aspect-ratio: 1080 / 1920 from inventory not found"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.20: Frontmatter dims take precedence over inventory ---
+test_id="RT-43.20"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-inv-frontmatter/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'style="aspect-ratio: 640 / 480;"' "${test_file}" \
+        && ! grep -q 'aspect-ratio: 1920 / 1080' "${test_file}"; then
+        pass "${test_id}" "Frontmatter dims (640/480) override inventory dims (1920/1080)"
+    else
+        fail "${test_id}" "Inventory dims leaked through despite frontmatter override"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.21: No inline aspect-ratio when no frontmatter dims and UID not in inventory ---
+test_id="RT-43.21"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-noparams/index.html"
+if [[ -f "${test_file}" ]]; then
+    # Player must render; container must have no inline style attribute
+    if grep -q 'cfstream-container' "${test_file}" \
+        && ! grep -q 'cfstream-container.*style=' "${test_file}"; then
+        pass "${test_id}" "No inline aspect-ratio style when dims unavailable (16:9 CSS default applies)"
+    else
+        fail "${test_id}" "Unexpected inline style on cfstream-container or player missing"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
 # --- RT-43.11: Banner with video.id does NOT contain CF Stream player ---
 test_id="RT-43.11"
 test_file="${BUILD_OUTPUT}/test-pages/banner-video/index.html"

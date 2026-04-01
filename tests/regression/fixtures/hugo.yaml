@@ -8,3 +8,11 @@ theme: tadg_ie
 params:
   cloudflareStream:
     customerCode: "TESTCODE"
+
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^CI$
+      - ^CLOUDFLARE_API_TOKEN$
+      - ^CLOUDFLARE_ACCOUNT_ID$
