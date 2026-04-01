@@ -276,9 +276,11 @@ header .main a:hover {
 }
 
 /* Issue #111: Stack columns layout on mobile — image above text */
+/* Issue #46: align-items: stretch required — flex-start collapses item width in column direction */
 @media screen and (max-width: 48em) {
   .post-featured-columns {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .featured-image-col,
