@@ -580,6 +580,391 @@ else
     fail "${test_id}" "Test page not found: ${test_file}"
 fi
 
+# =============================================================================
+# Issue #131: Fix autoplay loading and implement site-wide video defaults
+# =============================================================================
+
+# --- RT-131.1: Frontmatter autoplay: true → loading="eager" (no site defaults) ---
+test_id="RT-131.1"
+test_file="${BUILD_OUTPUT}/test-pages/video-autoplay-eager/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'loading="eager"' "${test_file}"; then
+        pass "${test_id}" "Frontmatter autoplay: true → loading=\"eager\""
+    else
+        fail "${test_id}" "Expected loading=\"eager\" not found"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-131.5: No autoplay at any tier → loading="lazy" ---
+test_id="RT-131.5"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-noparams/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'loading="lazy"' "${test_file}"; then
+        pass "${test_id}" "No autoplay at any tier → loading=\"lazy\""
+    else
+        fail "${test_id}" "Expected loading=\"lazy\" not found"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-131.12: No autoplay at any tier → autoplay=false absent from src ---
+test_id="RT-131.12"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-noparams/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'cfstream-container' "${test_file}" && ! grep -q 'autoplay=false' "${test_file}"; then
+        pass "${test_id}" "No autoplay at any tier → autoplay=false absent from src"
+    else
+        fail "${test_id}" "autoplay=false unexpectedly present in src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- Inline Site A: videoDefaults { autoplay: true, muted: false, loop: false } ---
+# Tests: RT-131.2, RT-131.3, RT-131.4 (via Site C), RT-131.6–11, RT-131.14–16
+
+site_a_dir=$(mktemp -d)
+trap 'rm -rf "${site_a_dir}"' EXIT
+
+mkdir -p "${site_a_dir}/content/test-pages" "${site_a_dir}/themes"
+ln -sf "${THEME_DIR}" "${site_a_dir}/themes/tadg_ie"
+
+cat > "${site_a_dir}/hugo.yaml" <<'YAMLEOF'
+baseURL: https://test.example.com/
+title: Test Site Defaults A
+theme: tadg_ie
+params:
+  cloudflareStream:
+    customerCode: "TESTCODE"
+    videoDefaults:
+      autoplay: true
+      muted: false
+      loop: false
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^CI$
+      - ^CLOUDFLARE_API_TOKEN$
+      - ^CLOUDFLARE_ACCOUNT_ID$
+YAMLEOF
+
+cat > "${site_a_dir}/content/test-pages/no-page-params.md" <<'MDEOF'
+---
+title: No Page Params
+layout: hero
+video:
+  id: "ea95132c15732412d22c1476fa83f27a"
+---
+Body text.
+MDEOF
+
+cat > "${site_a_dir}/content/test-pages/autoplay-false.md" <<'MDEOF'
+---
+title: Autoplay False Override
+layout: hero
+video:
+  id: "ea95132c15732412d22c1476fa83f27a"
+  autoplay: false
+---
+Body text.
+MDEOF
+
+cat > "${site_a_dir}/content/test-pages/muted-true.md" <<'MDEOF'
+---
+title: Muted True Override
+layout: hero
+video:
+  id: "ea95132c15732412d22c1476fa83f27a"
+  muted: true
+---
+Body text.
+MDEOF
+
+cat > "${site_a_dir}/content/test-pages/loop-true.md" <<'MDEOF'
+---
+title: Loop True Override
+layout: hero
+video:
+  id: "ea95132c15732412d22c1476fa83f27a"
+  loop: true
+---
+Body text.
+MDEOF
+
+if ! site_a_output=$(hugo --source "${site_a_dir}" --quiet 2>&1); then
+    echo "Inline Site A build failed:"
+    echo "${site_a_output}"
+    # Mark all Site A tests as failed
+    for t in RT-131.2 RT-131.3 RT-131.6 RT-131.7 RT-131.8 RT-131.9 RT-131.10 RT-131.11 RT-131.14 RT-131.15 RT-131.16; do
+        fail "${t}" "Inline Site A build failed"
+    done
+else
+    site_a_pub="${site_a_dir}/public"
+
+    # --- RT-131.2: Site default autoplay: true, no page autoplay → loading="eager" ---
+    test_id="RT-131.2"
+    test_file="${site_a_pub}/test-pages/no-page-params/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if grep -q 'loading="eager"' "${test_file}"; then
+            pass "${test_id}" "Site default autoplay: true, no page autoplay → loading=\"eager\""
+        else
+            fail "${test_id}" "Expected loading=\"eager\" not found"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.3: Page autoplay: false, site default autoplay: true → loading="lazy" ---
+    test_id="RT-131.3"
+    test_file="${site_a_pub}/test-pages/autoplay-false/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if grep -q 'loading="lazy"' "${test_file}"; then
+            pass "${test_id}" "Page autoplay: false overrides site default → loading=\"lazy\""
+        else
+            fail "${test_id}" "Expected loading=\"lazy\" not found"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.6: Site default autoplay: true, no page autoplay → autoplay=true in src ---
+    test_id="RT-131.6"
+    test_file="${site_a_pub}/test-pages/no-page-params/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if grep -q 'autoplay=true' "${test_file}"; then
+            pass "${test_id}" "Site default autoplay: true → autoplay=true in src"
+        else
+            fail "${test_id}" "autoplay=true not found in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.7: Site default muted: false, no page muted → no muted param in src ---
+    test_id="RT-131.7"
+    test_file="${site_a_pub}/test-pages/no-page-params/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if ! grep -q 'muted=' "${test_file}"; then
+            pass "${test_id}" "Site default muted: false → no muted param in src"
+        else
+            fail "${test_id}" "Unexpected muted= param in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.8: Page autoplay: false, site default autoplay: true → no autoplay in src ---
+    test_id="RT-131.8"
+    test_file="${site_a_pub}/test-pages/autoplay-false/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if ! grep -q 'autoplay=' "${test_file}"; then
+            pass "${test_id}" "Page autoplay: false overrides site default → no autoplay= in src"
+        else
+            fail "${test_id}" "Unexpected autoplay= param in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.9: Page muted: true, site default muted: false → muted=true in src ---
+    test_id="RT-131.9"
+    test_file="${site_a_pub}/test-pages/muted-true/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if grep -q 'muted=true' "${test_file}"; then
+            pass "${test_id}" "Page muted: true overrides site default → muted=true in src"
+        else
+            fail "${test_id}" "muted=true not found in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.10: Page autoplay: false, site default autoplay: true → autoplay=false absent ---
+    test_id="RT-131.10"
+    test_file="${site_a_pub}/test-pages/autoplay-false/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if ! grep -q 'autoplay=false' "${test_file}"; then
+            pass "${test_id}" "Page autoplay: false → autoplay=false absent from src"
+        else
+            fail "${test_id}" "autoplay=false unexpectedly present in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.11: Site default muted: false, no page muted → muted=false absent ---
+    test_id="RT-131.11"
+    test_file="${site_a_pub}/test-pages/no-page-params/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if ! grep -q 'muted=false' "${test_file}"; then
+            pass "${test_id}" "Site default muted: false → muted=false absent from src"
+        else
+            fail "${test_id}" "muted=false unexpectedly present in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.14: Site default loop: false, no page loop → no loop param in src ---
+    test_id="RT-131.14"
+    test_file="${site_a_pub}/test-pages/no-page-params/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if ! grep -q 'loop=' "${test_file}"; then
+            pass "${test_id}" "Site default loop: false → no loop param in src"
+        else
+            fail "${test_id}" "Unexpected loop= param in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.15: Page loop: true, site default loop: false → loop=true in src ---
+    test_id="RT-131.15"
+    test_file="${site_a_pub}/test-pages/loop-true/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if grep -q 'loop=true' "${test_file}"; then
+            pass "${test_id}" "Page loop: true overrides site default loop: false → loop=true in src"
+        else
+            fail "${test_id}" "loop=true not found in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+
+    # --- RT-131.16: Site default loop: false, no page loop → loop=false absent ---
+    test_id="RT-131.16"
+    test_file="${site_a_pub}/test-pages/no-page-params/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if ! grep -q 'loop=false' "${test_file}"; then
+            pass "${test_id}" "Site default loop: false → loop=false absent from src"
+        else
+            fail "${test_id}" "loop=false unexpectedly present in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+fi
+
+# --- Inline Site B: videoDefaults { autoplay: true, muted: false, loop: true } ---
+# Tests: RT-131.13
+
+site_b_dir=$(mktemp -d)
+trap 'rm -rf "${site_b_dir}"' EXIT
+
+mkdir -p "${site_b_dir}/content/test-pages" "${site_b_dir}/themes"
+ln -sf "${THEME_DIR}" "${site_b_dir}/themes/tadg_ie"
+
+cat > "${site_b_dir}/hugo.yaml" <<'YAMLEOF'
+baseURL: https://test.example.com/
+title: Test Site Defaults B
+theme: tadg_ie
+params:
+  cloudflareStream:
+    customerCode: "TESTCODE"
+    videoDefaults:
+      autoplay: true
+      muted: false
+      loop: true
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^CI$
+      - ^CLOUDFLARE_API_TOKEN$
+      - ^CLOUDFLARE_ACCOUNT_ID$
+YAMLEOF
+
+cat > "${site_b_dir}/content/test-pages/no-loop.md" <<'MDEOF'
+---
+title: No Loop Page
+layout: hero
+video:
+  id: "ea95132c15732412d22c1476fa83f27a"
+---
+Body text.
+MDEOF
+
+if ! site_b_output=$(hugo --source "${site_b_dir}" --quiet 2>&1); then
+    echo "Inline Site B build failed:"
+    echo "${site_b_output}"
+    fail "RT-131.13" "Inline Site B build failed"
+else
+    # --- RT-131.13: Site default loop: true, no page loop → loop=true in src ---
+    test_id="RT-131.13"
+    test_file="${site_b_dir}/public/test-pages/no-loop/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if grep -q 'loop=true' "${test_file}"; then
+            pass "${test_id}" "Site default loop: true, no page loop → loop=true in src"
+        else
+            fail "${test_id}" "loop=true not found in src"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+fi
+
+# --- Inline Site C: videoDefaults { autoplay: false, muted: false, loop: false } ---
+# Tests: RT-131.4
+
+site_c_dir=$(mktemp -d)
+trap 'rm -rf "${site_c_dir}"' EXIT
+
+mkdir -p "${site_c_dir}/content/test-pages" "${site_c_dir}/themes"
+ln -sf "${THEME_DIR}" "${site_c_dir}/themes/tadg_ie"
+
+cat > "${site_c_dir}/hugo.yaml" <<'YAMLEOF'
+baseURL: https://test.example.com/
+title: Test Site Defaults C
+theme: tadg_ie
+params:
+  cloudflareStream:
+    customerCode: "TESTCODE"
+    videoDefaults:
+      autoplay: false
+      muted: false
+      loop: false
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^CI$
+      - ^CLOUDFLARE_API_TOKEN$
+      - ^CLOUDFLARE_ACCOUNT_ID$
+YAMLEOF
+
+cat > "${site_c_dir}/content/test-pages/no-autoplay.md" <<'MDEOF'
+---
+title: No Autoplay Page
+layout: hero
+video:
+  id: "ea95132c15732412d22c1476fa83f27a"
+---
+Body text.
+MDEOF
+
+if ! site_c_output=$(hugo --source "${site_c_dir}" --quiet 2>&1); then
+    echo "Inline Site C build failed:"
+    echo "${site_c_output}"
+    fail "RT-131.4" "Inline Site C build failed"
+else
+    # --- RT-131.4: Site default autoplay: false, no page autoplay → loading="lazy" ---
+    test_id="RT-131.4"
+    test_file="${site_c_dir}/public/test-pages/no-autoplay/index.html"
+    if [[ -f "${test_file}" ]]; then
+        if grep -q 'loading="lazy"' "${test_file}"; then
+            pass "${test_id}" "Site default autoplay: false, no page autoplay → loading=\"lazy\""
+        else
+            fail "${test_id}" "Expected loading=\"lazy\" not found"
+        fi
+    else
+        fail "${test_id}" "Test page not found: ${test_file}"
+    fi
+fi
+
 # --- Summary ---
 echo ""
 total=$((pass_count + fail_count + skip_count))

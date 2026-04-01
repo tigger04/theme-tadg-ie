@@ -303,6 +303,29 @@ params:
 
 The customer code is the public subdomain identifier visible in all embed URLs — it is not a secret.
 
+#### Site-wide Video Defaults (Issue #131)
+
+You can set site-wide defaults for video player params. These apply to every video embed that does not explicitly set that param in page frontmatter or shortcode attributes:
+
+```yaml
+params:
+  cloudflareStream:
+    customerCode: "YOUR_CUSTOMER_CODE"
+    videoDefaults:
+      autoplay: true    # autoplay all videos by default
+      muted: false      # do not mute by default
+      loop: false       # do not loop by default
+```
+
+**Precedence (highest to lowest):**
+1. Page frontmatter / shortcode attribute
+2. Site-wide `videoDefaults`
+3. Absent — Cloudflare applies its own default
+
+Page frontmatter takes precedence in all cases, including an explicit `false` which suppresses a site-wide `true`. Setting `autoplay: false` in frontmatter will prevent autoplay even when the site default is `autoplay: true`.
+
+**Autoplay and iframe loading:** When autoplay is effectively true (via frontmatter or site default), the embed iframe uses `loading="eager"` so the player initialises immediately on page load. When autoplay is not enabled, `loading="lazy"` is used and the player defers until scrolled into view.
+
 ### Usage
 
 **Local video:**
@@ -348,7 +371,7 @@ video:
   letterboxColor: "#000000"                 # optional
 ```
 
-> **Boolean params and CF defaults:** Pass `true` to enable a feature. Omit the field (or set `false`) to use Cloudflare's default. Setting a boolean param to `false` is equivalent to not setting it — the param is not forwarded to the player URL.
+> **Boolean params and CF defaults:** Pass `true` to enable a feature. Omit the field (or set `false`) to use Cloudflare's default. Setting a boolean param to `false` is equivalent to not setting it — the param is not forwarded to the player URL. If site-wide `videoDefaults` are configured, a `false` value in page frontmatter overrides a `true` site default.
 
 #### Compatible Layouts
 

@@ -14,17 +14,43 @@
 {{- else -}}
   {{- $baseSrc := printf "https://customer-%s.cloudflarestream.com/%s/iframe" $customerCode $id -}}
   {{- $params := slice -}}
+
+  {{- /* Load site-wide video defaults (tier 2).
+       Tier 1 = page frontmatter / shortcode, tier 3 = absent (CF applies its own default).
+       False values in either tier map to CF's "absent" model — never emit param=false. */ -}}
+  {{- $videoDefaults := dict -}}
+  {{- with site.Params.cloudflareStream -}}
+    {{- with .videoDefaults -}}
+      {{- $videoDefaults = . -}}
+    {{- end -}}
+  {{- end -}}
+
   {{- /* Map lowercase keys (Hugo normalises frontmatter) to CF embed querystring names.
        poster is handled separately via poster_image with URL construction (issue #45). */ -}}
   {{- $cfParamNames := dict "autoplay" "autoplay" "muted" "muted" "loop" "loop" "controls" "controls" "preload" "preload" "starttime" "startTime" "primarycolor" "primaryColor" "letterboxcolor" "letterboxColor" -}}
   {{- range $lowerKey, $cfKey := $cfParamNames -}}
+    {{- /* Three-tier precedence: page frontmatter > site defaults > absent.
+         isset distinguishes "explicitly set to false" from "not set at all".
+         Only truthy values forwarded — false/empty omits the param entirely (CF model). */ -}}
     {{- if isset $video $lowerKey -}}
-      {{- $val := index $video $lowerKey -}}
-      {{- /* Only forward truthy values — false/empty means "use CF default (off)" */ -}}
-      {{- if $val -}}
-        {{- $params = $params | append (printf "%s=%v" $cfKey $val) -}}
+      {{- if index $video $lowerKey -}}
+        {{- $params = $params | append (printf "%s=%v" $cfKey (index $video $lowerKey)) -}}
+      {{- end -}}
+    {{- else if isset $videoDefaults $lowerKey -}}
+      {{- if index $videoDefaults $lowerKey -}}
+        {{- $params = $params | append (printf "%s=%v" $cfKey (index $videoDefaults $lowerKey)) -}}
       {{- end -}}
     {{- end -}}
+  {{- end -}}
+
+  {{- /* Resolve effective autoplay for the iframe loading attribute.
+       loading="lazy" defers iframe initialisation until scroll, missing the CF player's
+       autoplay window. Use loading="eager" when autoplay is effectively true. */ -}}
+  {{- $effectiveAutoplay := false -}}
+  {{- if isset $video "autoplay" -}}
+    {{- $effectiveAutoplay = index $video "autoplay" -}}
+  {{- else if isset $videoDefaults "autoplay" -}}
+    {{- $effectiveAutoplay = index $videoDefaults "autoplay" -}}
   {{- end -}}
 
   {{- /* Inventory lookup — done once; used for both dimension resolution and poster_image fallback */ -}}
@@ -106,7 +132,7 @@
   <div class="cfstream-container"{{ with $aspectStyle }} style="{{ . | safeCSS }}"{{ end }}>
     <iframe
       src="{{ $src }}"
-      loading="lazy"
+      loading="{{ if $effectiveAutoplay }}eager{{ else }}lazy{{ end }}"
       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
       allowfullscreen="true"
     ></iframe>
