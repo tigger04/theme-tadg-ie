@@ -16,37 +16,18 @@
 {{- end -}}
 
 {{- if $isCFStream -}}
-  {{- /* Cloudflare Stream embed */ -}}
+  {{- /* Build video map for the shared partial */ -}}
   {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
-  {{- if not $customerCode -}}
-    {{- warnf "video shortcode: cloudflareStream.customerCode is not set in site config (page: %s)" .Page.File.Path -}}
-    <div class="cfstream-container cfstream-error">
-      <p><strong>Video configuration error:</strong> <code>cloudflareStream.customerCode</code> is missing from site config.</p>
-    </div>
-  {{- else -}}
-    {{- /* Build iframe src with optional querystring params */ -}}
-    {{- $baseSrc := printf "https://customer-%s.cloudflarestream.com/%s/iframe" $customerCode $id -}}
-    {{- $params := slice -}}
-    {{- $optionalParams := slice "autoplay" "muted" "loop" "controls" "preload" "poster" "startTime" "primaryColor" "letterboxColor" -}}
-    {{- range $optionalParams -}}
-      {{- $val := $.Get . -}}
-      {{- if $val -}}
-        {{- $params = $params | append (printf "%s=%s" . $val) -}}
-      {{- end -}}
+  {{- $videoMap := dict "id" $id -}}
+  {{- /* Shortcode params preserve case; lowercase keys to match the partial's lookup */ -}}
+  {{- $optionalParams := slice "autoplay" "muted" "loop" "controls" "preload" "poster" "startTime" "primaryColor" "letterboxColor" -}}
+  {{- range $optionalParams -}}
+    {{- $val := $.Get . -}}
+    {{- if $val -}}
+      {{- $videoMap = merge $videoMap (dict (lower .) $val) -}}
     {{- end -}}
-    {{- $src := $baseSrc -}}
-    {{- if gt (len $params) 0 -}}
-      {{- $src = printf "%s?%s" $baseSrc (delimit $params "&") -}}
-    {{- end -}}
-    <div class="cfstream-container">
-      <iframe
-        src="{{ $src }}"
-        loading="lazy"
-        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-        allowfullscreen="true"
-      ></iframe>
-    </div>
   {{- end -}}
+  {{- partial "video-embed.html" (dict "video" $videoMap "customerCode" $customerCode) -}}
 {{- else -}}
   {{- /* Local HTML5 video (original behaviour) */ -}}
   <video class="video-shortcode" preload="true" controls>

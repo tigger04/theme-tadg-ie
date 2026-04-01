@@ -1,0 +1,36 @@
+{{- /* ABOUTME: Renders a Cloudflare Stream iframe from a video config map */ -}}
+{{- /* ABOUTME: Shared between the video shortcode and page layout templates (issue #43) */ -}}
+
+{{- $video := .video -}}
+{{- $customerCode := .customerCode -}}
+{{- $id := $video.id -}}
+
+{{- if not $customerCode -}}
+  {{- warnf "video-embed: cloudflareStream.customerCode is not set in site config" -}}
+  <div class="cfstream-container cfstream-error">
+    <p><strong>Video configuration error:</strong> <code>cloudflareStream.customerCode</code> is missing from site config.</p>
+  </div>
+{{- else -}}
+  {{- $baseSrc := printf "https://customer-%s.cloudflarestream.com/%s/iframe" $customerCode $id -}}
+  {{- $params := slice -}}
+  {{- /* Map lowercase keys (Hugo normalises frontmatter) to CF embed querystring names */ -}}
+  {{- $cfParamNames := dict "autoplay" "autoplay" "muted" "muted" "loop" "loop" "controls" "controls" "preload" "preload" "poster" "poster" "starttime" "startTime" "primarycolor" "primaryColor" "letterboxcolor" "letterboxColor" -}}
+  {{- range $lowerKey, $cfKey := $cfParamNames -}}
+    {{- if isset $video $lowerKey -}}
+      {{- $val := index $video $lowerKey -}}
+      {{- $params = $params | append (printf "%s=%v" $cfKey $val) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $src := $baseSrc -}}
+  {{- if gt (len $params) 0 -}}
+    {{- $src = printf "%s?%s" $baseSrc (delimit $params "&") -}}
+  {{- end -}}
+  <div class="cfstream-container">
+    <iframe
+      src="{{ $src }}"
+      loading="lazy"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+      allowfullscreen="true"
+    ></iframe>
+  </div>
+{{- end -}}

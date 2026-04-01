@@ -3,6 +3,9 @@
   <article{{ if .Params.contentLang }} lang="{{ .Params.contentLang }}"{{ end }}{{ if .Params.toc }} class="has-toc"{{ end }}>
     <!-- Banner Layout -->
     {{ if eq .Params.layout "banner" }}
+    {{- if .Params.video.id -}}
+      {{- warnf "page '%s': video frontmatter is not supported in banner layout; use hero or columns instead" .Page.File.Path -}}
+    {{- end -}}
     {{ if .Params.image.src }}
     <div class="post-banner soft-edge{{ if .Params.image.dark }} dark-banner{{ end }}">
       <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
@@ -57,9 +60,14 @@
       <!-- Two-column content area -->
       <div class="post-featured-columns">
         {{ if or (eq .Params.layout "featured-columns-left") (eq .Params.layout "columns") }}
-        <!-- Image on left, text on right -->
+        <!-- Image/video on left, text on right -->
         <div class="featured-image-col">
-          {{ if .Params.image.src }}
+          {{ if .Params.video.id }}
+            {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
+            {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
+            {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+            {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
+          {{ else if .Params.image.src }}
           <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
           <div class="image-caption">{{ .Params.image.caption }}</div>
@@ -89,7 +97,12 @@
           </section>
         </div>
         <div class="featured-image-col">
-          {{ if .Params.image.src }}
+          {{ if .Params.video.id }}
+            {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
+            {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
+            {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+            {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
+          {{ else if .Params.image.src }}
           <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
           <div class="image-caption">{{ .Params.image.caption }}</div>
@@ -98,7 +111,7 @@
         </div>
         {{ end }}
       </div>
-      
+
       <!-- Footer with tags - full width -->
       <div class="post-footer" style="padding: 0 2rem 2rem 2rem;">
         <div class="post-tags">
@@ -124,6 +137,9 @@
     {{ if and .Params.image.src (not .Params.layout) }}
       {{ $effectiveLayout = "background" }}
     {{ end }}
+    {{- if and .Params.video.id (eq $effectiveLayout "background") -}}
+      {{- warnf "page '%s': video frontmatter is not supported in background layout; use hero or columns instead" .Page.File.Path -}}
+    {{- end -}}
     
     <div class="post-container{{ if and .Params.image (eq $effectiveLayout "background") }}{{ if .Params.image.dark }} dark-bg{{ else if isset .Params.image "dark" }} light-bg{{ end }}{{ end }} soft-edge"{{ if and .Params.image (eq $effectiveLayout "background") }} style="--background-image: url('{{ .RelPermalink }}{{ .Params.image.src }}'); --image-opacity: {{ if .Params.image.opacity }}{{ .Params.image.opacity }}{{ else }}{{ .Site.Params.bgImage.opacity }}{{ end }}; --image-blur: {{ if .Params.image.blur }}{{ .Params.image.blur }}{{ else }}{{ .Site.Params.bgImage.blur }}{{ end }}{{ with .Params.image.size }}; --background-size: {{ . }}{{ end }};"{{ end }}>
       <div class="post-content">
@@ -132,9 +148,16 @@
           <div class="meta">{{- /* Issue #92: Support hideDate frontmatter */ -}}{{- if not .Params.hideAuthor }}{{- with .Params.author }}{{ . }}{{ if not $.Params.hideDate }} · {{ end }}{{ end }}{{ end }}{{- if not .Params.hideDate -}}{{ dateFormat (site.Params.dateFormat | default ":date_long") .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
         </div>
 
-        <!-- Hero Image -->
-        {{ if and .Params.image (eq .Params.layout "hero") }}
-        {{ if .Params.image.src }}
+        <!-- Hero Image/Video -->
+        {{ if eq .Params.layout "hero" }}
+        {{ if .Params.video.id }}
+        {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
+        <div class="post-hero">
+          {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
+          {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+          {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
+        </div>
+        {{ else if .Params.image.src }}
         <div class="post-hero">
           <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
@@ -144,9 +167,16 @@
         {{ end }}
         {{ end }}
 
-        <!-- Featured Image -->
-        {{ if and .Params.image (eq .Params.layout "featured") }}
-        {{ if .Params.image.src }}
+        <!-- Featured Image/Video -->
+        {{ if eq .Params.layout "featured" }}
+        {{ if .Params.video.id }}
+        {{- if .Params.image.src -}}{{- warnf "page '%s': both video and image set; video takes precedence" .Page.File.Path -}}{{- end -}}
+        <div class="post-featured">
+          {{- $customerCode := site.Params.cloudflareStream.customerCode -}}
+          {{ partial "video-embed.html" (dict "video" .Params.video "customerCode" $customerCode) }}
+          {{ with .Params.video.caption }}<div class="image-caption">{{ . }}</div>{{ end }}
+        </div>
+        {{ else if .Params.image.src }}
         <div class="post-featured">
           <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}

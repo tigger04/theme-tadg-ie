@@ -181,6 +181,232 @@ if [[ "${rt007_pass}" == "true" ]]; then
     pass "${test_id}" "Documentation covers Cloudflare Stream in shortcodes.md and README.md"
 fi
 
+# =============================================================================
+# Issue #43: Video in page layouts
+# =============================================================================
+
+# --- RT-43.1: Hero page with video.id contains a CF Stream player ---
+test_id="RT-43.1"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'post-hero' "${test_file}" && grep -q 'cfstream-container' "${test_file}"; then
+        pass "${test_id}" "Hero with video.id contains CF Stream player in post-hero"
+    else
+        fail "${test_id}" "Hero with video.id missing cfstream-container in post-hero"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.2: Hero page with video.id does not contain image in media slot ---
+test_id="RT-43.2"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'post-hero' "${test_file}" && ! grep -q '<img' "${test_file}"; then
+        pass "${test_id}" "Hero with video.id does not render an image"
+    else
+        fail "${test_id}" "Hero with video.id unexpectedly contains an <img>"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.3: Hero page with image.src still renders image (regression) ---
+test_id="RT-43.3"
+test_file="${BUILD_OUTPUT}/test-pages/hero-image/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'post-hero' "${test_file}" && grep -q '<img' "${test_file}"; then
+        pass "${test_id}" "Hero with image.src still renders image (regression)"
+    else
+        fail "${test_id}" "Hero with image.src does not render image"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.4: Columns-left with video.id contains CF Stream player ---
+test_id="RT-43.4"
+test_file="${BUILD_OUTPUT}/test-pages/columns-left-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'featured-image-col' "${test_file}" && grep -q 'cfstream-container' "${test_file}"; then
+        pass "${test_id}" "Columns-left with video.id contains CF Stream player"
+    else
+        fail "${test_id}" "Columns-left with video.id missing cfstream-container"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.5: Columns-right with video.id contains CF Stream player ---
+test_id="RT-43.5"
+test_file="${BUILD_OUTPUT}/test-pages/columns-right-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'featured-image-col' "${test_file}" && grep -q 'cfstream-container' "${test_file}"; then
+        pass "${test_id}" "Columns-right with video.id contains CF Stream player"
+    else
+        fail "${test_id}" "Columns-right with video.id missing cfstream-container"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.6: Columns with image.src still renders image (regression) ---
+test_id="RT-43.6"
+test_file="${BUILD_OUTPUT}/test-pages/columns-image/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'featured-image-col' "${test_file}" && grep -q '<img' "${test_file}"; then
+        pass "${test_id}" "Columns with image.src still renders image (regression)"
+    else
+        fail "${test_id}" "Columns with image.src does not render image"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.7: Featured with video.id contains CF Stream player ---
+test_id="RT-43.7"
+test_file="${BUILD_OUTPUT}/test-pages/featured-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'post-featured' "${test_file}" && grep -q 'cfstream-container' "${test_file}"; then
+        pass "${test_id}" "Featured with video.id contains CF Stream player"
+    else
+        fail "${test_id}" "Featured with video.id missing cfstream-container"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.8: Featured with image.src still renders image (regression) ---
+test_id="RT-43.8"
+test_file="${BUILD_OUTPUT}/test-pages/featured-image/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'post-featured' "${test_file}" && grep -q '<img' "${test_file}"; then
+        pass "${test_id}" "Featured with image.src still renders image (regression)"
+    else
+        fail "${test_id}" "Featured with image.src does not render image"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.9: Video params forwarded (autoplay, muted) ---
+test_id="RT-43.9"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-params/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'autoplay=true' "${test_file}" && grep -q 'muted=true' "${test_file}"; then
+        pass "${test_id}" "Video params autoplay and muted forwarded to iframe src"
+    else
+        fail "${test_id}" "Video params not found in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.10: No querystring when no optional params set ---
+test_id="RT-43.10"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-noparams/index.html"
+if [[ -f "${test_file}" ]]; then
+    # The iframe src should end with /iframe" (no ?)
+    if grep -q 'cfstream-container' "${test_file}" && ! grep -q 'iframe?' "${test_file}"; then
+        pass "${test_id}" "No querystring when no optional params set"
+    else
+        fail "${test_id}" "Unexpected querystring in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.16: Value-type param startTime forwarded ---
+test_id="RT-43.16"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-starttime/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'startTime=5' "${test_file}"; then
+        pass "${test_id}" "Value-type param startTime=5 forwarded to iframe src"
+    else
+        fail "${test_id}" "startTime=5 not found in iframe src"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.11: Banner with video.id does NOT contain CF Stream player ---
+test_id="RT-43.11"
+test_file="${BUILD_OUTPUT}/test-pages/banner-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if ! grep -q 'cfstream-container' "${test_file}"; then
+        pass "${test_id}" "Banner with video.id does not render CF Stream player"
+    else
+        fail "${test_id}" "Banner with video.id unexpectedly contains cfstream-container"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.12: Background default with video.id does NOT contain CF Stream player ---
+test_id="RT-43.12"
+test_file="${BUILD_OUTPUT}/test-pages/background-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if ! grep -q 'cfstream-container' "${test_file}"; then
+        pass "${test_id}" "Background with video.id does not render CF Stream player"
+    else
+        fail "${test_id}" "Background with video.id unexpectedly contains cfstream-container"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.13: Hero with both video and image → video wins ---
+test_id="RT-43.13"
+test_file="${BUILD_OUTPUT}/test-pages/hero-both/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'cfstream-container' "${test_file}" && ! grep -q '<img' "${test_file}"; then
+        pass "${test_id}" "Hero with both video+image: video takes precedence"
+    else
+        fail "${test_id}" "Hero with both video+image: video did not take precedence"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.14: Shortcode with positional CF Stream UID (regression) ---
+test_id="RT-43.14"
+test_file="${BUILD_OUTPUT}/test-pages/cfstream-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'cfstream-container' "${test_file}" && grep -q '<iframe' "${test_file}"; then
+        pass "${test_id}" "Shortcode with positional UID renders CF Stream player (regression)"
+    else
+        fail "${test_id}" "Shortcode with positional UID does not render CF Stream player"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.15: Shortcode with local file path (regression) ---
+test_id="RT-43.15"
+test_file="${BUILD_OUTPUT}/test-pages/local-video/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q '<video' "${test_file}" && grep -q '<source' "${test_file}"; then
+        pass "${test_id}" "Shortcode with local file path renders HTML5 video (regression)"
+    else
+        fail "${test_id}" "Shortcode with local file path does not render HTML5 video"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
+# --- RT-43.17: Shortcode with named id param (regression) ---
+test_id="RT-43.17"
+test_file="${BUILD_OUTPUT}/test-pages/cfstream-params/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'cfstream-container' "${test_file}" && grep -q '<iframe' "${test_file}"; then
+        pass "${test_id}" "Shortcode with named id param renders CF Stream player (regression)"
+    else
+        fail "${test_id}" "Shortcode with named id param does not render CF Stream player"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
 # --- Summary ---
 echo ""
 total=$((pass_count + fail_count + skip_count))

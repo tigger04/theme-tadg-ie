@@ -324,6 +324,80 @@ The customer code is the public subdomain identifier visible in all embed URLs â
 {{< video id="ea95132c15732412d22c1476fa83f27a" poster="https://example.com/thumb.jpg" >}}
 ```
 
+### Video in Page Layouts (Issue #43)
+
+In addition to the shortcode, Cloudflare Stream videos can be used as the primary visual in page layouts via the `video` frontmatter field. This places the video in the layout's media slot (where `image` would normally go).
+
+#### Frontmatter Schema
+
+```yaml
+video:
+  id: "fd20681eb60dc4cc9c2058f30b977a7a"   # CF Stream UID (required)
+  caption: "Open Your Heart"                # optional
+  autoplay: true                            # optional
+  muted: true                               # optional
+  loop: true                                # optional
+  controls: true                            # optional (default: true)
+  preload: "auto"                           # optional
+  startTime: "5"                            # optional, seconds
+  primaryColor: "#ff6600"                   # optional
+  letterboxColor: "#000000"                 # optional
+```
+
+#### Compatible Layouts
+
+| Layout | Behaviour |
+|--------|-----------|
+| `hero` | Video floats right, text wraps around it |
+| `featured` | Video centred above content |
+| `featured-columns-left` / `columns` | Video in left column, text in right |
+| `featured-columns-right` | Text in left column, video in right |
+
+**Incompatible layouts:** `banner` and `background` (default when `image` is set without a layout). These produce a Hugo build warning if `video` is present.
+
+#### Precedence
+
+If both `video` and `image` are set, `video` takes precedence in compatible layouts. A build warning is emitted noting the conflict.
+
+#### Examples
+
+**Hero with video:**
+
+```yaml
+---
+title: "My Post"
+layout: hero
+video:
+  id: "fd20681eb60dc4cc9c2058f30b977a7a"
+  autoplay: true
+  muted: true
+  loop: true
+---
+```
+
+**Columns with video:**
+
+```yaml
+---
+title: "My Post"
+layout: featured-columns-left
+video:
+  id: "fd20681eb60dc4cc9c2058f30b977a7a"
+  caption: "Open Your Heart"
+---
+```
+
+**Featured with video:**
+
+```yaml
+---
+title: "My Post"
+layout: featured
+video:
+  id: "fd20681eb60dc4cc9c2058f30b977a7a"
+---
+```
+
 ### Visual Examples
 
 ![HTML5 video player](screenshots/shortcodes/video.png)

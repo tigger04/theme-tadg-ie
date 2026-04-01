@@ -2751,3 +2751,16 @@ figure.inline-image:has(.inline-image-caption-blur) {
   border: 2px solid var(--accent-color, hsl(27, 100%, 35%));
   border-radius: 0.25rem;
 }
+
+/* --- Video in page layouts (Issue #43) --- */
+.post-hero .cfstream-container,
+.post-featured .cfstream-container,
+.featured-image-col .cfstream-container {
+  margin-bottom: 0;
+}
+
+.post-featured .cfstream-container {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
