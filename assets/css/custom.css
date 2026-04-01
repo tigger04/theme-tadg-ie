@@ -2749,11 +2749,18 @@ figure.inline-image:has(.inline-image-caption-blur) {
   border-radius: 0.25rem;
 }
 
-/* --- Video in page layouts (Issue #43, #46) --- */
+/* --- Video in page layouts (Issue #43, #46, #133) --- */
 .post-hero .cfstream-container,
 .post-featured .cfstream-container,
 .featured-image-col .cfstream-container {
   margin-bottom: 0;
+}
+
+/* Issue #133: cap portrait video height in hero/featured so tall videos don't
+   dominate the page. Width auto-shrinks to preserve aspect-ratio. */
+.post-hero .cfstream-container,
+.post-featured .cfstream-container {
+  max-height: 30rem;
 }
 
 .post-featured .cfstream-container {
