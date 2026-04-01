@@ -298,11 +298,6 @@ header .main a:hover {
   clear: both;
 }
 
-/* Ensure only image and text columns are flexed */
-.post-featured-columns > * {
-  flex: 1 1 50%;
-}
-
 /* Override any flex on tags container */
 .post-footer .post-tags {
   display: block !important;
@@ -2752,7 +2747,7 @@ figure.inline-image:has(.inline-image-caption-blur) {
   border-radius: 0.25rem;
 }
 
-/* --- Video in page layouts (Issue #43) --- */
+/* --- Video in page layouts (Issue #43, #46) --- */
 .post-hero .cfstream-container,
 .post-featured .cfstream-container,
 .featured-image-col .cfstream-container {
@@ -2763,4 +2758,15 @@ figure.inline-image:has(.inline-image-caption-blur) {
   max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Issue #46: hero float and featured inline-block collapse to zero width when
+   containing a cfstream-container (abs-positioned iframe has no intrinsic size).
+   :has() targets only video containers, leaving image behaviour unchanged. */
+.post-hero:has(.cfstream-container) {
+  width: 45%;
+}
+
+.post-featured:has(.cfstream-container) {
+  display: block;
 }
