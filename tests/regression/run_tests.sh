@@ -329,6 +329,22 @@ else
     fail "${test_id}" "Test page not found: ${test_file}"
 fi
 
+# --- RT-43.22: Boolean params set to false are NOT forwarded to iframe src ---
+test_id="RT-43.22"
+test_file="${BUILD_OUTPUT}/test-pages/hero-video-false-params/index.html"
+if [[ -f "${test_file}" ]]; then
+    if grep -q 'cfstream-container' "${test_file}" \
+        && ! grep -q 'autoplay=' "${test_file}" \
+        && ! grep -q 'muted=' "${test_file}" \
+        && ! grep -q 'loop=' "${test_file}"; then
+        pass "${test_id}" "Params set to false are not forwarded in iframe src"
+    else
+        fail "${test_id}" "False-valued param(s) unexpectedly present in iframe src (or player missing)"
+    fi
+else
+    fail "${test_id}" "Test page not found: ${test_file}"
+fi
+
 # --- RT-43.11: Banner with video.id does NOT contain CF Stream player ---
 test_id="RT-43.11"
 test_file="${BUILD_OUTPUT}/test-pages/banner-video/index.html"
