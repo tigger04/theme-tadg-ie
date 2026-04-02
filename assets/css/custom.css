@@ -567,13 +567,11 @@ body,
 }
 
 /* Hero Image/Video Styling (Issue #135: block above text, no float) */
-/* Issue #136: negative margin-inline bleeds media to container edges, framing the text below */
 .post-hero {
   position: relative;
   overflow: hidden;
   margin-bottom: 1rem;
   margin-block-end: 1rem;
-  margin-inline: -2rem;
 }
 
 .post-hero img {
@@ -586,14 +584,11 @@ body,
 }
 
 /* Featured Image Styling */
-/* Issue #136: block display + negative margin-inline bleeds media to container edges.
-   margin-inline: auto on img centres portrait images within the wider block. */
 .post-featured {
   position: relative;
-  display: block;
-  margin-block: 1rem;
-  margin-inline: -2rem;
-  max-width: calc(100% + 4rem);
+  display: inline-block;
+  margin: 20px auto;
+  max-width: 100%;
   overflow: hidden;
 }
 
@@ -603,7 +598,6 @@ body,
   height: auto;
   object-fit: cover;
   object-position: center;
-  margin-inline: auto;
 }
 
 /* Image Caption Styling */
@@ -2759,4 +2753,11 @@ figure.inline-image:has(.inline-image-caption-blur) {
   margin-right: auto;
 }
 
-/* Issue #46 workaround removed — .post-featured is now always display: block (issue #136) */
+/* Issue #46: featured inline-block collapses to zero width when containing a
+   cfstream-container (abs-positioned iframe has no intrinsic size).
+   :has() targets only video containers, leaving image behaviour unchanged.
+   Note: .post-hero no longer needs this fix — block display gives natural width. */
+
+.post-featured:has(.cfstream-container) {
+  display: block;
+}
