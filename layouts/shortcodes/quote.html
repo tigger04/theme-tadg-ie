@@ -1,0 +1,17 @@
+{{- /* ABOUTME: Pull-quote shortcode — block-form blockquote with decorative quote marks and optional attribution. */}}
+{{- /* ABOUTME: Body content is markdown; attribution is rendered as a figcaption with an em-dash prefix via CSS. */}}
+{{- /* Usage: */}}
+{{- /*   {{< quote attribution="A. Person" >}} */}}
+{{- /*   The actual quote text — can include **markdown** and span multiple lines. */}}
+{{- /*   {{< /quote >}} */}}
+{{- /* Optional: omit attribution for an unattributed pull-quote. */}}
+
+{{- $attribution := .Get "attribution" -}}
+<figure class="pull-quote">
+  <blockquote>
+    {{ .Inner | markdownify }}
+  </blockquote>
+  {{- with $attribution }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>

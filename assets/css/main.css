@@ -579,6 +579,75 @@ article .title {
   color: inherit;
 }
 
+/* Pull-quote — for {{< quote attribution="..." >}} shortcode */
+.pull-quote {
+  position: relative;
+  margin-block: 2.5rem;
+  margin-inline: auto;
+  padding-block: 1.5rem 0.5rem;
+  padding-inline: 4rem 1rem;
+  max-width: 90%;
+}
+
+.pull-quote::before {
+  content: '\201C';
+  position: absolute;
+  inset-block-start: -1rem;
+  inset-inline-start: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 7rem;
+  line-height: 1;
+  color: var(--color-primary, #dc143c);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pull-quote blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  /* Inherit from body so light/dark mode both work via the theme cascade.
+     Explicit `inherit` is needed to win against dark.css's blockquote{color:muted} rule via specificity. */
+  color: inherit;
+}
+
+.pull-quote blockquote p {
+  margin-block: 0 0.5rem;
+}
+
+.pull-quote blockquote p:last-child {
+  margin-block-end: 0;
+}
+
+.pull-quote figcaption {
+  margin-block-start: 0.75rem;
+  text-align: end;
+  font-size: 0.95rem;
+  font-style: normal;
+  /* Faded version of the body colour — works in both light and dark mode */
+  color: color-mix(in srgb, currentColor 65%, transparent);
+}
+
+.pull-quote figcaption::before {
+  content: '— ';
+}
+
+/* Narrow screens — pull the decorative quote mark in a bit */
+@media (max-width: 32rem) {
+  .pull-quote {
+    padding-inline: 2.5rem 0.5rem;
+    max-width: 100%;
+  }
+  .pull-quote::before {
+    font-size: 5rem;
+    inset-block-start: -0.5rem;
+  }
+}
+
 /* Site and content elements */
 .site-description {
   display: flex;

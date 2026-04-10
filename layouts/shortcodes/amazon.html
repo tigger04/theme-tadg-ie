@@ -1,0 +1,17 @@
+{{- /* ABOUTME: Amazon product link shortcode. Renders an anchor to an Amazon product by ASIN. */}}
+{{- /* ABOUTME: The companion Cloudflare Worker (workers/amazon-localise) rewrites the href at the edge to the visitor's local Amazon market. */}}
+{{- /* Usage (positional ASIN, no other params): {{< amazon "B0XYZ" >}} */}}
+{{- /* Usage (named, when combining with title/market): {{< amazon asin="B0XYZ" title="My Book" market="co.uk" >}} */}}
+{{- /* Optional: market="ie" (overrides Site.Params.amazon.defaultMarket; built-in default "com") */}}
+{{- /* Precedence (highest to lowest): shortcode market="..." param → Site.Params.amazon.defaultMarket → "com" */}}
+{{- /* Note: Hugo forbids mixing positional and named params in one call — if you want title= or market=, use asin="..." too. */}}
+
+{{- $asin := .Get "asin" -}}
+{{- if not $asin -}}{{- $asin = .Get 0 -}}{{- end -}}
+{{- if not $asin -}}
+{{- warnf "amazon shortcode at %s: missing or empty asin parameter" .Position -}}
+{{- else -}}
+{{- $title := .Get "title" | default "View on Amazon" -}}
+{{- $market := .Get "market" | default (.Site.Params.amazon.defaultMarket | default "com") -}}
+<a class="amzn" data-asin="{{ $asin }}" href="https://www.amazon.{{ $market }}/dp/{{ $asin }}" rel="nofollow">{{ $title }}</a>
+{{- end -}}

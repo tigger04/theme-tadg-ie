@@ -608,7 +608,7 @@ body,
   -webkit-backdrop-filter: blur(4px);
   text-align: center;
   margin-top: 8px;
-  font-style: normal;
+  font-style: italic;
   font-family: 'IosevkaQuasiProportional Condensed', sans-serif;
   font-stretch: 150%;
 }
@@ -631,7 +631,7 @@ body,
   border-radius: 4px;
   font-size: 0.75rem;
   text-align: right;
-  font-style: normal;
+  font-style: italic;
   max-width: calc(100% - 1.5rem);
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -1401,6 +1401,7 @@ code {
   color: var(--text-muted);
   font-size: 0.85rem;
   margin-top: 0.25rem;
+  font-style: italic;
 }
 
 /* Homepage and list page width override - allow full width with padding */
@@ -2626,6 +2627,7 @@ figure.inline-image img {
   text-align: center;
   padding: 0.5rem 0;
   margin: 0;
+  font-style: italic;
 }
 
 /* Optional blur effect caption — overlaid on image bottom */
@@ -2642,6 +2644,7 @@ figure.inline-image img {
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
   text-align: center;
+  font-style: italic;
 }
 
 /* Blur caption needs relative positioning on figure */
