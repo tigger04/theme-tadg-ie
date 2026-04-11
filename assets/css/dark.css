@@ -58,6 +58,11 @@ h6 {
   color: var(--color-text-muted-dark, #dddddd);
 }
 
+/* H1 — main page title — slightly brighter than the muted heading colour */
+h1 {
+  color: color-mix(in srgb, var(--color-text-muted-dark, #dddddd) 50%, var(--color-text-dark, #ffffff));
+}
+
 /* Issue #66: Use accent color (orange) for heading hash marks */
 h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
   color: var(--color-secondary);
