@@ -1,24 +1,25 @@
 # Shortcodes Reference
 
-The tadg_ie theme provides 15 custom shortcodes for varied content types.
+The tadg_ie theme provides 16 custom shortcodes for varied content types.
 
 ## Table of Contents
 
-1. [callout](#callout) — Styled alert/notice boxes
-2. [colorbold](#colorbold) — Inline accent-coloured bold text
-3. [details](#details) — Collapsible content
-4. [dialogue](#dialogue) — Character speech for plays
-5. [direction](#direction) — Stage directions
-6. [ga](#ga) — Inline Irish language text
-7. [popquote](#popquote) — Expandable quotes
-8. [poem](#poem) — Poetry with preserved line breaks
-9. [video](#video) — HTML5 video player
-10. [contactform](#contactform) — Self-hosted contact form with CAPTCHA
-11. [formspree](#formspree) — Formspree-backed contact form
-12. [rawhtml](#rawhtml) — Raw HTML pass-through
-13. [section-list](#section-list) — Section navigation list
-14. [img](#img) — Inline image with responsive thumbnails
-15. [gallery](#gallery) — Image gallery with lightbox
+1. [callout](#callout) - Styled alert/notice boxes
+2. [colorbold](#colorbold) - Inline accent-coloured bold text
+3. [details](#details) - Collapsible content
+4. [dialogue](#dialogue) - Character speech for plays
+5. [direction](#direction) - Stage directions
+6. [ga](#ga) - Inline Irish language text
+7. [popquote](#popquote) - Expandable quotes
+8. [quote](#quote) - Pull-quote with decorative quotation marks and attribution
+9. [poem](#poem) - Poetry with preserved line breaks
+10. [video](#video) - HTML5 video player
+11. [contactform](#contactform) - Self-hosted contact form with CAPTCHA
+12. [formspree](#formspree) - Formspree-backed contact form
+13. [rawhtml](#rawhtml) - Raw HTML pass-through
+14. [section-list](#section-list) - Section navigation list
+15. [img](#img) - Inline image with responsive thumbnails
+16. [gallery](#gallery) - Image gallery with lightbox
 
 ---
 
@@ -88,7 +89,7 @@ This has {{< colorbold text="no underline" underlined=false >}} here.
 
 ### Visual Examples
 
-![Colorbold — underlined (default) and without underline](screenshots/shortcodes/colorbold.png)
+![Colorbold - underlined (default) and without underline](screenshots/shortcodes/colorbold.png)
 
 ---
 
@@ -144,7 +145,7 @@ Supports both positional and named parameters.
 
 ### Visual Examples
 
-![Dialogue — character names with and without parenthetical](screenshots/shortcodes/dialogue.png)
+![Dialogue - character names with and without parenthetical](screenshots/shortcodes/dialogue.png)
 
 ---
 
@@ -224,6 +225,51 @@ Multiple paragraphs supported.
 
 ---
 
+## quote
+
+Pull-quote with a decorative opening quotation mark and an optional attribution line. Block-form shortcode - the body is markdown and can span multiple lines, contain inline formatting, links, and other shortcodes.
+
+Distinct from [`popquote`](#popquote) which is a collapsible expandable quote; `quote` is an always-visible featured pull-quote intended to draw the eye within the flow of an article.
+
+### Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `attribution` | No | Source of the quote - rendered as a right-aligned caption, automatically prefixed with an em-dash |
+| Inner content | Yes | The quote text itself; supports full markdown |
+
+### Usage
+
+With attribution:
+
+```markdown
+{{< quote attribution="A. Person" >}}
+The actual quote text - can include **bold**, *italic*, [links](https://example.com),
+and span multiple lines.
+{{< /quote >}}
+```
+
+Without attribution:
+
+```markdown
+{{< quote >}}
+An unattributed pull-quote.
+{{< /quote >}}
+```
+
+### Styling
+
+- Large decorative opening quotation mark (`"`) in the theme's primary accent colour (`--color-primary`), positioned top-left at ~7rem tall
+- Quote body in italic, slightly larger than body text, full body colour in both light and dark mode
+- Attribution caption right-aligned in a muted shade (faded to ~65% of the body colour), prefixed with an em-dash via CSS
+- Responsive: on screens narrower than ~32rem the decorative quote mark shrinks and the indent tightens
+
+### Visual Examples
+
+_Screenshots pending._
+
+---
+
 ## poem
 
 Poetry formatting with preserved line breaks. Newlines in source convert to `<br />` tags so verse structure is maintained.
@@ -253,12 +299,12 @@ Line breaks for you.
 
 ## video
 
-Embed video — either local files via HTML5 `<video>` or Cloudflare Stream videos via iframe. The shortcode auto-detects the source type from the argument.
+Embed video - either local files via HTML5 `<video>` or Cloudflare Stream videos via iframe. The shortcode auto-detects the source type from the argument.
 
 ### Detection Logic
 
-- **32-character hex string** (positional or `id` named param) → Cloudflare Stream iframe embed
-- **Anything else** (file path or URL) → local HTML5 `<video>` player
+- **32-character hex string** (positional or `id` named param) -> Cloudflare Stream iframe embed
+- **Anything else** (file path or URL) -> local HTML5 `<video>` player
 
 ### Parameters
 
@@ -268,13 +314,13 @@ Embed video — either local files via HTML5 `<video>` or Cloudflare Stream vide
 |-----------|----------|-------------|
 | First positional | Yes | Video file path or URL |
 
-**Cloudflare Stream (positional — no player options):**
+**Cloudflare Stream (positional - no player options):**
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | First positional | Yes | 32-character Cloudflare Stream video UID |
 
-**Cloudflare Stream (named — with player options):**
+**Cloudflare Stream (named - with player options):**
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -284,7 +330,7 @@ Embed video — either local files via HTML5 `<video>` or Cloudflare Stream vide
 | `loop` | No | Repeat on end (`true`/`false`) |
 | `controls` | No | Show player controls (default: `true`) |
 | `preload` | No | Browser preload hint (`none`, `metadata`, `auto`) |
-| `poster_image` | No | Thumbnail shown before playback — see [Poster Image Resolution](#poster-image-resolution) |
+| `poster_image` | No | Thumbnail shown before playback - see [Poster Image Resolution](#poster-image-resolution) |
 | `startTime` | No | Start at specific time (e.g. `1m30s`) |
 | `primaryColor` | No | Player UI accent colour (URI-encoded CSS) |
 | `letterboxColor` | No | Player background colour (URI-encoded CSS) |
@@ -301,7 +347,7 @@ params:
     customerCode: "YOUR_CUSTOMER_CODE"
 ```
 
-The customer code is the public subdomain identifier visible in all embed URLs — it is not a secret.
+The customer code is the public subdomain identifier visible in all embed URLs - it is not a secret.
 
 #### Site-wide Video Defaults (Issue #131)
 
@@ -320,11 +366,11 @@ params:
 **Precedence (highest to lowest):**
 1. Page frontmatter / shortcode attribute
 2. Site-wide `videoDefaults`
-3. Absent — Cloudflare applies its own default
+3. Absent - Cloudflare applies its own default
 
 Page frontmatter takes precedence in all cases, including an explicit `false` which suppresses a site-wide `true`. Setting `autoplay: false` in frontmatter will prevent autoplay even when the site default is `autoplay: true`.
 
-**Autoplay and iframe loading:** When autoplay is effectively true (via frontmatter or site default), the embed iframe uses `loading="eager"` so the player initialises immediately on page load. When autoplay is not enabled, `loading="lazy"` is used and the player defers until scrolled into view.
+**Autoplay and iframe loading:** When autoplay is effectively true (via frontmatter or site default), the embed iframe uses `loading="eager"` so the player initializes immediately on page load. When autoplay is not enabled, `loading="lazy"` is used and the player defers until scrolled into view.
 
 ### Usage
 
@@ -358,9 +404,9 @@ In addition to the shortcode, Cloudflare Stream videos can be used as the primar
 video:
   id: "fd20681eb60dc4cc9c2058f30b977a7a"   # CF Stream UID (required)
   caption: "Open Your Heart"                # optional
-  width: 1080                               # optional — see Dimension Resolution below
-  height: 1920                              # optional — see Dimension Resolution below
-  poster_image: toast.jpg                   # optional — see Poster Image Resolution below
+  width: 1080                               # optional - see Dimension Resolution below
+  height: 1920                              # optional - see Dimension Resolution below
+  poster_image: toast.jpg                   # optional - see Poster Image Resolution below
   autoplay: true                            # optional
   muted: true                               # optional
   loop: true                                # optional
@@ -371,7 +417,7 @@ video:
   letterboxColor: "#000000"                 # optional
 ```
 
-> **Boolean params and CF defaults:** Pass `true` to enable a feature. Omit the field (or set `false`) to use Cloudflare's default. Setting a boolean param to `false` is equivalent to not setting it — the param is not forwarded to the player URL. If site-wide `videoDefaults` are configured, a `false` value in page frontmatter overrides a `true` site default.
+> **Boolean params and CF defaults:** Pass `true` to enable a feature. Omit the field (or set `false`) to use Cloudflare's default. Setting a boolean param to `false` is equivalent to not setting it - the param is not forwarded to the player URL. If site-wide `videoDefaults` are configured, a `false` value in page frontmatter overrides a `true` site default.
 
 #### Compatible Layouts
 
@@ -388,10 +434,10 @@ video:
 
 The video container's `aspect-ratio` is resolved in this order:
 
-1. **Frontmatter** — `video.width` and `video.height` if both are present
-2. **Video inventory** — `data/video-inventory.yaml` in the site root, keyed by UID (`where .videos "uid" $id`)
-3. **Cloudflare Stream API** — fetched at build time when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set. Both vars must be listed under `security.funcs.getenv` in `hugo.yaml`. When the vars are absent, this step is silently skipped
-4. **CSS default** — 16:9 (`aspect-ratio: 16 / 9` in the stylesheet); no inline style is added
+1. **Frontmatter** - `video.width` and `video.height` if both are present
+2. **Video inventory** - `data/video-inventory.yaml` in the site root, keyed by UID (`where .videos "uid" $id`)
+3. **Cloudflare Stream API** - fetched at build time when `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set. Both vars must be listed under `security.funcs.getenv` in `hugo.yaml`. When the vars are absent, this step is silently skipped
+4. **CSS default** - 16:9 (`aspect-ratio: 16 / 9` in the stylesheet); no inline style is added
 
 For the inventory lookup to work, add a `data/video-inventory.yaml` to the site root with this format:
 
@@ -419,8 +465,8 @@ The value is resolved to an absolute URL based on its format:
 **Priority chain:**
 
 1. Frontmatter `poster_image` (or shortcode `poster_image` param)
-2. `poster_image` in `data/video-inventory.yaml` for the matching UID — must be an absolute URL
-3. No poster — CF Stream default (first frame of video)
+2. `poster_image` in `data/video-inventory.yaml` for the matching UID - must be an absolute URL
+3. No poster - CF Stream default (first frame of video)
 
 **Inventory format:**
 
@@ -432,7 +478,7 @@ videos:
     poster_image: "https://tadg.ie/poetry/secrets/open-your-heart/toast.jpg"
 ```
 
-The inventory `poster_image` must be an absolute URL — the upload script cannot populate it automatically since it is site- and page-specific.
+The inventory `poster_image` must be an absolute URL - the upload script cannot populate it automatically since it is site- and page-specific.
 
 #### Precedence
 
@@ -521,7 +567,7 @@ params:
 
 ## formspree
 
-Contact form using Formspree as the backend. Simpler alternative to `contactform` — no CAPTCHA, no self-hosting required.
+Contact form using Formspree as the backend. Simpler alternative to `contactform` - no CAPTCHA, no self-hosting required.
 
 ### Parameters
 
@@ -636,7 +682,7 @@ Displays page image resources as a responsive gallery with lightbox support.
 ### Metadata Priority
 
 1. Frontmatter resource params (`title`, `caption`, `alt`, `weight`)
-2. EXIF data (`DocumentName` → title, `ImageDescription` → caption)
+2. EXIF data (`DocumentName` -> title, `ImageDescription` -> caption)
 3. Filename (fallback)
 
 ### Frontmatter Configuration
@@ -674,6 +720,6 @@ Screenshots are captured from the example site at 1200px viewport width (2x devi
 
 Shortcodes not yet screenshotted (require page bundle assets in the example site):
 
-- `ga` — needs example content with `{{</* ga */>}}` shortcode usage
-- `img` — needs image files in a page bundle
-- `gallery` — needs image files in a page bundle
+- `ga` - needs example content with `{{</* ga */>}}` shortcode usage
+- `img` - needs image files in a page bundle
+- `gallery` - needs image files in a page bundle

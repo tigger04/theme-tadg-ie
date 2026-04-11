@@ -22,7 +22,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 - **Section-specific card styles** for each content type
 - **Responsive design** with em-based breakpoints (WCAG 2.1 compliant)
 - **Pagination** with per-section override
-- **13 custom shortcodes** (callout, colorbold, contactform, details, dialogue, direction, formspree, gallery, poem, popquote, rawhtml, section-list, video) with Cloudflare Stream video support
+- **16 custom shortcodes** (callout, colorbold, contactform, details, dialogue, direction, formspree, ga, gallery, img, poem, popquote, quote, rawhtml, section-list, video) with Cloudflare Stream video support
 - **Flexible sidebar** with content, shortcodes, or section navigation
 - **Dark mode support** with system preference detection
 
@@ -331,8 +331,8 @@ sidebar:
 ```
 
 The `section-list` shortcode behaviour is consistent everywhere:
-- `{{< section-list >}}` → shows sections defined in `mainSections`
-- `{{< section-list sections="blog,portfolio" >}}` → shows those specific sections
+- `{{< section-list >}}` -> shows sections defined in `mainSections`
+- `{{< section-list sections="blog,portfolio" >}}` -> shows those specific sections
 
 #### Mode 3: Explicit sections list
 
@@ -463,8 +463,8 @@ Any page can display its image resources as a gallery by including `{{< gallery 
    - Filename (fallback)
 
 2. **EXIF Metadata Extraction:**
-   - `DocumentName` → Image title
-   - `ImageDescription` → Image caption/description
+   - `DocumentName` -> Image title
+   - `ImageDescription` -> Image caption/description
    - Used for alt text and captions
 
 3. **Responsive Images:**
@@ -556,7 +556,7 @@ Can include **markdown**.
 **Rendered output (closed):**
 
 ```
-▸ Click to expand ···
+- Click to expand ···
 ```
 
 **Rendered output (open):**
@@ -580,8 +580,8 @@ Supports both positional and named parameters:
 ```
 
 **Parameters:**
-- First positional or `name` — character name (required)
-- Second positional or `parenthetical` — delivery direction (optional)
+- First positional or `name` - character name (required)
+- Second positional or `parenthetical` - delivery direction (optional)
 
 **Rendered output:**
 
@@ -614,7 +614,7 @@ Stage directions for plays. Renders in italics with secondary accent colour.
   Lights fade.
 ```
 
-(Italic text in the theme's secondary colour — orange in light mode, bright orange in dark mode.)
+(Italic text in the theme's secondary colour - orange in light mode, bright orange in dark mode.)
 
 ### `{{< popquote >}}`
 
@@ -630,7 +630,7 @@ Multiple paragraphs supported.
 **Rendered output (closed):**
 
 ```
-▸ Opening line... ···
+- Opening line... ···
 ```
 
 **Rendered output (open):**
@@ -640,6 +640,27 @@ Multiple paragraphs supported.
 ┃ Full quote content here.
 ┃ Multiple paragraphs supported.
 ```
+
+### `{{< quote >}}`
+
+Pull-quote with a decorative opening quotation mark and optional attribution. Block-form: body is markdown. Distinct from `popquote` - always visible rather than expandable, designed as a featured highlight within the flow of an article.
+
+```markdown
+{{< quote attribution="A. Person" >}}
+The actual quote text - can include **markdown** and span multiple lines.
+{{< /quote >}}
+```
+
+**Rendered output:**
+
+```
+  ❝
+      The actual quote text - can include markdown and
+      span multiple lines.
+                                               - A. Person
+```
+
+Large decorative opening quote in the theme's primary accent colour; italic body text; right-aligned muted attribution caption prefixed with an em-dash. Responsive across light and dark modes.
 
 ### `{{< poem >}}`
 
@@ -663,11 +684,11 @@ This preserves
 Line breaks for you.
 ```
 
-(Line breaks preserved exactly as written — no paragraph collapsing.)
+(Line breaks preserved exactly as written - no paragraph collapsing.)
 
 ### `{{< video >}}`
 
-Embed video — local files via HTML5 `<video>` or [Cloudflare Stream](https://developers.cloudflare.com/stream/) via iframe. Auto-detects source type: 32-character hex string → Cloudflare Stream, anything else → local file.
+Embed video - local files via HTML5 `<video>` or [Cloudflare Stream](https://developers.cloudflare.com/stream/) via iframe. Auto-detects source type: 32-character hex string -> Cloudflare Stream, anything else -> local file.
 
 See [docs/shortcodes.md](docs/shortcodes.md#video) for the full parameter reference.
 
@@ -679,7 +700,7 @@ See [docs/shortcodes.md](docs/shortcodes.md#video) for the full parameter refere
 
 Cloudflare Stream requires `params.cloudflareStream.customerCode` in `hugo.yaml`.
 
-Cloudflare Stream videos can also be used as the primary visual in page layouts (`hero`, `featured`, `columns`) via the `video` frontmatter field — see [docs/shortcodes.md](docs/shortcodes.md#video-in-page-layouts-issue-43) for details.
+Cloudflare Stream videos can also be used as the primary visual in page layouts (`hero`, `featured`, `columns`) via the `video` frontmatter field - see [docs/shortcodes.md](docs/shortcodes.md#video-in-page-layouts-issue-43) for details.
 
 **Rendered output (local):**
 
@@ -713,7 +734,7 @@ Self-hosted contact form with Cloudflare Turnstile CAPTCHA, Worker backend, and 
 │  ☐ Subscribe to newsletter           │
 │                                      │
 │  [Turnstile CAPTCHA widget]          │
-│                          [ Send → ]  │
+│                          [ Send -> ]  │
 └──────────────────────────────────────┘
 ```
 
@@ -723,7 +744,7 @@ Requires Cloudflare Worker deployment and Hugo configuration. See [docs/contactf
 
 ### `{{< formspree >}}`
 
-Embed a Formspree contact form (simpler alternative to `contactform` — no CAPTCHA, no self-hosting).
+Embed a Formspree contact form (simpler alternative to `contactform` - no CAPTCHA, no self-hosting).
 
 ```markdown
 {{< formspree id="your-formspree-id" >}}
@@ -737,7 +758,7 @@ Embed a Formspree contact form (simpler alternative to `contactform` — no CAPT
 │  Name:     [__________________________]│
 │  ☐ Newsletter                        │
 │  Message:  [__________________________]│
-│                          [ Send → ]  │
+│                          [ Send -> ]  │
 └──────────────────────────────────────┘
 ```
 
@@ -753,7 +774,7 @@ Pass through raw HTML without markdown processing. Use for embedding widgets, if
 {{< /rawhtml >}}
 ```
 
-**Rendered output:** The HTML is passed through verbatim — whatever you write is what appears in the page source.
+**Rendered output:** The HTML is passed through verbatim - whatever you write is what appears in the page source.
 
 ### `{{< section-list >}}`
 
@@ -766,8 +787,8 @@ Renders a navigation list of site sections with chevron icons. Behaviour is cons
 ```
 
 **Parameters:**
-- `sections` — comma-separated list of sections (defaults to `site.Params.mainSections`)
-- `limit` — show this many items per section (optional; omit for section links only)
+- `sections` - comma-separated list of sections (defaults to `site.Params.mainSections`)
+- `limit` - show this many items per section (optional; omit for section links only)
 
 **Rendered output:**
 
@@ -803,7 +824,7 @@ With `limit="3"`:
 
 ### Grid Configuration
 
-The responsive grid is configurable via `params.grid` in `hugo.yaml`. All breakpoints use `em` units (WCAG 2.1 compliant — adapts to browser font size preferences). CSS media queries and JavaScript masonry both read from this single configuration source.
+The responsive grid is configurable via `params.grid` in `hugo.yaml`. All breakpoints use `em` units (WCAG 2.1 compliant - adapts to browser font size preferences). CSS media queries and JavaScript masonry both read from this single configuration source.
 
 ```yaml
 params:
@@ -853,7 +874,7 @@ pagination:
 params:
   # Browser tab title (overrides site title in <title> tag only)
   # Visual header always uses the top-level 'title' field
-  browserTitle: "Author Name — Site Title"
+  browserTitle: "Author Name - Site Title"
 
   # Background image defaults for masonry cards
   bgImage:
@@ -940,7 +961,7 @@ Hugo uses two types of index files to organize content.
 | `_index.md` | Branch bundle | Section/list page metadata and content | `/poetry/` |
 | `index.md` | Leaf bundle | Individual page content | `/poetry/my-poem/` |
 
-### `_index.md` — Branch Bundles (Sections)
+### `_index.md` - Branch Bundles (Sections)
 
 A `_index.md` (or `_index.org`) file defines metadata for a **section** or **list page**.
 
@@ -956,7 +977,7 @@ sidebar: true
 Welcome to my poetry section.
 ```
 
-### `index.md` — Leaf Bundles (Individual Pages)
+### `index.md` - Leaf Bundles (Individual Pages)
 
 An `index.md` file defines an **individual content page** within a page bundle.
 
@@ -1017,7 +1038,7 @@ toc: "In this document"   # Custom TOC heading (defaults to "Table of contents:"
 tldr: "Brief summary"     # TL;DR section at top
 ```
 
-**Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned horizontally with the article title. On narrow screens (≤ 60em), the article title and metadata appear above the TOC, followed by the article content — the title inside the post container is hidden to avoid duplication. Pages without `toc: true` use full-width layout with no extra column. Set `toc` to a string value to customise the heading text (e.g. `toc: "In this document"`); the default heading is "Table of contents:".
+**Table of Contents:** When `toc: true`, the TOC appears as a sticky right-hand sidebar on wide screens (>60em), aligned horizontally with the article title. On narrow screens (≤ 60em), the article title and metadata appear above the TOC, followed by the article content - the title inside the post container is hidden to avoid duplication. Pages without `toc: true` use full-width layout with no extra column. Set `toc` to a string value to customize the heading text (e.g. `toc: "In this document"`); the default heading is "Table of contents:".
 
 ### Content Language
 
@@ -1071,7 +1092,7 @@ sort_by: Date
 sort_order: desc
 ```
 
-**Gallery behavior:** Setting `gallery: true` in frontmatter enables special rendering for image galleries. This works in any section (not just "artwork"). Gallery cards display with an image-dominant layout and frosted glass text overlay on masonry grids and homepage.
+**Gallery behaviour:** Setting `gallery: true` in frontmatter enables special rendering for image galleries. This works in any section (not just "artwork"). Gallery cards display with an image-dominant layout and frosted glass text overlay on masonry grids and homepage.
 
 ---
 
@@ -1115,7 +1136,7 @@ Supports both system preference (`prefers-color-scheme: dark`) and manual toggle
 | `.gallery-item` | Individual gallery image |
 | `.lightbox` | Lightbox overlay |
 | `.sidebar-collapse` | Collapsible `<details>` wrapper for mobile sidebar |
-| `.sidebar-collapse-title` | `<summary>` toggle — plain heading on desktop, tap target on mobile |
+| `.sidebar-collapse-title` | `<summary>` toggle - plain heading on desktop, tap target on mobile |
 | `.toc-mobile-title` | Mobile-only article title shown above TOC (hidden on desktop) |
 | `.pagination` | Pagination container |
 | `.pagination-link` | Pagination button |
@@ -1199,7 +1220,7 @@ window.masonryInit();    // Full re-initialization
 
 **Features:**
 - Click to open, click outside to close
-- Keyboard navigation (←, →, Escape)
+- Keyboard navigation (←, ->, Escape)
 - WebP source detection for best quality
 - EXIF-based captions
 
@@ -1242,9 +1263,9 @@ This must be run from the root of a Hugo project or its content directory.
 Converts orgmode play scripts to use Hugo shortcodes for dialogue and stage directions. Modifies files in-place, so commit changes first.
 
 **Conversions:**
-- `*** Stage direction` → `{{< direction >}}Stage direction{{< /direction >}}`
-- `**** CHARACTER text` → `{{< dialogue "CHARACTER" >}}text{{< /dialogue >}}`
-- `**** CHARACTER direction` → `{{< dialogue "CHARACTER" "direction" >}}text{{< /dialogue >}}`
+- `*** Stage direction` -> `{{< direction >}}Stage direction{{< /direction >}}`
+- `**** CHARACTER text` -> `{{< dialogue "CHARACTER" >}}text{{< /dialogue >}}`
+- `**** CHARACTER direction` -> `{{< dialogue "CHARACTER" "direction" >}}text{{< /dialogue >}}`
 
 All other content (frontmatter, `*` and `**` headers, bullet points, regular text) is preserved unchanged.
 
