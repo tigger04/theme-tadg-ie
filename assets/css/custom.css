@@ -1710,6 +1710,20 @@ main.list .content {
   background: rgba(0, 0, 0, 0.4);
 }
 
+/* Image-aware title text on carousel cards — frosted glass is semi-transparent
+   so title colour still needs to account for the underlying image lightness. */
+
+/* Carousel: dark image (image.dark: true) — light title on frosted glass */
+.carousel-card.image-dark .masonry-content h2 a {
+  color: #ffffff;
+}
+
+/* Carousel: light image (image.dark: false) — dark title on frosted glass */
+.carousel-card.image-light .masonry-content h2 a {
+  color: #1a1a1a;
+}
+
+
 /* Masonry excerpt */
 .masonry-excerpt {
   color: var(--text-secondary);
@@ -1957,6 +1971,247 @@ main.list .content {
 /* Read more button in masonry cards */
 .masonry-item .read-more-btn {
   font-size: 0.85rem;
+}
+
+/* ================================================
+   Carousel Card Styles
+   ================================================ */
+
+/* Container holds all carousel slides and arrows */
+.carousel-container {
+  position: relative;
+  height: 24rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: var(--bg-color);
+}
+
+/* Each carousel card is absolutely positioned, stacked */
+.carousel-card {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.carousel-card.carousel-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Background image uses carousel-specific opacity/blur via custom properties */
+.carousel-card .masonry-bg {
+  opacity: var(--carousel-bg-opacity) !important;
+  filter: blur(var(--carousel-bg-blur)) !important;
+}
+
+/* Content layout: title+meta at top, excerpt+chevron at bottom */
+.carousel-card .masonry-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+}
+
+.carousel-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.carousel-card .masonry-meta {
+  display: inline-flex;
+  align-self: flex-start;
+}
+
+/* Frosted glass behind title — blur only, no tint */
+.carousel-card h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 0.4rem 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.carousel-card h2 a {
+  text-decoration: none;
+}
+
+/* Frosted glass on meta strip in carousel */
+.carousel-card .masonry-meta {
+  margin-bottom: 0;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .carousel-card .masonry-meta {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Bottom gradient scrim for excerpt legibility */
+.carousel-card-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 -2rem -1.5rem;
+  padding: 3rem 2rem 1.5rem;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5) 40%);
+  border-radius: 0 0 8px 8px;
+}
+
+.carousel-card-bottom .masonry-excerpt {
+  margin-bottom: 0;
+  flex: 1;
+  font-size: 1.15rem;
+  color: #f0f0f0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-card-bottom .read-more-container {
+  flex-shrink: 0;
+}
+
+.carousel-card .read-more-icon {
+  height: 1.8rem;
+}
+
+/* Arrow buttons — translucent, appear on hover near edges */
+.carousel-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 2.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.carousel-arrow-left {
+  left: 0;
+  border-radius: 8px 0 0 8px;
+}
+
+.carousel-arrow-right {
+  right: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Show arrows on hover near the edge region */
+.carousel-container:hover .carousel-arrow:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Subtle hint: show arrows faintly on container hover */
+.carousel-container:hover .carousel-arrow {
+  opacity: 0.3;
+}
+
+/* Responsive: collapse to masonry card at sm breakpoint */
+@media (max-width: 30em) {
+  .carousel-container {
+    position: static;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    margin-bottom: 0;
+    background: transparent;
+  }
+
+  .carousel-card {
+    position: relative !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: none !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    margin-bottom: 1rem;
+    height: auto;
+  }
+
+  /* Switch to masonry bg treatment */
+  .carousel-card .masonry-bg {
+    opacity: var(--masonry-bg-opacity) !important;
+    filter: blur(var(--masonry-bg-blur)) !important;
+  }
+
+  /* Revert to masonry card content layout */
+  .carousel-card .masonry-content {
+    height: auto;
+    padding: 1.25rem;
+  }
+
+  /* Revert title to masonry card style — theme-mode colours, no frosted glass */
+  .carousel-card h2 {
+    font-size: 1.1rem;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    font-weight: inherit;
+    display: block;
+  }
+
+  .carousel-card.image-light .masonry-content h2 a,
+  .carousel-card.image-dark .masonry-content h2 a {
+    color: var(--text-color);
+    text-shadow: none;
+  }
+
+  /* Revert bottom to masonry card style — no gradient scrim */
+  .carousel-card-bottom {
+    flex-direction: row;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    margin: 0;
+    padding: 0.5rem 0 0;
+    background: none;
+    border-radius: 0;
+  }
+
+  .carousel-card-bottom .masonry-excerpt {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-shadow: none;
+  }
+
+  .carousel-card .read-more-icon {
+    height: 1.2rem;
+  }
+
+  .carousel-arrow {
+    display: none;
+  }
 }
 
 /* Masonry responsive adjustments: generated by grid-config.html partial (Issue #17) */
@@ -2575,7 +2830,8 @@ main.list .masonry-grid {
 /* Base: reset figure defaults from main.css */
 figure.inline-image {
   display: block;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-block: 1rem;
   padding: 0;
   max-width: 100%;
@@ -2591,7 +2847,7 @@ figure.inline-image img {
 }
 
 /* Float right (default) */
-.inline-image-right {
+figure.inline-image.inline-image-right {
   float: right;
   margin-left: 1.5rem;
   margin-bottom: 1rem;
@@ -2600,7 +2856,7 @@ figure.inline-image img {
 }
 
 /* Float left */
-.inline-image-left {
+figure.inline-image.inline-image-left {
   float: left;
   margin-right: 1.5rem;
   margin-bottom: 1rem;

@@ -650,7 +650,8 @@ Inline image for embedding within article text. Generates responsive thumbnails 
 | `alt` | Yes | Alt text for accessibility |
 | `caption` | No | Caption text below image |
 | `position` | No | Placement: `left`, `right` (default), or `center` |
-| `width` | No | Width when floated (default: `40%`) |
+| `width` | No | Width when floated - any CSS unit: `40%`, `15rem`, `30vw` (default: `40%`) |
+| `link` | No | URL to wrap the image in a link |
 | `blur` | No | Set to `"true"` for blurred caption background |
 | `opacity` | No | Caption background opacity override |
 
@@ -660,6 +661,7 @@ Inline image for embedding within article text. Generates responsive thumbnails 
 {{< img src="photo.jpg" alt="A scenic view" >}}
 {{< img src="portrait.jpg" alt="Author" caption="Photo by Jane" position="left" >}}
 {{< img src="hero.jpg" alt="Banner" position="center" width="80%" >}}
+{{< img src="cover.jpg" alt="Book cover" width="15rem" position="left" link="https://example.com/buy" >}}
 {{< img src="mood.jpg" alt="Atmosphere" caption="Dreamy" blur="true" opacity="0.7" >}}
 ```
 

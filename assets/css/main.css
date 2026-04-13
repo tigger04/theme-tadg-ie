@@ -597,8 +597,8 @@ article .title {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 7rem;
   line-height: 1;
-  color: var(--color-primary, #dc143c);
-  opacity: 0.55;
+  color: #e87070;
+  opacity: 1;
   pointer-events: none;
   user-select: none;
 }

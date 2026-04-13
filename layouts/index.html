@@ -29,6 +29,10 @@
 			{{- $sections := $.Site.Params.mainSections | default (slice "blog") -}}
 			{{- $pinnedPages := slice -}}
 
+			{{- /* Collect carousel pages across all sections */ -}}
+			{{- $carouselPages := slice -}}
+			{{- $carouselPermalinks := slice -}}
+
 			{{- /* Collect pinned/featured page from each section */ -}}
 			{{- /* Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
 			{{- range $sections -}}
@@ -46,18 +50,36 @@
 						{{- $sectionPages = where $.Site.RegularPages "Section" $section -}}
 					{{- end -}}
 				{{- end -}}
-				{{- $pinned := where $sectionPages ".Params.pin" "!=" nil -}}
+
+				{{- /* Separate carousel pages from this section */ -}}
+				{{- $sectionCarousel := where $sectionPages ".Params.carousel" "!=" nil -}}
+				{{- range $sectionCarousel -}}
+					{{- $carouselPages = $carouselPages | append . -}}
+					{{- $carouselPermalinks = $carouselPermalinks | append .RelPermalink -}}
+				{{- end -}}
+
+				{{- /* Pin logic excludes carousel pages */ -}}
+				{{- $nonCarousel := slice -}}
+				{{- range $sectionPages -}}
+					{{- if not (in $carouselPermalinks .RelPermalink) -}}
+						{{- $nonCarousel = $nonCarousel | append . -}}
+					{{- end -}}
+				{{- end -}}
+				{{- $pinned := where $nonCarousel ".Params.pin" "!=" nil -}}
 
 				{{- if gt (len $pinned) 0 -}}
 					{{- /* Collect all pinned pages from this section */ -}}
 					{{- range $pinned -}}
 						{{- $pinnedPages = $pinnedPages | append . -}}
 					{{- end -}}
-				{{- else if gt (len $sectionPages) 0 -}}
+				{{- else if gt (len $nonCarousel) 0 -}}
 					{{- /* No pinned pages: use most recent as representative */ -}}
-					{{- $pinnedPages = $pinnedPages | append (index (first 1 $sectionPages) 0) -}}
+					{{- $pinnedPages = $pinnedPages | append (index (first 1 $nonCarousel) 0) -}}
 				{{- end -}}
 			{{- end -}}
+
+			{{- /* Sort carousel pages by carousel value (lowest first) */ -}}
+			{{- $carouselPages = sort $carouselPages ".Params.carousel" "asc" -}}
 
 			{{- /* Sort pinned pages by pin value (lowest first) across all sections */ -}}
 			{{- /* Separate pages with pin values from those without */ -}}
@@ -69,7 +91,7 @@
 				{{- $pinnedPages = $pinnedPages | append . -}}
 			{{- end -}}
 
-			{{- /* Get all pages excluding pinned ones */ -}}
+			{{- /* Get all pages excluding pinned and carousel ones */ -}}
 			{{- $pinnedPermalinks := slice -}}
 			{{- range $pinnedPages -}}
 				{{- $pinnedPermalinks = $pinnedPermalinks | append .RelPermalink -}}
@@ -78,7 +100,7 @@
 			{{- /* Issue #81: No hidden filter needed - Hugo's _build.list: false handles exclusion */ -}}
 			{{- $remainingPages := slice -}}
 			{{- range $.Site.RegularPages -}}
-				{{- if not (in $pinnedPermalinks .RelPermalink) -}}
+				{{- if and (not (in $pinnedPermalinks .RelPermalink)) (not (in $carouselPermalinks .RelPermalink)) -}}
 					{{- $remainingPages = $remainingPages | append . -}}
 				{{- end -}}
 			{{- end -}}
@@ -87,7 +109,7 @@
 				{{- $sectionObj := $.Site.GetPage "section" . -}}
 				{{- if $sectionObj -}}
 					{{- range $sectionObj.Sections -}}
-						{{- if and (not (in $pinnedPermalinks .RelPermalink)) (.Params.gallery) -}}
+						{{- if and (not (in $pinnedPermalinks .RelPermalink)) (not (in $carouselPermalinks .RelPermalink)) (.Params.gallery) -}}
 							{{- $remainingPages = $remainingPages | append . -}}
 						{{- end -}}
 					{{- end -}}
@@ -118,7 +140,10 @@
 				{{- /* List mode: simple vertical list */ -}}
 				{{ partial "list-view.html" (dict "pages" $paginator.Pages "showSection" true "Site" .Site) }}
 			{{- else -}}
-				{{- /* Default cards mode: masonry grid with pin logic */ -}}
+				{{- /* Cards mode: carousel (if any) then masonry grid */ -}}
+				{{- if gt (len $carouselPages) 0 -}}
+				{{ partial "carousel-card.html" (dict "carouselPages" $carouselPages "showSection" true "Site" .Site) }}
+				{{- end -}}
 				{{ partial "masonry-grid.html" (dict "pages" $paginator.Pages "showSection" true "Site" .Site) }}
 			{{- end -}}
 
@@ -133,6 +158,7 @@
 	</div>
 
 	<script src="{{ "js/masonry-init.js" | relURL }}"></script>
+	<script src="{{ "js/carousel.js" | relURL }}"></script>
 </body>
 
 </html>

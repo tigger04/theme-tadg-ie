@@ -37,10 +37,13 @@
       {{- end -}}
     {{- else if .Params.image -}}
       {{- if .Params.image.src -}}
-        {{- $bgImageUrl = printf "%s%s" .RelPermalink .Params.image.src -}}
+        {{- $bgImageUrl = printf "%s%s" .RelPermalink (.Params.image.card_src | default .Params.image.src) -}}
         {{- $imageDark = .Params.image.dark | default false -}}
       {{- end -}}
     {{- end -}}
+
+    {{- /* Resolve background-position: card_position > position > default */ -}}
+    {{- $bgPosition := .Params.image.card_position | default (.Params.image.position | default "center center") -}}
 
     {{- /* Build class list based on image properties */ -}}
     {{- $imageClass := "" -}}
@@ -53,10 +56,16 @@
       {{- end -}}
     {{- end -}}
 
+    {{- /* Resolve card opacity and blur: cardImage > bgImage fallback */ -}}
+    {{- $cardOpacityLight := $.Site.Params.cardImage.opacity | default ($.Site.Params.bgImage.opacity | default 0.15) -}}
+    {{- $cardOpacityDark := $.Site.Params.cardImage.opacityDark | default $cardOpacityLight -}}
+    {{- $bgOpacity := cond $imageDark $cardOpacityDark $cardOpacityLight -}}
+    {{- $bgBlur := $.Site.Params.cardImage.blur | default ($.Site.Params.bgImage.blur | default "5px") -}}
+
     <article{{ if .Params.contentLang }} lang="{{ .Params.contentLang }}"{{ end }} class="masonry-item masonry-{{ $section }} {{ $imageClass }}">
       {{- /* Background image layer - separate div for proper stacking */ -}}
       {{- if $bgImageUrl -}}
-      <div class="masonry-bg" style="background-image: url('{{ $bgImageUrl }}'); opacity: {{ $.Site.Params.bgImage.opacity | default 0.15 }}; filter: blur({{ $.Site.Params.bgImage.blur | default "5px" }});"></div>
+      <div class="masonry-bg" style="background-image: url('{{ $bgImageUrl }}'); opacity: {{ $bgOpacity }}; filter: blur({{ $bgBlur }}); background-position: {{ $bgPosition }};"></div>
       {{- end -}}
 
       {{- /* Gallery cards: image-dominant with text overlay */ -}}

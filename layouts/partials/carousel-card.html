@@ -1,0 +1,121 @@
+{{- /* ABOUTME: Carousel card partial — renders a hero-sized rotating masonry card above the grid. */ -}}
+{{- /* ABOUTME: Pages with carousel: [integer] frontmatter are shown here, lowest first, crossfade rotation. */ -}}
+
+{{- $carouselPages := .carouselPages -}}
+{{- $showSection := .showSection | default true -}}
+{{- $site := .Site -}}
+
+{{- /* Read more button configuration (same as masonry-grid) */ -}}
+{{- $readMoreType := $site.Params.readMore.type | default "text" -}}
+{{- $readMoreValue := $site.Params.readMore.value | default "read more ..." -}}
+{{- $readMoreValueDark := $site.Params.readMore.valueDark | default "" -}}
+
+{{- /* Carousel config */ -}}
+{{- $interval := $site.Params.carousel.interval | default 6 -}}
+{{- $carouselOpacityLight := $site.Params.carousel.bgImage.opacity | default ($site.Params.bgImage.opacity | default 0.15) -}}
+{{- $carouselOpacityDark := $site.Params.carousel.bgImage.opacityDark | default $carouselOpacityLight -}}
+{{- $carouselBlur := $site.Params.carousel.bgImage.blur | default ($site.Params.bgImage.blur | default "5px") -}}
+{{- $masonryOpacityLight := $site.Params.cardImage.opacity | default ($site.Params.bgImage.opacity | default 0.15) -}}
+{{- $masonryOpacityDark := $site.Params.cardImage.opacityDark | default $masonryOpacityLight -}}
+{{- $masonryBlur := $site.Params.cardImage.blur | default ($site.Params.bgImage.blur | default "5px") -}}
+
+{{- if gt (len $carouselPages) 0 -}}
+<div class="carousel-container" data-interval="{{ $interval }}"
+     style="--carousel-bg-blur: {{ $carouselBlur }}; --masonry-bg-blur: {{ $masonryBlur }};">
+  {{- range $i, $page := $carouselPages -}}
+    {{- $section := .Section -}}
+
+    {{- /* Determine background image (same logic as masonry-grid) */ -}}
+    {{- $bgImageUrl := "" -}}
+    {{- $imageDark := false -}}
+    {{- $isGallery := .Params.gallery | default false -}}
+    {{- if $isGallery -}}
+      {{- if .Params.featured_image -}}
+        {{- $featuredImg := .Resources.GetMatch .Params.featured_image -}}
+        {{- if $featuredImg -}}
+          {{- $bgImageUrl = $featuredImg.RelPermalink -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $images := .Resources.ByType "image" -}}
+        {{- if $images -}}
+          {{- $bgImageUrl = (index $images 0).RelPermalink -}}
+        {{- end -}}
+      {{- end -}}
+    {{- else if .Params.image -}}
+      {{- if .Params.image.src -}}
+        {{- $bgImageUrl = printf "%s%s" .RelPermalink (.Params.image.carousel_src | default (.Params.image.card_src | default .Params.image.src)) -}}
+        {{- $imageDark = .Params.image.dark | default false -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- /* Resolve background-position: carousel_position > card_position > position > default */ -}}
+    {{- $bgPosition := .Params.image.carousel_position | default (.Params.image.card_position | default (.Params.image.position | default "center center")) -}}
+
+    {{- /* Resolve opacity per image: dark images use opacityDark, light images use opacity */ -}}
+    {{- $carouselOpacity := cond $imageDark $carouselOpacityDark $carouselOpacityLight -}}
+    {{- $masonryOpacity := cond $imageDark $masonryOpacityDark $masonryOpacityLight -}}
+
+    {{- $imageClass := "" -}}
+    {{- if $bgImageUrl -}}
+      {{- $imageClass = "has-image" -}}
+      {{- if $imageDark -}}
+        {{- $imageClass = printf "%s image-dark" $imageClass -}}
+      {{- else -}}
+        {{- $imageClass = printf "%s image-light" $imageClass -}}
+      {{- end -}}
+    {{- end -}}
+
+    <article{{ if .Params.contentLang }} lang="{{ .Params.contentLang }}"{{ end }}
+             class="carousel-card masonry-item masonry-{{ $section }} {{ $imageClass }}{{ if eq $i 0 }} carousel-active{{ end }}"
+             data-carousel-index="{{ $i }}"
+             style="--carousel-bg-opacity: {{ $carouselOpacity }}; --masonry-bg-opacity: {{ $masonryOpacity }};">
+      {{- if $bgImageUrl -}}
+      <div class="masonry-bg" style="background-image: url('{{ $bgImageUrl }}'); background-position: {{ $bgPosition }};"></div>
+      {{- end -}}
+
+      <div class="masonry-content">
+        <div class="carousel-card-top">
+          <h2><a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a></h2>
+          {{- $showDate := and .Date (not .Params.hideDate) -}}
+          {{- $showAuthor := and .Params.author (not .Params.hideAuthor) -}}
+          {{- if or $showSection $showDate $showAuthor -}}
+          <p class="masonry-meta">
+            {{- if $showAuthor -}}
+            <span class="masonry-author">{{ .Params.author }}</span>
+            {{- end -}}
+            {{- if $showSection -}}
+            <span class="masonry-section">{{ $section | humanize }}</span>
+            {{- end -}}
+            {{- if $showDate -}}
+            <span class="masonry-date">{{ .Date.Format "2 Jan 2006" }}</span>
+            {{- end -}}
+          </p>
+          {{- end -}}
+        </div>
+
+        <div class="carousel-card-bottom">
+          {{- $excerpt := .Description | default .Summary -}}
+          {{- if $excerpt -}}
+          <div class="masonry-excerpt">{{ $excerpt | plainify | truncate 250 }}</div>
+          {{- end -}}
+          <div class="read-more-container">
+            <a href="{{ .RelPermalink }}" class="read-more-btn">
+              {{- if eq $readMoreType "icon" -}}
+              <img src="{{ $readMoreValue | relURL }}" alt="Read more" class="read-more-icon read-more-icon-light">{{- if $readMoreValueDark -}}<img src="{{ $readMoreValueDark | relURL }}" alt="Read more" class="read-more-icon read-more-icon-dark">{{- end -}}
+              {{- else -}}
+              {{ $readMoreValue }}
+              {{- end -}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  {{- end -}}
+
+  {{- /* Navigation arrows (only if multiple slides) */ -}}
+  {{- if gt (len $carouselPages) 1 -}}
+  <button class="carousel-arrow carousel-arrow-left" aria-label="Previous slide">&#8249;</button>
+  <button class="carousel-arrow carousel-arrow-right" aria-label="Next slide">&#8250;</button>
+  {{- end -}}
+</div>
+{{- end -}}

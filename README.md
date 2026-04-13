@@ -17,6 +17,7 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 ## Features
 
 - **Masonry grid layout** with CSS Grid fallback and JavaScript positioning
+- **Carousel card** - hero-sized rotating masonry card for featured content
 - **Image galleries** with lightbox and EXIF metadata support
 - **Multiple content types** with section-agnostic design
 - **Section-specific card styles** for each content type
@@ -56,19 +57,20 @@ A Hugo theme for multi-content-type sites with masonry layouts, galleries, and r
 2. [Page Templates](#page-templates)
 3. [Article Layouts](#article-layouts)
 4. [Masonry Grid System](#masonry-grid-system)
-5. [Section Display Configuration](#section-display-configuration)
-6. [Pagination](#pagination)
-7. [Section-Specific Behaviour](#section-specific-behaviour)
-8. [Gallery System (Artwork)](#gallery-system-artwork)
-9. [Shortcodes](#shortcodes)
-10. [Configuration Options](#configuration-options)
-11. [Index Files and Page Bundles](#index-files-and-page-bundles)
-12. [Frontmatter Reference](#frontmatter-reference)
-13. [CSS Customization](#css-customization)
-14. [Social Icons (Footer)](#social-icons-footer)
-15. [JavaScript Components](#javascript-components)
-16. [Scripts](#scripts)
-17. [Troubleshooting](#troubleshooting)
+5. [Carousel Card](#carousel-card)
+6. [Section Display Configuration](#section-display-configuration)
+7. [Pagination](#pagination)
+8. [Section-Specific Behaviour](#section-specific-behaviour)
+9. [Gallery System (Artwork)](#gallery-system-artwork)
+10. [Shortcodes](#shortcodes)
+11. [Configuration Options](#configuration-options)
+12. [Index Files and Page Bundles](#index-files-and-page-bundles)
+13. [Frontmatter Reference](#frontmatter-reference)
+14. [CSS Customization](#css-customization)
+15. [Social Icons (Footer)](#social-icons-footer)
+16. [JavaScript Components](#javascript-components)
+17. [Scripts](#scripts)
+18. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -89,6 +91,7 @@ themes/tadg_ie/
 │   ├── partials/
 │   │   ├── grid-config.html   # Responsive grid CSS from params (Issue #17)
 │   │   ├── masonry-grid.html  # Shared masonry grid component
+│   │   ├── carousel-card.html # Hero-sized rotating carousel card
 │   │   ├── list-view.html     # Simple list layout
 │   │   ├── gallery-section.html # Gallery grid layout
 │   │   ├── pagination.html    # Pagination controls
@@ -105,6 +108,7 @@ themes/tadg_ie/
 └── static/
     └── js/
         ├── masonry-init.js    # Masonry layout
+        ├── carousel.js        # Carousel card rotation
         ├── lightbox.js        # Image lightbox
         └── burger-menu.js     # Mobile nav
 ```
@@ -253,13 +257,21 @@ Masonry cards have two layouts:
 
 ### Background Images on Cards and List Items
 
-Both masonry cards and list-view items display a background image when `image.src` is set in frontmatter (or `featured_image` / first image resource for gallery pages). The image is rendered with blur and opacity as configured in `params.bgImage`:
-- Default opacity: 0.2 (20%)
-- Default blur: 5px
+Both masonry cards and list-view items display a background image when `image.src` is set in frontmatter (or `featured_image` / first image resource for gallery pages). The image is rendered with blur and opacity from configuration.
 
-This applies to all three display modes (`cards`, `list`, `gallery`) so that switching `list_style` preserves the visual treatment of article images.
+**Three independent scopes control background image treatment:**
+
+| Config key | Controls | Fallback |
+|---|---|---|
+| `params.bgImage` | Article pages (background layout) | Hardcoded defaults |
+| `params.cardImage` | Masonry cards | `params.bgImage` |
+| `params.carousel.bgImage` | Carousel cards | Hardcoded defaults |
+
+Each scope supports `opacity`, `opacityDark` (used when `image.dark: true`), and `blur`.
 
 On cards with background images (`.has-image`), the category and date metadata gets a frosted glass pill (`backdrop-filter: blur(8px)` with a semi-transparent background) to ensure legibility over the image. Cards without images are unaffected.
+
+Cards also carry `image-dark` or `image-light` CSS classes based on the `image.dark` frontmatter field. On carousel cards, this drives text colour (dark images get white text, light images get dark text). On regular masonry cards, the bg image is faint so text uses theme-mode colours.
 
 ### Usage in Templates
 
@@ -269,6 +281,78 @@ On cards with background images (`.has-image`), the category and date metadata g
     "showSection" true
     "Site" .Site
 ) }}
+```
+
+---
+
+## Carousel Card
+
+The carousel card is a hero-sized masonry card that sits above the masonry grid, rotating through featured content. It only appears in masonry/cards view (not list or gallery modes).
+
+### Enabling
+
+Add `carousel: [integer]` to any page's frontmatter. Pages are displayed lowest number first and rotate in order. Carousel pages are excluded from the masonry grid below.
+
+```yaml
+---
+title: "Featured Article"
+carousel: 10
+image:
+  src: hero.jpg
+  dark: false
+---
+```
+
+### Visual Treatment
+
+- **Height:** 24rem (collapses to regular masonry card at the `sm` breakpoint)
+- **Title:** `h2` with frosted glass background, bold
+- **Meta strip:** Section name and date with frosted glass background
+- **Excerpt:** Bottom-aligned with a dark gradient scrim for legibility
+- **Chevron:** Right-aligned at bottom, larger than standard masonry cards
+- **Background image:** Uses carousel-specific opacity/blur (see Configuration below)
+- **Text colour:** Driven by `image.dark` - dark images get white text, light images get dark text (title and excerpt only; meta uses theme-mode colours via frosted glass)
+
+### Behaviour
+
+- **Auto-rotation:** Advances every N seconds (configurable). Pauses on mouse hover.
+- **Navigation:** Translucent prev/next arrows appear on hover near the left/right edges. Keyboard left/right arrows when focused.
+- **Single item:** No transition or arrows - static hero card.
+- **Crossfade:** Smooth opacity transition between slides.
+
+### Responsive Collapse
+
+At the `sm` breakpoint (30em), carousel items collapse into regular masonry cards in the grid. Background image switches to masonry card opacity/blur, text reverts to theme-mode colours, and the frosted glass / gradient scrim are removed.
+
+### Image Overrides
+
+Carousel cards support per-context image source and position overrides via frontmatter:
+
+```yaml
+image:
+  src: cover.jpg                    # default for article page
+  card_src: cover-square.jpg        # override for masonry cards
+  carousel_src: cover-wide.jpg      # override for carousel
+  position: center center           # default for all contexts
+  card_position: top center         # override for masonry cards
+  carousel_position: 25% center     # override for carousel
+```
+
+**Fallback chain for source:** `carousel_src` > `card_src` > `src`
+**Fallback chain for position:** `carousel_position` > `card_position` > `position` > `center center`
+
+Position values use CSS `background-position` syntax: `horizontal vertical`. Keywords (`top`, `center`, `bottom`, `left`, `right`) or percentages (e.g. `30% 20%` - the point at 30% across and 20% down in the image aligns with the same point in the container).
+
+### Configuration
+
+```yaml
+params:
+  carousel:
+    interval: 6            # seconds between slides
+    bgImage:
+      opacity: 0.8         # light images (dark: false)
+      opacityDark: 0.9     # dark images (dark: true)
+      blur: 0px
 ```
 
 ---
@@ -876,10 +960,25 @@ params:
   # Visual header always uses the top-level 'title' field
   browserTitle: "Author Name - Site Title"
 
-  # Background image defaults for masonry cards
+  # Background image defaults for article pages (background layout)
   bgImage:
-    opacity: 0.2    # 0-1, transparency of background images
-    blur: 5px       # CSS blur value
+    opacity: 0.3        # light images (image.dark: false or unset)
+    opacityDark: 0.4    # dark images (image.dark: true)
+    blur: 2px
+
+  # Masonry card bg image defaults (falls back to bgImage if not set)
+  cardImage:
+    opacity: 0.3
+    opacityDark: 0.4
+    blur: 2px
+
+  # Carousel card configuration
+  carousel:
+    interval: 6         # seconds between slides
+    bgImage:
+      opacity: 0.8
+      opacityDark: 0.9
+      blur: 0px
 
   # Read more button on masonry cards
   readMore:
@@ -1021,12 +1120,17 @@ tags:
 
 ```yaml
 image:
-  src: "image.jpg"        # Relative to page bundle
-  alt: "Alt text"         # Accessibility
-  caption: "Photo credit" # Displayed below image
-  dark: false             # Dark mode variant flag
-  opacity: 0.2            # Override default bg opacity
-  blur: 5px               # Override default bg blur
+  src: "image.jpg"              # Relative to page bundle
+  alt: "Alt text"               # Accessibility
+  caption: "Photo credit"       # Displayed below image
+  dark: false                   # true = dark image (light text on carousel)
+  opacity: 0.2                  # Override default bg opacity (article page)
+  blur: 5px                     # Override default bg blur (article page)
+  position: center center       # CSS background-position (all contexts)
+  card_src: "image-crop.jpg"    # Override image for masonry cards
+  card_position: top center     # Override position for masonry cards
+  carousel_src: "image-wide.jpg" # Override image for carousel
+  carousel_position: 25% center  # Override position for carousel
 ```
 
 ### Layout Control
@@ -1059,6 +1163,14 @@ He greeted her with {{</* ga */>}}Dia duit, a chara{{</* /ga */>}} as she entere
 ```yaml
 pin: 1                    # Lower number = higher priority
 ```
+
+### Carousel
+
+```yaml
+carousel: 10              # Lower number = shown first; rotates in order
+```
+
+Pages with `carousel` set are excluded from the masonry grid. Only renders in cards view. See [Carousel Card](#carousel-card) for full details.
 
 ### Exclude from Listings
 
@@ -1129,7 +1241,11 @@ Supports both system preference (`prefers-color-scheme: dark`) and manual toggle
 | `.masonry-grid` | Container for masonry layout |
 | `.masonry-item` | Individual grid item |
 | `.masonry-{section}` | Section-specific styling |
-| `.masonry-bg` | Background image layer (masonry cards) |
+| `.masonry-bg` | Background image layer (masonry cards and carousel) |
+| `.carousel-container` | Carousel wrapper with rotation controls |
+| `.carousel-card` | Individual carousel slide |
+| `.carousel-active` | Currently visible carousel slide |
+| `.image-dark` / `.image-light` | Image lightness classes (from `image.dark` frontmatter) |
 | `.list-view-bg` | Background image layer (list items) |
 | `.list-view-content` | Content wrapper above background (list items) |
 | `.gallery-grid` | Gallery image container |
@@ -1213,6 +1329,17 @@ Rendered as: `{copyright text} |`
 window.masonryLayout();  // Re-run layout
 window.masonryInit();    // Full re-initialization
 ```
+
+### Carousel (`static/js/carousel.js`)
+
+**Purpose:** Crossfade rotation for carousel cards with auto-advance, hover pause, and arrow navigation.
+
+**Features:**
+- Auto-advances every N seconds (reads `data-interval` from container)
+- Pauses on mouse hover
+- Translucent prev/next arrows appear on hover near edges
+- Keyboard left/right arrows when carousel is focused
+- Single-item mode: no transitions or arrows - inert
 
 ### Lightbox (`static/js/lightbox.js`)
 

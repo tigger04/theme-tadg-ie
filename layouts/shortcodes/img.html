@@ -1,7 +1,7 @@
 {{- /* ABOUTME: Inline image shortcode for embedding images within article text. */}}
 {{- /* ABOUTME: Generates responsive thumbnails with WebP support, matching gallery behaviour. */}}
 {{- /* Usage: {{< img src="photo.jpg" alt="Description" caption="Caption text" position="right" >}} */}}
-{{- /* Optional: width="40%" blur="true" opacity="0.6" */}}
+{{- /* Optional: width="40%" blur="true" opacity="0.6" link="https://..." */}}
 
 {{- $src := .Get "src" -}}
 {{- $alt := .Get "alt" -}}
@@ -10,6 +10,7 @@
 {{- $width := .Get "width" | default "40%" -}}
 {{- $blur := .Get "blur" | default "false" -}}
 {{- $opacity := .Get "opacity" | default "" -}}
+{{- $link := .Get "link" | default "" -}}
 
 {{- /* Resolve the image from page resources */ -}}
 {{- $image := .Page.Resources.GetMatch $src -}}
@@ -20,7 +21,8 @@
 {{- $medium := $image.Fit "800x800" -}}
 {{- $large := $image.Fit "1600x1600" -}}
 
-<figure class="inline-image inline-image-{{ $position }}"{{ if ne $position "center" }} style="width: {{ $width }};"{{ end }}>
+<figure class="inline-image inline-image-{{ $position }}" style="width: {{ $width }};">
+  {{- if $link -}}<a href="{{ $link }}">{{- end -}}
   <picture>
     {{- /* WebP source for modern browsers */ -}}
     {{- $thumbWebP := $thumb.Process "webp" -}}
@@ -37,6 +39,7 @@
          loading="lazy"
          class="inline-image-img">
   </picture>
+  {{- if $link -}}</a>{{- end -}}
   {{- if $caption -}}
   <figcaption class="inline-image-caption{{ if eq $blur "true" }} inline-image-caption-blur{{ end }}"{{ if $opacity }} style="--inline-caption-opacity: {{ $opacity }};"{{ end }}>
     {{- $caption -}}
