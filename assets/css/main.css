@@ -34,9 +34,9 @@
   --content-max-width: 50rem;
   --content-padding: 1ch;
   --border-radius: 5px;
-  --font-size-base: 15px;
+  --font-size-base: 1.1rem;
   --line-height-base: 1.6;
-  --line-height-content: 1.5;
+  --line-height-content: 1.7;
 }
 /* Reset and base styles */
 *,
@@ -47,8 +47,10 @@
 
 html {
   color: var(--color-text, #232333);
-  font-family: 'IosevkaCustom', 'Courier New', monospace;
-  font-size: var(--font-size-base, 15px);
+  font-family: 'Asap', sans-serif;
+  font-weight: 450;
+
+  font-size: var(--font-size-base, 1rem);
   line-height: var(--line-height-base, 1.6);
   scroll-behavior: smooth;
 }
@@ -82,8 +84,8 @@ body {
 
 /* Typography */
 p {
-  font-family: 'IosevkaQuasiProportional', Helvetica, sans-serif;
-  line-height: var(--line-height-content, 1.5);
+  font-stretch: 115%;
+  line-height: var(--line-height-content, 1.7);
   /* Fallback for older browsers */
   margin-top: 1em;
   margin-bottom: 1em;
@@ -750,7 +752,7 @@ svg {
 
 .code-block[data-lang]::before {
   content: attr(data-lang);
-  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-family: 'IosevkaCustom', 'Courier New', monospace;
   background: #000000;
   border-radius: 0 0 0.25rem 0.25rem;
   color: #ffffff;
@@ -881,7 +883,7 @@ details.styled-details > summary > span {
   margin-inline-start: 1em;
   padding: 0 0.5em;
   background-color: var(--color-background, #ffffff);
-  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-family: 'IosevkaCustom', 'Courier New', monospace;
   font-weight: 600;
 }
 

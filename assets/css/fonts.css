@@ -121,6 +121,81 @@
   src: url('../fonts/EBGaramond-ExtraBoldItalic.woff2') format('woff2');
 }
 
+/* ——— Recursive - Body text ——— */
+
+/* Variable font: axes CASL (casual), CRSV (cursive), MONO (monospace), slnt (slant), wght (weight) */
+@font-face {
+  font-family: 'Recursive';
+  font-weight: 300 900;
+  font-style: oblique -15deg 0deg;
+  src: url('../fonts/Recursive-Variable.woff2') format('woff2');
+}
+
+/* ——— Fira Sans - Body text ——— */
+
+@font-face {
+  font-family: 'Fira Sans';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/FiraSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  font-weight: 300;
+  font-style: italic;
+  src: url('../fonts/FiraSans-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/FiraSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/FiraSans-Bold.woff2') format('woff2');
+}
+
+/* ——— Asap - Body text ——— */
+
+/* Variable font: weight 100–900, width 75–125 */
+@font-face {
+  font-family: 'Asap';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url('../fonts/Asap-Variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Asap';
+  font-weight: 100 900;
+  font-style: italic;
+  src: url('../fonts/Asap-Italic-Variable.woff2') format('woff2');
+}
+
+/* ——— IM Fell Extended - Pull-quotes ——— */
+
+/* Regular 400, normal */
+@font-face {
+  font-family: 'IM Fell Extended';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/IM_FELL_Extended.woff2') format('woff2');
+}
+
+/* Italic 400, italic */
+@font-face {
+  font-family: 'IM Fell Extended';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fonts/IM_FELL_Extended_Italic.woff2') format('woff2');
+}
+
 /* ——— IosevkaCustom Extended - Body text, paragraphs ——— */
 
 /* Regular 400, normal */

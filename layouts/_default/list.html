@@ -117,7 +117,32 @@
 	{{- else if eq $listStyle "list" -}}
 		{{ partial "list-view.html" (dict "pages" $paginator.Pages "showSection" false "Site" .Site) }}
 	{{- else -}}
-		{{ partial "masonry-grid.html" (dict "pages" $paginator.Pages "showSection" false "Site" .Site) }}
+		{{- /* Carousel: enabled by section frontmatter carousel: true, populated by pages with carousel: N */ -}}
+		{{- $carouselEnabled := .Params.carousel | default false -}}
+		{{- $carouselPages := slice -}}
+		{{- $carouselPermalinks := slice -}}
+		{{- if $carouselEnabled -}}
+			{{- $carouselPages = where $allPages ".Params.carousel" "!=" nil -}}
+			{{- $carouselPages = sort $carouselPages ".Params.carousel" "asc" -}}
+			{{- range $carouselPages -}}
+				{{- $carouselPermalinks = $carouselPermalinks | append .RelPermalink -}}
+			{{- end -}}
+		{{- end -}}
+		{{- if gt (len $carouselPages) 0 -}}
+		{{ partial "carousel-card.html" (dict "carouselPages" $carouselPages "showSection" false "Site" .Site) }}
+		{{- end -}}
+		{{- /* Filter carousel pages out of masonry grid */ -}}
+		{{- $masonryPages := $paginator.Pages -}}
+		{{- if gt (len $carouselPermalinks) 0 -}}
+			{{- $filteredPages := slice -}}
+			{{- range $paginator.Pages -}}
+				{{- if not (in $carouselPermalinks .RelPermalink) -}}
+					{{- $filteredPages = $filteredPages | append . -}}
+				{{- end -}}
+			{{- end -}}
+			{{- $masonryPages = $filteredPages -}}
+		{{- end -}}
+		{{ partial "masonry-grid.html" (dict "pages" $masonryPages "showSection" false "Site" .Site) }}
 	{{- end -}}
 
 	{{ partial "pagination.html" $paginator }}
@@ -129,4 +154,5 @@
 	{{ end }}
 </main>
 <script src="{{ "js/masonry-init.js" | relURL }}"></script>
+<script src="{{ "js/carousel.js" | relURL }}"></script>
 {{ end }}

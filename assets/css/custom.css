@@ -379,8 +379,9 @@ body,
 .post-banner .meta .author,
 .post-hero .meta .author {
   color: var(--overlay-text) !important;
-  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-family: 'Asap', sans-serif;
   font-weight: 800;
+  font-stretch: 115%;
   text-shadow:
     0 1px 2px var(--overlay-text-shadow),
     0 0 6px var(--overlay-text-shadow) !important;
@@ -774,7 +775,8 @@ div.verse,
 pre.verse,
 .verse-block {
   white-space: pre-line !important;
-  font-family: "EB Garamond", serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 1.2rem;
   background: none;
   border: none;
   padding: 0;
@@ -789,11 +791,40 @@ pre.verse,
    The leading newline inside each <p> provides exactly one blank line. */
 .verse-block {
   white-space: normal !important;
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .verse-block {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Pull-quote shortcode: IM Fell Extended */
+.pull-quote blockquote,
+.pull-quote blockquote p {
+  font-family: "IM Fell Extended", serif;
+  font-style: normal;
+  font-size: 1.625rem;
+}
+
+.pull-quote figcaption {
+  font-family: 'Asap', sans-serif;
+  font-style: italic;
+  font-size: 1.2rem;
 }
 
 .verse-block p {
   white-space: pre-line;
   margin: 0;
+  font-family: inherit;
+  font-stretch: 100%;
   margin-block: 0;
 }
 
@@ -1237,10 +1268,12 @@ header .main {
 /* Issue #20: Removed blanket Special Elite on html — now scoped to UI elements only.
    Callouts use IosevkaCustom (inherited from main.css html base). */
 
-/* List items should use IosevkaQuasiProportional to match body text */
+/* List items match body text */
 ul li,
 ol li {
-  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-weight: 400;
+  font-stretch: 115%;
 }
 
 /* Issue #68: Removed incorrect Special Elite override for paragraphs.
@@ -1691,7 +1724,11 @@ main.list .content {
 }
 
 .masonry-date {
-  color: var(--text-light);
+  color: #bbb;
+}
+
+[data-theme="dark"] .masonry-date {
+  color: #aaa;
 }
 
 /* Issue #22: Frosted glass for meta text on cards with background images */
@@ -1727,7 +1764,9 @@ main.list .content {
 /* Masonry excerpt */
 .masonry-excerpt {
   color: var(--text-secondary);
-  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-weight: 400;
+  font-stretch: 115%;
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 0.75rem;
@@ -2082,7 +2121,7 @@ main.list .content {
   margin-bottom: 0;
   flex: 1;
   font-size: 1.15rem;
-  color: #f0f0f0;
+  color: #ccc;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -2248,9 +2287,11 @@ main.list .masonry-grid {
 }
 
 /* Issue #62: Unified sidebar navigation styles */
-.sidebar-nav {
+.sidebar-nav,
+.sidebar-nav li {
   font-size: 0.9375rem;
-  font-family: 'IosevkaQuasiProportional', sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-stretch: 100%;
 }
 
 .sidebar-nav ul {
