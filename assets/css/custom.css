@@ -565,6 +565,8 @@ body,
 .post-banner .title .meta {
   margin-top: 1rem;
   font-size: 1.3em;
+  font-weight: 250 !important;
+  font-stretch: 100%;
 }
 
 /* Hero Image/Video Styling (Issue #135: block above text, no float) */
