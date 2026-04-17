@@ -1,11 +1,12 @@
 # Shortcodes Reference
 
-The tadg_ie theme provides 16 custom shortcodes for varied content types.
+The tadg_ie theme provides 17 custom shortcodes for varied content types.
 
 ## Table of Contents
 
 1. [callout](#callout) - Styled alert/notice boxes
-2. [colorbold](#colorbold) - Inline accent-coloured bold text
+2. [centre](#centre) - Centre-aligned content block
+3. [colorbold](#colorbold) - Inline accent-coloured bold text
 3. [details](#details) - Collapsible content
 4. [dialogue](#dialogue) - Character speech for plays
 5. [direction](#direction) - Stage directions
@@ -31,15 +32,21 @@ Styled alert/callout boxes with colour-coded types.
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `type` | Yes | One of: `tip`, `alert`, `warning`, `custom` |
+| `type` | Yes | One of: `info`, `tip`, `alert`, `warning`, `custom` |
 | `text` | Yes | Message content |
-| `title` | No | Custom title (only for `type="custom"`) |
+| `title` | No | Custom title (for `info`, `tip`, `warning`, `custom` - overrides the default) |
+| `link` | No | URL - makes the title a clickable link |
+| `linktext` | No | Link text when `link` is used without a title (default: "More info") |
+| `align` | No | Text alignment: `left`, `center`, `right` |
+| `width` | No | Max width of the callout box, any CSS unit (`30rem`, `60%`, etc.). Box is auto-centred on the page |
 | `style` | No | Inline CSS (only for `type="custom"`) |
 
 ### Usage
 
 ```markdown
 {{< callout type="tip" text="This is a helpful tip!" >}}
+{{< callout type="info" text="Informational note" >}}
+{{< callout type="info" title="Buy Now" text="Available worldwide" link="https://example.com" align="center" width="60%" >}}
 {{< callout type="alert" text="Important alert message" >}}
 {{< callout type="warning" text="Warning message" >}}
 {{< callout type="custom" title="Custom Title" text="Custom message" style="background: #fee;" >}}
@@ -66,6 +73,42 @@ Styled alert/callout boxes with colour-coded types.
 | Warning | Custom |
 |---------|--------|
 | ![Warning callout dark](screenshots/shortcodes/callout-warning-dark.png) | ![Custom callout dark](screenshots/shortcodes/callout-custom-dark.png) |
+
+---
+
+## centre
+
+Centre-aligned content block. Wraps inner content in a `<div class="text-center">`.
+
+**Note:** In Org-mode files, shortcodes with inner Org markup (links, lists) may not render correctly. For Org content, prefer using `#+BEGIN_EXPORT html` with `<div class="text-center">` directly.
+
+### Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| Inner content | Yes | Content to centre |
+
+### Usage
+
+```markdown
+{{< center >}}
+This text is centred.
+{{< /center >}}
+```
+
+**Org-mode alternative:**
+
+```org
+#+BEGIN_EXPORT html
+<div class="text-center">
+<p>Centred text with <a href="https://example.com">a link</a></p>
+</div>
+#+END_EXPORT
+```
+
+### Visual Examples
+
+_Screenshots pending._
 
 ---
 
