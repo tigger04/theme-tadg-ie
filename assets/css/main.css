@@ -538,6 +538,11 @@ article .title {
   margin-block: 1em;
 }
 
+.callout .callout-title {
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
 .callout p {
   font-family: 'IosevkaCustom', 'Courier New', monospace;
   margin: 0;
@@ -565,15 +570,31 @@ article .title {
 }
 
 .callout-tip {
-  color: #055160;
-  background-color: #d1ecf1;
-  border: 3px solid #b8daff;
+  color: #fff;
+  background: linear-gradient(145deg, #048a5e, #0da874);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 6px 20px rgba(4, 138, 94, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .callout-warning {
   color: #664d03;
   background-color: #fff3cd;
   border: 3px solid #ffecb5;
+}
+
+.callout-info {
+  color: #fff;
+  background: linear-gradient(145deg, #1e56cc, #2d6ce0);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 6px 20px rgba(30, 86, 204, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .callout-custom {

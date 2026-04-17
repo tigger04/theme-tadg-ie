@@ -3063,3 +3063,8 @@ figure.inline-image:has(.inline-image-caption-blur) {
 .post-featured:has(.cfstream-container) {
   display: block;
 }
+
+/* Center shortcode */
+.text-center {
+  text-align: center;
+}

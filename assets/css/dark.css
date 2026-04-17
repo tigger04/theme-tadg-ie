@@ -177,15 +177,32 @@ table td {
 }
 
 .callout-tip {
-  color: #d1ecf1;
-  background-color: #0c2428;
-  border-color: #0f5132;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(145deg, #1a8a5e, #25a872);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 6px 20px rgba(26, 138, 94, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .callout-warning {
   color: #fff3cd;
   background-color: #332701;
   border-color: #997404;
+}
+
+.callout-info {
+  color: #fff;
+  background: linear-gradient(145deg, #1e56cc, #2d6ce0);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 6px 20px rgba(30, 86, 204, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .callout-custom {
