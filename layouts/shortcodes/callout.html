@@ -1,10 +1,11 @@
-{{/* ABOUTME: Callout box shortcode with type variants, optional link, alignment, and width */}}
-{{/* Params: type, text, title, link, linktext, align (left|center|right), width (rem value) */}}
+{{/* ABOUTME: Callout box shortcode with type variants, optional link, alignment, width, and float position */}}
+{{/* Params: type, text, title, link, linktext, align (left|center|right), width, position (left|right) */}}
 {{ $type := .Get "type" }}
 {{ $align := .Get "align" }}
 {{ $width := .Get "width" }}
 {{ $link := .Get "link" }}
-<div class='callout callout-{{ $type }}' style='{{ if $align }}text-align: {{ $align }};{{ end }}{{ if $width }}max-width: {{ $width }}; margin-left: auto; margin-right: auto;{{ end }}{{ if eq $type "custom" }}{{ .Get "style" | safeCSS }}{{ end }}'>
+{{ $position := .Get "position" }}
+<div class='callout callout-{{ $type }}{{ with $position }} callout-float-{{ . }}{{ end }}' style='{{ if $align }}text-align: {{ $align }};{{ end }}{{ if and $width (ne $width "auto") }}width: 100%; max-width: {{ $width }};{{ end }}{{ if eq $width "auto" }}width: fit-content;{{ end }}{{ if not $position }}{{ if $width }} margin-left: auto; margin-right: auto;{{ end }}{{ end }}{{ if eq $type "custom" }}{{ .Get "style" | safeCSS }}{{ end }}'>
   <div class="callout-inner">
     {{- $title := "" -}}
     {{- if eq $type "alert" -}}{{ $title = "Alert" }}
@@ -17,7 +18,6 @@
     <strong class="callout-title">{{ if $link }}<a href="{{ $link }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}</strong>
     <br />
     {{ end }}
-    {{ .Get "text" }}
-    {{ if and $link (not $title) }}<br /><a href="{{ $link }}">{{ with .Get "linktext" }}{{ . }}{{ else }}More info{{ end }}</a>{{ end }}
+    {{ if $link }}<a href="{{ $link }}" class="callout-link">{{ .Get "text" }}</a>{{ else }}{{ .Get "text" }}{{ end }}
     </div>
 </div>

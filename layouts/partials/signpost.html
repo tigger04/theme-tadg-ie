@@ -1,0 +1,7 @@
+{{/* ABOUTME: Renders a signpost bar below the banner/hero when signpost frontmatter is present */}}
+{{/* Usage in frontmatter: signpost: { text: "Buy now", url: "https://..." } */}}
+{{- with .Params.signpost -}}
+<div class="signpost">
+  <a href="{{ .url }}">{{ .text }}</a><span class="signpost-arrow"> &#8594;</span>
+</div>
+{{- end -}}

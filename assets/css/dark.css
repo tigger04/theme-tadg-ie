@@ -18,14 +18,14 @@ body {
 }
 
 ::-moz-selection {
-  background: var(--color-primary);
-  color: #000000;
+  background: rgba(220, 20, 60, 0.35);
+  color: #ffffff;
   text-shadow: none;
 }
 
 ::selection {
-  background: var(--color-primary);
-  color: #000000;
+  background: rgba(220, 20, 60, 0.35);
+  color: #ffffff;
   text-shadow: none;
 }
 
@@ -179,7 +179,7 @@ table td {
 .callout-tip {
   color: #fff;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  background: linear-gradient(145deg, #1a8a5e, #25a872);
+  background: linear-gradient(145deg, #14704d, #1a8a5e);
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 0.75rem;
   box-shadow:
@@ -196,7 +196,7 @@ table td {
 
 .callout-info {
   color: #fff;
-  background: linear-gradient(145deg, #1e56cc, #2d6ce0);
+  background: linear-gradient(145deg, #183f8a, #1e56aa);
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 0.75rem;
   box-shadow:

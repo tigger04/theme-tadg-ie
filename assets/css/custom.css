@@ -37,7 +37,7 @@
   --overlay-strong: rgba(0, 0, 0, 0.4);
   --caption-bg: rgba(0, 0, 0, 0.3);
   --caption-text: rgba(255, 255, 255, 1);
-  --content-max-width: 100rem;
+  --content-max-width: 80rem;
   --caption-shadow: rgba(0, 0, 0, 0.6);
   --overlay-text: #ffffff;
   --overlay-text-shadow: rgba(0, 0, 0, 0.9);
@@ -357,6 +357,12 @@ body,
   box-sizing: border-box;
 }
 
+@media screen and (max-width: 47.99rem) {
+  .post-container .post-content {
+    padding: 0.5rem 0.75rem 1rem 0.75rem;
+  }
+}
+
 /* Universal Image Overlay Text Styling - ONLY for banner/hero layouts */
 /* Where text is actually displayed over background images */
 
@@ -498,7 +504,7 @@ body,
 .post-banner {
   position: relative;
   width: 100%;
-  min-height: 400px;
+  min-height: clamp(200px, 40vw, 400px);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -558,13 +564,14 @@ body,
 }
 
 .post-banner .title h1 {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 800;
   margin: 0;
 }
 
 .post-banner .title .meta {
-  margin-top: 1rem;
-  font-size: 1.3em;
+  margin-top: 0.5rem;
+  font-size: clamp(0.8rem, 2.5vw, 1.3em);
   font-weight: 250 !important;
   font-stretch: 100%;
 }
@@ -778,7 +785,7 @@ pre.verse,
 .verse-block {
   white-space: pre-line !important;
   font-family: 'Asap', sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(1.0rem, 2.5vw, 1.2rem);
   background: none;
   border: none;
   padding: 0;
@@ -798,14 +805,12 @@ pre.verse,
   border-radius: 0.5rem;
   padding: 1.5rem 2rem;
   max-width: 36rem;
-  margin-left: auto;
-  margin-right: auto;
   text-align: left;
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 [data-theme="dark"] .verse-block {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 /* Pull-quote shortcode: IM Fell Extended */
@@ -813,13 +818,13 @@ pre.verse,
 .pull-quote blockquote p {
   font-family: "IM Fell Extended", serif;
   font-style: normal;
-  font-size: 1.625rem;
+  font-size: clamp(1.15rem, 4vw, 1.625rem);
 }
 
 .pull-quote figcaption {
   font-family: 'Asap', sans-serif;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: clamp(0.85rem, 2.5vw, 1.2rem);
 }
 
 .verse-block p {
@@ -2873,8 +2878,8 @@ main.list .masonry-grid {
 /* Base: reset figure defaults from main.css */
 figure.inline-image {
   display: block;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
   margin-block: 1rem;
   padding: 0;
   max-width: 100%;
@@ -3067,4 +3072,37 @@ figure.inline-image:has(.inline-image-caption-blur) {
 /* Center shortcode */
 .text-center {
   text-align: center;
+}
+
+/* Signpost — frontmatter-driven CTA bar below banner/hero */
+.signpost {
+  text-align: center;
+  padding: 0.6rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.signpost a {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Asap', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  font-stretch: 115%;
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  letter-spacing: 0.02em;
+}
+
+.signpost-arrow {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.signpost a:hover {
+  color: var(--color-secondary-hover);
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
 }
