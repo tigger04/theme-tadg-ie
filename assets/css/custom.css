@@ -633,8 +633,9 @@ body,
 
 .post-hero img {
   width: 100%;
+  height: 40vh;
+  min-height: 12rem;
   max-height: 25rem;
-  height: auto;
   object-fit: cover;
   object-position: center;
   display: block;
