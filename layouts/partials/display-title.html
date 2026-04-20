@@ -1,0 +1,5 @@
+{{- with .Params.displayTitle -}}
+  {{- replace . "\n" "<br>" | safeHTML -}}
+{{- else -}}
+  {{- .Title -}}
+{{- end -}}
