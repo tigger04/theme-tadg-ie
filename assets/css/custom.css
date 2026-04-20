@@ -596,10 +596,18 @@ body,
 /* Featured Image Styling */
 .post-featured {
   position: relative;
-  display: inline-block;
-  margin: 20px auto;
-  max-width: 100%;
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  max-width: 50%;
   overflow: hidden;
+}
+
+@media screen and (max-width: 47.99rem) {
+  .post-featured {
+    float: none;
+    max-width: 100%;
+    margin: 1rem 0;
+  }
 }
 
 .post-featured img {
