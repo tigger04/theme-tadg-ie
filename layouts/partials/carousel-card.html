@@ -75,7 +75,7 @@
 
       <div class="masonry-content">
         <div class="carousel-card-top">
-          <h2><a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a></h2>
+          <h2 class="no-prefix"><a href="{{ .RelPermalink }}" class="header-interactive"><span class="heading-prefix">#</span>{{ .Title }}</a></h2>
           {{- $showDate := and .Date (not .Params.hideDate) -}}
           {{- $showAuthor := and .Params.author (not .Params.hideAuthor) -}}
           {{- if or $showSection $showDate $showAuthor -}}
