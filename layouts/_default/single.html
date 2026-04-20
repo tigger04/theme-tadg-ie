@@ -8,7 +8,7 @@
     {{- end -}}
     {{ if .Params.image.src }}
     <div class="post-banner soft-edge{{ if .Params.image.dark }} dark-banner{{ end }}">
-      <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
+      <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}" class="soft-edge"{{ if or .Params.image.blur .Params.image.opacity .Params.image.position }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}{{ with .Params.image.position }} object-position: {{ . }};{{ end }}"{{ end }}>
       <div class="banner-overlay soft-edge"></div>
       <div class="title">
         <h1>{{ partial "display-title.html" . }}</h1>
@@ -157,7 +157,7 @@
         </div>
         {{ else if .Params.image.src }}
         <div class="post-hero">
-          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}"{{ end }}>
+          <img src="{{ .RelPermalink }}{{ .Params.image.src }}" alt="{{ if .Params.image.alt }}{{ .Params.image.alt }}{{ else if .Params.image.caption }}{{ .Params.image.caption }}{{ else }}{{ .Title }}{{ end }}"{{ if or .Params.image.blur .Params.image.opacity .Params.image.position }} style="{{ with .Params.image.blur }}filter: blur({{ . }});{{ end }}{{ with .Params.image.opacity }} opacity: {{ . }};{{ end }}{{ with .Params.image.position }} object-position: {{ . }};{{ end }}"{{ end }}>
           {{ if .Params.image.caption }}
           <div class="image-caption">{{ .Params.image.caption }}</div>
           {{ end }}

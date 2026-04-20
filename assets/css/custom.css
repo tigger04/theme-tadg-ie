@@ -2911,8 +2911,14 @@ main.list .masonry-grid {
 /* Issue #103: Related articles */
 .related-articles {
   margin-top: 2rem;
-  padding-top: 1.5rem;
+  padding: 1.5rem 2rem 0;
   border-top: 1px solid var(--border-color, #ddd);
+}
+
+@media screen and (max-width: 47.99rem) {
+  .related-articles {
+    padding: 1.5rem 0.75rem 0;
+  }
 }
 
 .related-articles h3 {
