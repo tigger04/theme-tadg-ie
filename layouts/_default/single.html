@@ -32,6 +32,7 @@
         <section class="body">
           {{ .Content }}
         </section>
+        {{ partial "signpost-footer.html" . }}
         <div class="post-tags">
           {{ if ne .Type "page" }}
           {{ if gt .Params.tags 0 }}
@@ -113,6 +114,7 @@
 
       <!-- Footer with tags - full width -->
       <div class="post-footer" style="padding: 0 2rem 2rem 2rem;">
+        {{ partial "signpost-footer.html" . }}
         <div class="post-tags">
           {{ if ne .Type "page" }}
           {{ if gt .Params.tags 0 }}
@@ -192,6 +194,7 @@
         <section class="body">
           {{ .Content }}
         </section>
+        {{ partial "signpost-footer.html" . }}
         <div class="post-tags">
           {{ if ne .Type "page" }}
           {{ if gt .Params.tags 0 }}

@@ -522,6 +522,7 @@ footer {
 
 /* Common elements */
 .title h1 {
+  font-size: 2.2rem;
   /* Fallback for older browsers */
   margin-bottom: 0;
   /* Modern logical properties */
@@ -735,6 +736,7 @@ article .title {
   gap: 0.5rem;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .tags li::before {

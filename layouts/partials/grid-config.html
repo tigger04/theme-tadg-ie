@@ -138,7 +138,7 @@
 /* Issue #23: Narrow sidebar between md and lg breakpoints */
 @media (min-width: {{ $bpMdPlus }}) and (max-width: {{ $bpLg }}) {
   .sidebar-layout {
-    grid-template-columns: min-content 1fr;
+    grid-template-columns: var(--sidebar-width-narrow, 12rem) 1fr;
     gap: 1rem;
   }
   .section-sidebar {
@@ -156,7 +156,7 @@
 @media (min-width: {{ $bpMdPlus }}) {
   .section-sidebar {
     max-width: 20vw;
-    white-space: nowrap;
+    overflow-wrap: break-word;
   }
   .sidebar-collapse-title {
     list-style: none;

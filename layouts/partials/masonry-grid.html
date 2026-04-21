@@ -103,17 +103,13 @@
         </div>
 
       {{- /* Issue #1: All non-gallery content uses same default card layout */ -}}
-      {{- /* Issue #84: Layout order - title, excerpt, then footer with meta+chevron */ -}}
+      {{- /* Issue #84: Layout order - title+meta top, excerpt+chevron bottom (carousel-style) */ -}}
       {{- else -}}
         <div class="masonry-content">
-          <h3><a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a></h3>
-          {{- $excerpt := .Description | default .Summary -}}
-          {{- if $excerpt -}}
-          <div class="masonry-excerpt">{{ $excerpt | plainify | truncate 150 }}</div>
-          {{- end -}}
-          {{- $showDate := and .Date (not .Params.hideDate) -}}
-          {{- $showAuthor := and .Params.author (not .Params.hideAuthor) -}}
-          <div class="masonry-footer">
+          <div class="masonry-card-top">
+            <h3><a href="{{ .RelPermalink }}" class="header-interactive">{{ .Title }}</a></h3>
+            {{- $showDate := and .Date (not .Params.hideDate) -}}
+            {{- $showAuthor := and .Params.author (not .Params.hideAuthor) -}}
             {{- if or $showSection $showDate $showAuthor -}}
             <p class="masonry-meta">
               {{- if $showAuthor -}}
@@ -127,8 +123,12 @@
               <span class="masonry-date">{{ .Date.Format "2 Jan 2006" }}</span>
               {{- end -}}
             </p>
-            {{- else -}}
-            <span></span>{{- /* Empty spacer for flexbox alignment */ -}}
+            {{- end -}}
+          </div>
+          <div class="masonry-card-bottom">
+            {{- $excerpt := .Description | default .Summary -}}
+            {{- if $excerpt -}}
+            <div class="masonry-excerpt">{{ $excerpt | plainify | truncate 150 }}</div>
             {{- end -}}
             <div class="read-more-container">
               <a href="{{ .RelPermalink }}" class="read-more-btn">

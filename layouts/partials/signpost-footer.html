@@ -1,0 +1,9 @@
+{{/* ABOUTME: Renders a signpost-style footer CTA before related articles */}}
+{{/* ABOUTME: Controlled via signpost_footer frontmatter, cascadable, disable with signpost_footer: false */}}
+{{- with .Params.signpost_footer -}}
+{{- if ne . false -}}
+<div class="signpost signpost-footer">
+  <a href="{{ .url }}">{{ .text }}</a><span class="signpost-arrow"> &#8594;</span>
+</div>
+{{- end -}}
+{{- end -}}

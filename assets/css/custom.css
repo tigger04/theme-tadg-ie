@@ -312,6 +312,16 @@ header .main a:hover {
   clear: both;
 }
 
+section.body {
+  margin-bottom: 3rem;
+}
+
+.post-tags {
+  border-top: 1px solid var(--border-color, #ddd);
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
 /* Override any flex on tags container */
 .post-footer .post-tags {
   display: block !important;
@@ -1517,6 +1527,7 @@ main.list .content {
 }
 
 .page-header h1 {
+  font-size: 2.2rem;
   margin-top: 0;
   margin-block-start: 0;
 }
@@ -1753,12 +1764,35 @@ main.list .content {
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
+  min-height: 12rem;
 }
 
 .masonry-content h3 {
   margin: 0 0 0.5rem;
   font-size: 1.1rem;
   line-height: 1.3;
+}
+
+/* Frosted glass behind masonry card title — same pattern as carousel/banner */
+.masonry-item.has-image .masonry-content:not(.masonry-overlay) h3 a {
+  position: relative;
+}
+
+.masonry-item.has-image .masonry-content:not(.masonry-overlay) h3 a::after {
+  content: "";
+  position: absolute;
+  inset: -0.3rem -0.6rem;
+  z-index: -1;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  mask-image:
+    linear-gradient(to bottom, transparent, black 20%, black 80%, transparent),
+    linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent, black 20%, black 80%, transparent),
+    linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
 }
 
 .masonry-content h3 a {
@@ -2076,6 +2110,48 @@ main.list .content {
   flex-shrink: 0;
 }
 
+/* Masonry card top — title + meta, pinned to top */
+.masonry-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.masonry-card-top .masonry-meta {
+  display: inline-flex;
+  align-self: flex-start;
+  margin: 0;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.35rem;
+  gap: 0.35rem;
+}
+
+/* Masonry card bottom — excerpt + chevron with gradient scrim */
+.masonry-card-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  margin-right: -2rem;
+  margin-bottom: -2rem;
+  margin-left: -2rem;
+  padding: 3rem 2rem 1.25rem;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.45) 40%);
+}
+
+.masonry-card-bottom .masonry-excerpt {
+  margin-bottom: 0;
+  flex: 1;
+  color: #ccc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.masonry-card-bottom .read-more-container {
+  flex-shrink: 0;
+}
+
 /* Read more button in masonry cards */
 .masonry-item .read-more-btn {
   font-size: 0.85rem;
@@ -2368,7 +2444,7 @@ main.list .masonry-grid {
 
 .sidebar-layout {
   display: grid;
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: var(--sidebar-width, 15rem) 1fr;
   gap: 2rem;
   /* Issue #91: Remove margin-top to align sidebar with content on section pages */
   margin-top: 0;
@@ -2934,9 +3010,8 @@ main.list .masonry-grid {
 
 /* Issue #103: Related articles */
 .related-articles {
-  margin-top: 2rem;
-  padding: 1.5rem 2rem 0;
-  border-top: 1px solid var(--border-color, #ddd);
+  margin-top: -0.75rem;
+  padding: 0 2rem;
 }
 
 @media screen and (max-width: 47.99rem) {
@@ -2953,12 +3028,17 @@ main.list .masonry-grid {
 
 .related-articles ul {
   list-style: none;
-  padding: 0;
+  padding-inline-start: 2ch;
   margin: 0;
 }
 
 .related-articles li {
   padding: 0.375rem 0;
+  text-indent: -2ch;
+}
+
+.related-articles li::before {
+  content: '• ';
 }
 
 .related-articles a {
