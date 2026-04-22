@@ -3057,6 +3057,7 @@ main.list .masonry-grid {
    ================================================ */
 
 /* Base: reset figure defaults from main.css */
+/* When no explicit width is set via shortcode, use a responsive default */
 figure.inline-image {
   display: block;
   margin-top: 1.5em;
@@ -3065,6 +3066,7 @@ figure.inline-image {
   padding: 0;
   max-width: 100%;
   max-inline-size: 100%;
+  width: clamp(14rem, 45%, 30rem);
 }
 
 figure.inline-image img {

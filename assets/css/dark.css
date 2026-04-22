@@ -237,33 +237,7 @@ details.styled-details:not([open]) > summary::after {
   border-top-color: var(--border-color);
 }
 
-/* Issue #122, #34: Background layout text adaptation for light images in dark mode */
-/* Light background image needs dark text with dark micro-shadow for readability */
-.post-container.light-bg,
-.post-container.light-bg .post-content,
-.post-container.light-bg .post-content h1,
-.post-container.light-bg .post-content h2,
-.post-container.light-bg .post-content h3,
-.post-container.light-bg .post-content h4,
-.post-container.light-bg .post-content h5,
-.post-container.light-bg .post-content h6 {
-  color: #1a1a1a !important;
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25),
-    0 0 8px rgba(255, 255, 255, 0.6) !important;
-}
-
-.post-container.light-bg .post-content .meta,
-.post-container.light-bg .post-content a {
-  color: #1a1a1a !important;
-}
-
-.post-container.light-bg .post-content h1::before,
-.post-container.light-bg .post-content h2::before,
-.post-container.light-bg .post-content h3::before {
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25),
-    0 0 8px rgba(255, 255, 255, 0.6) !important;
-}
+/* Issue #122, #34: Background layout — always light text in dark mode regardless of image lightness */
+/* The image is a low-opacity texture; text colour follows the dark theme, not the image */
 
 /* Read more chevron icon - single icon for all modes, no toggling needed */

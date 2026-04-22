@@ -7,7 +7,7 @@
 {{- $alt := .Get "alt" -}}
 {{- $caption := .Get "caption" | default "" -}}
 {{- $position := .Get "position" | default "right" -}}
-{{- $width := .Get "width" | default "40%" -}}
+{{- $width := .Get "width" | default "" -}}
 {{- $blur := .Get "blur" | default "false" -}}
 {{- $opacity := .Get "opacity" | default "" -}}
 {{- $link := .Get "link" | default "" -}}
@@ -21,7 +21,7 @@
 {{- $medium := $image.Fit "800x800" -}}
 {{- $large := $image.Fit "1600x1600" -}}
 
-<figure class="inline-image inline-image-{{ $position }}" style="width: {{ $width }};">
+<figure class="inline-image inline-image-{{ $position }}"{{ if $width }} style="width: {{ $width }};"{{ end }}>
   {{- if $link -}}<a href="{{ $link }}">{{- end -}}
   <picture>
     {{- /* WebP source for modern browsers */ -}}
@@ -30,11 +30,11 @@
     {{- $largeWebP := $large.Process "webp" -}}
     <source type="image/webp"
             srcset="{{ $thumbWebP.RelPermalink }} 400w, {{ $mediumWebP.RelPermalink }} 800w, {{ $largeWebP.RelPermalink }} 1600w"
-            sizes="(max-width: 600px) 100vw, {{ $width }}">
+            sizes="(max-width: 600px) 100vw, {{ if $width }}{{ $width }}{{ else }}38vw{{ end }}">
     {{- /* Fallback for older browsers */ -}}
     <img src="{{ $medium.RelPermalink }}"
          srcset="{{ $thumb.RelPermalink }} 400w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1600w"
-         sizes="(max-width: 600px) 100vw, {{ $width }}"
+         sizes="(max-width: 600px) 100vw, {{ if $width }}{{ $width }}{{ else }}38vw{{ end }}"
          alt="{{ $alt }}"
          loading="lazy"
          class="inline-image-img">
