@@ -212,23 +212,30 @@
     </div>
     {{ end }}
 
-    <!-- TOC — rendered as right-hand sidebar via article.has-toc grid (Issue #12) -->
     {{ if .Params.toc }}
-    <!-- Issue #23: Mobile-only title shown above TOC (hidden on desktop) -->
-    <div class="toc-mobile-title">
-      <h1>{{ partial "display-title.html" . }}</h1>
-      <div class="meta">{{- if not .Params.hideAuthor }}{{- with .Params.author }}{{ . }}{{ if not $.Params.hideDate }} · {{ end }}{{ end }}{{ end }}{{- if not .Params.hideDate -}}{{ dateFormat (site.Params.dateFormat | default ":date_long") .Date }}{{ end }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
-    </div>
     {{- $tocTitle := "Table of contents:" -}}
     {{- if ne .Params.toc true -}}{{- $tocTitle = .Params.toc -}}{{- end -}}
-    <div class="toc">
-      <strong>{{ $tocTitle }}</strong>
-      {{ .TableOfContents }}
-    </div>
-    {{ end }}
 
-    <!-- Related articles (Issue #103) -->
+    <!-- Mobile: collapsible TOC above content -->
+    <div class="toc-mobile">
+      <details class="toc-mobile-details">
+        <summary class="toc-mobile-summary">{{ $tocTitle }}</summary>
+        {{ .TableOfContents }}
+      </details>
+    </div>
+
+    <!-- Desktop: sidebar with TOC + related -->
+    <div class="article-sidebar">
+      <div class="toc">
+        <strong>{{ $tocTitle }}</strong>
+        {{ .TableOfContents }}
+      </div>
+      {{ partial "related.html" . }}
+    </div>
+    {{ else }}
+    <!-- Related articles without TOC -->
     {{ partial "related.html" . }}
+    {{ end }}
 
     <!-- Disqus -->
     {{- $.Scratch.Set "isDisqus" true -}}

@@ -340,6 +340,10 @@ section.body {
   width: 100%;
   flex: none;
 }
+
+.columns-layout > .title h1 {
+  font-size: 2.2rem;
+}
 body,
 .post-content,
 .post-content h1,
@@ -2646,30 +2650,70 @@ main.list .masonry-grid {
   color: var(--link-color, #007acc);
 }
 
-/* Issue #23: Align TOC with article title on desktop */
-@media screen and (min-width: 60em) {
-  article.has-toc .toc {
-    margin-top: 2em;
-  }
-}
+/* TOC alignment handled by explicit grid placement in main.css */
 
-/* Issue #23: Mobile-only title above TOC — hidden on desktop */
-.toc-mobile-title {
+/* Mobile TOC: collapsible details/summary, hidden on desktop */
+.toc-mobile {
   display: none;
 }
 
 @media screen and (max-width: 59.99em) {
-  .toc-mobile-title {
+  .toc-mobile {
     display: block;
-    order: -2;
-  }
-  article.has-toc .toc {
     order: -1;
+    margin-bottom: 1rem;
   }
-  /* Hide the title inside post-content to avoid duplication */
-  article.has-toc .post-content > .title {
+
+  /* Hide the desktop sidebar on mobile */
+  article.has-toc .article-sidebar {
     display: none;
   }
+}
+
+.toc-mobile-details {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  border-left: 2px solid var(--color-border, #663399);
+  padding: 0.75rem 1rem;
+}
+
+.toc-mobile-summary {
+  font-family: "Special Elite", monospace;
+  font-size: 1rem;
+  color: color-mix(in srgb, var(--color-border, #663399) 65%, white);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toc-mobile-summary::-webkit-details-marker {
+  display: none;
+}
+
+.toc-mobile-summary::after {
+  content: '\25BC';
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.toc-mobile-details[open] > .toc-mobile-summary::after {
+  transform: rotate(180deg);
+}
+
+.toc-mobile-details ul {
+  font-family: 'Asap', sans-serif;
+  font-size: 1rem;
+  margin-top: 0.75rem;
+}
+
+.toc-mobile-details li {
+  margin-bottom: 0.6em;
+}
+
+.toc-mobile-details ul ul {
+  margin-top: 0.3em;
 }
 
 /* Issue #23: Collapsible sidebar for mobile viewports */
@@ -3020,10 +3064,17 @@ main.list .masonry-grid {
   }
 }
 
+/* Related articles — styled to match TOC */
 .related-articles h3 {
+  font-family: "Special Elite", monospace;
   font-size: 1rem;
+  margin-top: 0;
   margin-bottom: 0.75rem;
-  color: var(--text-secondary, #333);
+  color: color-mix(in srgb, var(--color-border, #663399) 65%, white);
+}
+
+.related-articles h3::before {
+  content: none;
 }
 
 .related-articles ul {
@@ -3033,20 +3084,25 @@ main.list .masonry-grid {
 }
 
 .related-articles li {
-  padding: 0.375rem 0;
+  padding: 0.25rem 0;
   text-indent: -2ch;
+  font-family: 'Asap', sans-serif;
+  font-size: 0.9375rem;
+  margin-bottom: 0.5em;
 }
 
 .related-articles li::before {
-  content: '• ';
+  content: '\25B6  ';
+  color: var(--color-primary);
+  font-weight: bold;
 }
 
 .related-articles a {
-  color: var(--link-color, #007acc);
+  text-decoration: none;
 }
 
 .related-section {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--text-muted, #666);
   margin-left: 0.5rem;
   text-transform: capitalize;

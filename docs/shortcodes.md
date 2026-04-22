@@ -106,10 +106,6 @@ This text is centred.
 #+END_EXPORT
 ```
 
-### Visual Examples
-
-_Screenshots pending._
-
 ---
 
 ## colorbold
@@ -236,8 +232,6 @@ The word {{</* ga */>}}craic{{</* /ga */>}} has no direct English equivalent.
 
 ### Visual Examples
 
-*Screenshot requires example content using the `ga` shortcode. Add `{{</* ga */>}}Dia duit{{</* /ga */>}}` to a page to see Iosevka Gaeilge rendering.*
-
 ---
 
 ## popquote
@@ -306,10 +300,6 @@ An unattributed pull-quote.
 - Quote body in italic, slightly larger than body text, full body colour in both light and dark mode
 - Attribution caption right-aligned in a muted shade (faded to ~65% of the body colour), prefixed with an em-dash via CSS
 - Responsive: on screens narrower than ~32rem the decorative quote mark shrinks and the indent tightens
-
-### Visual Examples
-
-_Screenshots pending._
 
 ---
 
@@ -392,7 +382,7 @@ params:
 
 The customer code is the public subdomain identifier visible in all embed URLs - it is not a secret.
 
-#### Site-wide Video Defaults (Issue #131)
+#### Site-wide Video Defaults
 
 You can set site-wide defaults for video player params. These apply to every video embed that does not explicitly set that param in page frontmatter or shortcode attributes:
 
@@ -437,7 +427,7 @@ Page frontmatter takes precedence in all cases, including an explicit `false` wh
 {{< video id="ea95132c15732412d22c1476fa83f27a" poster_image="https://example.com/thumb.jpg" >}}
 ```
 
-### Video in Page Layouts (Issue #43)
+### Video in Page Layouts
 
 In addition to the shortcode, Cloudflare Stream videos can be used as the primary visual in page layouts via the `video` frontmatter field. This places the video in the layout's media slot (where `image` would normally go).
 
@@ -710,8 +700,6 @@ Inline image for embedding within article text. Generates responsive thumbnails 
 
 ### Visual Examples
 
-*Screenshots require a page bundle with image resources. See the example site's articles for working demonstrations.*
-
 ---
 
 ## gallery
@@ -755,16 +743,3 @@ Use `exclude` when you have images displayed inline (via `img` shortcode) that y
 
 ### Visual Examples
 
-*Gallery screenshots require image files in a page bundle directory. Add `.jpg` or `.png` files to a page bundle alongside `_index.md` to see the gallery in action.*
-
----
-
-## Screenshot Key
-
-Screenshots are captured from the example site at 1200px viewport width (2x device scale) using Puppeteer, and placed in `screenshots/shortcodes/`. Dark mode variants are provided where the shortcode appearance changes between modes.
-
-Shortcodes not yet screenshotted (require page bundle assets in the example site):
-
-- `ga` - needs example content with `{{</* ga */>}}` shortcode usage
-- `img` - needs image files in a page bundle
-- `gallery` - needs image files in a page bundle

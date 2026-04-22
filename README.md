@@ -89,7 +89,7 @@ themes/tadg_ie/
 │   ├── artwork/
 │   │   └── single.html        # Individual gallery page
 │   ├── partials/
-│   │   ├── grid-config.html   # Responsive grid CSS from params (Issue #17)
+│   │   ├── grid-config.html   # Responsive grid CSS from params
 │   │   ├── masonry-grid.html  # Shared masonry grid component
 │   │   ├── carousel-card.html # Hero-sized rotating carousel card
 │   │   ├── list-view.html     # Simple list layout
@@ -370,7 +370,7 @@ paginate: 12            # items per page (default: 12)
 ---
 ```
 
-**Note:** We use `list_style` (not `layout`) because Hugo reserves `layout` for template selection.
+**Note:** The theme uses `list_style` (not `layout`) because Hugo reserves `layout` for template selection.
 
 ### Field Descriptions
 
@@ -784,7 +784,7 @@ See [docs/shortcodes.md](docs/shortcodes.md#video) for the full parameter refere
 
 Cloudflare Stream requires `params.cloudflareStream.customerCode` in `hugo.yaml`.
 
-Cloudflare Stream videos can also be used as the primary visual in page layouts (`hero`, `featured`, `columns`) via the `video` frontmatter field - see [docs/shortcodes.md](docs/shortcodes.md#video-in-page-layouts-issue-43) for details.
+Cloudflare Stream videos can also be used as the primary visual in page layouts (`hero`, `featured`, `columns`) via the `video` frontmatter field - see [docs/shortcodes.md](docs/shortcodes.md#video-in-page-layouts) for details.
 
 **Rendered output (local):**
 

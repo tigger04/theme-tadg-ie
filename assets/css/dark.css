@@ -71,7 +71,7 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
 .toc {
   background-color: var(--color-background-toc-dark, #272822);
   color: var(--color-text-dark, #ffffff);
-  border-color: var(--color-border-dark, #0066ff);
+  border-color: var(--color-border, #663399);
 }
 
 /* Links - Issue #75: dark mode overrides */
