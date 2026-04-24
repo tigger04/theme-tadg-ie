@@ -1,0 +1,17 @@
+{{- /* ABOUTME: Breadcrumb trail for article meta — section > subsection > author > date */}}
+{{- /* ABOUTME: Purple segments for sections (descending opacity), orange for author/date */}}
+{{- $section := .Section | humanize | title -}}
+{{- $ancestors := .Ancestors -}}
+{{- $subsections := slice -}}
+{{- /* Walk ancestors (excluding home and top section) to build subsection trail */ -}}
+{{- range $ancestors.Reverse -}}
+  {{- if and (ne .Kind "home") (ne .Kind "taxonomy") -}}
+    {{- if .Parent -}}
+      {{- if ne .Parent.Kind "home" -}}
+        {{- $subsections = $subsections | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $levels := slice "breadcrumb-dim" "breadcrumb-dim2" -}}
+<span class="breadcrumb"><a href="{{ (.Site.GetPage "section" .Section).RelPermalink }}" class="breadcrumb-seg breadcrumb-section breadcrumb-bright">{{ $section }}</a>{{- range $i, $sub := $subsections -}}{{- $class := index $levels (mod $i (len $levels)) -}}<a href="{{ $sub.RelPermalink }}" class="breadcrumb-seg breadcrumb-section {{ $class }}">{{ $sub.Title }}</a>{{- end -}}{{- if not .Params.hideAuthor -}}{{- with .Params.author -}}<span class="breadcrumb-seg breadcrumb-meta breadcrumb-meta-bright">{{ . }}</span>{{- end -}}{{- end -}}{{- if not .Params.hideDate -}}<span class="breadcrumb-seg breadcrumb-meta breadcrumb-meta-dim">{{ dateFormat ($.Site.Params.dateFormat | default ":date_long") .Date }}</span>{{- end -}}{{- if .Draft }} <span class="draft-label">DRAFT</span>{{- end -}}</span>

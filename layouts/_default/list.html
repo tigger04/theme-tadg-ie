@@ -5,6 +5,7 @@
 	<!-- Collections main page - show content and poet collections -->
 	<header class="page-header">
 		<h1>{{ partial "display-title.html" . }}</h1>
+		<div class="meta">{{ partial "breadcrumb.html" . }}</div>
 		{{ if .Params.description }}
 		<p class="page-description">{{ .Params.description }}</p>
 		{{ end }}
@@ -41,6 +42,7 @@
 	<!-- Individual poet collection page - show poems by this poet -->
 	<header class="page-header">
 		<h1>{{ partial "display-title.html" . }}</h1>
+		<div class="meta">{{ partial "breadcrumb.html" . }}</div>
 		{{ if .Params.description }}
 		<p class="page-description">{{ .Params.description }}</p>
 		{{ end }}
@@ -85,6 +87,7 @@
 	{{- /* Issue #91: Page header and content always above sidebar-layout so sidebar aligns with grid */ -}}
 	<header class="page-header">
 		<h1>{{ partial "display-title.html" . }}</h1>
+		<div class="meta">{{ partial "breadcrumb.html" . }}</div>
 		{{ if .Params.description }}
 		<p class="page-description">{{ .Params.description }}</p>
 		{{ end }}
