@@ -748,12 +748,12 @@ article .title {
 
 /* Pull-quote — for {{< quote attribution="..." >}} shortcode */
 .pull-quote {
+  display: block;
   position: relative;
   margin-block: 2.5rem;
-  margin-inline: auto;
+  margin-inline: 0;
   padding-block: 1.5rem 0.5rem;
   padding-inline: 4rem 1rem;
-  max-width: 90%;
 }
 
 .pull-quote::before {
