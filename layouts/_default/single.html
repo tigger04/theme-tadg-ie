@@ -20,7 +20,7 @@
     {{ end }}
     {{ partial "signpost.html" . }}
     <div class="post-container banner-layout">
-      <div class="banner-meta meta">{{ partial "breadcrumb.html" . }}</div>
+      {{- if ne .Params.breadcrumb false }}<div class="banner-meta meta">{{ partial "breadcrumb.html" . }}</div>{{- end }}
       <div class="post-content banner-content">
         {{ if isset .Params "tldr" }}
         <div class="tldr">
@@ -54,7 +54,7 @@
       <!-- Title - full width -->
       <div class="title" style="padding: 2rem 2rem 1rem; margin-bottom: 0; margin-block-end: 0;">
         <h1 class="title">{{ partial "display-title.html" . }}</h1>
-        <div class="meta">{{ partial "breadcrumb.html" . }}</div>
+        {{- if ne .Params.breadcrumb false }}<div class="meta">{{ partial "breadcrumb.html" . }}</div>{{- end }}
       </div>
 
       <!-- Two-column content area -->
@@ -144,7 +144,7 @@
       <div class="post-content">
         <div class="title">
           <h1 class="title">{{ partial "display-title.html" . }}</h1>
-          <div class="meta">{{ partial "breadcrumb.html" . }}</div>
+          {{- if ne .Params.breadcrumb false }}<div class="meta">{{ partial "breadcrumb.html" . }}</div>{{- end }}
         </div>
 
         <!-- Hero Image/Video -->
@@ -211,7 +211,7 @@
     {{ end }}
 
     {{ if .Params.toc }}
-    {{- $tocTitle := "Table of contents:" -}}
+    {{- $tocTitle := site.Params.tocTitle | default "Table of contents:" -}}
     {{- if ne .Params.toc true -}}{{- $tocTitle = .Params.toc -}}{{- end -}}
 
     <!-- Mobile: collapsible TOC above content -->
@@ -228,6 +228,10 @@
         <strong>{{ $tocTitle }}</strong>
         {{ .TableOfContents }}
       </div>
+      {{ partial "related.html" . }}
+    </div>
+    <!-- Mobile: related articles below content -->
+    <div class="related-mobile">
       {{ partial "related.html" . }}
     </div>
     {{ else }}

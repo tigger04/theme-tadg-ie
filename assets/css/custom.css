@@ -1531,7 +1531,7 @@ main.list .content {
 }
 
 .page-header h1 {
-  font-size: 2.2rem;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
   margin-top: 0;
   margin-block-start: 0;
 }
@@ -2652,8 +2652,9 @@ main.list .masonry-grid {
 
 /* TOC alignment handled by explicit grid placement in main.css */
 
-/* Mobile TOC: collapsible details/summary, hidden on desktop */
-.toc-mobile {
+/* Mobile TOC and related: hidden on desktop */
+.toc-mobile,
+.related-mobile {
   display: none;
 }
 
@@ -2662,6 +2663,10 @@ main.list .masonry-grid {
     display: block;
     order: -1;
     margin-bottom: 1rem;
+  }
+
+  .related-mobile {
+    display: block;
   }
 
   /* Hide the desktop sidebar on mobile */
@@ -2709,11 +2714,12 @@ main.list .masonry-grid {
 }
 
 .toc-mobile-details li {
-  margin-bottom: 0.6em;
+  margin-bottom: 0.55em;
+  line-height: 1.5;
 }
 
 .toc-mobile-details ul ul {
-  margin-top: 0.3em;
+  margin-top: 0.55em;
 }
 
 /* Issue #23: Collapsible sidebar for mobile viewports */
@@ -3084,11 +3090,12 @@ main.list .masonry-grid {
 }
 
 .related-articles li {
-  padding: 0.25rem 0;
+  padding: 0;
   text-indent: -2ch;
   font-family: 'Asap', sans-serif;
   font-size: 0.9375rem;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.55em;
+  line-height: 1.5;
 }
 
 .related-articles li::before {
@@ -3102,9 +3109,15 @@ main.list .masonry-grid {
 }
 
 .related-section {
-  font-size: 0.75rem;
-  color: var(--text-muted, #666);
-  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  color: #fff;
+  margin-left: 0.4rem;
+  background: color-mix(in srgb, var(--color-secondary, hsl(27, 100%, 50%)) 70%, black);
+  padding: 0.1em 0.4em;
+  border-radius: 0.2em;
+  text-transform: capitalize;
+  font-weight: 500;
+  vertical-align: middle;
   text-transform: capitalize;
 }
 
