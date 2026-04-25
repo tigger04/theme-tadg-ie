@@ -336,7 +336,6 @@ header .main {
 /* Headings — Issue #25: Special Elite for all headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Special Elite", monospace;
-  font-size: 1.2rem;
   /* Fallback for older browsers */
   margin-top: 2em;
   margin-bottom: 0.5em;
@@ -346,18 +345,28 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1 {
-  margin-top: 0;
-  margin-block-start: 0;
-}
+h1 { margin-top: 0; margin-block-start: 0; }
+h2 { font-size: clamp(1.3rem, 3.5vw, 1.6rem); }
+h3 { font-size: clamp(1.15rem, 3vw, 1.35rem); }
+h4 { font-size: clamp(1.05rem, 2.5vw, 1.2rem); }
+h5 { font-size: clamp(1.0rem, 2.2vw, 1.1rem); }
+h6 { font-size: clamp(0.95rem, 2vw, 1.0rem); }
 
-/* Issue #90: Make heading hash marks more prominent with bold */
+/* Heading hash marks — bold, primary colour */
 h1::before { color: var(--color-primary); content: '# '; font-weight: 700; font-synthesis: weight; }
 h2::before { color: var(--color-primary); content: '## '; font-weight: 700; font-synthesis: weight; }
 h3::before { color: var(--color-primary); content: '### '; font-weight: 700; font-synthesis: weight; }
 h4::before { color: var(--color-primary); content: '#### '; font-weight: 700; font-synthesis: weight; }
 h5::before { color: var(--color-primary); content: '##### '; font-weight: 700; font-synthesis: weight; }
 h6::before { color: var(--color-primary); content: '###### '; font-weight: 700; font-synthesis: weight; }
+
+/* Article body: no hash on title (h1), shift content headings down one level */
+.title h1::before { content: none; }
+article .body h2::before { content: '# '; }
+article .body h3::before { content: '## '; }
+article .body h4::before { content: '### '; }
+article .body h5::before { content: '#### '; }
+article .body h6::before { content: '##### '; }
 
 .meta {
   color: var(--color-text-meta, #999999);

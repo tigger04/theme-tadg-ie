@@ -610,19 +610,26 @@ body,
 .post-banner .title h1::after {
   content: "";
   position: absolute;
-  inset: -1rem -2rem;
+  inset: -0.5rem -1rem;
   z-index: -1;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 70%);
   mask-image:
-    linear-gradient(to bottom, transparent, black 35%, black 65%, transparent),
-    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    linear-gradient(to bottom, transparent, black 20%, black 80%, transparent),
+    linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image:
-    linear-gradient(to bottom, transparent, black 35%, black 65%, transparent),
-    linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    linear-gradient(to bottom, transparent, black 20%, black 80%, transparent),
+    linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   mask-composite: intersect;
   -webkit-mask-composite: source-in;
 }
+
+/* Light images — white scrim */
+.post-banner:not(.dark-banner) .title h1::after {
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 70%);
+}
+
 
 .post-banner .title h1 {
   font-size: clamp(1.5rem, 5vw, 3rem);
