@@ -314,6 +314,10 @@ header .main a:hover {
 
 section.body {
   margin-bottom: 3rem;
+}
+
+/* Only apply flex reordering when footnotes exist */
+section.body:has(.footnotes) {
   display: flex;
   flex-direction: column;
 }
