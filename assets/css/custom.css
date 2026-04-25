@@ -314,6 +314,20 @@ header .main a:hover {
 
 section.body {
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push footnotes below signpost footer */
+section.body > .footnotes {
+  order: 99;
+  margin-top: 0;
+}
+
+/* Signpost inside body: spacing above, collapse gap below */
+section.body > .signpost {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
 }
 
 .post-tags {

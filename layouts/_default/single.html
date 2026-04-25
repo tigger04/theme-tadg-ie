@@ -29,8 +29,8 @@
         </div>{{ end }}
         <section class="body">
           {{ .Content }}
+          {{ partial "signpost-footer.html" . }}
         </section>
-        {{ partial "signpost-footer.html" . }}
         <div class="post-tags">
           {{ if ne .Type "page" }}
           {{ if gt .Params.tags 0 }}
@@ -81,6 +81,7 @@
           </div>{{ end }}
           <section class="body">
             {{ .Content }}
+            {{ partial "signpost-footer.html" . }}
           </section>
         </div>
         {{ else }}
@@ -93,6 +94,7 @@
           </div>{{ end }}
           <section class="body">
             {{ .Content }}
+            {{ partial "signpost-footer.html" . }}
           </section>
         </div>
         <div class="featured-image-col">
@@ -112,7 +114,6 @@
 
       <!-- Footer with tags - full width -->
       <div class="post-footer" style="padding: 0 2rem 2rem 2rem;">
-        {{ partial "signpost-footer.html" . }}
         <div class="post-tags">
           {{ if ne .Type "page" }}
           {{ if gt .Params.tags 0 }}
@@ -191,8 +192,8 @@
         </div>{{ end }}
         <section class="body">
           {{ .Content }}
+          {{ partial "signpost-footer.html" . }}
         </section>
-        {{ partial "signpost-footer.html" . }}
         <div class="post-tags">
           {{ if ne .Type "page" }}
           {{ if gt .Params.tags 0 }}
